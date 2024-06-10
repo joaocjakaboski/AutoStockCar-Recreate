@@ -6,6 +6,7 @@ com\mycompany\autostockcar\modelo\dominio\Clientes.class
 com\mycompany\autostockcar\modelo\dominio\Perfil.class
 com\mycompany\autostockcar\view\formulario\Login$4.class
 com\mycompany\autostockcar\view\formulario\Client$4.class
+com\mycompany\autostockcar\view\formulario\Vendas$9.class
 com\mycompany\autostockcar\modelo\dominio\Cidades.class
 com\mycompany\autostockcar\view\formulario\Vendas$6.class
 com\mycompany\autostockcar\view\formulario\Cadastrop$1.class
@@ -68,6 +69,7 @@ com\mycompany\autostockcar\view\componentes\Mensagem$TipoMensagem.class
 com\mycompany\autostockcar\modelo\dominio\Estados.class
 com\mycompany\autostockcar\modelo\dao\ClienteDao.class
 com\mycompany\autostockcar\view\formulario\Consulta.class
+com\mycompany\autostockcar\view\formulario\Vendas$10.class
 com\mycompany\autostockcar\controller\LoginController.class
 com\mycompany\autostockcar\view\formulario\Dashboard.class
 com\mycompany\autostockcar\view\componentes\Botao.class
@@ -89,6 +91,7 @@ com\mycompany\autostockcar\view\formulario\Vendas$8.class
 com\mycompany\autostockcar\view\formulario\MovimentacaoProd$4.class
 com\mycompany\autostockcar\view\formulario\TabelaUsuarios$1.class
 com\mycompany\autostockcar\modelo\dominio\Fabricantes.class
+com\mycompany\autostockcar\modelo\dao\VendasDao.class
 com\mycompany\autostockcar\view\formulario\TabelaUsuarios$4.class
 com\mycompany\autostockcar\view\formulario\Usuario$3.class
 com\mycompany\autostockcar\view\formulario\Login$5.class
