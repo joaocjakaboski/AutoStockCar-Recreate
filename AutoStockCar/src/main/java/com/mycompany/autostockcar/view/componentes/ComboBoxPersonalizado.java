@@ -32,7 +32,7 @@ public class ComboBoxPersonalizado<E> extends JComboBox<E> {
         setBackground(new Color(0, 0, 0, 0));
         setForeground(Color.decode("#1D1B86"));
         setFont(new Font("sanserif", 1, 15));
-        this.cor = new Color(28, 181, 223, 80);
+        this.cor = new Color(131, 191, 205);
     }
 
     @Override
