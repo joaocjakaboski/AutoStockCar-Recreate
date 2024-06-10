@@ -4,6 +4,8 @@ import com.mycompany.autostockcar.modelo.conexao.Conexao;
 import com.mycompany.autostockcar.modelo.conexao.ConexaoMysql;
 import com.mycompany.autostockcar.modelo.dao.CadastropDao;
 import com.mycompany.autostockcar.modelo.dao.ClienteDao;
+import com.mycompany.autostockcar.modelo.dao.VendasDao;
+import com.mycompany.autostockcar.modelo.dominio.ItensVenda;
 import com.mycompany.autostockcar.modelo.dominio.Produtos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,33 +23,46 @@ import javax.swing.table.DefaultTableModel;
 public class Vendas extends javax.swing.JFrame {
 
     private DefaultTableModel modeloDadosProdutos;
-    ArrayList<DetalheVenda> listaProdutos = new ArrayList<>();
-    private DetalheVenda produtos;
+    ArrayList<ItensVenda> listaProdutos = new ArrayList<>();
+    private ItensVenda produtos;
 
     private int idProduto = 0;
     private String nome = "";
-    private int quantidadeProduto = 0;
+    private double quantidadeProduto = 0.0;
     private BigDecimal precoUnitario = BigDecimal.ZERO;
-    private double porcentagemIva;
+    private double porcentagemIva = 0.0;
     private int quantidade = 0;
     private BigDecimal subtotal = BigDecimal.ZERO;
     private BigDecimal desconto = BigDecimal.ZERO;
-    private double iva = 0.0;
+    private int imposto = 0;
     private BigDecimal totalPagar = BigDecimal.ZERO;
-   
     private int auxIdDetalhe = 0;
+    
+    //variáveis cálculos globais
+    private BigDecimal subTotalGeneral = BigDecimal.ZERO;
+    private BigDecimal descontoGeneral = BigDecimal.ZERO;
+    private BigDecimal impostoGeneral = BigDecimal.ZERO;
+    private BigDecimal totalPagarGeneral = BigDecimal.ZERO;
+    
+    
+ 
 
     private final Conexao conexao;
     private PreparedStatement pstm;
 
     ClienteDao cliente = new ClienteDao();
     CadastropDao produto = new CadastropDao();
+    VendasDao vendas = new VendasDao();
 
     public Vendas() {
         initComponents();
         setLocationRelativeTo(null);
         menu1.setPaiHerdado(this);
         this.inicializarTabelaProdutos();
+        
+        txSubTotal.setText("0.0");
+        txDesconto.setText("0.0");
+        txTotal.setText("0.0");
 
         this.conexao = new ConexaoMysql();
 
@@ -94,6 +109,8 @@ public class Vendas extends javax.swing.JFrame {
                 SwingUtilities.invokeLater(() -> cbxNomeProduto.setPopupVisible(true));
             }
         });
+        
+        
 
     }
 
@@ -106,10 +123,25 @@ public class Vendas extends javax.swing.JFrame {
         modeloDadosProdutos.addColumn("Quantidade");
         modeloDadosProdutos.addColumn("Valor Parcial");
         modeloDadosProdutos.addColumn("Desconto");
-        modeloDadosProdutos.addColumn("Iva");
+        modeloDadosProdutos.addColumn("SubTotal");
         modeloDadosProdutos.addColumn("Valor Total");
 
         this.jtProdutos.setModel(modeloDadosProdutos);
+    }
+    
+    public void listaTabelaProdutos(){
+        this.modeloDadosProdutos.setRowCount(listaProdutos.size());
+        for(int i =0; i<listaProdutos.size();i++){
+            this.modeloDadosProdutos.setValueAt(i+1, i, 0);
+            this.modeloDadosProdutos.setValueAt(listaProdutos.get(i).getIdProduto(), i, 1);
+            this.modeloDadosProdutos.setValueAt(listaProdutos.get(i).getProduto(), i, 2);
+            this.modeloDadosProdutos.setValueAt(listaProdutos.get(i).getQuantidadeItensVenda(), i, 3);
+            this.modeloDadosProdutos.setValueAt(listaProdutos.get(i).getPrecoUnitario(), i, 4);
+            this.modeloDadosProdutos.setValueAt(listaProdutos.get(i).getDesconto(), i, 5);
+            this.modeloDadosProdutos.setValueAt(listaProdutos.get(i).getTotalAPagar(), i, 6);
+            this.modeloDadosProdutos.setValueAt("Eliminar", i, 7);
+        }
+        jtProdutos.setModel(modeloDadosProdutos);
     }
 
     @SuppressWarnings("unchecked")
@@ -134,7 +166,7 @@ public class Vendas extends javax.swing.JFrame {
         NomeCliente = new javax.swing.JLabel();
         txcodigocliente1 = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         txIdProduto = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
-        txnome2 = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
+        txSubTotal = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         txcodigocliente4 = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         txnome3 = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         CodigoCliente1 = new javax.swing.JLabel();
@@ -146,12 +178,10 @@ public class Vendas extends javax.swing.JFrame {
         jtProdutos = new javax.swing.JTable();
         txcodigocliente5 = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         txnome4 = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
-        txnome5 = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         CodigoCliente7 = new javax.swing.JLabel();
-        CodigoCliente8 = new javax.swing.JLabel();
-        txnome6 = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
+        txDesconto = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         CodigoCliente9 = new javax.swing.JLabel();
-        txnome7 = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
+        txTotal = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         btnSalvar = new com.mycompany.autostockcar.view.componentes.Botao();
         btnSalvar1 = new com.mycompany.autostockcar.view.componentes.Botao();
         jLabel1 = new javax.swing.JLabel();
@@ -160,6 +190,7 @@ public class Vendas extends javax.swing.JFrame {
         cbxNomeCliente = new com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado();
         btnAdicionar = new com.mycompany.autostockcar.view.componentes.Botao();
         cbxNomeProduto = new com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado();
+        btnAplicar = new com.mycompany.autostockcar.view.componentes.Botao();
         menu1 = new com.mycompany.autostockcar.view.componentes.Menu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -278,11 +309,11 @@ public class Vendas extends javax.swing.JFrame {
         txIdProduto.setMinimumSize(new java.awt.Dimension(64, 30));
         txIdProduto.setPreferredSize(new java.awt.Dimension(143, 30));
 
-        txnome2.setActionCommand("");
-        txnome2.setCor(new java.awt.Color(131, 191, 205));
-        txnome2.setDicas("");
-        txnome2.setMinimumSize(new java.awt.Dimension(64, 30));
-        txnome2.setPreferredSize(new java.awt.Dimension(143, 30));
+        txSubTotal.setActionCommand("");
+        txSubTotal.setCor(new java.awt.Color(131, 191, 205));
+        txSubTotal.setDicas("");
+        txSubTotal.setMinimumSize(new java.awt.Dimension(64, 30));
+        txSubTotal.setPreferredSize(new java.awt.Dimension(143, 30));
 
         txcodigocliente4.setForeground(new java.awt.Color(131, 191, 205));
         txcodigocliente4.setText("campoDeTexto1");
@@ -306,7 +337,7 @@ public class Vendas extends javax.swing.JFrame {
 
         CodigoCliente4.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         CodigoCliente4.setForeground(new java.awt.Color(30, 30, 30));
-        CodigoCliente4.setText("Operacao:");
+        CodigoCliente4.setText("SubTotal:");
 
         CodigoCliente5.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         CodigoCliente5.setForeground(new java.awt.Color(30, 30, 30));
@@ -333,6 +364,11 @@ public class Vendas extends javax.swing.JFrame {
             }
         });
         jtProdutos.setShowHorizontalLines(true);
+        jtProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtProdutosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtProdutos);
 
         txcodigocliente5.setCor(new java.awt.Color(131, 191, 205));
@@ -346,35 +382,25 @@ public class Vendas extends javax.swing.JFrame {
         txnome4.setMinimumSize(new java.awt.Dimension(64, 30));
         txnome4.setPreferredSize(new java.awt.Dimension(143, 30));
 
-        txnome5.setActionCommand("");
-        txnome5.setCor(new java.awt.Color(131, 191, 205));
-        txnome5.setDicas("");
-        txnome5.setMinimumSize(new java.awt.Dimension(64, 30));
-        txnome5.setPreferredSize(new java.awt.Dimension(143, 30));
-
         CodigoCliente7.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         CodigoCliente7.setForeground(new java.awt.Color(30, 30, 30));
-        CodigoCliente7.setText("Subtotal:");
+        CodigoCliente7.setText("Desconto:");
 
-        CodigoCliente8.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        CodigoCliente8.setForeground(new java.awt.Color(30, 30, 30));
-        CodigoCliente8.setText("Total:");
-
-        txnome6.setActionCommand("");
-        txnome6.setCor(new java.awt.Color(131, 191, 205));
-        txnome6.setDicas("");
-        txnome6.setMinimumSize(new java.awt.Dimension(64, 30));
-        txnome6.setPreferredSize(new java.awt.Dimension(143, 30));
+        txDesconto.setActionCommand("");
+        txDesconto.setCor(new java.awt.Color(131, 191, 205));
+        txDesconto.setDicas("");
+        txDesconto.setMinimumSize(new java.awt.Dimension(64, 30));
+        txDesconto.setPreferredSize(new java.awt.Dimension(143, 30));
 
         CodigoCliente9.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         CodigoCliente9.setForeground(new java.awt.Color(30, 30, 30));
-        CodigoCliente9.setText("Desconto:");
+        CodigoCliente9.setText("Total:");
 
-        txnome7.setActionCommand("");
-        txnome7.setCor(new java.awt.Color(131, 191, 205));
-        txnome7.setDicas("");
-        txnome7.setMinimumSize(new java.awt.Dimension(64, 30));
-        txnome7.setPreferredSize(new java.awt.Dimension(143, 30));
+        txTotal.setActionCommand("");
+        txTotal.setCor(new java.awt.Color(131, 191, 205));
+        txTotal.setDicas("");
+        txTotal.setMinimumSize(new java.awt.Dimension(64, 30));
+        txTotal.setPreferredSize(new java.awt.Dimension(143, 30));
 
         btnSalvar.setBackground(new java.awt.Color(163, 225, 255));
         btnSalvar.setForeground(new java.awt.Color(30, 30, 30));
@@ -433,6 +459,17 @@ public class Vendas extends javax.swing.JFrame {
         cbxNomeProduto.setForeground(new java.awt.Color(30, 30, 30));
         cbxNomeProduto.setToolTipText("");
 
+        btnAplicar.setBackground(new java.awt.Color(163, 225, 255));
+        btnAplicar.setForeground(new java.awt.Color(30, 30, 30));
+        btnAplicar.setText("Aplicar");
+        btnAplicar.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        btnAplicar.setPreferredSize(new java.awt.Dimension(62, 30));
+        btnAplicar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAplicarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -483,23 +520,23 @@ public class Vendas extends javax.swing.JFrame {
                                                 .addComponent(cbxNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(194, 194, 194)))
                                         .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(121, 121, 121)
+                                .addGap(93, 93, 93)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txnome2, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(CodigoCliente4)
                                     .addComponent(CodigoCliente7)
-                                    .addComponent(txnome6, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(CodigoCliente9)
-                                    .addComponent(txnome7, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(CodigoCliente8)
-                                    .addComponent(txnome5, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(txDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(CodigoCliente)
                                 .addGap(315, 315, 315)
-                                .addComponent(btnSalvar1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 48, Short.MAX_VALUE))
+                                .addComponent(btnSalvar1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(1080, Short.MAX_VALUE)
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -544,20 +581,18 @@ public class Vendas extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addComponent(CodigoCliente4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txnome2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(CodigoCliente7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txnome6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(CodigoCliente9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txnome7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(CodigoCliente8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txnome5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                        .addComponent(txTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(37, 37, 37)
                 .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -636,34 +671,84 @@ public class Vendas extends javax.swing.JFrame {
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         String combo = this.cbxNomeProduto.getSelectedItem().toString();
-        //validar a selecão de um produto
-        if (combo.equalsIgnoreCase("Selecione produto:")) {
-            JOptionPane.showMessageDialog(null, "Selecione um produto");
-        } else {
-            //validar quantidade
-            if (!txQuantidade.getText().isEmpty()) {
-                //validar caracter numérico
-                boolean validacao = validar(txQuantidade.getText());
-                if (validacao == true) {
-                    //validar quantidade maior que zero
-                    if (Integer.parseInt(txQuantidade.getText()) > 0) {
-                        quantidade = Integer.parseInt(txQuantidade.getText());
-                        String produtoSelecionado = cbxNomeProduto.getSelectedItem().toString();
-                        Produtos produtoRecebido = produto.buscarDadosDoProduto(produtoSelecionado);
+    if (combo.equalsIgnoreCase("Selecione produto:")) {
+        JOptionPane.showMessageDialog(null, "Selecione um produto");
+    } else {
+        if (!txQuantidade.getText().isEmpty()) {
+            if (validar(txQuantidade.getText())) {
+                int quantidade = Integer.parseInt(txQuantidade.getText());
+                if (quantidade > 0) {
+                    String produtoSelecionado = cbxNomeProduto.getSelectedItem().toString();
+                    Produtos produtoRecebido = vendas.obterDadosProduto(produtoSelecionado);
+                    double quantidadeProduto = produtoRecebido.getQuantidadeDisponivel();
+                    if (quantidade <= quantidadeProduto) {
+                        BigDecimal qtd = new BigDecimal(quantidade);
+                        BigDecimal precoUnitario = produtoRecebido.getValorFinal();
+                        BigDecimal subtotal = qtd.multiply(precoUnitario);
+                        BigDecimal desconto = BigDecimal.ZERO;
+                        int impostoInt = produtoRecebido.getImpostoDoProduto(); // Supondo que isso retorna um int
+                        BigDecimal impostoValor = new BigDecimal(impostoInt);
+                        BigDecimal impostoCalculado = subtotal.multiply(impostoValor.divide(new BigDecimal(100)));
 
+                        BigDecimal totalPagar = subtotal.subtract(desconto).add(impostoCalculado);
+
+                        ItensVenda produto = new ItensVenda(
+                            auxIdDetalhe, 
+                            1, 
+                            produtoRecebido.getIdProduto(),
+                            subtotal, // valorParcial é o subtotal original
+                            quantidade, 
+                            produtoRecebido, 
+                            precoUnitario, 
+                            desconto, 
+                            imposto, 
+                            totalPagar);
+                        listaProdutos.add(produto);
+                        JOptionPane.showMessageDialog(null, "Produto Agregado");
+                        auxIdDetalhe++;
+                        txQuantidade.setText("");
+                        this.CalcularTotalPagar();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Quantidade deve ser maior que zero");
+                        JOptionPane.showMessageDialog(null, "Quantidade acima do estoque disponível");
                     }
-
                 } else {
-                    JOptionPane.showMessageDialog(null, "Na quantidade tem algum caracter não numérico");
+                    JOptionPane.showMessageDialog(null, "Quantidade deve ser maior que zero");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Digite a quantidade de produtos");
+                JOptionPane.showMessageDialog(null, "Na quantidade tem algum caracter não numérico");
             }
-
+        } else {
+            JOptionPane.showMessageDialog(null, "Digite a quantidade de produtos");
         }
+    }
+    this.listaTabelaProdutos();
     }//GEN-LAST:event_btnAdicionarActionPerformed
+
+    private void btnAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplicarActionPerformed
+        this.aplicarDesconto();
+    }//GEN-LAST:event_btnAplicarActionPerformed
+
+    int idArrayList = 0;
+    private void jtProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtProdutosMouseClicked
+        int filaPoint = jtProdutos.rowAtPoint(evt.getPoint());
+        int colunaPoint = 0;
+        
+        if(filaPoint > -1) {
+            idArrayList = (int) modeloDadosProdutos.getValueAt(filaPoint, colunaPoint);
+        }
+        int opcao = JOptionPane.showConfirmDialog(null, "Eliminar Produto?");
+        
+        switch (opcao) {
+            case 0:
+                listaProdutos.remove(idArrayList -1);
+                this.CalcularTotalPagar();
+                this.listaTabelaProdutos();
+                break;
+            case 1:
+                break;
+            default:
+        }
+    }//GEN-LAST:event_jtProdutosMouseClicked
 
     private boolean validar(String valor) {
         try {
@@ -674,46 +759,50 @@ public class Vendas extends javax.swing.JFrame {
         }
     }
 
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        /* String sql = "SELECT * FROM Produtos WHERE NomeProduto = ?";
-
-        // Verifica se o objeto cbxNomeProduto está selecionado e se a conexão está disponível
-        if (this.cbxNomeProduto.getSelectedItem() != null && conexao != null) {
-            try (Connection cn = conexao.obterConexao(); PreparedStatement pst = cn.prepareStatement(sql)) {
-
-                // Define o parâmetro do SQL com base no item selecionado no ComboBox
-                pst.setString(1, this.cbxNomeProduto.getSelectedItem().toString());
-
-                // Executar a consulta e usar o ResultSet dentro do try-with-resources
-                try (ResultSet rs = pst.executeQuery()) {
-                    while (rs.next()) {
-                        // Extrair dados de cada coluna do resultado
-                        idProduto = rs.getInt("IdProduto");
-                        nome = rs.getString("NomeProduto");
-                        valorParcial = rs.getDouble("ValorFinal");
-
-                    }
-                }
-            } catch (SQLException e) {
-                // Lidar com exceções de SQL    
-            }
-        } else {
-            System.err.println("Erro: ComboBox não selecionado ou conexão não disponível.");
-        }
-    }*/
+    private void CalcularTotalPagar(){
+       BigDecimal subTotalGeneral = BigDecimal.ZERO;
+       BigDecimal descontoGeneral = BigDecimal.ZERO;
+       BigDecimal impostoGeneral = BigDecimal.ZERO;
+       BigDecimal totalPagarGeneral = BigDecimal.ZERO;
+       
+       for (ItensVenda produtos : listaProdutos){
+        subTotalGeneral = subTotalGeneral.add(produtos.getValorParcial());
+        descontoGeneral = descontoGeneral.add(produtos.getDesconto());
+        impostoGeneral = impostoGeneral.add(new BigDecimal(produtos.getImposto()));
+        totalPagarGeneral = totalPagarGeneral.add(produtos.getTotalAPagar());
+       }
+       
+       txSubTotal.setText(String.valueOf(subTotalGeneral));
+       txDesconto.setText(String.valueOf(descontoGeneral));
+       txTotal.setText(String.valueOf(totalPagarGeneral));
+    }
     
-    /**
-     * @param args the command line arguments
-     */
+    private void aplicarDesconto() {
+    try {
+        String descontoText = txDesconto.getText();
+        BigDecimal descontoPercentual = new BigDecimal(descontoText);
+
+        BigDecimal descontoTotal = BigDecimal.ZERO;
+
+        for (ItensVenda produto : listaProdutos) {
+            BigDecimal valorParcial = produto.getValorParcial();
+            BigDecimal descontoValor = valorParcial.multiply(descontoPercentual).divide(new BigDecimal(100));
+            descontoTotal = descontoTotal.add(descontoValor);
+            produto.setDesconto(descontoValor);
+
+            // Atualiza o valor total a pagar do produto
+            BigDecimal impostoCalculado = valorParcial.multiply(new BigDecimal(produto.getImposto()).divide(new BigDecimal(100)));
+            BigDecimal totalComDesconto = valorParcial.subtract(descontoValor).add(impostoCalculado);
+            produto.setTotalAPagar(totalComDesconto);
+        }
+
+        // Atualiza os campos de totalizadores
+        CalcularTotalPagar();
+
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Digite um valor válido para o desconto.");
+    }
+}
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -754,7 +843,6 @@ public class Vendas extends javax.swing.JFrame {
     private javax.swing.JLabel CodigoCliente5;
     private javax.swing.JLabel CodigoCliente6;
     private javax.swing.JLabel CodigoCliente7;
-    private javax.swing.JLabel CodigoCliente8;
     private javax.swing.JLabel CodigoCliente9;
     private javax.swing.JLabel NomeCliente;
     private javax.swing.JLabel NomeCliente1;
@@ -766,6 +854,7 @@ public class Vendas extends javax.swing.JFrame {
     private javax.swing.JLabel NomeCliente7;
     private javax.swing.JLabel NomeCliente8;
     private com.mycompany.autostockcar.view.componentes.Botao btnAdicionar;
+    private com.mycompany.autostockcar.view.componentes.Botao btnAplicar;
     private com.mycompany.autostockcar.view.componentes.Botao btnSalvar;
     private com.mycompany.autostockcar.view.componentes.Botao btnSalvar1;
     private com.mycompany.autostockcar.view.componentes.Botao btnSalvar2;
@@ -781,17 +870,16 @@ public class Vendas extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jtProdutos;
     private com.mycompany.autostockcar.view.componentes.Menu menu1;
+    private com.mycompany.autostockcar.view.componentes.CampoDeTexto txDesconto;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txIdProduto;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txQuantidade;
+    private com.mycompany.autostockcar.view.componentes.CampoDeTexto txSubTotal;
+    private com.mycompany.autostockcar.view.componentes.CampoDeTexto txTotal;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txcodigocliente1;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txcodigocliente4;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txcodigocliente5;
-    private com.mycompany.autostockcar.view.componentes.CampoDeTexto txnome2;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txnome3;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txnome4;
-    private com.mycompany.autostockcar.view.componentes.CampoDeTexto txnome5;
-    private com.mycompany.autostockcar.view.componentes.CampoDeTexto txnome6;
-    private com.mycompany.autostockcar.view.componentes.CampoDeTexto txnome7;
     // End of variables declaration//GEN-END:variables
 
     private static class DetalheVenda {

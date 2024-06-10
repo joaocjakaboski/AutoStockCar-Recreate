@@ -18,6 +18,7 @@ public class Produtos {
     private Estoques Idestoque;
     private Categorias Idcategoria;
     private Categorias NomeCategorias;
+    private double QuantidadeDisponivel;
 
     public Produtos() {
     }
@@ -38,7 +39,15 @@ public class Produtos {
         this.Idcategoria = idcategoria;
         this.NomeCategorias = NomeCategorias;
     }
-
+    
+    public Produtos(int idProduto, String nomeProduto, int QuantidadeDisponivel, BigDecimal valorFinal, int ImpostoDoProduto) {
+        this.idProduto = idProduto;
+        this.nomeProduto = nomeProduto;
+        this.QuantidadeDisponivel = QuantidadeDisponivel;
+        this.valorFinal = valorFinal;
+        this.ImpostoDoProduto = ImpostoDoProduto;
+    }
+    
     public int getIdProduto() {
         return idProduto;
     }
@@ -149,6 +158,14 @@ public class Produtos {
 
     public void setNomeCategorias(Categorias NomeCategorias) {
         this.NomeCategorias = NomeCategorias;
+    }
+    
+    public double getQuantidadeDisponivel() {
+        return QuantidadeDisponivel;
+    }
+
+    public void setQuantidadeDisponivel(Double QuantidadeDisponivel) {
+        this.QuantidadeDisponivel = QuantidadeDisponivel;
     }
 
     @Override

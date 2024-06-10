@@ -8,11 +8,11 @@ public class ItensVenda {
     private int idvenda;
     private BigDecimal valorParcial;
     private int quantidadeItensVenda;
-    private Vendas venda;
+    private int idProduto;
     private Produtos produto;
     private BigDecimal precoUnitario;
     private BigDecimal desconto;
-    private double iva;
+    private int imposto;
     private BigDecimal totalAPagar;
 
     public ItensVenda() {
@@ -20,24 +20,23 @@ public class ItensVenda {
         this.idvenda = 0;
         this.valorParcial = BigDecimal.ZERO;
         this.quantidadeItensVenda = 0;
-        this.venda = new Vendas();
         this.produto = new Produtos();
         this.precoUnitario = BigDecimal.ZERO;
         this.desconto = BigDecimal.ZERO;
-        this.iva = 0.0;
+        this.imposto = 0;
         this.totalAPagar = BigDecimal.ZERO;
     }
 
-    public ItensVenda(int idItensVenda, int idvenda, BigDecimal valorParcial, int quantidadeItensVenda, Vendas venda, Produtos produto, BigDecimal precoUnitario, BigDecimal desconto, double iva, BigDecimal totalAPagar) {
+    public ItensVenda(int idItensVenda, int idvenda, int idProduto, BigDecimal valorParcial, int quantidadeItensVenda,  Produtos produto, BigDecimal precoUnitario, BigDecimal desconto, int imposto, BigDecimal totalAPagar) {
         this.idItensVenda = idItensVenda;
         this.idvenda = idvenda;
+        this.idProduto = idProduto;
         this.valorParcial = valorParcial;
         this.quantidadeItensVenda = quantidadeItensVenda;
-        this.venda = venda;
         this.produto = produto;
         this.precoUnitario = precoUnitario;
         this.desconto = desconto;
-        this.iva = iva;
+        this.imposto = imposto;
         this.totalAPagar = totalAPagar;
     }
 
@@ -73,13 +72,7 @@ public class ItensVenda {
         this.quantidadeItensVenda = quantidadeItensVenda;
     }
 
-    public Vendas getVenda() {
-        return venda;
-    }
-
-    public void setVenda(Vendas venda) {
-        this.venda = venda;
-    }
+   
 
     public Produtos getProduto() {
         return produto;
@@ -105,12 +98,12 @@ public class ItensVenda {
         this.desconto = desconto;
     }
 
-    public double getIva() {
-        return iva;
+    public int getImposto() {
+        return imposto;
     }
 
-    public void setIva(double iva) {
-        this.iva = iva;
+    public void setImposto(int  imposto) {
+        this.imposto = imposto;
     }
 
     public BigDecimal getTotalAPagar() {
@@ -121,9 +114,19 @@ public class ItensVenda {
         this.totalAPagar = totalAPagar;
     }
 
+    public int getIdProduto() {
+        return idProduto;
+    }
+
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
+    }
+
+    
+
     @Override
     public String toString() {
-        return "ItensVenda{" + "idItensVenda=" + idItensVenda + ", idvenda=" + idvenda + ", valorParcial=" + valorParcial + ", quantidadeItensVenda=" + quantidadeItensVenda + ", venda=" + venda + ", produto=" + produto + ", precoUnitario=" + precoUnitario + ", desconto=" + desconto + ", iva=" + iva + ", totalAPagar=" + totalAPagar + '}';
+        return "ItensVenda{" + "idItensVenda=" + idItensVenda + ", idvenda=" + idvenda + ", idProduto=" + idProduto + ",valorParcial=" + valorParcial + ", quantidadeItensVenda=" + quantidadeItensVenda + ", produto=" + produto + ", precoUnitario=" + precoUnitario + ", desconto=" + desconto + ", imposto=" + imposto + ", totalAPagar=" + totalAPagar + '}';
     }
     
     
