@@ -532,6 +532,7 @@ public class Client extends javax.swing.JFrame {
         jPanel2.setPreferredSize(new java.awt.Dimension(1162, 550));
 
         txConsultaCpf.setForeground(new java.awt.Color(0, 0, 0));
+        txConsultaCpf.setCor(new java.awt.Color(131, 191, 205));
         txConsultaCpf.setDicas("CPF/CNPJ");
 
         txEmail.setForeground(new java.awt.Color(0, 0, 0));
