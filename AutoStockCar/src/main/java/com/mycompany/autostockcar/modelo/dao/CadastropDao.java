@@ -40,7 +40,7 @@ public class CadastropDao {
     public void salvar() {
         try {
             
-            String sql = "INSERT INTO Produtos(NomeProduto, CodigoFabricante, ObsProduto, ValorCustoProduto, ValorFinal, Prateleira, Gaveta, ImpostoDoProduto, IdFabricante, IdEstoque, IdCategoria) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Produtos(NomeProduto, CodigoFabricante, ObsProduto, ValorCustoProduto, ValorFinal, Prateleira, Gaveta, ImpostoDoProduto, IdFabricante, IdEstoque, IdCategoria) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             
             PreparedStatement stmt = conexao.obterConexao().prepareStatement(sql);
             
@@ -66,7 +66,7 @@ public class CadastropDao {
             JOptionPane.showMessageDialog(null, "Produto Cadastrado com Sucesso");
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro de conexão com o banco de dados de Inclusão");
+            JOptionPane.showMessageDialog(null, "Erro de conexão com o banco de dados de Inclusão\n" + ex.getMessage());
             ex.printStackTrace();
         }
     }
@@ -127,7 +127,7 @@ public class CadastropDao {
     
     public void alterar(Produtos produto) {
     try {
-        String sql = "UPDATE Produtos SET NomeProduto = ?, CodigoFabricante = ?, ObsProduto = ?, ValorCustoProduto = ?, ValorFinal = ?, Prateleira = ?, Gaveta = ?, ImpostoDoProduto = ?, WHERE IdProduto = ?";
+        String sql = "UPDATE Produtos SET NomeProduto = ?, CodigoFabricante = ?, ObsProduto = ?, ValorCustoProduto = ?, ValorFinal = ?, Prateleira = ?, Gaveta = ?, ImpostoDoProduto = ? WHERE IdProduto = ?";
         Connection connection = conexao.obterConexao();
         PreparedStatement stmt = connection.prepareStatement(sql);
 
@@ -138,8 +138,8 @@ public class CadastropDao {
         stmt.setBigDecimal(5, produto.getValorFinal());
         stmt.setString(6, produto.getPrateleira());
         stmt.setString(7, produto.getGaveta());
-        stmt.setInt(8, produto.getIdProduto());
-        stmt.setInt(9, produto.getImpostoDoProduto());
+        stmt.setInt(8, produto.getImpostoDoProduto());
+        stmt.setInt(9, produto.getIdProduto());
 
         int rowsAffected = stmt.executeUpdate();
 
@@ -151,12 +151,11 @@ public class CadastropDao {
 
         stmt.close();
         connection.close();
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Erro de conexão com o banco de dados para alteração" + ex.getMessage());
-        ex.printStackTrace();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro de conexão com o banco de dados para alteração\n" + ex.getMessage());
+            ex.printStackTrace();
+        }
     }
-
-}
 
     private Produtos getProdutos(ResultSet result) throws SQLException {
         Produtos produto = new Produtos();

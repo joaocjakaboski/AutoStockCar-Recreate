@@ -5,6 +5,7 @@ com\mycompany\autostockcar\view\formulario\Usuario$2.class
 com\mycompany\autostockcar\modelo\dominio\Clientes.class
 com\mycompany\autostockcar\modelo\dominio\Perfil.class
 com\mycompany\autostockcar\view\formulario\Login$4.class
+com\mycompany\autostockcar\view\formulario\Categoria$1.class
 com\mycompany\autostockcar\view\formulario\Client$4.class
 com\mycompany\autostockcar\modelo\dominio\Cidades.class
 com\mycompany\autostockcar\view\formulario\Vendas$6.class
@@ -13,6 +14,7 @@ com\mycompany\autostockcar\view\formulario\Consulta$4.class
 com\mycompany\autostockcar\view\formulario\Login$1.class
 com\mycompany\autostockcar\view\formulario\Client$1.class
 com\mycompany\autostockcar\view\util\MensagemUtil$1.class
+com\mycompany\autostockcar\view\formulario\Categoria$9.class
 com\mycompany\autostockcar\view\componentes\Mensagem.class
 com\mycompany\autostockcar\modelo\dao\FabricanteDao.class
 com\mycompany\autostockcar\view\formulario\Cadastrop$4.class
@@ -21,6 +23,7 @@ com\mycompany\autostockcar\view\formulario\Consulta$1.class
 com\mycompany\autostockcar\view\formulario\MovimentacaoProd.class
 com\mycompany\autostockcar\view\componentes\ComboBoxPersonalizado.class
 com\mycompany\autostockcar\view\formulario\Fabricante.class
+com\mycompany\autostockcar\view\formulario\Categoria.class
 com\mycompany\autostockcar\view\formulario\Login.class
 com\mycompany\autostockcar\view\componentes\Botao$1.class
 com\mycompany\autostockcar\modelo\dominio\Estoques.class
@@ -35,6 +38,7 @@ com\mycompany\autostockcar\view\formulario\TabelaUsuarios$6.class
 com\mycompany\autostockcar\view\formulario\Vendas$4.class
 com\mycompany\autostockcar\view\componentes\ComboBoxPersonalizado$CustomComboBoxRenderer.class
 com\mycompany\autostockcar\view\componentes\Menu.class
+com\mycompany\autostockcar\view\formulario\Categoria$6.class
 com\mycompany\autostockcar\view\componentes\CampoDeTelefone$1.class
 com\mycompany\autostockcar\modelo\dao\EstadoDao.class
 com\mycompany\autostockcar\view\formulario\Fabricante$5.class
@@ -56,7 +60,9 @@ com\mycompany\autostockcar\view\formulario\Vendas$3.class
 com\mycompany\autostockcar\view\formulario\Usuario$5.class
 com\mycompany\autostockcar\view\formulario\Cadastrop$5.class
 com\mycompany\autostockcar\view\formulario\Fabricante$6.class
+com\mycompany\autostockcar\view\formulario\Categoria$10.class
 com\mycompany\autostockcar\view\formulario\Client$5.class
+com\mycompany\autostockcar\view\formulario\Categoria$7.class
 com\mycompany\autostockcar\view\formulario\MovimentacaoProd$6.class
 com\mycompany\autostockcar\view\modelo\LoginDto.class
 com\mycompany\autostockcar\view\formulario\Cadastrop$8.class
@@ -67,19 +73,23 @@ com\mycompany\autostockcar\view\util\MensagemUtil.class
 com\mycompany\autostockcar\view\componentes\Mensagem$TipoMensagem.class
 com\mycompany\autostockcar\modelo\dominio\Estados.class
 com\mycompany\autostockcar\modelo\dao\ClienteDao.class
+com\mycompany\autostockcar\view\formulario\Categoria$5.class
 com\mycompany\autostockcar\view\formulario\Consulta.class
 com\mycompany\autostockcar\controller\LoginController.class
 com\mycompany\autostockcar\view\formulario\Dashboard.class
+com\mycompany\autostockcar\modelo\dao\CategoriaDao.class
 com\mycompany\autostockcar\view\componentes\Botao.class
 com\mycompany\autostockcar\view\formulario\Client$11.class
 com\mycompany\autostockcar\view\componentes\Botao$2.class
 com\mycompany\autostockcar\modelo\conexao\Conexao.class
+com\mycompany\autostockcar\view\formulario\Categoria$8.class
 com\mycompany\autostockcar\modelo\dominio\Usuarios.class
 com\mycompany\autostockcar\view\formulario\Vendas$5.class
 com\mycompany\autostockcar\view\modelo\ClientesDto.class
 com\mycompany\autostockcar\view\formulario\Client.class
 com\mycompany\autostockcar\view\formulario\Vendas.class
 com\mycompany\autostockcar\view\componentes\Carregar.class
+com\mycompany\autostockcar\view\formulario\Categoria$2.class
 com\mycompany\autostockcar\view\componentes\Menu$2.class
 com\mycompany\autostockcar\view\formulario\TabelaUsuarios.class
 com\mycompany\autostockcar\view\formulario\Client$3.class
@@ -107,9 +117,10 @@ com\mycompany\autostockcar\view\formulario\Client$9.class
 com\mycompany\autostockcar\view\formulario\Fabricante$2.class
 com\mycompany\autostockcar\view\formulario\MovimentacaoProd$2.class
 com\mycompany\autostockcar\view\formulario\Vendas$1.class
+com\mycompany\autostockcar\view\formulario\Categoria$3.class
 com\mycompany\autostockcar\view\formulario\Cadastrop$2.class
 com\mycompany\autostockcar\view\formulario\Dashboard$1.class
-com\mycompany\autostockcar\view\formulario\Cadastrop$9.class
+com\mycompany\autostockcar\view\formulario\Categoria$4.class
 com\mycompany\autostockcar\modelo\dao\UsuarioDao.class
 com\mycompany\autostockcar\view\componentes\Menu$4.class
 com\mycompany\autostockcar\view\formulario\TabelaUsuarios$3.class

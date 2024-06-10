@@ -123,74 +123,74 @@
                                           <Component id="txPrateleira" min="-2" pref="200" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="ValorVenda" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="ID" min="-2" pref="37" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="259" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jLabel1" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
-                                                          <Component id="txvalorvenda" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                                          <Component id="txcodigofab" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="txidproduto" min="-2" pref="200" max="-2" attributes="0"/>
-                                                      <EmptySpace max="32767" attributes="0"/>
-                                                      <Component id="btnovo" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                                  </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="ID" min="-2" pref="37" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="259" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="txnome" alignment="0" min="-2" pref="850" max="-2" attributes="0"/>
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Group type="102" attributes="0">
-                                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                                      <Component id="txfabricante" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                                                      <Component id="jLabel4" alignment="0" min="-2" pref="88" max="-2" attributes="0"/>
-                                                                      <Component id="txvalorcusto" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                                  <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
-                                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                                      <Component id="txcategoria" min="-2" pref="200" max="-2" attributes="0"/>
-                                                                      <Component id="jLabel5" min="-2" pref="87" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                              </Group>
-                                                              <Group type="102" attributes="0">
-                                                                  <Component id="ValorCusto" min="-2" pref="117" max="-2" attributes="0"/>
-                                                                  <EmptySpace min="-2" pref="201" max="-2" attributes="0"/>
-                                                                  <Component id="jLabel7" min="-2" pref="83" max="-2" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
-                                                          <EmptySpace max="32767" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="txalteradopor" min="-2" pref="200" max="-2" attributes="0"/>
-                                                              <Component id="jLabel2" min="-2" pref="182" max="-2" attributes="0"/>
-                                                              <Component id="txusuarioquecadastrou" min="-2" pref="200" max="-2" attributes="0"/>
-                                                              <Component id="jLabel3" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                                              <Component id="jLabel8" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                                              <Component id="txidestoque" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                                                      </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="txidproduto" min="-2" pref="200" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="btnovo" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="jLabel1" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
+                                                      <Component id="txvalorvenda" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                                      <Component id="txcodigofab" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Component id="Nome" min="-2" pref="54" max="-2" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <EmptySpace min="-2" pref="318" max="-2" attributes="0"/>
-                                                      <Component id="jLabel6" min="-2" pref="63" max="-2" attributes="0"/>
-                                                  </Group>
+                                                  <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="296" max="-2" attributes="0"/>
-                                              <Component id="txgaveta" min="-2" pref="200" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="332" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="txnome" alignment="0" min="-2" pref="850" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Group type="102" attributes="0">
+                                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                                  <Component id="txfabricante" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                                                  <Component id="jLabel4" alignment="0" min="-2" pref="88" max="-2" attributes="0"/>
+                                                                  <Component id="txvalorcusto" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                                              </Group>
+                                                              <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
+                                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                                  <Component id="jLabel5" min="-2" pref="87" max="-2" attributes="0"/>
+                                                                  <Component id="txcategoria" min="-2" pref="200" max="-2" attributes="0"/>
+                                                              </Group>
+                                                          </Group>
+                                                          <Group type="102" attributes="0">
+                                                              <Component id="ValorCusto" min="-2" pref="117" max="-2" attributes="0"/>
+                                                              <EmptySpace min="-2" pref="201" max="-2" attributes="0"/>
+                                                              <Component id="jLabel7" min="-2" pref="83" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <Group type="102" alignment="0" attributes="0">
+                                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                                  <Component id="ValorCusto1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="txImpostoProduto" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                                              </Group>
+                                                              <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
+                                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                                  <Component id="txgaveta" min="-2" pref="200" max="-2" attributes="0"/>
+                                                                  <Component id="jLabel6" min="-2" pref="63" max="-2" attributes="0"/>
+                                                              </Group>
+                                                          </Group>
+                                                      </Group>
+                                                      <EmptySpace min="123" max="32767" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="txidestoque" min="-2" pref="200" max="-2" attributes="0"/>
+                                                          <Component id="jLabel2" min="-2" pref="182" max="-2" attributes="0"/>
+                                                          <Component id="txusuarioquecadastrou" min="-2" pref="200" max="-2" attributes="0"/>
+                                                          <Component id="jLabel3" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                                          <Component id="jLabel8" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                                          <Component id="txalteradopor" min="-2" pref="200" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <Component id="Nome" min="-2" pref="54" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -202,7 +202,7 @@
                                   <Component id="btexcluir" min="-2" pref="78" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="btalterar" min="-2" pref="78" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                   <Component id="btsalvar" min="-2" pref="78" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -254,17 +254,19 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txvalorvenda" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="txPrateleira" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="txalteradopor" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="txvalorcusto" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="txalteradopor" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="ValorCusto1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txgaveta" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="txImpostoProduto" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="txidestoque" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
@@ -273,12 +275,12 @@
                           <Component id="txcomplemento" min="-2" pref="105" max="-2" attributes="0"/>
                           <EmptySpace pref="27" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btsalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btalterar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btexcluir" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btlimpar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btsalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -510,7 +512,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="1e" green="1e" red="1e" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="SALVAR"/>
+                    <Property name="text" type="java.lang.String" value="Salvar"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="15" style="1"/>
                     </Property>
@@ -524,7 +526,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="1e" green="1e" red="1e" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="ALTERAR"/>
+                    <Property name="text" type="java.lang.String" value="Alterar"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="15" style="1"/>
                     </Property>
@@ -538,7 +540,8 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="1e" green="1e" red="1e" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="EXCLUIR"/>
+                    <Property name="text" type="java.lang.String" value="Excluir"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="15" style="1"/>
                     </Property>
@@ -783,7 +786,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="1e" green="1e" red="1e" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="LIMPAR"/>
+                    <Property name="text" type="java.lang.String" value="Limpar"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="15" style="1"/>
                     </Property>
@@ -791,6 +794,40 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btlimparActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="txImpostoProduto">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="cor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="cd" green="bf" red="83" type="rgb"/>
+                    </Property>
+                    <Property name="dicas" type="java.lang.String" value="Imposto do Produto"/>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[64, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[143, 30]"/>
+                    </Property>
+                    <Property name="selectedTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="ValorCusto1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="15" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="1e" green="1e" red="1e" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Imposto do Produto:"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
