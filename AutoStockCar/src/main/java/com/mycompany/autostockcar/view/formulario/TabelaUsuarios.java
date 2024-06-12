@@ -56,7 +56,7 @@ public class TabelaUsuarios extends javax.swing.JFrame {
         btnAlterar = new com.mycompany.autostockcar.view.componentes.Botao();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(131, 191, 205));
         jPanel1.setPreferredSize(new java.awt.Dimension(624, 322));

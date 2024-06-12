@@ -1,28 +1,77 @@
 package com.mycompany.autostockcar.view.componentes;
 
+import com.mycompany.autostockcar.modelo.dominio.Perfil;
 import com.mycompany.autostockcar.view.formulario.Cadastrop;
 import com.mycompany.autostockcar.view.formulario.Client;
 import com.mycompany.autostockcar.view.formulario.Consulta;
 import com.mycompany.autostockcar.view.formulario.Dashboard;
+import com.mycompany.autostockcar.view.formulario.TabelaUsuarios;
 import com.mycompany.autostockcar.view.formulario.Vendas;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 
 
 public class Menu extends javax.swing.JPanel {
-    
+    private String nomeUsuario;
+    private Perfil perfil;
     private JFrame paiHerdado;
+    
     String caminho = System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\autostockcar\\view\\imagens\\";
     
     public Menu() {
         initComponents();
         setOpaque(false);
-        lbUsuario.setIcon(new ImageIcon(caminho + "user.png"));
+        labelUsuario.setIcon(new ImageIcon(caminho + "user.png"));
+        labelUsuario.setText(nomeUsuario);
+        
+        JPopupMenu popupMenu = new JPopupMenu();
+
+        JMenuItem menuItem1 = new JMenuItem("Gerenciar usuários");
+        
+        menuItem1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new TabelaUsuarios().setVisible(true);
+            }
+        });
+        
+        popupMenu.add(menuItem1);
+        
+        labelUsuario.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (perfil.equals(Perfil.ADMIN)) {
+                    popupMenu.show(e.getComponent(), e.getX(), e.getY());
+                }
+            }
+        });
+        
+        labelUsuario.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                labelUsuario.setBackground(new Color(131, 191, 205));
+                labelUsuario.setForeground(Color.WHITE);
+                labelUsuario.setOpaque(true);
+            }
+           
+           @Override
+           public void mouseExited(MouseEvent e) {
+               labelUsuario.setOpaque(false);
+               labelUsuario.setBackground(null);
+               labelUsuario.setForeground(Color.WHITE);
+           }
+        });
     }
     
     @Override
@@ -47,7 +96,7 @@ public class Menu extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lbUsuario = new javax.swing.JLabel();
+        labelUsuario = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btnMenuDashboard = new com.mycompany.autostockcar.view.componentes.Botao();
         btnMenuVendas = new com.mycompany.autostockcar.view.componentes.Botao();
@@ -64,10 +113,10 @@ public class Menu extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(30, 30, 30));
         jLabel1.setText("Auto StockCar");
 
-        lbUsuario.setBackground(new java.awt.Color(255, 255, 255));
-        lbUsuario.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        lbUsuario.setForeground(new java.awt.Color(30, 30, 30));
-        lbUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        labelUsuario.setFont(new java.awt.Font("SansSerif", 1, 8)); // NOI18N
+        labelUsuario.setForeground(new java.awt.Color(30, 30, 30));
+        labelUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -77,7 +126,7 @@ public class Menu extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -85,7 +134,7 @@ public class Menu extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -185,7 +234,7 @@ public class Menu extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMenuDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuDashboardActionPerformed
-        new Dashboard().setVisible(true);
+        new Dashboard(nomeUsuario, perfil).setVisible(true);
         paiHerdado.dispose();
     }//GEN-LAST:event_btnMenuDashboardActionPerformed
 
@@ -217,6 +266,22 @@ public class Menu extends javax.swing.JPanel {
         this.paiHerdado = paiHerdado;
     }
 
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
+
+    public Perfil getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.mycompany.autostockcar.view.componentes.Botao btnMenuClientes;
     private com.mycompany.autostockcar.view.componentes.Botao btnMenuConsulta;
@@ -226,7 +291,7 @@ public class Menu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel lbUsuario;
+    private javax.swing.JLabel labelUsuario;
     // End of variables declaration//GEN-END:variables
 
 }

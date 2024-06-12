@@ -1,6 +1,7 @@
 package com.mycompany.autostockcar.controller;
 
 import com.mycompany.autostockcar.modelo.dao.AutenticacaoDao;
+import com.mycompany.autostockcar.modelo.dominio.InfoMenu;
 import com.mycompany.autostockcar.modelo.dominio.Usuarios;
 import com.mycompany.autostockcar.view.componentes.Mensagem;
 import com.mycompany.autostockcar.view.formulario.Dashboard;
@@ -54,7 +55,7 @@ public class LoginController implements ActionListener{
                     Thread.sleep(2000);
                     limpaCampos();
                     login.setVisible(false);
-                    new Dashboard().setVisible(true);
+                    new Dashboard(usuarioTemp.getNomeUsuario(), usuarioTemp.getAdmCategoria()).setVisible(true);
                  }catch (Exception e) {
                  }
              }).start();

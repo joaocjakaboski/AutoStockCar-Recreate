@@ -1,24 +1,21 @@
 package com.mycompany.autostockcar.view.formulario;
 
+import com.mycompany.autostockcar.modelo.dominio.Perfil;
+
 public class Dashboard extends javax.swing.JFrame {
 
-    private String nomeUsuarioLogin;
         
-    public Dashboard() {
-        
+    public Dashboard(String nomeUsuario, Perfil perfil) {
         initComponents();
         setLocationRelativeTo(null);     
         menu1.setPaiHerdado(this);
-    }
+        menu1.setNomeUsuario(nomeUsuario);
+        menu1.setPerfil(perfil);
+        System.out.println("nomeUsuario: " + nomeUsuario);
+    } 
 
-    public String getNomeUsuarioLogin() {
-        return nomeUsuarioLogin;
+    private Dashboard() {
     }
-
-    public void setNomeUsuarioLogin(String nomeUsuarioLogin) {
-        this.nomeUsuarioLogin = nomeUsuarioLogin;
-    }
-
     
     
     @SuppressWarnings("unchecked")

@@ -6,6 +6,7 @@ import com.mycompany.autostockcar.modelo.dao.CadastropDao;
 import com.mycompany.autostockcar.modelo.dominio.Categorias;
 import com.mycompany.autostockcar.modelo.dominio.Estoques;
 import com.mycompany.autostockcar.modelo.dominio.Fabricantes;
+import com.mycompany.autostockcar.modelo.dominio.Perfil;
 import com.mycompany.autostockcar.modelo.dominio.Produtos;
 import com.mycompany.autostockcar.view.componentes.Botao;
 import com.mycompany.autostockcar.view.componentes.CampoDeTexto;
