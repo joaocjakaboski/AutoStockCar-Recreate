@@ -4,14 +4,26 @@ import com.mycompany.autostockcar.modelo.dao.CategoriaDao;
 import com.mycompany.autostockcar.modelo.dominio.Categorias;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 public class Categoria extends javax.swing.JFrame {
-
-    public Categoria() {
+    private CategoriaDao categoriaDao;
+   public Categoria() {
         initComponents();
         setLocationRelativeTo(null);
+        CbxNome.setEditable(true);
+        
+        // Inicializar categoriaDao
+        categoriaDao = new CategoriaDao();
+        
         BtNovo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -30,66 +42,93 @@ public class Categoria extends javax.swing.JFrame {
                 BotaoPesquisar();
             }
         });
+        CbxNome.getEditor().getEditorComponent().addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                CbxNome.setPopupVisible(true);
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                CbxNome.setPopupVisible(false);
+            }
+        });
+
+        CbxNome.getEditor().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                List<String> items = new ArrayList<>();
+                String currentText = (String) (CbxNome.getEditor().getItem());
+                try {
+                    ResultSet result = (ResultSet) categoriaDao.buscarCategoriaPeloNome(currentText);
+                    CbxNome.removeAllItems();
+                    CbxNome.addItem("");
+                    while (result.next()) {
+                        items.add(result.getString("NomeCliente"));
+                    }
+                    Collections.sort(items);
+                    for (String item : items) {
+                        CbxNome.addItem(item);
+                    }
+                } catch (SQLException error) {
+                    JOptionPane.showMessageDialog(null, "Erro ao carregar dados: " + error);
+                }
+                SwingUtilities.invokeLater(() -> CbxNome.setPopupVisible(true));
+            }
+        });
     }
-    
-    public void LimparCampos(){
-        TxtNome.setText("");
+
+    public void LimparCampos() {
         TxtDescricao.setText("");
         TxtCodigo.setText("");
     }
 
-    public void BotaoNovo(){
-        CategoriaDao categoriaDao = new CategoriaDao();
-        
-        try{
-        categoriaDao.setNomeCategoria(TxtNome.getText());
-        categoriaDao.setDescricao(TxtDescricao.getText());
-            
-        categoriaDao.salvar();
-        }catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(null, "Por favor, insira um valor numérico válido para os campos numéricos.");
-        e.printStackTrace();
+    public void BotaoNovo() {
+        try {
+            String nomeCategoria = (String) CbxNome.getSelectedItem();
+            // Adicionando mensagens de depuração
+            System.out.println("Nome da Categoria Selecionada: " + nomeCategoria);
+            if (nomeCategoria != null && !nomeCategoria.trim().isEmpty()) {
+                categoriaDao.setNomeCategoria(nomeCategoria);
+                categoriaDao.setDescricao(TxtDescricao.getText());
+                categoriaDao.salvar();
+            } else {
+                JOptionPane.showMessageDialog(null, "Por favor, insira um nome de categoria válido.");
+            }
         } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Erro ao salvar a categoria no banco de dados");
-        e.printStackTrace();
-        }finally{
+            JOptionPane.showMessageDialog(null, "Erro ao salvar a categoria no banco de dados");
+            e.printStackTrace();
+        } finally {
             LimparCampos();
         }
     }
-    
-    public void BotaoExcluir(){
-        CategoriaDao categoriaDao = new CategoriaDao();
-        
-        try{
+
+    public void BotaoExcluir() {
+        try {
             int idCategoria = Integer.parseInt(TxtCodigo.getText());
             categoriaDao.excluir(idCategoria);
-          
-        }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Por favor, insira um Codigo válido.");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Por favor, insira um código válido.");
             e.printStackTrace();
         }
         LimparCampos();
     }
-    
-    public void BotaoPesquisar(){
-            CategoriaDao categoriaDao = new CategoriaDao();
 
-            try{
-                int idCategoria = Integer.parseInt(TxtCodigo.getText());
-                Categorias categoriabusca = categoriaDao.buscarPorId(idCategoria);
+    public void BotaoPesquisar() {
+        try {
+            int idCategoria = Integer.parseInt(TxtCodigo.getText());
+            Categorias categoriabusca = categoriaDao.buscarPorId(idCategoria);
 
-                if (categoriabusca != null) {
-                    TxtNome.setText(categoriabusca.getNomeCategoria());
-                    TxtDescricao.setText(categoriabusca.getDescricaoCategoria());
-                    
-            }else {
-                    JOptionPane.showMessageDialog(null, "Nenhum produto encontrado com o ID especificado.");
+            if (categoriabusca != null) {
+                CbxNome.addItem(categoriabusca.getNomeCategoria());
+                TxtDescricao.setText(categoriabusca.getDescricaoCategoria());
+            } else {
+                JOptionPane.showMessageDialog(null, "Nenhuma categoria encontrada com o ID especificado.");
             }
-        }catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Por favor, insira um Código válido.");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Por favor, insira um código válido.");
             ex.printStackTrace();
-        }      
-            
+        }
     }
         
     @SuppressWarnings("unchecked")
@@ -103,15 +142,15 @@ public class Categoria extends javax.swing.JFrame {
         TxtCodigo = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         BtPesquisar = new com.mycompany.autostockcar.view.componentes.Botao();
         jLabel2 = new javax.swing.JLabel();
-        TxtNome = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         jLabel3 = new javax.swing.JLabel();
         BtExcluir = new com.mycompany.autostockcar.view.componentes.Botao();
         BtNovo = new com.mycompany.autostockcar.view.componentes.Botao();
         jLabel5 = new javax.swing.JLabel();
         TxtDescricao = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         BtNovo1 = new com.mycompany.autostockcar.view.componentes.Botao();
+        CbxNome = new com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(131, 191, 205));
 
@@ -166,12 +205,6 @@ public class Categoria extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Codigo");
-
-        TxtNome.setForeground(new java.awt.Color(0, 0, 0));
-        TxtNome.setCor(new java.awt.Color(110, 202, 224));
-        TxtNome.setDicas("Nome da Categoria");
-        TxtNome.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        TxtNome.setPreferredSize(new java.awt.Dimension(180, 30));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -246,20 +279,16 @@ public class Categoria extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(BtNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, 0)
-                                .addComponent(jLabel2)))
+                            .addComponent(jLabel2))
                         .addGap(29, 29, 29)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(TxtNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jLabel3)
+                            .addComponent(CbxNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -273,8 +302,8 @@ public class Categoria extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CbxNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -384,9 +413,9 @@ public class Categoria extends javax.swing.JFrame {
     private com.mycompany.autostockcar.view.componentes.Botao BtNovo;
     private com.mycompany.autostockcar.view.componentes.Botao BtNovo1;
     private com.mycompany.autostockcar.view.componentes.Botao BtPesquisar;
+    private com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado CbxNome;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto TxtCodigo;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto TxtDescricao;
-    private com.mycompany.autostockcar.view.componentes.CampoDeTexto TxtNome;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

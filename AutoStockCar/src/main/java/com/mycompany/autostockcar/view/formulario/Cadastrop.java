@@ -77,7 +77,7 @@ public class Cadastrop extends javax.swing.JFrame {
             }   
         });
     }
-
+        
     private void limparCampos() {
         txnome.setText("");
         txcodigofab.setText("");
@@ -137,7 +137,6 @@ public class Cadastrop extends javax.swing.JFrame {
         }
        
        limparCampos();
-       desativarcampo();
     }
     
     public void BotaoExcluir(){
@@ -152,7 +151,6 @@ public class Cadastrop extends javax.swing.JFrame {
         e.printStackTrace();
         }
           limparCampos();
-          desativarcampo();
     }
     
     public void BotaoPesquisar(){
@@ -178,7 +176,6 @@ public class Cadastrop extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Nenhum produto encontrado com o ID especificado.");
             }
-            desativarcampo();
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Por favor, insira um Código válido.");
             ex.printStackTrace();
@@ -223,14 +220,6 @@ public class Cadastrop extends javax.swing.JFrame {
     }
 }
     
-    public void desativarcampo(){
-    
-    txalteradopor.setEnabled(false);
-    txalteradopor.setCor(corCampoDesativado);
-    txusuarioquecadastrou.setEnabled(false);
-    txusuarioquecadastrou.setCor(corCampoDesativado);
-}
-    
     
     @SuppressWarnings("unchecked")//WARNING: Do NOT modify this code
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -250,8 +239,6 @@ public class Cadastrop extends javax.swing.JFrame {
         txnome = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         txcodigofab = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         txvalorvenda = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         btsalvar = new com.mycompany.autostockcar.view.componentes.Botao();
         btalterar = new com.mycompany.autostockcar.view.componentes.Botao();
         btexcluir = new com.mycompany.autostockcar.view.componentes.Botao();
@@ -263,15 +250,18 @@ public class Cadastrop extends javax.swing.JFrame {
         txfabricante = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txusuarioquecadastrou = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         txgaveta = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
-        txalteradopor = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         txcategoria = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         jLabel8 = new javax.swing.JLabel();
         txidestoque = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         btlimpar = new com.mycompany.autostockcar.view.componentes.Botao();
         txImpostoProduto = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         ValorCusto1 = new javax.swing.JLabel();
+        txvalorvendasemimposto = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
+        ValorCusto2 = new javax.swing.JLabel();
+        btcalcular = new com.mycompany.autostockcar.view.componentes.Botao();
+        btfabricante = new com.mycompany.autostockcar.view.componentes.Botao();
+        btcategoria = new com.mycompany.autostockcar.view.componentes.Botao();
         menu1 = new com.mycompany.autostockcar.view.componentes.Menu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -351,38 +341,41 @@ public class Cadastrop extends javax.swing.JFrame {
             }
         });
 
+        txvalorvenda.setEditable(false);
         txvalorvenda.setForeground(new java.awt.Color(0, 0, 0));
         txvalorvenda.setCor(new java.awt.Color(131, 191, 205));
         txvalorvenda.setDicas("Valor Venda");
         txvalorvenda.setMinimumSize(new java.awt.Dimension(64, 30));
         txvalorvenda.setPreferredSize(new java.awt.Dimension(143, 30));
         txvalorvenda.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        txvalorvenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txvalorvendaActionPerformed(evt);
+            }
+        });
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(30, 30, 30));
-        jLabel2.setText("Usuario que Cadastrou:");
-
-        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(30, 30, 30));
-        jLabel3.setText("Alterado por:");
-
-        btsalvar.setBackground(new java.awt.Color(163, 225, 255));
+        btsalvar.setBackground(new java.awt.Color(131, 191, 205));
         btsalvar.setForeground(new java.awt.Color(30, 30, 30));
         btsalvar.setText("Salvar");
         btsalvar.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        btsalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btsalvarActionPerformed(evt);
+            }
+        });
 
-        btalterar.setBackground(new java.awt.Color(163, 225, 255));
+        btalterar.setBackground(new java.awt.Color(131, 191, 205));
         btalterar.setForeground(new java.awt.Color(30, 30, 30));
         btalterar.setText("Alterar");
         btalterar.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
 
-        btexcluir.setBackground(new java.awt.Color(163, 225, 255));
+        btexcluir.setBackground(new java.awt.Color(131, 191, 205));
         btexcluir.setForeground(new java.awt.Color(30, 30, 30));
         btexcluir.setText("Excluir");
         btexcluir.setToolTipText("");
         btexcluir.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
 
-        btnovo.setBackground(new java.awt.Color(163, 225, 255));
+        btnovo.setBackground(new java.awt.Color(131, 191, 205));
         btnovo.setForeground(new java.awt.Color(30, 30, 30));
         btnovo.setText("Pesquisar");
         btnovo.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -425,24 +418,17 @@ public class Cadastrop extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(30, 30, 30));
         jLabel7.setText("Prateleira:");
 
-        txusuarioquecadastrou.setForeground(new java.awt.Color(0, 0, 0));
-        txusuarioquecadastrou.setCor(new java.awt.Color(131, 191, 205));
-        txusuarioquecadastrou.setDicas("   ");
-        txusuarioquecadastrou.setMinimumSize(new java.awt.Dimension(64, 30));
-        txusuarioquecadastrou.setPreferredSize(new java.awt.Dimension(143, 30));
-
         txgaveta.setForeground(new java.awt.Color(0, 0, 0));
         txgaveta.setCor(new java.awt.Color(131, 191, 205));
         txgaveta.setDicas("Gaveta");
         txgaveta.setMinimumSize(new java.awt.Dimension(64, 30));
         txgaveta.setPreferredSize(new java.awt.Dimension(143, 30));
         txgaveta.setSelectedTextColor(new java.awt.Color(0, 0, 0));
-
-        txalteradopor.setForeground(new java.awt.Color(0, 0, 0));
-        txalteradopor.setCor(new java.awt.Color(131, 191, 205));
-        txalteradopor.setDicas("  ");
-        txalteradopor.setMinimumSize(new java.awt.Dimension(64, 30));
-        txalteradopor.setPreferredSize(new java.awt.Dimension(143, 30));
+        txgaveta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txgavetaActionPerformed(evt);
+            }
+        });
 
         txcategoria.setForeground(new java.awt.Color(0, 0, 0));
         txcategoria.setCor(new java.awt.Color(131, 191, 205));
@@ -460,7 +446,7 @@ public class Cadastrop extends javax.swing.JFrame {
         txidestoque.setMinimumSize(new java.awt.Dimension(64, 30));
         txidestoque.setPreferredSize(new java.awt.Dimension(143, 30));
 
-        btlimpar.setBackground(new java.awt.Color(163, 225, 255));
+        btlimpar.setBackground(new java.awt.Color(131, 191, 205));
         btlimpar.setForeground(new java.awt.Color(30, 30, 30));
         btlimpar.setText("Limpar");
         btlimpar.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -481,6 +467,47 @@ public class Cadastrop extends javax.swing.JFrame {
         ValorCusto1.setForeground(new java.awt.Color(30, 30, 30));
         ValorCusto1.setText("Imposto do Produto:");
 
+        txvalorvendasemimposto.setForeground(new java.awt.Color(0, 0, 0));
+        txvalorvendasemimposto.setCor(new java.awt.Color(131, 191, 205));
+        txvalorvendasemimposto.setDicas("Valor venda sem Imposto");
+        txvalorvendasemimposto.setMinimumSize(new java.awt.Dimension(64, 30));
+        txvalorvendasemimposto.setPreferredSize(new java.awt.Dimension(143, 30));
+        txvalorvendasemimposto.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+
+        ValorCusto2.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        ValorCusto2.setForeground(new java.awt.Color(30, 30, 30));
+        ValorCusto2.setText("Valor sem Imposto");
+
+        btcalcular.setBackground(new java.awt.Color(131, 191, 205));
+        btcalcular.setForeground(new java.awt.Color(30, 30, 30));
+        btcalcular.setText("Soma");
+        btcalcular.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        btcalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btcalcularActionPerformed(evt);
+            }
+        });
+
+        btfabricante.setBackground(new java.awt.Color(131, 191, 205));
+        btfabricante.setForeground(new java.awt.Color(30, 30, 30));
+        btfabricante.setText("+");
+        btfabricante.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        btfabricante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btfabricanteActionPerformed(evt);
+            }
+        });
+
+        btcategoria.setBackground(new java.awt.Color(131, 191, 205));
+        btcategoria.setForeground(new java.awt.Color(30, 30, 30));
+        btcategoria.setText("+");
+        btcategoria.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        btcategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btcategoriaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -490,16 +517,9 @@ public class Cadastrop extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Complemento, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(500, 500, 500)
-                                .addComponent(txPrateleira, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(ValorVenda)
+                            .addComponent(Complemento, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(259, 259, 259))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(txidproduto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -508,54 +528,64 @@ public class Cadastrop extends javax.swing.JFrame {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txvalorvenda, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txcodigofab, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(96, 96, 96)))
+                                            .addComponent(txcodigofab, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txidestoque, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txvalorcusto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(ValorCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGap(0, 0, 0)
+                                                .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(100, 100, 100)))
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txnome, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(txfabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(txvalorcusto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGap(118, 118, 118)
-                                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(txcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                                    .addComponent(ValorCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(201, 201, 201)
-                                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(ValorCusto1)
-                                                        .addComponent(txImpostoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGap(118, 118, 118)
-                                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(txgaveta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(txidestoque, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txusuarioquecadastrou, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txalteradopor, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(9, 9, 9)))
-                                    .addComponent(Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(txnome, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txvalorvendasemimposto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(txfabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btfabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(74, 74, 74)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(txcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(txImpostoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btcalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txgaveta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(ValorCusto2))
+                                        .addGap(100, 100, 100)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txPrateleira, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(ValorCusto1)))))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btlimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btexcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btalterar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(btsalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btlimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btsalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btexcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btalterar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txvalorvenda, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ValorVenda))))
+                        .addGap(58, 58, 58)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
@@ -575,44 +605,54 @@ public class Cadastrop extends javax.swing.JFrame {
                     .addComponent(txnome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnovo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel2))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txcodigofab, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txfabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btfabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(ValorCusto2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ValorCusto1)
+                            .addComponent(ValorCusto)
+                            .addComponent(ValorVenda))
+                        .addGap(6, 6, 6)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(txvalorcusto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel8))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txvalorvendasemimposto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txImpostoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btcalcular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txvalorvenda, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel6))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txcodigofab, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txfabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txusuarioquecadastrou, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ValorVenda)
-                    .addComponent(ValorCusto)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txvalorvenda, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txidestoque, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txPrateleira, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txvalorcusto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txalteradopor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel8)
-                    .addComponent(ValorCusto1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txgaveta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txImpostoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txidestoque, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txgaveta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(Complemento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txcomplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btalterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btexcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -629,7 +669,7 @@ public class Cadastrop extends javax.swing.JFrame {
                 .addGap(59, 59, 59)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(menu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1162, Short.MAX_VALUE))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -638,8 +678,8 @@ public class Cadastrop extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(menu1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addComponent(jPanel2, 557, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         background.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -691,6 +731,34 @@ public class Cadastrop extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnovoActionPerformed
 
+    private void txgavetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txgavetaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txgavetaActionPerformed
+
+    private void btsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsalvarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btsalvarActionPerformed
+
+    private void txvalorvendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txvalorvendaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txvalorvendaActionPerformed
+
+    private void btcalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcalcularActionPerformed
+        double v1 = Double.parseDouble(txvalorvendasemimposto.getText());
+        double v2 = Double.parseDouble(txImpostoProduto.getText());
+        double result = (v1*(v2/100)) + v1;
+        txvalorvenda.setText("" + result);
+        
+    }//GEN-LAST:event_btcalcularActionPerformed
+
+    private void btfabricanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btfabricanteActionPerformed
+        new Fabricante().setVisible(true);
+    }//GEN-LAST:event_btfabricanteActionPerformed
+
+    private void btcategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcategoriaActionPerformed
+       new Categoria().setVisible(true);
+    }//GEN-LAST:event_btcategoriaActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -733,16 +801,18 @@ public class Cadastrop extends javax.swing.JFrame {
     private javax.swing.JLabel Nome;
     private javax.swing.JLabel ValorCusto;
     private javax.swing.JLabel ValorCusto1;
+    private javax.swing.JLabel ValorCusto2;
     private javax.swing.JLabel ValorVenda;
     private javax.swing.JLayeredPane background;
     private com.mycompany.autostockcar.view.componentes.Botao btalterar;
+    private com.mycompany.autostockcar.view.componentes.Botao btcalcular;
+    private com.mycompany.autostockcar.view.componentes.Botao btcategoria;
     private com.mycompany.autostockcar.view.componentes.Botao btexcluir;
+    private com.mycompany.autostockcar.view.componentes.Botao btfabricante;
     private com.mycompany.autostockcar.view.componentes.Botao btlimpar;
     private com.mycompany.autostockcar.view.componentes.Botao btnovo;
     private com.mycompany.autostockcar.view.componentes.Botao btsalvar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -753,7 +823,6 @@ public class Cadastrop extends javax.swing.JFrame {
     private com.mycompany.autostockcar.view.componentes.Menu menu1;
     public com.mycompany.autostockcar.view.componentes.CampoDeTexto txImpostoProduto;
     protected com.mycompany.autostockcar.view.componentes.CampoDeTexto txPrateleira;
-    private com.mycompany.autostockcar.view.componentes.CampoDeTexto txalteradopor;
     public com.mycompany.autostockcar.view.componentes.CampoDeTexto txcategoria;
     public com.mycompany.autostockcar.view.componentes.CampoDeTexto txcodigofab;
     public com.mycompany.autostockcar.view.componentes.CampoDeTexto txcomplemento;
@@ -762,9 +831,9 @@ public class Cadastrop extends javax.swing.JFrame {
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txidestoque;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txidproduto;
     public com.mycompany.autostockcar.view.componentes.CampoDeTexto txnome;
-    private com.mycompany.autostockcar.view.componentes.CampoDeTexto txusuarioquecadastrou;
     public com.mycompany.autostockcar.view.componentes.CampoDeTexto txvalorcusto;
     public com.mycompany.autostockcar.view.componentes.CampoDeTexto txvalorvenda;
+    public com.mycompany.autostockcar.view.componentes.CampoDeTexto txvalorvendasemimposto;
     // End of variables declaration//GEN-END:variables
 
     private Connection ConexaoMysql() {
