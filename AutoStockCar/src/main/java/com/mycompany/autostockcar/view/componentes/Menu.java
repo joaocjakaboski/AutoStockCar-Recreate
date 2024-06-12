@@ -5,8 +5,12 @@ import com.mycompany.autostockcar.view.formulario.Cadastrop;
 import com.mycompany.autostockcar.view.formulario.Client;
 import com.mycompany.autostockcar.view.formulario.Consulta;
 import com.mycompany.autostockcar.view.formulario.Dashboard;
+<<<<<<< Updated upstream
 import com.mycompany.autostockcar.view.formulario.TabelaUsuarios;
 import com.mycompany.autostockcar.view.formulario.Vendas;
+=======
+import com.mycompany.autostockcar.view.formulario.VendasF;
+>>>>>>> Stashed changes
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -244,7 +248,7 @@ public class Menu extends javax.swing.JPanel {
     }//GEN-LAST:event_btnMenuProdutosActionPerformed
 
     private void btnMenuVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuVendasActionPerformed
-        new Vendas().setVisible(true);
+        new VendasF().setVisible(true);
         paiHerdado.dispose();
     }//GEN-LAST:event_btnMenuVendasActionPerformed
 

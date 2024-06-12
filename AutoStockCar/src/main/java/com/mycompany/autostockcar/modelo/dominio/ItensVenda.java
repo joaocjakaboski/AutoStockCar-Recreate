@@ -12,7 +12,7 @@ public class ItensVenda {
     private Produtos produto;
     private BigDecimal precoUnitario;
     private BigDecimal desconto;
-    private int imposto;
+    private BigDecimal imposto;
     private BigDecimal totalAPagar;
 
     public ItensVenda() {
@@ -23,11 +23,11 @@ public class ItensVenda {
         this.produto = new Produtos();
         this.precoUnitario = BigDecimal.ZERO;
         this.desconto = BigDecimal.ZERO;
-        this.imposto = 0;
+        this.imposto = BigDecimal.ZERO;
         this.totalAPagar = BigDecimal.ZERO;
     }
 
-    public ItensVenda(int idItensVenda, int idvenda, int idProduto, BigDecimal valorParcial, int quantidadeItensVenda,  Produtos produto, BigDecimal precoUnitario, BigDecimal desconto, int imposto, BigDecimal totalAPagar) {
+    public ItensVenda(int idItensVenda, int idvenda, int idProduto, BigDecimal valorParcial, int quantidadeItensVenda,  Produtos produto, BigDecimal precoUnitario, BigDecimal desconto, BigDecimal imposto, BigDecimal totalAPagar) {
         this.idItensVenda = idItensVenda;
         this.idvenda = idvenda;
         this.idProduto = idProduto;
@@ -98,11 +98,11 @@ public class ItensVenda {
         this.desconto = desconto;
     }
 
-    public int getImposto() {
+    public BigDecimal getImposto() {
         return imposto;
     }
 
-    public void setImposto(int  imposto) {
+    public void setImposto(BigDecimal  imposto) {
         this.imposto = imposto;
     }
 

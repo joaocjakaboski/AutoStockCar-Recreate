@@ -8,12 +8,12 @@ public class Vendas {
     private int idVenda;
     private BigDecimal valorTotalVenda;
     private LocalDateTime dataCompra;
-    private Clientes cliente;
+    private int cliente;
 
     public Vendas() {
     }
 
-    public Vendas(int idVenda, BigDecimal valorTotalVenda, LocalDateTime dataCompra, Clientes cliente) {
+    public Vendas(int idVenda, BigDecimal valorTotalVenda, LocalDateTime dataCompra, int cliente) {
         this.idVenda = idVenda;
         this.valorTotalVenda = valorTotalVenda;
         this.dataCompra = dataCompra;
@@ -44,11 +44,11 @@ public class Vendas {
         this.dataCompra = dataCompra;
     }
 
-    public Clientes getCliente() {
+    public int getCliente() {
         return cliente;
     }
 
-    public void setCliente(Clientes cliente) {
+    public void setCliente(int cliente) {
         this.cliente = cliente;
     }
 

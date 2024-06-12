@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 
 public class VendasDao {
-private static final String URL = "jdbc:mysql://localhost/autostockcar?useTimezone=true&serverTimezone=America/Sao_Paulo";
+    private static final String URL = "jdbc:mysql://localhost/autostockcar?useTimezone=true&serverTimezone=America/Sao_Paulo";
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
@@ -45,4 +45,7 @@ private static final String URL = "jdbc:mysql://localhost/autostockcar?useTimezo
 
         return produto;
     }
+    
+    
+    
 }

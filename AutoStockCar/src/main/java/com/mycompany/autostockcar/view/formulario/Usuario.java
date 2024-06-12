@@ -18,18 +18,12 @@ public class Usuario extends javax.swing.JFrame {
     private UsuarioDao usuarioDao;
     private Perfil admCategoria;
     private TabelaUsuarios tabelaUsuarios;
-    private MigLayout layout;
-    private MensagemUtil mensagem;
+    
    
     public Usuario(TabelaUsuarios tabelaUsuarios) {
         this.tabelaUsuarios = tabelaUsuarios;
         initComponents();
         setLocationRelativeTo(null);
-        layout = new MigLayout("fill, insets");
-        background.setLayout(layout);
-        
-        
-        mensagem = new MensagemUtil(background, layout);
         
         btnAlterar.setVisible(false);     
         btnSalvar.addActionListener(new ActionListener() {
@@ -51,10 +45,6 @@ public class Usuario extends javax.swing.JFrame {
     initComponents();
     setLocationRelativeTo(null);
     
-    layout = new MigLayout("fill, insets");
-    background.setLayout(layout);
-    mensagem = new MensagemUtil(background, layout);
-    
     txUsuario.setText(nome);
     txSenha.setText("");
     //txSenha.setEnabled(false);
@@ -69,7 +59,7 @@ public class Usuario extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent e) {
             char[] senha = txSenha.getPassword();
             if(senha.length == 0){
-                mensagem.mostrarMensagem(Mensagem.TipoMensagem.ERRO, "Campo de senha deve ser preenchido!");
+               JOptionPane.showMessageDialog(null, "\"Campo de senha deve ser preenchido!");
                 return;
             } else {
                 alterarUsuario(id);
@@ -95,7 +85,7 @@ private void alterarUsuario(int id) {
 
         Usuarios usuarioAlterar = new Usuarios(id, this.txUsuario.getText(), senhaAtual, admCategoria);
         usuarioDao.salvar(usuarioAlterar);
-        mensagem.mostrarMensagem(Mensagem.TipoMensagem.SUCESSO, "Usuário alterado!");
+        JOptionPane.showMessageDialog(null, "Usuário alterado!");
         new Thread (() -> {
                  try {
                     Thread.sleep(2000);
@@ -132,7 +122,7 @@ private void alterarUsuario(int id) {
         this.usuarioDao = new UsuarioDao();
         Usuarios usuarioCadastro = new Usuarios(0, this.txUsuario.getText(),this.txSenha.getText(),admCategoria);
         usuarioDao.salvar(usuarioCadastro);
-        mensagem.mostrarMensagem(Mensagem.TipoMensagem.SUCESSO, "Usuário cadastrado!");
+        JOptionPane.showMessageDialog(null, "Usuário cadastrado!");
         new Thread (() -> {
                  try {
                     Thread.sleep(2000);
