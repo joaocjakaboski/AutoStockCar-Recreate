@@ -25,7 +25,7 @@ public FabricanteDao() {
     }
     
     private String adicionar(Fabricantes fabricante) throws SQLException{
-        String sql = "INSERT INTO Fabricantes(NomeFabricante, EmailFabricante, TelefoneFabricante, EnderecoFabricante, CNPJFabricante, ObsFabricante, IdCidade) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Fabricantes(NomeFabricante, EmailFabricante, TelefoneFabricante, EnderecoFabricante, CNPJFabricante, ObsFabricante, IdCidade) VALUES (?, ?, ?, ?, ?, ?,?)";
         
         Fabricantes fabricanteTemp = buscarFabricantePeloNome(fabricante.getNomeFabricante());
         
@@ -68,14 +68,13 @@ public FabricanteDao() {
         preparedStatement.setString(2, fabricante.getEmailFabricante());
         preparedStatement.setString(3, fabricante.getTelefoneFabricante());
         preparedStatement.setString(4, fabricante.getEnderecoFabricante());
-        preparedStatement.setString(5, fabricante.getEnderecoFabricante());
-        preparedStatement.setString(6, fabricante.getCnpjFabricante());
-        preparedStatement.setString(7, fabricante.getObsFabricante());
-        preparedStatement.setInt(8, fabricante.getIdCidade());
+        preparedStatement.setString(5, fabricante.getCnpjFabricante());
+        preparedStatement.setString(6, fabricante.getObsFabricante());
+        preparedStatement.setInt(7, fabricante.getIdCidade());
     
         
         if(fabricante.getIdFabricante()!= 0) {
-            preparedStatement.setInt(9, fabricante.getIdFabricante());
+            preparedStatement.setInt(8, fabricante.getIdFabricante());
         }
     }
     public List<Fabricantes> buscarTodosclientes() {

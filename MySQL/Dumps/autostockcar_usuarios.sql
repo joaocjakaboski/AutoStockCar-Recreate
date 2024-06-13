@@ -159,7 +159,7 @@ CREATE TABLE `fabricantes` (
   `IdFabricante` int(11) NOT NULL AUTO_INCREMENT,
   `NomeFabricante` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `EmailFabricante` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `TelefoneFabricante` varchar(14) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `TelefoneFabricante` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `EnderecoFabricante` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `CNPJFabricante` varchar(14) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `ObsFabricante` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
@@ -346,4 +346,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-08  9:30:34
+-- Dump completed on 2024-06-13 20:21:22

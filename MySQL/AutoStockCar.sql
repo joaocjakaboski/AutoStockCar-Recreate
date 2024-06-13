@@ -5496,7 +5496,7 @@ CREATE TABLE Fabricantes (
 	IdFabricante INT AUTO_INCREMENT,
     NomeFabricante NVARCHAR(45) NOT NULL,
     EmailFabricante NVARCHAR(45) NOT NULL,
-    TelefoneFabricante NVARCHAR(14) NOT NULL,
+    TelefoneFabricante NVARCHAR(15) NOT NULL,
     EnderecoFabricante NVARCHAR(50) NOT NULL,
     CNPJFabricante NVARCHAR(14) NOT NULL UNIQUE,
     ObsFabricante NVARCHAR(100),

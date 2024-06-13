@@ -14,8 +14,8 @@ public class Fabricantes {
     public Fabricantes() {
     }
 
-    public Fabricantes( String nomeFabricante, String emailFabricante, String telefoneFabricante, String enderecoFabricante, String cnpjFabricante, String obsFabricante, int idCidade) {
-        
+    public Fabricantes(int idFabricante, String nomeFabricante, String emailFabricante, String telefoneFabricante, String enderecoFabricante, String cnpjFabricante, String obsFabricante, int idCidade) {
+        this.idFabricante = idFabricante;
         this.nomeFabricante = nomeFabricante;
         this.emailFabricante = emailFabricante;
         this.telefoneFabricante = telefoneFabricante;
@@ -24,6 +24,8 @@ public class Fabricantes {
         this.obsFabricante = obsFabricante;
         this.idCidade = idCidade;
     }
+
+
     
     public int getIdFabricante() {
         return idFabricante;

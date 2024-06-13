@@ -199,6 +199,7 @@ public class Fabricante extends javax.swing.JFrame {
                 desativarCabecalho();
                 limparCampos();
                 ativarCampos();
+                txCodigo.setText("0");
                 
                 List<String> items = new ArrayList<>();
                 try {
@@ -232,19 +233,26 @@ public class Fabricante extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                try {
+                // Captura e converte o valor do campo txCodigo
+                id = Integer.parseInt(txCodigo.getText());
+                } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "O campo Código deve conter um número inteiro válido.");
+                return; // Sai do método se a conversão falhar
+                }
                 if (txNome.getText().isEmpty() || txCelular.getText().isEmpty()|| 
                     txEndereco.getText().isEmpty() || txEmail.getText().isEmpty() || 
                     txCNPJ.getText().isEmpty() || idCidade == 0) {
                     JOptionPane.showMessageDialog(null, "Todos os campos obrigatórios devem ser preenchidos.");
                 } else {
-                    Fabricantes fabricante = new Fabricantes(txNome.getText(), txEmail.getText(), 
-                                          txEndereco.getText(), txCelular.getText(), txCNPJ.getText(), 
+                    Fabricantes fabricante = new Fabricantes(id,txNome.getText(), txEmail.getText(), 
+                                          txCelular.getText(),txEndereco.getText(), txCNPJ.getText(), 
                                            txObservacoes.getText(), idCidade);
                     FabricanteDao frabricanteDao = new FabricanteDao();
                     try {
                         String feedBack = frabricanteDao.salvar(fabricante);
                         
-                        if (feedBack == "Cliente adicionado com sucesso" || feedBack == "Cliente editado com sucesso") {
+                        if (feedBack == "Fabricante adicionado com sucesso" || feedBack == "Fabricante editado com sucesso") {
                             limparCampos();
                             desativarCampos();
                             ativarCabecalho();
@@ -374,12 +382,10 @@ public class Fabricante extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         txCNPJ = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         txEmail = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
-        txCelular = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         txObservacoes = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
-        btnBuscar = new com.mycompany.autostockcar.view.componentes.Botao();
         cbxNome = new com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado();
         btnConsultaPeloNome = new com.mycompany.autostockcar.view.componentes.Botao();
         cbxNomeCidade = new com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado();
@@ -390,6 +396,7 @@ public class Fabricante extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JSeparator();
         jLabel17 = new javax.swing.JLabel();
         btnCancelar = new com.mycompany.autostockcar.view.componentes.Botao();
+        txCelular = new com.mycompany.autostockcar.view.componentes.CampoDeTelefone();
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -446,6 +453,7 @@ public class Fabricante extends javax.swing.JFrame {
 
         txCodigo.setEditable(false);
         txCodigo.setForeground(new java.awt.Color(0, 0, 0));
+        txCodigo.setText("0");
         txCodigo.setCor(new java.awt.Color(110, 202, 224));
         txCodigo.setDicas("Código");
         txCodigo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -515,12 +523,6 @@ public class Fabricante extends javax.swing.JFrame {
         txEmail.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txEmail.setPreferredSize(new java.awt.Dimension(180, 30));
 
-        txCelular.setForeground(new java.awt.Color(0, 0, 0));
-        txCelular.setCor(new java.awt.Color(110, 202, 224));
-        txCelular.setDicas("Celular");
-        txCelular.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txCelular.setPreferredSize(new java.awt.Dimension(180, 30));
-
         jLabel12.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Celular");
@@ -538,13 +540,6 @@ public class Fabricante extends javax.swing.JFrame {
         txObservacoes.setDicas("Observações");
         txObservacoes.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txObservacoes.setPreferredSize(new java.awt.Dimension(180, 30));
-
-        btnBuscar.setBackground(new java.awt.Color(131, 191, 205));
-        btnBuscar.setForeground(new java.awt.Color(0, 0, 0));
-        btnBuscar.setText("Buscar");
-        btnBuscar.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        btnBuscar.setMaximumSize(new java.awt.Dimension(65, 30));
-        btnBuscar.setMinimumSize(new java.awt.Dimension(65, 30));
 
         cbxNome.setForeground(new java.awt.Color(0, 0, 0));
         cbxNome.setToolTipText("");
@@ -582,6 +577,8 @@ public class Fabricante extends javax.swing.JFrame {
         btnCancelar.setMaximumSize(new java.awt.Dimension(65, 30));
         btnCancelar.setMinimumSize(new java.awt.Dimension(65, 30));
 
+        txCelular.setForeground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -607,17 +604,15 @@ public class Fabricante extends javax.swing.JFrame {
                             .addComponent(txObservacoes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -627,8 +622,8 @@ public class Fabricante extends javax.swing.JFrame {
                                             .addComponent(jLabel13))
                                         .addGap(0, 0, Short.MAX_VALUE)))
                                 .addGap(18, 18, 18)
-                                .addComponent(txCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(226, 226, 226))
+                                .addComponent(txCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(289, 289, 289))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(txCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -708,24 +703,26 @@ public class Fabricante extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
-                            .addComponent(jLabel12))
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txObservacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel12)))
                     .addComponent(cbxNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(txEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txObservacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17))
         );
 
@@ -765,7 +762,7 @@ public class Fabricante extends javax.swing.JFrame {
         txEndereco.setText("");
         txCNPJ.setText("");
         txEmail.setText("");
-        txCelular.setText("");
+        txCelular.reiniciarCampo();
         txObservacoes.setText("");
         txCelular.setText("");
         cbxUfEstado.removeAllItems();
@@ -880,7 +877,6 @@ public class Fabricante extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.mycompany.autostockcar.view.componentes.Botao btnAlterar;
     private com.mycompany.autostockcar.view.componentes.Botao btnAtualizar;
-    private com.mycompany.autostockcar.view.componentes.Botao btnBuscar;
     private com.mycompany.autostockcar.view.componentes.Botao btnCancelar;
     private com.mycompany.autostockcar.view.componentes.Botao btnConsultaPeloNome;
     private com.mycompany.autostockcar.view.componentes.Botao btnExcluir;
@@ -911,7 +907,7 @@ public class Fabricante extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txCNPJ;
-    private com.mycompany.autostockcar.view.componentes.CampoDeTexto txCelular;
+    private com.mycompany.autostockcar.view.componentes.CampoDeTelefone txCelular;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txCodigo;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txEmail;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txEndereco;
