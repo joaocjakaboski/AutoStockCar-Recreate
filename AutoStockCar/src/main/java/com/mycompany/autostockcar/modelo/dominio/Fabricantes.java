@@ -9,20 +9,22 @@ public class Fabricantes {
     private String enderecoFabricante;
     private String cnpjFabricante;
     private String obsFabricante;
+    private int idCidade;
 
     public Fabricantes() {
     }
 
-    public Fabricantes(int idFabricante, String nomeFabricante, String emailFabricante, String telefoneFabricante, String enderecoFabricante, String cnpjFabricante, String obsFabricante) {
-        this.idFabricante = idFabricante;
+    public Fabricantes( String nomeFabricante, String emailFabricante, String telefoneFabricante, String enderecoFabricante, String cnpjFabricante, String obsFabricante, int idCidade) {
+        
         this.nomeFabricante = nomeFabricante;
         this.emailFabricante = emailFabricante;
         this.telefoneFabricante = telefoneFabricante;
         this.enderecoFabricante = enderecoFabricante;
         this.cnpjFabricante = cnpjFabricante;
         this.obsFabricante = obsFabricante;
+        this.idCidade = idCidade;
     }
-
+    
     public int getIdFabricante() {
         return idFabricante;
     }
@@ -78,6 +80,17 @@ public class Fabricantes {
     public void setObsFabricante(String obsFabricante) {
         this.obsFabricante = obsFabricante;
     }
+
+    public int getIdCidade() {
+        return idCidade;
+    }
+
+    public void setIdCidade(int idCidade) {
+        this.idCidade = idCidade;
+    }
+
+    
+    
     
     
 }
