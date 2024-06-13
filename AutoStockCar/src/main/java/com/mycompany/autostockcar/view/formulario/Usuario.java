@@ -75,6 +75,11 @@ private void alterarUsuario(int id) {
     usuarioDao.salvar(usuarioAlterar);
     tabelaUsuarios.readJTable(); // Atualiza a tabela após a alteração
     dispose(); // Fecha a janela de edição*/
+    char[] senha = txSenha.getPassword();
+    if (senha.length == 0) {
+        JOptionPane.showMessageDialog(null, "Campo de senha deve ser preenchido!");
+        return;
+    }
     
     this.usuarioDao = new UsuarioDao();
     Usuarios usuarioExistente = usuarioDao.buscarUsuarioPeloId(id); // Assumindo que esse método existe para buscar o usuário pelo ID
@@ -119,18 +124,17 @@ private void alterarUsuario(int id) {
 }*/
     
     private void cadastrarUsuario() {
+         String nomeUsuario = txUsuario.getText();
+        String senha = new String(txSenha.getPassword());
+        if (nomeUsuario.isEmpty() || senha.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Nome de usuário e/ou senha devem ser preenchidos!");
+        return;
+    }
         this.usuarioDao = new UsuarioDao();
         Usuarios usuarioCadastro = new Usuarios(0, this.txUsuario.getText(),this.txSenha.getText(),admCategoria);
         usuarioDao.salvar(usuarioCadastro);
         JOptionPane.showMessageDialog(null, "Usuário cadastrado!");
-        new Thread (() -> {
-                 try {
-                    Thread.sleep(2000);
-                    tabelaUsuarios.readJTable(); // Atualiza a tabela após a alteração
-                    dispose(); // Fecha a janela de edição
-                 }catch (Exception e) {
-                 }
-        }).start();
+        dispose();
     }
     
     @SuppressWarnings("unchecked")
