@@ -3,6 +3,7 @@ package com.mycompany.autostockcar.controller;
 import com.mycompany.autostockcar.modelo.dominio.ItensVenda;
 import com.mycompany.autostockcar.modelo.dominio.Produtos;
 import com.mycompany.autostockcar.modelo.dominio.Vendas;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -64,9 +65,9 @@ public class RegistrarVendaController {
             consulta.setBigDecimal(4, objeto.getValorParcial());
             consulta.setBigDecimal(5, objeto.getDesconto());
             consulta.setBigDecimal(6, objeto.getTotalAPagar());
-            consulta.setBigDecimal(7, objeto.getImposto());
-            consulta.setInt(8, objeto.getIdvenda());
-            consulta.setInt(8, objeto.getIdProduto());
+            consulta.setBigDecimal(7, new BigDecimal(100));
+            consulta.setInt(8, idVendaRegistrada);
+            consulta.setInt(9, objeto.getIdProduto());
             
             
             if (consulta.executeUpdate() > 0){

@@ -52,8 +52,6 @@ public class VendasF extends javax.swing.JFrame {
     private BigDecimal impostoGeneral = BigDecimal.ZERO;
     private BigDecimal totalPagarGeneral = BigDecimal.ZERO;
     
-    
- 
 
     private final Conexao conexao;
     private PreparedStatement pstm;
@@ -101,6 +99,20 @@ public class VendasF extends javax.swing.JFrame {
                 SwingUtilities.invokeLater(() -> cbxNomeCliente.setPopupVisible(true));
             }
         });
+        
+        cbxNomeCliente.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (cbxNomeCliente.getSelectedItem() != null && !cbxNomeCliente.getSelectedItem().toString().isEmpty()) {
+                try {
+                    ObterIdCliente();
+                    txIdCliente.setText(String.valueOf(idCliente)); // txIdCliente é o campo onde o ID será exibido
+                } catch (SQLException error) {
+                    JOptionPane.showMessageDialog(null, "Erro ao obter ID do cliente: " + error);
+                }
+            }
+        }
+    });
 
         cbxNomeProduto.setEditable(true);
         cbxNomeProduto.removeAllItems();
@@ -118,9 +130,6 @@ public class VendasF extends javax.swing.JFrame {
                 SwingUtilities.invokeLater(() -> cbxNomeProduto.setPopupVisible(true));
             }
         });
-        
-        
-
     }
 
     private void inicializarTabelaProdutos() {
@@ -173,7 +182,7 @@ public class VendasF extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         CodigoCliente = new javax.swing.JLabel();
         NomeCliente = new javax.swing.JLabel();
-        txcodigocliente1 = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
+        txIdCliente = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         txIdProduto = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         txSubTotal = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         txcodigocliente4 = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
@@ -308,10 +317,10 @@ public class VendasF extends javax.swing.JFrame {
         NomeCliente.setForeground(new java.awt.Color(30, 30, 30));
         NomeCliente.setText("Nome:");
 
-        txcodigocliente1.setCor(new java.awt.Color(131, 191, 205));
-        txcodigocliente1.setDicas("Código");
-        txcodigocliente1.setMinimumSize(new java.awt.Dimension(64, 30));
-        txcodigocliente1.setPreferredSize(new java.awt.Dimension(143, 30));
+        txIdCliente.setCor(new java.awt.Color(131, 191, 205));
+        txIdCliente.setDicas("Código");
+        txIdCliente.setMinimumSize(new java.awt.Dimension(64, 30));
+        txIdCliente.setPreferredSize(new java.awt.Dimension(143, 30));
 
         txIdProduto.setCor(new java.awt.Color(131, 191, 205));
         txIdProduto.setDicas("Pagamento");
@@ -484,7 +493,7 @@ public class VendasF extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
+                .addContainerGap(45, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -493,7 +502,7 @@ public class VendasF extends javax.swing.JFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txcodigocliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(CodigoCliente1)
                                         .addComponent(txcodigocliente4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(CodigoCliente2)
@@ -555,7 +564,7 @@ public class VendasF extends javax.swing.JFrame {
                     .addComponent(NomeCliente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txcodigocliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -664,65 +673,84 @@ public class VendasF extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        Vendas venda = new Vendas(); 
-        ItensVenda itenVenda = new ItensVenda();
-        RegistrarVendaController controleVenda = new RegistrarVendaController();
-        
-        Date date = new Date();
-        String fechaAtual = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-        
-        if(!cbxNomeCliente.getSelectedItem().equals("Selecione cliente:")){
-            if (listaProdutos.size() > 0){
-                
+    Vendas venda = new Vendas(); 
+    ItensVenda itenVenda = new ItensVenda();
+    RegistrarVendaController controleVenda = new RegistrarVendaController();
+    
+    Date date = new Date();
+    String fechaAtual = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+    
+    if (!cbxNomeCliente.getSelectedItem().equals("Selecione cliente:")) {
+        if (listaProdutos.size() > 0) {
+            try {
                 this.ObterIdCliente();
+                
+                // Verificar se o idCliente é válido
+                if (idCliente == 0) {
+                    JOptionPane.showMessageDialog(null, "Erro: Cliente inválido!");
+                    return;
+                }
+                
                 venda.setIdVenda(0);
-                venda.setIdVenda(idCliente);
+                venda.setCliente(idCliente);
                 BigDecimal valorTotalVenda = new BigDecimal(txTotal.getText());
                 venda.setValorTotalVenda(valorTotalVenda);
+                
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                 LocalDateTime dataCompra = LocalDateTime.parse(fechaAtual, formatter);
                 venda.setDataCompra(dataCompra);
                 
-                if(controleVenda.guardar(venda)){
+                if (controleVenda.guardar(venda)) {
                     JOptionPane.showMessageDialog(null, "Venda Registrada!");
                     
-                    for (ItensVenda elemento : listaProdutos){
+                    for (ItensVenda elemento : listaProdutos) {
                         itenVenda.setIdItensVenda(0);
-                        itenVenda.setIdvenda(0);
+                        itenVenda.setIdvenda(0); // Ajuste para o ID correto da venda recém-criada
                         itenVenda.setIdProduto(elemento.getIdProduto());
                         itenVenda.setQuantidadeItensVenda(elemento.getQuantidadeItensVenda());
                         itenVenda.setPrecoUnitario(elemento.getPrecoUnitario());
                         itenVenda.setValorParcial(elemento.getValorParcial());
                         itenVenda.setDesconto(elemento.getDesconto());
                         itenVenda.setTotalAPagar(elemento.getTotalAPagar());
-                       
-                       
-                if(controleVenda.guardarDetalhe(itenVenda)){
-                    System.out.println("Detalhes da venda registrado!");
-                    
-                    txSubTotal.setText("0.0");
-                    txDesconto.setText("0.0");
-                    txTotal.setText("0.0");
-                    auxIdDetalhe = 1;
-                }else {
-                    JOptionPane.showMessageDialog(null, "Erro ao guardar detalhes da venda!");
-                }
+                        
+                        if (controleVenda.guardarDetalhe(itenVenda)) {
+                            System.out.println("Detalhes da venda registrado!");
+                            
+                            txSubTotal.setText("0.0");
+                            txDesconto.setText("0.0");
+                            txTotal.setText("0.0");
+                            auxIdDetalhe = 1;
+                            
+                            this.RestaurarStock(elemento.getIdProduto(), elemento.getQuantidadeItensVenda());
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Erro ao guardar detalhes da venda!");
+                        }
                     }
                     listaProdutos.clear();
                     listaTabelaProdutos();
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(null, "Erro ao guardar venda!");
                 }  
-            }else{
-                JOptionPane.showMessageDialog(null, "Selecione um produto!");
+            } catch (SQLException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Erro ao obter id do cliente: " + e.getMessage());
             }
-        }else{
-            JOptionPane.showMessageDialog(null, "Selecione um cliente!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um produto!");
         }
+    } else {
+        JOptionPane.showMessageDialog(null, "Selecione um cliente!");
+    }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar1ActionPerformed
-        // TODO add your handling code here:
+       /* try {
+                ObterIdCliente();
+            } catch (SQLException error) {
+                JOptionPane.showMessageDialog(null, "Erro ao buscar cliente por ID: " + error);
+            }
+        };
+  */
     }//GEN-LAST:event_btnSalvar1ActionPerformed
 
     private void btnSalvar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar2ActionPerformed
@@ -746,11 +774,7 @@ public class VendasF extends javax.swing.JFrame {
                         BigDecimal precoUnitario = produtoRecebido.getValorFinal();
                         BigDecimal subtotal = qtd.multiply(precoUnitario);
                         BigDecimal desconto = BigDecimal.ZERO;
-                        int impostoInt = produtoRecebido.getImpostoDoProduto(); // Supondo que isso retorna um int
-                        BigDecimal impostoValor = new BigDecimal(impostoInt);
-                        BigDecimal impostoCalculado = subtotal.multiply(impostoValor.divide(new BigDecimal(100)));
-
-                        BigDecimal totalPagar = subtotal.subtract(desconto).add(impostoCalculado);
+                        BigDecimal totalPagar = subtotal.subtract(desconto);
 
                         ItensVenda produto = new ItensVenda(
                             auxIdDetalhe, 
@@ -822,13 +846,11 @@ public class VendasF extends javax.swing.JFrame {
     private void CalcularTotalPagar(){
        BigDecimal subTotalGeneral = BigDecimal.ZERO;
        BigDecimal descontoGeneral = BigDecimal.ZERO;
-       BigDecimal impostoGeneral = BigDecimal.ZERO;
        BigDecimal totalPagarGeneral = BigDecimal.ZERO;
        
        for (ItensVenda produtos : listaProdutos){
         subTotalGeneral = subTotalGeneral.add(produtos.getValorParcial());
         descontoGeneral = descontoGeneral.add(produtos.getDesconto());
-        impostoGeneral = impostoGeneral.add(produtos.getImposto());
         totalPagarGeneral = totalPagarGeneral.add(produtos.getTotalAPagar());
        }
        
@@ -851,8 +873,8 @@ public class VendasF extends javax.swing.JFrame {
             produto.setDesconto(descontoValor);
 
             // Atualiza o valor total a pagar do produto
-            BigDecimal impostoCalculado = valorParcial.multiply(produto.getImposto()).divide(new BigDecimal(100));
-            BigDecimal totalComDesconto = valorParcial.subtract(descontoValor).add(impostoCalculado);
+            
+            BigDecimal totalComDesconto = valorParcial.subtract(descontoValor);
             produto.setTotalAPagar(totalComDesconto);
         }
 
@@ -864,18 +886,57 @@ public class VendasF extends javax.swing.JFrame {
     }
 }
     
-    private void ObterIdCliente(){
+    private void ObterIdCliente() throws SQLException {
+    String clienteSelecionado = cbxNomeCliente.getSelectedItem().toString();
+    String sql = "SELECT IdCliente FROM clientes WHERE NomeCliente = ?";
+    
+    System.out.println("Cliente selecionado: " + clienteSelecionado); // Log de depuração
+    
+    try (PreparedStatement stmt = conexao.obterConexao().prepareStatement(sql))
+           {
+       stmt.setString(1, clienteSelecionado);
+        System.out.println("sql: " + stmt.toString()); // Log de depuração
+        
+        try (ResultSet resultSet = stmt.executeQuery()) {
+            if (resultSet.next()) {
+                idCliente = resultSet.getInt("IdCliente");
+                System.out.println("ID do cliente encontrado: " + idCliente); // Log de depuração
+            } else {
+                idCliente = 0;
+                System.out.println("Cliente não encontrado."); // Log de depuração
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        throw new SQLException("Erro ao obter id do cliente: " + e.getMessage());
+    }
+}
+    
+    private void RestaurarStock(int idProduto , int quantidade){
+        int quantidadeBanco = 0;
+        try{
+        String sql = "select IdProduto, QuantidadeDisponivel from produtos where IdProduto ='" + idProduto + "'";
+        PreparedStatement stmt = conexao.obterConexao().prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            quantidadeBanco = rs.getInt("QuantidadeDisponivel");
+        }
+        stmt.close();
+        }catch (SQLException e){
+            System.out.println("Erro alterar quantidade 1, " + e);
+        }
         
         try{
-            String sql = "select * from clientes where NomeCliente = '" + this.cbxNomeCliente.getSelectedItem();
-            Connection connection = conexao.obterConexao();
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery(sql);
-            while(rs.next()){
-                idCliente = rs.getInt("IdCliente");
+            Connection cn = conexao.obterConexao();
+            PreparedStatement consulta = cn.prepareStatement("update produtos set QuantidadeDisponivel=? where IdProduto= '" + idProduto+"'");
+            int quantidadeNova = quantidadeBanco - quantidade;
+            consulta.setInt(1, quantidadeNova);
+            if(consulta.executeUpdate() > 0){
+                System.out.println("Tudo certo");
             }
-        } catch (SQLException e){
-            System.out.println("Erro ao obter id do cliente, " + e);
+            cn.close();
+        }catch (SQLException e){
+            System.out.println("Erro ao alterar quantidade " + e);
         }
     }
     public static void main(String args[]) {
@@ -946,11 +1007,11 @@ public class VendasF extends javax.swing.JFrame {
     private javax.swing.JTable jtProdutos;
     private com.mycompany.autostockcar.view.componentes.Menu menu1;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txDesconto;
+    private com.mycompany.autostockcar.view.componentes.CampoDeTexto txIdCliente;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txIdProduto;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txQuantidade;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txSubTotal;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txTotal;
-    private com.mycompany.autostockcar.view.componentes.CampoDeTexto txcodigocliente1;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txcodigocliente4;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txcodigocliente5;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txnome3;
