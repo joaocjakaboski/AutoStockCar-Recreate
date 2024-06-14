@@ -3,8 +3,6 @@ package com.mycompany.autostockcar.modelo.dao;
 import com.mycompany.autostockcar.modelo.conexao.Conexao;
 import com.mycompany.autostockcar.modelo.conexao.ConexaoMysql;
 import com.mycompany.autostockcar.modelo.dominio.Categorias;
-import com.mycompany.autostockcar.modelo.dominio.Clientes;
-import com.mycompany.autostockcar.modelo.dominio.Estoques;
 import com.mycompany.autostockcar.modelo.dominio.Fabricantes;
 import com.mycompany.autostockcar.modelo.dominio.Produtos;
 import java.sql.Connection;
@@ -49,9 +47,9 @@ public class ConsultaDao {
                 JOptionPane.showMessageDialog(null, "Nenhum produto encontrado com o ID especificado.");
             }
 
-            result.close();
-            stmt.close();
-            connection.close();
+            //result.close();
+            //stmt.close();
+            //connection.close();
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao buscar produto por ID \n" + ex.getMessage());
@@ -130,10 +128,6 @@ public class ConsultaDao {
     //fabricante.setNomeFabricante(result.getString("NomeFabricante"));
     produto.setNomeFabricantes(fabricantee);
     
-    Estoques estoque = new Estoques();
-    estoque.setIdEstoque(result.getInt("IdEstoque"));
-    produto.setIdestoque(estoque);
-
     Categorias categoria = new Categorias();
     categoria.setIdCategoria(result.getInt("IdCategoria"));
     produto.setIdcategoria(categoria);

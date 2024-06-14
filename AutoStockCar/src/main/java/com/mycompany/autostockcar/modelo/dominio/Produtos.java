@@ -13,17 +13,16 @@ public class Produtos {
     private String prateleira;
     private String gaveta;
     private int ImpostoDoProduto;
+    private int quantidadeDisponivel;
     private Fabricantes Idfabricante;
     private Fabricantes NomeFabricantes;
-    private Estoques Idestoque;
     private Categorias Idcategoria;
     private Categorias NomeCategorias;
-    private double QuantidadeDisponivel;
 
     public Produtos() {
     }
 
-    public Produtos(int idProduto, String nomeProduto, String codigoFabricante, String obsProduto, BigDecimal valorCustoProduto, BigDecimal valorFinal, String prateleira, String gaveta, int ImpostoDoProduto, Fabricantes idfabricante, Fabricantes NomeFabricantes, Estoques idestoque, Categorias idcategoria, Categorias NomeCategorias) {
+    public Produtos(int idProduto, String nomeProduto, String codigoFabricante, String obsProduto, BigDecimal valorCustoProduto, BigDecimal valorFinal, String prateleira, String gaveta, int ImpostoDoProduto, int quantidadeDisponivel, Fabricantes Idfabricante, Fabricantes NomeFabricantes, Categorias Idcategoria, Categorias NomeCategorias) {
         this.idProduto = idProduto;
         this.nomeProduto = nomeProduto;
         this.codigoFabricante = codigoFabricante;
@@ -33,17 +32,17 @@ public class Produtos {
         this.prateleira = prateleira;
         this.gaveta = gaveta;
         this.ImpostoDoProduto = ImpostoDoProduto;
-        this.Idfabricante = idfabricante;
+        this.quantidadeDisponivel = quantidadeDisponivel;
+        this.Idfabricante = Idfabricante;
         this.NomeFabricantes = NomeFabricantes;
-        this.Idestoque = idestoque;
-        this.Idcategoria = idcategoria;
+        this.Idcategoria = Idcategoria;
         this.NomeCategorias = NomeCategorias;
     }
     
-    public Produtos(int idProduto, String nomeProduto, int QuantidadeDisponivel, BigDecimal valorFinal, int ImpostoDoProduto) {
+    public Produtos(int idProduto, String nomeProduto, int quantidadeDisponivel, BigDecimal valorFinal, int ImpostoDoProduto) {
         this.idProduto = idProduto;
         this.nomeProduto = nomeProduto;
-        this.QuantidadeDisponivel = QuantidadeDisponivel;
+        this.quantidadeDisponivel = quantidadeDisponivel;
         this.valorFinal = valorFinal;
         this.ImpostoDoProduto = ImpostoDoProduto;
     }
@@ -128,14 +127,6 @@ public class Produtos {
         this.Idfabricante = Idfabricante;
     }
 
-    public Estoques getIdestoque() {
-        return Idestoque;
-    }
-
-    public void setIdestoque(Estoques Idestoque) {
-        this.Idestoque = Idestoque;
-    }
-
     public Categorias getIdcategoria() {
         return Idcategoria;
     }
@@ -160,14 +151,15 @@ public class Produtos {
         this.NomeCategorias = NomeCategorias;
     }
     
-    public double getQuantidadeDisponivel() {
-        return QuantidadeDisponivel;
+    public int getQuantidadeDisponivel() {
+        return quantidadeDisponivel;
+    }
+    public void setQuantidadeDisponivel(int quantidadeDisponivel) {
+        this.quantidadeDisponivel = quantidadeDisponivel;
     }
 
-    public void setQuantidadeDisponivel(Double QuantidadeDisponivel) {
-        this.QuantidadeDisponivel = QuantidadeDisponivel;
-    }
-
+    
+    
     @Override
     public String toString() {
         return nomeProduto ;

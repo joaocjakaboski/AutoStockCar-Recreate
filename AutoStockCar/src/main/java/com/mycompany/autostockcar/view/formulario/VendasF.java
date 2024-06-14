@@ -1053,7 +1053,7 @@ public class VendasF extends javax.swing.JFrame {
         while (rs.next()) {
             quantidadeBanco = rs.getInt("QuantidadeDisponivel");
         }
-        stmt.close();
+        //stmt.close();
         }catch (SQLException e){
             System.out.println("Erro alterar quantidade 1, " + e);
         }
@@ -1066,7 +1066,7 @@ public class VendasF extends javax.swing.JFrame {
             if(consulta.executeUpdate() > 0){
                 System.out.println("Tudo certo");
             }
-            cn.close();
+            //cn.close();
         }catch (SQLException e){
             System.out.println("Erro ao alterar quantidade " + e);
         }

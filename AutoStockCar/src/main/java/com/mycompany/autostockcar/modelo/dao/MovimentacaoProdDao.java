@@ -2,8 +2,6 @@ package com.mycompany.autostockcar.modelo.dao;
 
 import com.mycompany.autostockcar.modelo.conexao.Conexao;
 import com.mycompany.autostockcar.modelo.conexao.ConexaoMysql;
-import com.mycompany.autostockcar.modelo.dominio.Categorias;
-import com.mycompany.autostockcar.modelo.dominio.Estoques;
 import com.mycompany.autostockcar.modelo.dominio.Fabricantes;
 import com.mycompany.autostockcar.modelo.dominio.MovimentacaoDeEstoque;
 import com.mycompany.autostockcar.modelo.dominio.Produtos;

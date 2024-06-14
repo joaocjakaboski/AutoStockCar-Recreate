@@ -37,7 +37,6 @@ com\mycompany\autostockcar\modelo\dominio\InfoMenu.class
 com\mycompany\autostockcar\view\formulario\Login.class
 com\mycompany\autostockcar\view\componentes\Botao$1.class
 com\mycompany\autostockcar\view\formulario\VendasF$1.class
-com\mycompany\autostockcar\modelo\dominio\Estoques.class
 com\mycompany\autostockcar\UsuarioTest.class
 com\mycompany\autostockcar\view\componentes\PanelBoard.class
 com\mycompany\autostockcar\view\formulario\Client$10.class

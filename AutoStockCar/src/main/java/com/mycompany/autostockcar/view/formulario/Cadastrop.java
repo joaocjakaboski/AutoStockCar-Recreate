@@ -1,40 +1,21 @@
 package com.mycompany.autostockcar.view.formulario;
 
-import com.mycompany.autostockcar.controller.LoginController;
-import com.mycompany.autostockcar.modelo.conexao.ConexaoMysql;
 import com.mycompany.autostockcar.modelo.dao.CadastropDao;
 import com.mycompany.autostockcar.modelo.dominio.Categorias;
-import com.mycompany.autostockcar.modelo.dominio.Estoques;
 import com.mycompany.autostockcar.modelo.dominio.Fabricantes;
 import com.mycompany.autostockcar.modelo.dominio.Perfil;
 import com.mycompany.autostockcar.modelo.dominio.Produtos;
-import com.mycompany.autostockcar.view.componentes.Botao;
-import com.mycompany.autostockcar.view.componentes.CampoDeTexto;
-import com.mycompany.autostockcar.view.componentes.Carregar;
-import com.mycompany.autostockcar.view.componentes.PanelBoard;
-import com.mycompany.autostockcar.view.util.MensagemUtil;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.math.BigDecimal;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 import net.miginfocom.swing.MigLayout;
 
 
@@ -93,9 +74,7 @@ public class Cadastrop extends javax.swing.JFrame {
         txgaveta.setText("");
         txvalorvendasemimposto.setText("");
         txfabricante.setText("");
-        txidestoque.setText("");
         txcategoria.setText("");
-        txidestoque.setText("");
         txidproduto.setText("");
         txImpostoProduto.setText("");
     }
@@ -129,7 +108,7 @@ public class Cadastrop extends javax.swing.JFrame {
         cadastropDao.setPrateleira(txPrateleira.getText());
         cadastropDao.setGaveta(txgaveta.getText());
         cadastropDao.setIdFabricante(Integer.parseInt(txfabricante.getText()));
-        //cadastropDao.setIdEstoque(Integer.parseInt(txidestoque.getText()));
+        cadastropDao.setQuantidadeEstoque(Integer.parseInt(txQuantidadeEstoque.getText()));
         cadastropDao.setIdCategoria(Integer.parseInt(txcategoria.getText()));
         cadastropDao.setImpostoDoProduto(Integer.parseInt(txImpostoProduto.getText()));
         
@@ -175,7 +154,6 @@ public class Cadastrop extends javax.swing.JFrame {
                 txImpostoProduto.setText(String.valueOf(produtobusca.getImpostoDoProduto()));
                 
                 txfabricante.setText(String.valueOf(produtobusca.getIdfabricante().getIdFabricante()));
-                txidestoque.setText(String.valueOf(produtobusca.getIdestoque().getIdEstoque()));
                 txcategoria.setText(String.valueOf(produtobusca.getIdcategoria().getIdCategoria()));
             } else {
                 JOptionPane.showMessageDialog(null, "Nenhum produto encontrado com o ID especificado.");
@@ -203,10 +181,6 @@ public class Cadastrop extends javax.swing.JFrame {
         fabricante.setIdFabricante(Integer.parseInt(txfabricante.getText()));
         produto.setIdfabricante(fabricante);
 
-
-        Estoques estoque = new Estoques();
-        estoque.setIdEstoque(Integer.parseInt(txidestoque.getText()));
-        produto.setIdestoque(estoque);
 
         Categorias categoria = new Categorias();
         categoria.setIdCategoria(Integer.parseInt(txcategoria.getText()));
@@ -257,8 +231,6 @@ public class Cadastrop extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txgaveta = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         txcategoria = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
-        jLabel8 = new javax.swing.JLabel();
-        txidestoque = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         btlimpar = new com.mycompany.autostockcar.view.componentes.Botao();
         txImpostoProduto = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         ValorCusto1 = new javax.swing.JLabel();
@@ -267,6 +239,8 @@ public class Cadastrop extends javax.swing.JFrame {
         btcalcular = new com.mycompany.autostockcar.view.componentes.Botao();
         btfabricante = new com.mycompany.autostockcar.view.componentes.Botao();
         btcategoria = new com.mycompany.autostockcar.view.componentes.Botao();
+        txQuantidadeEstoque = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
+        ValorCusto3 = new javax.swing.JLabel();
         menu1 = new com.mycompany.autostockcar.view.componentes.Menu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -441,16 +415,6 @@ public class Cadastrop extends javax.swing.JFrame {
         txcategoria.setMinimumSize(new java.awt.Dimension(64, 30));
         txcategoria.setPreferredSize(new java.awt.Dimension(143, 30));
 
-        jLabel8.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(30, 30, 30));
-        jLabel8.setText("ID do Estoque");
-
-        txidestoque.setForeground(new java.awt.Color(0, 0, 0));
-        txidestoque.setCor(new java.awt.Color(131, 191, 205));
-        txidestoque.setDicas("  ");
-        txidestoque.setMinimumSize(new java.awt.Dimension(64, 30));
-        txidestoque.setPreferredSize(new java.awt.Dimension(143, 30));
-
         btlimpar.setBackground(new java.awt.Color(131, 191, 205));
         btlimpar.setForeground(new java.awt.Color(30, 30, 30));
         btlimpar.setText("Limpar");
@@ -513,6 +477,14 @@ public class Cadastrop extends javax.swing.JFrame {
             }
         });
 
+        txQuantidadeEstoque.setForeground(new java.awt.Color(0, 0, 0));
+        txQuantidadeEstoque.setCor(new java.awt.Color(131, 191, 205));
+        txQuantidadeEstoque.setDicas("Quantidade");
+
+        ValorCusto3.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        ValorCusto3.setForeground(new java.awt.Color(30, 30, 30));
+        ValorCusto3.setText("Quantidade Estoque:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -532,13 +504,14 @@ public class Cadastrop extends javax.swing.JFrame {
                                         .addGap(19, 19, 19))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txcodigofab, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txidestoque, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txvalorcusto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(ValorCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txcodigofab, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                                .addComponent(txvalorcusto, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                                .addComponent(ValorCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txQuantidadeEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(ValorCusto3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(100, 100, 100)))
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txnome, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -631,10 +604,7 @@ public class Cadastrop extends javax.swing.JFrame {
                             .addComponent(ValorVenda))
                         .addGap(6, 6, 6)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txvalorcusto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel8))
+                    .addComponent(txvalorcusto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txvalorvendasemimposto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -645,12 +615,13 @@ public class Cadastrop extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel6))))
+                            .addComponent(jLabel6)
+                            .addComponent(ValorCusto3))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txidestoque, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txPrateleira, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txgaveta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txgaveta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txQuantidadeEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(Complemento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -805,6 +776,7 @@ public class Cadastrop extends javax.swing.JFrame {
     private javax.swing.JLabel ValorCusto;
     private javax.swing.JLabel ValorCusto1;
     private javax.swing.JLabel ValorCusto2;
+    private javax.swing.JLabel ValorCusto3;
     private javax.swing.JLabel ValorVenda;
     private javax.swing.JLayeredPane background;
     private com.mycompany.autostockcar.view.componentes.Botao btalterar;
@@ -820,18 +792,17 @@ public class Cadastrop extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private com.mycompany.autostockcar.view.componentes.Menu menu1;
     public com.mycompany.autostockcar.view.componentes.CampoDeTexto txImpostoProduto;
     protected com.mycompany.autostockcar.view.componentes.CampoDeTexto txPrateleira;
+    private com.mycompany.autostockcar.view.componentes.CampoDeTexto txQuantidadeEstoque;
     public com.mycompany.autostockcar.view.componentes.CampoDeTexto txcategoria;
     public com.mycompany.autostockcar.view.componentes.CampoDeTexto txcodigofab;
     public com.mycompany.autostockcar.view.componentes.CampoDeTexto txcomplemento;
     public com.mycompany.autostockcar.view.componentes.CampoDeTexto txfabricante;
     public com.mycompany.autostockcar.view.componentes.CampoDeTexto txgaveta;
-    private com.mycompany.autostockcar.view.componentes.CampoDeTexto txidestoque;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txidproduto;
     public com.mycompany.autostockcar.view.componentes.CampoDeTexto txnome;
     public com.mycompany.autostockcar.view.componentes.CampoDeTexto txvalorcusto;
