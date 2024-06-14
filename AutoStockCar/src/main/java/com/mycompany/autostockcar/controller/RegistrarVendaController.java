@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public class RegistrarVendaController {
     public static int idVendaRegistrada;
     java.math.BigDecimal idColVar;
-    
+    private Connection conn;
     private static final String URL = "jdbc:mysql://localhost/autostockcar?useTimezone=true&serverTimezone=America/Sao_Paulo";
     private static final String USER = "root";
     private static final String PASSWORD = "";
@@ -79,8 +79,35 @@ public class RegistrarVendaController {
             System.out.println("Erro ao guardar detalhes venda!" + e);
     }
         return resposta;
-    } 
+    }
+     
+    public boolean atualizar(Vendas objeto, int idVenda) {
+    boolean resposta = false;
+    Connection conn = null;
+    
+    try {
+        conn = conectar();
+        PreparedStatement stmt = conn.prepareStatement("update vendas set IdCliente = ? where IdVenda = ?");
+        stmt.setInt(1, objeto.getCliente());
+        stmt.setInt(2, idVenda);
+
+        if (stmt.executeUpdate() > 0) {
+            resposta = true;
+        }
+    } catch (SQLException e) {
+        System.out.println("Erro ao atualizar venda: " + e);
+    } finally {
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.out.println("Erro ao fechar conexão: " + e);
+            }
+        }
+    }
+    
+    return resposta;
+    }
+    
     
 }
-    
-

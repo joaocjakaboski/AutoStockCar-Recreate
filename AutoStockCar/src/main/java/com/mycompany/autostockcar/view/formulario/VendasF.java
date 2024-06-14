@@ -936,6 +936,7 @@ public class VendasF extends javax.swing.JFrame {
     System.out.println("Cliente selecionado: " + clienteSelecionado); // Log de depuração
     
     try (PreparedStatement stmt = conexao.obterConexao().prepareStatement(sql))
+        
            {
        stmt.setString(1, clienteSelecionado);
         System.out.println("sql: " + stmt.toString()); // Log de depuração

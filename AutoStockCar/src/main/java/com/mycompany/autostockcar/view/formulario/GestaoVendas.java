@@ -1,10 +1,12 @@
 
 package com.mycompany.autostockcar.view.formulario;
 
+import com.mycompany.autostockcar.controller.RegistrarVendaController;
 import com.mycompany.autostockcar.modelo.conexao.Conexao;
 import com.mycompany.autostockcar.modelo.conexao.ConexaoMysql;
 import com.mycompany.autostockcar.modelo.dao.ClienteDao;
 import com.mycompany.autostockcar.modelo.dominio.Perfil;
+import com.mycompany.autostockcar.modelo.dominio.Vendas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -16,6 +18,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
@@ -70,6 +74,8 @@ public class GestaoVendas extends javax.swing.JFrame {
         });
  
     }
+    
+   
 
     public GestaoVendas() {
     }
@@ -118,7 +124,7 @@ public class GestaoVendas extends javax.swing.JFrame {
 
         CodigoCliente4.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         CodigoCliente4.setForeground(new java.awt.Color(30, 30, 30));
-        CodigoCliente4.setText("Total a Pagar:");
+        CodigoCliente4.setText("Total da Compra:");
 
         CodigoCliente5.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         CodigoCliente5.setForeground(new java.awt.Color(30, 30, 30));
@@ -258,6 +264,44 @@ public class GestaoVendas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar1ActionPerformed
+        Vendas venda = new Vendas();
+        RegistrarVendaController controleRegistroVenda = new RegistrarVendaController();
+        String cliente;
+        cliente = cbxNomeCliente.getSelectedItem().toString().trim();
+        
+        //obter id
+        try{
+            conn = conexao.obterConexao();
+            PreparedStatement stmt = conn.prepareStatement("select IdCliente "
+            +"from clientes where NomeCliente = ?");
+            stmt.setString(1, cliente);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                idCliente= rs.getInt("IdCliente");
+        }
+        }catch(SQLException e){
+            System.out.println("Erro ao carregar id cliente: " + e);
+        }
+        
+        //atualizar dados
+        
+        if (idCliente != 0) {
+        venda.setCliente(idCliente);
+
+            try {
+                // Atualizar dados da venda
+                if (controleRegistroVenda.atualizar(venda, idVenda)) {
+                    JOptionPane.showMessageDialog(null, "Registro atualizado!");
+                    this.CarregarTabelaVenda();
+                    this.Limpar();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Erro ao atualizar!");
+                }   } catch (SQLException ex) {
+                Logger.getLogger(GestaoVendas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    } else {
+        JOptionPane.showMessageDialog(null, "Selecione um cliente válido para atualizar dados.");
+    }
 
     }//GEN-LAST:event_btnSalvar1ActionPerformed
 
@@ -387,6 +431,8 @@ public class GestaoVendas extends javax.swing.JFrame {
             System.out.println("Erro ao selecionar venda: " + e.getMessage());
         }
 }
+    
+    
 }
  
     
