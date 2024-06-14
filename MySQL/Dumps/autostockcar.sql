@@ -27,7 +27,7 @@ CREATE TABLE `categorias` (
   `NomeCategoria` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `DescricaoCategoria` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`IdCategoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,6 +36,7 @@ CREATE TABLE `categorias` (
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
+INSERT INTO `categorias` VALUES (1,'Limpadores','');
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,7 +89,7 @@ CREATE TABLE `clientes` (
   UNIQUE KEY `CPFCliente` (`CPFCliente`),
   KEY `FK_IDCIDADE_CLIENTES` (`IdCidade`),
   CONSTRAINT `FK_IDCIDADE_CLIENTES` FOREIGN KEY (`IdCidade`) REFERENCES `cidades` (`IdCidade`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,6 +98,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
+INSERT INTO `clientes` VALUES (1,'Cliente Teste','(54) 97070-7070','','Rua Teste','Bairro Teste','12312312312','','2024-06-14 18:39:48',3897);
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,7 +170,7 @@ CREATE TABLE `fabricantes` (
   UNIQUE KEY `CNPJFabricante` (`CNPJFabricante`),
   KEY `FK_IDCIDADE_FABRICANTES` (`IdCidade`),
   CONSTRAINT `FK_IDCIDADE_FABRICANTES` FOREIGN KEY (`IdCidade`) REFERENCES `cidades` (`IdCidade`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -177,6 +179,7 @@ CREATE TABLE `fabricantes` (
 
 LOCK TABLES `fabricantes` WRITE;
 /*!40000 ALTER TABLE `fabricantes` DISABLE KEYS */;
+INSERT INTO `fabricantes` VALUES (1,'Fabricante 1','fabricante@email.com.br','(54) 97171-7171','Rua do Fabricante, 280','12312312312311','',5179);
 /*!40000 ALTER TABLE `fabricantes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,17 +267,14 @@ CREATE TABLE `produtos` (
   `Gaveta` varchar(8) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `ImpostoDoProduto` int(11) NOT NULL,
   `IdFabricante` int(11) NOT NULL,
-  `IdEstoque` int(11) NOT NULL,
   `IdCategoria` int(11) NOT NULL,
   `QuantidadeDisponivel` int(11) DEFAULT NULL,
   PRIMARY KEY (`IdProduto`),
   KEY `FK_IDFABRICANTE_PRODUTOS` (`IdFabricante`),
-  KEY `FK_IDESTOQUE_PRODUTOS` (`IdEstoque`),
   KEY `FK_IDCATEGORIA_PRODUTOS` (`IdCategoria`),
   CONSTRAINT `FK_IDCATEGORIA_PRODUTOS` FOREIGN KEY (`IdCategoria`) REFERENCES `categorias` (`IdCategoria`),
-  CONSTRAINT `FK_IDESTOQUE_PRODUTOS` FOREIGN KEY (`IdEstoque`) REFERENCES `estoques` (`IdEstoque`),
   CONSTRAINT `FK_IDFABRICANTE_PRODUTOS` FOREIGN KEY (`IdFabricante`) REFERENCES `fabricantes` (`IdFabricante`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -283,6 +283,7 @@ CREATE TABLE `produtos` (
 
 LOCK TABLES `produtos` WRITE;
 /*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
+INSERT INTO `produtos` VALUES (2,'Limpador Bosch','1234','',34.00,61.04,'2','a',12,1,1,NULL);
 /*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -299,7 +300,7 @@ CREATE TABLE `usuarios` (
   `SenhaUsuario` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `AdmCategoria` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT 'PADRAO',
   PRIMARY KEY (`IdUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -308,7 +309,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'joao','$2a$10$lIFukds1O54CJvokRqURleHCa8lq.SPFapZ/zOrW994Z91kzHIgJC','ADMIN');
+INSERT INTO `usuarios` VALUES (2,'user','$2a$10$DLqHmXH/bjTuIX7k9LflkuIuIwqzsQNSQoyTaW84GKO2okyIaKYuy','ADMIN');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -348,4 +349,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-14 13:22:11
+-- Dump completed on 2024-06-14 19:20:01

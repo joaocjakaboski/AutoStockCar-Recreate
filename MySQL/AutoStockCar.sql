@@ -5529,7 +5529,7 @@ CREATE TABLE Produtos (
     Gaveta NVARCHAR(8) NOT NULL,
     ImpostoDoProduto INT NOT NULL,
     IdFabricante INT NOT NULL,
-    IdEstoque INT NOT NULL,
+    IdEstoque INT,
     IdCategoria INT NOT NULL,
     QuantidadeDisponivel INT,
     CONSTRAINT PRIMARY KEY (IdProduto),

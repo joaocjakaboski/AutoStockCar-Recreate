@@ -25,7 +25,6 @@ public class CadastropDao {
     String prateleira;    
     String gaveta;
     int idFabricante;
-    int idEstoque;
     int idCategoria;
     int impostoDoProduto;
     
@@ -40,7 +39,7 @@ public class CadastropDao {
     public void salvar() {
         try {
             
-            String sql = "INSERT INTO Produtos(NomeProduto, CodigoFabricante, ObsProduto, ValorCustoProduto, ValorFinal, Prateleira, Gaveta, ImpostoDoProduto, IdFabricante, IdEstoque, IdCategoria) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Produtos(NomeProduto, CodigoFabricante, ObsProduto, ValorCustoProduto, ValorFinal, Prateleira, Gaveta, ImpostoDoProduto, IdFabricante, IdCategoria) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             
             PreparedStatement stmt = conexao.obterConexao().prepareStatement(sql);
             
@@ -53,8 +52,7 @@ public class CadastropDao {
             stmt.setString(7, gaveta);
             stmt.setInt(8, impostoDoProduto );
             stmt.setInt(9, idFabricante);
-            stmt.setInt(10, idEstoque);
-            stmt.setInt(11, idCategoria);
+            stmt.setInt(10, idCategoria);
 
             // Execute a inserção
             stmt.executeUpdate();
@@ -251,9 +249,6 @@ public class CadastropDao {
     public int getIdFabricante() {
         return idFabricante;
     }
-    public int getIdEstoque() {
-        return idEstoque;
-    }
     public int getIdCategoria() {
         return idCategoria;
     }
@@ -287,9 +282,6 @@ public class CadastropDao {
     }
     public void setIdFabricante(int idFabricante) {
         this.idFabricante = idFabricante;
-    }
-    public void setIdEstoque(int idEstoque) {
-        this.idEstoque = idEstoque;
     }
     public void setIdCategoria(int idCategoria) {
         this.idCategoria = idCategoria;

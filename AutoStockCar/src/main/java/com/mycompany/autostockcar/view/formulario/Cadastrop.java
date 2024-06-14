@@ -129,7 +129,7 @@ public class Cadastrop extends javax.swing.JFrame {
         cadastropDao.setPrateleira(txPrateleira.getText());
         cadastropDao.setGaveta(txgaveta.getText());
         cadastropDao.setIdFabricante(Integer.parseInt(txfabricante.getText()));
-        cadastropDao.setIdEstoque(Integer.parseInt(txidestoque.getText()));
+        //cadastropDao.setIdEstoque(Integer.parseInt(txidestoque.getText()));
         cadastropDao.setIdCategoria(Integer.parseInt(txcategoria.getText()));
         cadastropDao.setImpostoDoProduto(Integer.parseInt(txImpostoProduto.getText()));
         
