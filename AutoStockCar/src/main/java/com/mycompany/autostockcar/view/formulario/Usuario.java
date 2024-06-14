@@ -9,6 +9,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 import net.miginfocom.swing.MigLayout;
 
@@ -36,6 +38,15 @@ public class Usuario extends javax.swing.JFrame {
                 }
                 
                  cadastrarUsuario();
+            }
+        });
+        
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                tabelaUsuarios.setEnabled(true);
+                tabelaUsuarios.toFront();
+                tabelaUsuarios.readJTable();
             }
         });
     }

@@ -2,12 +2,14 @@ package com.mycompany.autostockcar.view.formulario;
 
 import com.mycompany.autostockcar.modelo.dao.UsuarioDao;
 import com.mycompany.autostockcar.modelo.dominio.Usuarios;
-import com.mycompany.autostockcar.view.componentes.Mensagem;
 import com.mycompany.autostockcar.view.util.MensagemUtil;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import net.miginfocom.swing.MigLayout;
 
 
 public class TabelaUsuarios extends javax.swing.JFrame {
@@ -15,15 +17,26 @@ public class TabelaUsuarios extends javax.swing.JFrame {
     private JTextField txNome;
     private JTextField txPerfil;
     private Usuarios usuario;
-    private MigLayout layout;
     private MensagemUtil mensagem;
+    private JFrame framePrincipal;
     
     
-    
-    public TabelaUsuarios() {
+    public TabelaUsuarios(JFrame framePrincipal) {
         initComponents();
         setLocationRelativeTo(null);
         readJTable();//preencher ao inicializar
+        setLocationRelativeTo(framePrincipal);
+        
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                framePrincipal.setEnabled(true);
+                framePrincipal.toFront();
+            }
+        });
+    }
+
+    public TabelaUsuarios() {
     }
 
     public void readJTable() {
@@ -57,6 +70,7 @@ public class TabelaUsuarios extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(131, 191, 205));
         jPanel1.setPreferredSize(new java.awt.Dimension(624, 322));
@@ -204,6 +218,7 @@ public class TabelaUsuarios extends javax.swing.JFrame {
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         new Usuario(this).setVisible(true);
+        this.setEnabled(false);
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
@@ -216,10 +231,7 @@ public class TabelaUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        layout = new MigLayout("fill, insets");
-        background.setLayout(layout);
-        
-        mensagem = new MensagemUtil(background, layout);
+
         if(jtUsuarios.getSelectedRow() != -1){
             
             Usuarios u = new Usuarios();
@@ -228,7 +240,7 @@ public class TabelaUsuarios extends javax.swing.JFrame {
             u.setIdUsuario((int) jtUsuarios.getValueAt(jtUsuarios.getSelectedRow(), 0));
             
             dao.excluirUsuario(u.getIdUsuario());
-            mensagem.mostrarMensagem(Mensagem.TipoMensagem.SUCESSO, "Usuário excluído!");
+            JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso");
             
             readJTable();
         }

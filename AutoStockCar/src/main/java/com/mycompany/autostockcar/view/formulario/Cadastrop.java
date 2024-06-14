@@ -46,10 +46,12 @@ public class Cadastrop extends javax.swing.JFrame {
     String caminho = System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\autostockcar\\view\\imagens\\";
    
 
-    public Cadastrop() {
+    public Cadastrop(String nomeUsuario, Perfil perfil) {
         initComponents();
         setLocationRelativeTo(null);
         menu1.setPaiHerdado(this);
+        menu1.setNomeUsuario(nomeUsuario);
+        menu1.setPerfil(perfil);
         btnovo.setIcon(new ImageIcon(caminho + "pesquisar.png"));
         
         btsalvar.addActionListener(new ActionListener() {
@@ -76,6 +78,9 @@ public class Cadastrop extends javax.swing.JFrame {
                 BotaoAlterar();
             }   
         });
+    }
+
+    private Cadastrop() {
     }
         
     private void limparCampos() {

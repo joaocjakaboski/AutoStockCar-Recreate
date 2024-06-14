@@ -1,9 +1,13 @@
 package com.mycompany.autostockcar.view.formulario;
 
 import com.mycompany.autostockcar.modelo.dao.ConsultaDao;
+<<<<<<< Updated upstream
 import com.mycompany.autostockcar.modelo.dominio.Cidades;
 import com.mycompany.autostockcar.modelo.dominio.Clientes;
 import com.mycompany.autostockcar.modelo.dominio.Estados;
+=======
+import com.mycompany.autostockcar.modelo.dominio.Perfil;
+>>>>>>> Stashed changes
 import com.mycompany.autostockcar.modelo.dominio.Produtos;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -26,10 +30,12 @@ public class Consulta extends javax.swing.JFrame {
     ConsultaDao consulta = new ConsultaDao();
     String caminho = System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\autostockcar\\view\\imagens\\";
     
-    public Consulta() {
+    public Consulta(String nomeUsuario, Perfil perfil) {
         initComponents();
         setLocationRelativeTo(null);
         menu1.setPaiHerdado(this);
+        menu1.setNomeUsuario(nomeUsuario);
+        menu1.setPerfil(perfil);
         btpesquisar.setIcon(new ImageIcon(caminho + "pesquisar.png"));
         btpesquisar.addActionListener(new ActionListener() {
             @Override
@@ -131,6 +137,9 @@ public class Consulta extends javax.swing.JFrame {
                 }
             }
         });
+    }
+
+    public Consulta() {
     }
     
     public void BotaoPesquisar(){

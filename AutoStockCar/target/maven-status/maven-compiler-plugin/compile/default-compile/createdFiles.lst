@@ -61,7 +61,11 @@ com\mycompany\autostockcar\view\formulario\Client.class
 com\mycompany\autostockcar\view\componentes\Menu$2.class
 com\mycompany\autostockcar\view\formulario\Client$3.class
 com\mycompany\autostockcar\view\formulario\Usuario$6.class
+<<<<<<< Updated upstream
 com\mycompany\autostockcar\view\formulario\GestaoVendas$3.class
+=======
+com\mycompany\autostockcar\view\formulario\TabelaUsuarios$7.class
+>>>>>>> Stashed changes
 com\mycompany\autostockcar\view\formulario\MovimentacaoProd$4.class
 com\mycompany\autostockcar\view\formulario\Cadastrop$12.class
 com\mycompany\autostockcar\view\formulario\Consulta$5.class
@@ -86,6 +90,7 @@ com\mycompany\autostockcar\view\formulario\Fabricante$10.class
 com\mycompany\autostockcar\view\formulario\MovimentacaoProd$3.class
 com\mycompany\autostockcar\modelo\dao\CadastropDao.class
 com\mycompany\autostockcar\view\formulario\Client$2.class
+com\mycompany\autostockcar\view\formulario\Usuario$8.class
 com\mycompany\autostockcar\view\componentes\Menu$3.class
 com\mycompany\autostockcar\view\formulario\Cadastrop.class
 com\mycompany\autostockcar\view\formulario\Consulta$7.class

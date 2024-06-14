@@ -34,8 +34,7 @@ public class Menu extends javax.swing.JPanel {
         initComponents();
         setOpaque(false);
         labelUsuario.setIcon(new ImageIcon(caminho + "user.png"));
-        labelUsuario.setText(nomeUsuario);
-        
+         
         JPopupMenu popupMenu = new JPopupMenu();
 
         JMenuItem menuItem1 = new JMenuItem("Gerenciar usuários");
@@ -43,7 +42,8 @@ public class Menu extends javax.swing.JPanel {
         menuItem1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new TabelaUsuarios().setVisible(true);
+                new TabelaUsuarios(paiHerdado).setVisible(true);
+                paiHerdado.setEnabled(false);
             }
         });
         
@@ -62,7 +62,7 @@ public class Menu extends javax.swing.JPanel {
             @Override
             public void mouseEntered(MouseEvent e) {
                 labelUsuario.setBackground(new Color(131, 191, 205));
-                labelUsuario.setForeground(Color.WHITE);
+                labelUsuario.setForeground(Color.BLACK);
                 labelUsuario.setOpaque(true);
             }
            
@@ -70,9 +70,11 @@ public class Menu extends javax.swing.JPanel {
            public void mouseExited(MouseEvent e) {
                labelUsuario.setOpaque(false);
                labelUsuario.setBackground(null);
-               labelUsuario.setForeground(Color.WHITE);
+               labelUsuario.setForeground(Color.BLACK);
            }
         });
+
+        labelUsuario.setText(nomeUsuario);   
     }
     
     @Override
@@ -116,9 +118,10 @@ public class Menu extends javax.swing.JPanel {
         jLabel1.setText("Auto StockCar");
 
         labelUsuario.setBackground(new java.awt.Color(255, 255, 255));
-        labelUsuario.setFont(new java.awt.Font("SansSerif", 1, 8)); // NOI18N
+        labelUsuario.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         labelUsuario.setForeground(new java.awt.Color(30, 30, 30));
-        labelUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        labelUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,7 +131,7 @@ public class Menu extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(labelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelUsuario)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -251,22 +254,22 @@ public class Menu extends javax.swing.JPanel {
     }//GEN-LAST:event_btnMenuDashboardActionPerformed
 
     private void btnMenuProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuProdutosActionPerformed
-        new Cadastrop().setVisible(true);
+        new Cadastrop(nomeUsuario, perfil).setVisible(true);
         paiHerdado.dispose();
     }//GEN-LAST:event_btnMenuProdutosActionPerformed
 
     private void btnMenuVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuVendasActionPerformed
-        new VendasF().setVisible(true);
+        new VendasF(nomeUsuario, perfil).setVisible(true);
         paiHerdado.dispose();
     }//GEN-LAST:event_btnMenuVendasActionPerformed
 
     private void btnMenuConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuConsultaActionPerformed
-        new Consulta().setVisible(true);
+        new Consulta(nomeUsuario, perfil).setVisible(true);
         paiHerdado.dispose();
     }//GEN-LAST:event_btnMenuConsultaActionPerformed
 
     private void btnMenuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuClientesActionPerformed
-        new Client().setVisible(true);
+        new Client(nomeUsuario, perfil).setVisible(true);
         paiHerdado.dispose();
     }//GEN-LAST:event_btnMenuClientesActionPerformed
 
@@ -289,6 +292,7 @@ public class Menu extends javax.swing.JPanel {
 
     public void setNomeUsuario(String nomeUsuario) {
         this.nomeUsuario = nomeUsuario;
+        labelUsuario.setText(this.nomeUsuario);
     }
 
     public Perfil getPerfil() {

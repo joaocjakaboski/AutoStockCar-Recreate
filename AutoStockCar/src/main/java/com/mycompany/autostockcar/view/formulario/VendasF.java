@@ -7,6 +7,7 @@ import com.mycompany.autostockcar.modelo.dao.CadastropDao;
 import com.mycompany.autostockcar.modelo.dao.ClienteDao;
 import com.mycompany.autostockcar.modelo.dao.VendasDao;
 import com.mycompany.autostockcar.modelo.dominio.ItensVenda;
+import com.mycompany.autostockcar.modelo.dominio.Perfil;
 import com.mycompany.autostockcar.modelo.dominio.Produtos;
 import com.mycompany.autostockcar.modelo.dominio.Vendas;
 import java.awt.event.ActionEvent;
@@ -57,7 +58,7 @@ public class VendasF extends javax.swing.JFrame {
     
 
     
-    private final Conexao conexao;
+    private Conexao conexao;
     private PreparedStatement pstm;
 
     ClienteDao cliente = new ClienteDao();
@@ -65,10 +66,12 @@ public class VendasF extends javax.swing.JFrame {
     VendasDao vendas = new VendasDao();
 
 
-    public VendasF() {
+    public VendasF(String nomeUsuario, Perfil perfil) {
         initComponents();
         setLocationRelativeTo(null);
         menu1.setPaiHerdado(this);
+        menu1.setNomeUsuario(nomeUsuario);
+        menu1.setPerfil(perfil);
         this.inicializarTabelaProdutos();
         
         txSubTotal.setText("0.0");
@@ -154,6 +157,11 @@ public class VendasF extends javax.swing.JFrame {
         }
     });
     }
+
+    public VendasF() {
+    }
+    
+    
 
     private void inicializarTabelaProdutos() {
         modeloDadosProdutos = new DefaultTableModel();
