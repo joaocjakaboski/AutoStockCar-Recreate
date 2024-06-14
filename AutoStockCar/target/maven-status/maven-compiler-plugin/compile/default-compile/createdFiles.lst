@@ -98,6 +98,7 @@ com\mycompany\autostockcar\view\formulario\Cadastrop$1.class
 com\mycompany\autostockcar\view\componentes\Menu$9.class
 com\mycompany\autostockcar\view\util\MensagemUtil$1.class
 com\mycompany\autostockcar\view\formulario\Categoria$9.class
+com\mycompany\autostockcar\view\formulario\MovimentacaoProd$8.class
 com\mycompany\autostockcar\view\formulario\Cadastrop$7.class
 com\mycompany\autostockcar\view\formulario\Consulta$1.class
 com\mycompany\autostockcar\view\formulario\MovimentacaoProd.class
@@ -133,6 +134,7 @@ com\mycompany\autostockcar\view\formulario\GestaoVendas$1.class
 com\mycompany\autostockcar\view\formulario\Cadastrop$8.class
 com\mycompany\autostockcar\view\formulario\VendasF$5.class
 com\mycompany\autostockcar\view\modelo\ConsultaDto.class
+com\mycompany\autostockcar\view\formulario\MovimentacaoProd$7.class
 com\mycompany\autostockcar\view\formulario\Categoria$5.class
 com\mycompany\autostockcar\view\formulario\Fabricante$7.class
 com\mycompany\autostockcar\view\formulario\VendasF$8.class

@@ -1,5 +1,13 @@
 package com.mycompany.autostockcar.view.formulario;
 
+import com.mycompany.autostockcar.modelo.dao.CadastropDao;
+import com.mycompany.autostockcar.modelo.dao.MovimentacaoProdDao;
+import com.mycompany.autostockcar.modelo.dominio.MovimentacaoDeEstoque;
+import com.mycompany.autostockcar.modelo.dominio.Produtos;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+
 
 public class MovimentacaoProd extends javax.swing.JFrame {
 
@@ -9,8 +17,39 @@ public class MovimentacaoProd extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         grupo.add(radioe);
         grupo.add(radios);
+        
+        btPesquisa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                BotaoPesquisar();
+            }
+        });
     }
+    
+public void BotaoPesquisar() {
+    MovimentacaoProdDao movimentacaoDao = new MovimentacaoProdDao();
+    
+    try {
+        int idMovimentacao = Integer.parseInt(txId.getText());
+        MovimentacaoDeEstoque movimentacao = movimentacaoDao.buscarPorId(idMovimentacao);
 
+        if (movimentacao != null) {
+            txNomeProduto.setText(movimentacao.getProduto().getNomeProduto()); // Obtém o nome do produto
+            txEstoqueAtual.setText(String.valueOf(movimentacao.getQuantidadeMovimentacao()));
+            txMotivodaMovimentacao.setText(movimentacao.getMotivoMovimentacao());
+            txAjustedeEstoque.setText(String.valueOf(movimentacao.getQuantidadeMovimentacao()));
+            txIdFabricante.setText(String.valueOf(movimentacao.getFabricante().getIdFabricante()));
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhuma movimentação encontrada com o ID especificado.\n" );
+        }
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(null, "Por favor, insira um ID válido.");
+        ex.printStackTrace();
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(null, "Erro ao buscar movimentação: " + ex.getMessage());
+        ex.printStackTrace();
+    }
+}
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -33,6 +72,9 @@ public class MovimentacaoProd extends javax.swing.JFrame {
         botao1 = new com.mycompany.autostockcar.view.componentes.Botao();
         radioe = new javax.swing.JRadioButton();
         radios = new javax.swing.JRadioButton();
+        btPesquisa = new com.mycompany.autostockcar.view.componentes.Botao();
+        txIdFabricante = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,6 +161,20 @@ public class MovimentacaoProd extends javax.swing.JFrame {
         radios.setForeground(new java.awt.Color(30, 30, 30));
         radios.setText("Saída");
 
+        btPesquisa.setBackground(new java.awt.Color(131, 191, 205));
+
+        txIdFabricante.setDicas("");
+        txIdFabricante.setFont(new java.awt.Font("sanserif", 1, 12)); // NOI18N
+        txIdFabricante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txIdFabricanteActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(30, 30, 30));
+        jLabel6.setText("ID Fabricante");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -133,21 +189,31 @@ public class MovimentacaoProd extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
                             .addComponent(txEstoqueAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
-                            .addComponent(txAjustedeEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(55, 55, 55)
+                            .addComponent(txAjustedeEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txNomeProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(txMotivodaMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap(34, Short.MAX_VALUE))
+                                    .addComponent(txNomeProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel2)
+                                            .addComponent(txMotivodaMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 2, Short.MAX_VALUE)))
+                                .addContainerGap(36, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txIdFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(radios, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,31 +228,43 @@ public class MovimentacaoProd extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addGap(1, 1, 1)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txEstoqueAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txAjustedeEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(radioe)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(radios)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(txEstoqueAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 2, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(txNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txMotivodaMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(140, 140, 140)
-                        .addComponent(botao1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txAjustedeEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txIdFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(radioe)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(radios)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGap(102, 102, 102)
+                                .addComponent(botao1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -254,6 +332,10 @@ public class MovimentacaoProd extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txAjustedeEstoqueActionPerformed
 
+    private void txIdFabricanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txIdFabricanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txIdFabricanteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -291,12 +373,16 @@ public class MovimentacaoProd extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.mycompany.autostockcar.view.componentes.Botao botao1;
+    private com.mycompany.autostockcar.view.componentes.Botao btPesquisa;
+    private com.mycompany.autostockcar.view.componentes.Botao btpesquisar;
+    private com.mycompany.autostockcar.view.componentes.Botao btpesquisar1;
     private javax.swing.ButtonGroup grupo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -305,6 +391,7 @@ public class MovimentacaoProd extends javax.swing.JFrame {
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txAjustedeEstoque;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txEstoqueAtual;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txId;
+    private com.mycompany.autostockcar.view.componentes.CampoDeTexto txIdFabricante;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txMotivodaMovimentacao;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txNomeProduto;
     // End of variables declaration//GEN-END:variables
