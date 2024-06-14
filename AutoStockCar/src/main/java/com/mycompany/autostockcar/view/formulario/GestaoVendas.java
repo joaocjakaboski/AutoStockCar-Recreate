@@ -4,6 +4,7 @@ package com.mycompany.autostockcar.view.formulario;
 import com.mycompany.autostockcar.modelo.conexao.Conexao;
 import com.mycompany.autostockcar.modelo.conexao.ConexaoMysql;
 import com.mycompany.autostockcar.modelo.dao.ClienteDao;
+import com.mycompany.autostockcar.modelo.dominio.Perfil;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -18,7 +19,6 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
-import org.springframework.ui.Model;
 
 public class GestaoVendas extends javax.swing.JFrame {
 
@@ -30,9 +30,12 @@ public class GestaoVendas extends javax.swing.JFrame {
     private Connection conn;
     private PreparedStatement pstm;
 
-    public GestaoVendas() {
+    public GestaoVendas(String nomeUsuario, Perfil perfil) {
         initComponents();
         setLocationRelativeTo(null);
+        menu1.setPaiHerdado(this);
+        menu1.setNomeUsuario(nomeUsuario);
+        menu1.setPerfil(perfil);
         this.conexao = new ConexaoMysql();
         try {
             this.CarregarTabelaVenda();
@@ -67,6 +70,11 @@ public class GestaoVendas extends javax.swing.JFrame {
         });
  
     }
+
+    public GestaoVendas() {
+    }
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

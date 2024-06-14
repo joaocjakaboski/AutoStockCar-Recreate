@@ -5,6 +5,7 @@ import com.mycompany.autostockcar.view.formulario.Cadastrop;
 import com.mycompany.autostockcar.view.formulario.Client;
 import com.mycompany.autostockcar.view.formulario.Consulta;
 import com.mycompany.autostockcar.view.formulario.Dashboard;
+import com.mycompany.autostockcar.view.formulario.GestaoVendas;
 import com.mycompany.autostockcar.view.formulario.TabelaUsuarios;
 import com.mycompany.autostockcar.view.formulario.VendasF;
 import java.awt.Color;
@@ -103,6 +104,7 @@ public class Menu extends javax.swing.JPanel {
         btnMenuProdutos = new com.mycompany.autostockcar.view.componentes.Botao();
         btnMenuClientes = new com.mycompany.autostockcar.view.componentes.Botao();
         btnMenuConsulta = new com.mycompany.autostockcar.view.componentes.Botao();
+        btnMenuGestao = new com.mycompany.autostockcar.view.componentes.Botao();
 
         setPreferredSize(new java.awt.Dimension(1162, 113));
 
@@ -197,6 +199,13 @@ public class Menu extends javax.swing.JPanel {
             }
         });
 
+        btnMenuGestao.setText("botao1");
+        btnMenuGestao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuGestaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -204,7 +213,7 @@ public class Menu extends javax.swing.JPanel {
             .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(295, Short.MAX_VALUE)
+                .addContainerGap(294, Short.MAX_VALUE)
                 .addComponent(btnMenuDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnMenuProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -214,7 +223,9 @@ public class Menu extends javax.swing.JPanel {
                 .addComponent(btnMenuConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnMenuClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(295, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnMenuGestao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(240, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,7 +239,8 @@ public class Menu extends javax.swing.JPanel {
                     .addComponent(btnMenuVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMenuProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMenuConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMenuClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnMenuClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMenuGestao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -258,6 +270,11 @@ public class Menu extends javax.swing.JPanel {
         paiHerdado.dispose();
     }//GEN-LAST:event_btnMenuClientesActionPerformed
 
+    private void btnMenuGestaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuGestaoActionPerformed
+        new GestaoVendas(nomeUsuario, perfil).setVisible(true);
+        paiHerdado.dispose();
+    }//GEN-LAST:event_btnMenuGestaoActionPerformed
+
     public JFrame getPaiHerdado() {
         return paiHerdado;
     }
@@ -286,6 +303,7 @@ public class Menu extends javax.swing.JPanel {
     private com.mycompany.autostockcar.view.componentes.Botao btnMenuClientes;
     private com.mycompany.autostockcar.view.componentes.Botao btnMenuConsulta;
     private com.mycompany.autostockcar.view.componentes.Botao btnMenuDashboard;
+    private com.mycompany.autostockcar.view.componentes.Botao btnMenuGestao;
     private com.mycompany.autostockcar.view.componentes.Botao btnMenuProdutos;
     private com.mycompany.autostockcar.view.componentes.Botao btnMenuVendas;
     private javax.swing.JLabel jLabel1;

@@ -1,5 +1,6 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 C:\Users\cagni\OneDrive\Documentos\GitHub\AutoStockCar-Recreate\AutoStockCar\src\main\java\com\mycompany\autostockcar\modelo\dominio\Vendas.java
 C:\Users\cagni\OneDrive\Documentos\GitHub\AutoStockCar-Recreate\AutoStockCar\src\main\java\com\mycompany\autostockcar\view\componentes\Menu.java
 C:\Users\cagni\OneDrive\Documentos\GitHub\AutoStockCar-Recreate\AutoStockCar\src\main\java\com\mycompany\autostockcar\modelo\dominio\Produtos.java
@@ -56,6 +57,8 @@ C:\Users\cagni\OneDrive\Documentos\GitHub\AutoStockCar-Recreate\AutoStockCar\src
 C:\Users\cagni\OneDrive\Documentos\GitHub\AutoStockCar-Recreate\AutoStockCar\src\main\java\com\mycompany\autostockcar\modelo\dominio\Perfil.java
 C:\Users\cagni\OneDrive\Documentos\GitHub\AutoStockCar-Recreate\AutoStockCar\src\main\java\com\mycompany\autostockcar\modelo\dao\CidadeDao.java
 =======
+=======
+>>>>>>> Stashed changes
 C:\Users\cadue\Documents\GitHub\AutoStockCar-Recreate\AutoStockCar\src\main\java\com\mycompany\autostockcar\modelo\dominio\MovimentacaoDeEstoque.java
 C:\Users\cadue\Documents\GitHub\AutoStockCar-Recreate\AutoStockCar\src\main\java\com\mycompany\autostockcar\view\formulario\VendasF.java
 C:\Users\cadue\Documents\GitHub\AutoStockCar-Recreate\AutoStockCar\src\main\java\com\mycompany\autostockcar\controller\RegistrarVendaController.java
@@ -112,6 +115,7 @@ C:\Users\cadue\Documents\GitHub\AutoStockCar-Recreate\AutoStockCar\src\main\java
 C:\Users\cadue\Documents\GitHub\AutoStockCar-Recreate\AutoStockCar\src\main\java\com\mycompany\autostockcar\view\componentes\Menu.java
 C:\Users\cadue\Documents\GitHub\AutoStockCar-Recreate\AutoStockCar\src\main\java\com\mycompany\autostockcar\view\componentes\CampoDeTexto.java
 C:\Users\cadue\Documents\GitHub\AutoStockCar-Recreate\AutoStockCar\src\main\java\com\mycompany\autostockcar\view\formulario\Usuario.java
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
 =======
 C:\Users\lipem\OneDrive\Documentos\GitHub\AutoStockCar-Recreate\AutoStockCar\src\main\java\com\mycompany\autostockcar\modelo\dominio\Produtos.java
@@ -169,4 +173,6 @@ C:\Users\lipem\OneDrive\Documentos\GitHub\AutoStockCar-Recreate\AutoStockCar\src
 C:\Users\lipem\OneDrive\Documentos\GitHub\AutoStockCar-Recreate\AutoStockCar\src\main\java\com\mycompany\autostockcar\view\formulario\Client.java
 C:\Users\lipem\OneDrive\Documentos\GitHub\AutoStockCar-Recreate\AutoStockCar\src\main\java\com\mycompany\autostockcar\modelo\conexao\ConexaoMysql.java
 C:\Users\lipem\OneDrive\Documentos\GitHub\AutoStockCar-Recreate\AutoStockCar\src\main\java\com\mycompany\autostockcar\view\componentes\Carregar.java
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
