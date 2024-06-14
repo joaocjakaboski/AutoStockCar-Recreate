@@ -1,4 +1,5 @@
 com\mycompany\autostockcar\view\formulario\Client$7.class
+com\mycompany\autostockcar\view\formulario\GestaoVendas$4.class
 com\mycompany\autostockcar\view\formulario\Usuario$2.class
 com\mycompany\autostockcar\modelo\dominio\Clientes.class
 com\mycompany\autostockcar\view\formulario\Categoria$1.class
@@ -60,6 +61,7 @@ com\mycompany\autostockcar\view\formulario\Client.class
 com\mycompany\autostockcar\view\componentes\Menu$2.class
 com\mycompany\autostockcar\view\formulario\Client$3.class
 com\mycompany\autostockcar\view\formulario\Usuario$6.class
+com\mycompany\autostockcar\view\formulario\GestaoVendas$3.class
 com\mycompany\autostockcar\view\formulario\MovimentacaoProd$4.class
 com\mycompany\autostockcar\view\formulario\Cadastrop$12.class
 com\mycompany\autostockcar\view\formulario\Login$5.class
@@ -93,6 +95,7 @@ com\mycompany\autostockcar\view\formulario\Categoria$9.class
 com\mycompany\autostockcar\view\formulario\Cadastrop$7.class
 com\mycompany\autostockcar\view\formulario\Consulta$1.class
 com\mycompany\autostockcar\view\formulario\MovimentacaoProd.class
+com\mycompany\autostockcar\view\formulario\GestaoVendas.class
 com\mycompany\autostockcar\modelo\dominio\InfoMenu.class
 com\mycompany\autostockcar\view\componentes\Botao$1.class
 com\mycompany\autostockcar\view\formulario\VendasF$1.class
@@ -104,6 +107,7 @@ com\mycompany\autostockcar\view\formulario\TabelaUsuarios$6.class
 com\mycompany\autostockcar\view\componentes\ComboBoxPersonalizado$CustomComboBoxRenderer.class
 com\mycompany\autostockcar\view\componentes\Menu.class
 com\mycompany\autostockcar\view\componentes\CampoDeTelefone$1.class
+com\mycompany\autostockcar\view\formulario\GestaoVendas$2.class
 com\mycompany\autostockcar\view\formulario\Fabricante$5.class
 com\mycompany\autostockcar\view\modelo\FabricanteDto.class
 com\mycompany\autostockcar\view\formulario\Usuario$4.class
@@ -119,6 +123,7 @@ com\mycompany\autostockcar\view\formulario\Fabricante$6.class
 com\mycompany\autostockcar\view\formulario\Categoria$10.class
 com\mycompany\autostockcar\view\formulario\Cadastrop$14.class
 com\mycompany\autostockcar\view\formulario\Client$5.class
+com\mycompany\autostockcar\view\formulario\GestaoVendas$1.class
 com\mycompany\autostockcar\view\formulario\Cadastrop$8.class
 com\mycompany\autostockcar\view\formulario\VendasF$5.class
 com\mycompany\autostockcar\view\modelo\ConsultaDto.class
