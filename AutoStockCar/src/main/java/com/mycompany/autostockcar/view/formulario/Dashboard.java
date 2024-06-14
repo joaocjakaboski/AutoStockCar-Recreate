@@ -6,12 +6,13 @@ public class Dashboard extends javax.swing.JFrame {
 
         
     public Dashboard(String nomeUsuario, Perfil perfil) {
+        
         initComponents();
-        setLocationRelativeTo(null);     
+        setLocationRelativeTo(null);
         menu1.setPaiHerdado(this);
         menu1.setNomeUsuario(nomeUsuario);
         menu1.setPerfil(perfil);
-        System.out.println("nomeUsuario: " + nomeUsuario);
+        
     } 
 
     private Dashboard() {

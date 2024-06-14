@@ -6,6 +6,7 @@ import com.mycompany.autostockcar.modelo.dao.EstadoDao;
 import com.mycompany.autostockcar.modelo.dominio.Cidades;
 import com.mycompany.autostockcar.modelo.dominio.Clientes;
 import com.mycompany.autostockcar.modelo.dominio.Estados;
+import com.mycompany.autostockcar.modelo.dominio.Perfil;
 import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -36,11 +37,13 @@ public class Client extends javax.swing.JFrame {
     
     String caminho = System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\autostockcar\\view\\imagens\\";
     
-    public Client() {
+    public Client(String nomeUsuario, Perfil perfil) {
         initComponents();
         setLocationRelativeTo(null);
         jPanel2.setLayout(null);
         menu1.setPaiHerdado(this);
+        menu1.setNomeUsuario(nomeUsuario);
+        menu1.setPerfil(perfil);
         cbxNome.setEditable(true);
         
         btnConsultaPeloCPF.setIcon(new ImageIcon(caminho + "pesquisar.png"));
@@ -381,6 +384,9 @@ public class Client extends javax.swing.JFrame {
         });
         
     }
+
+    public Client() {
+    }
     
     private void desativarCampos() {        
         txBairro.setEnabled(false);
@@ -555,7 +561,7 @@ public class Client extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("CPF/CNPJ");
+        jLabel4.setText("CPF/CNPJ*");
 
         txCpf.setForeground(new java.awt.Color(0, 0, 0));
         txCpf.setDicas("CPF/CNPJ");
@@ -563,7 +569,7 @@ public class Client extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Nome");
+        jLabel5.setText("Nome*");
 
         txNome.setForeground(new java.awt.Color(0, 0, 0));
         txNome.setCor(new java.awt.Color(110, 202, 224));
@@ -576,7 +582,7 @@ public class Client extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Celular");
+        jLabel6.setText("Celular*");
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
@@ -600,15 +606,15 @@ public class Client extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel13.setText("Cidade");
+        jLabel13.setText("Cidade*");
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("Estado");
+        jLabel14.setText("Estado*");
 
         jLabel15.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel15.setText("Rua");
+        jLabel15.setText("Rua*");
 
         txRua.setForeground(new java.awt.Color(0, 0, 0));
         txRua.setDicas("Rua");
@@ -622,7 +628,7 @@ public class Client extends javax.swing.JFrame {
 
         jLabel16.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel16.setText("Bairro");
+        jLabel16.setText("Bairro*");
 
         btnExcluir.setBackground(new java.awt.Color(131, 191, 205));
         btnExcluir.setForeground(new java.awt.Color(0, 0, 0));
