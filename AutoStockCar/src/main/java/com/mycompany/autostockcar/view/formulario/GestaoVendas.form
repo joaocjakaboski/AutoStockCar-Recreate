@@ -135,7 +135,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnSalvar1" min="-2" pref="78" max="-2" attributes="0"/>
-                          <EmptySpace pref="234" max="32767" attributes="0"/>
+                          <EmptySpace pref="232" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

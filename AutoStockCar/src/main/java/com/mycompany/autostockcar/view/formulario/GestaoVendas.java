@@ -40,6 +40,9 @@ public class GestaoVendas extends javax.swing.JFrame {
         menu1.setPaiHerdado(this);
         menu1.setNomeUsuario(nomeUsuario);
         menu1.setPerfil(perfil);
+        txData.setEditable(false);
+        txTotalPagar.setEditable(false);
+        
         this.conexao = new ConexaoMysql();
         try {
             this.CarregarTabelaVenda();

@@ -117,7 +117,7 @@ public class VendasF extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent e) {
             if (cbxNomeCliente.getSelectedItem() != null && !cbxNomeCliente.getSelectedItem().toString().isEmpty()) {
                 try {
-                    ObterIdCliente();
+                    obterIdCliente();
                     txIdCliente.setText(String.valueOf(idCliente)); // txIdCliente é o campo onde o ID será exibido
                 } catch (SQLException error) {
                     JOptionPane.showMessageDialog(null, "Erro ao obter ID do cliente: " + error);
@@ -148,8 +148,12 @@ public class VendasF extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent e) {
             if (cbxNomeProduto.getSelectedItem() != null && !cbxNomeProduto.getSelectedItem().toString().isEmpty()) {
                 try {
-                    ObterIdProduto();
+                    obterIdProduto();
                     txIdProduto.setText(String.valueOf(idProduto)); // txIdCliente é o campo onde o ID será exibido
+                    double quantidadeDisponivelDouble = obterQuantidadeDisponivel(idProduto);
+                int quantidadeDisponivel = (int) Math.round(quantidadeDisponivelDouble);
+                // Atualiza o JTextField com a quantidade convertida
+                txQuantidadeDisponivel.setText(String.valueOf(quantidadeDisponivel)); 
                 } catch (SQLException error) {
                     JOptionPane.showMessageDialog(null, "Erro ao obter ID do cliente: " + error);
                 }
@@ -173,7 +177,7 @@ public class VendasF extends javax.swing.JFrame {
         modeloDadosProdutos.addColumn("Valor Parcial");
         modeloDadosProdutos.addColumn("Desconto");
         modeloDadosProdutos.addColumn("SubTotal");
-        //modeloDadosProdutos.addColumn("Valor Total");
+        modeloDadosProdutos.addColumn("Valor Total");
 
         this.jtProdutos.setModel(modeloDadosProdutos);
     }
@@ -229,12 +233,14 @@ public class VendasF extends javax.swing.JFrame {
         txTotal = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         btnSalvar = new com.mycompany.autostockcar.view.componentes.Botao();
         jLabel1 = new javax.swing.JLabel();
-        txQuantidade = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
+        txQuantidadeDisponivel = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         cbxNomeCliente = new com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado();
         btnAdicionar = new com.mycompany.autostockcar.view.componentes.Botao();
         cbxNomeProduto = new com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado();
         btnAplicar = new com.mycompany.autostockcar.view.componentes.Botao();
         btnSalvar1 = new com.mycompany.autostockcar.view.componentes.Botao();
+        txQuantidade = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
+        jLabel2 = new javax.swing.JLabel();
         menu1 = new com.mycompany.autostockcar.view.componentes.Menu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -442,11 +448,16 @@ public class VendasF extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(30, 30, 30));
         jLabel1.setText("Qtd:");
 
-        txQuantidade.setActionCommand("");
-        txQuantidade.setCor(new java.awt.Color(131, 191, 205));
-        txQuantidade.setDicas("");
-        txQuantidade.setMinimumSize(new java.awt.Dimension(64, 30));
-        txQuantidade.setPreferredSize(new java.awt.Dimension(143, 30));
+        txQuantidadeDisponivel.setActionCommand("");
+        txQuantidadeDisponivel.setCor(new java.awt.Color(131, 191, 205));
+        txQuantidadeDisponivel.setDicas("");
+        txQuantidadeDisponivel.setMinimumSize(new java.awt.Dimension(64, 30));
+        txQuantidadeDisponivel.setPreferredSize(new java.awt.Dimension(143, 30));
+        txQuantidadeDisponivel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txQuantidadeDisponivelActionPerformed(evt);
+            }
+        });
 
         cbxNomeCliente.setForeground(new java.awt.Color(0, 0, 0));
         cbxNomeCliente.setToolTipText("");
@@ -486,12 +497,22 @@ public class VendasF extends javax.swing.JFrame {
             }
         });
 
+        txQuantidade.setActionCommand("");
+        txQuantidade.setCor(new java.awt.Color(131, 191, 205));
+        txQuantidade.setDicas("");
+        txQuantidade.setMinimumSize(new java.awt.Dimension(64, 30));
+        txQuantidade.setPreferredSize(new java.awt.Dimension(143, 30));
+
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(30, 30, 30));
+        jLabel2.setText("Qtd Disponivel:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -529,12 +550,16 @@ public class VendasF extends javax.swing.JFrame {
                                             .addComponent(cbxNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(18, 18, 18)
                                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(txQuantidadeDisponivel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(39, 39, 39)
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                                     .addComponent(txQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGap(18, 18, 18)
                                                     .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                    .addGap(128, 128, 128)))
+                                    .addGap(45, 45, 45)))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(CodigoCliente4)
@@ -569,13 +594,15 @@ public class VendasF extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(CodigoCliente1)
                             .addComponent(CodigoCliente5)
-                            .addComponent(jLabel1))
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txIdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbxNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txQuantidadeDisponivel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(67, 67, 67)
                         .addComponent(CodigoCliente4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -660,8 +687,8 @@ public class VendasF extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
     try {
-        ObterIdCliente(); // Chama o método para buscar o cliente pelo ID antes de salvar
-        ObterIdProduto(); // Chama o método para buscar o ID do produto antes de salvar
+        obterIdCliente(); // Chama o método para buscar o cliente pelo ID antes de salvar
+        obterIdProduto(); // Chama o método para buscar o ID do produto antes de salvar
         // Continue com as operações de salvar os dados da venda
         Vendas venda = new Vendas(); 
         ItensVenda itenVenda = new ItensVenda();
@@ -673,7 +700,7 @@ public class VendasF extends javax.swing.JFrame {
         if (!cbxNomeCliente.getSelectedItem().equals("Selecione cliente:")) {
             if (listaProdutos.size() > 0) {
                 try {
-                    this.ObterIdCliente();
+                    this.obterIdCliente();
                     
                     // Verificar se o idCliente é válido
                     if (idCliente == 0) {
@@ -711,7 +738,7 @@ public class VendasF extends javax.swing.JFrame {
                                 txTotal.setText("0.0");
                                 auxIdDetalhe = 1;
                                 
-                                this.RestaurarStock(elemento.getIdProduto(), elemento.getQuantidadeItensVenda());
+                                this.restaurarStock(elemento.getIdProduto(), elemento.getQuantidadeItensVenda());
                             } else {
                                 JOptionPane.showMessageDialog(null, "Erro ao guardar detalhes da venda!");
                             }
@@ -734,15 +761,27 @@ public class VendasF extends javax.swing.JFrame {
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "Erro ao buscar cliente por ID: " + e.getMessage());
     }
+        limparCampos();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
+    private void limparCampos() {
+    cbxNomeCliente.setSelectedIndex(0); // Reseta o combo box do cliente
+    cbxNomeProduto.setSelectedIndex(0); // Reseta o combo box do produto
+    txIdCliente.setText("");
+    txSubTotal.setText("");
+    txDesconto.setText("");
+    txTotal.setText("");
+    txQuantidade.setText("");
+    txQuantidadeDisponivel.setText("");
+}
+    
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         String combo = this.cbxNomeProduto.getSelectedItem().toString();
     if (combo.equalsIgnoreCase("Selecione produto:")) {
         JOptionPane.showMessageDialog(null, "Selecione um produto");
     } else {
-        if (!txQuantidade.getText().isEmpty()) {
-            if (validar(txQuantidade.getText())) {
+        if (!txQuantidadeDisponivel.getText().isEmpty()) {
+            if (validar(txQuantidadeDisponivel.getText())) {
                 int quantidade = Integer.parseInt(txQuantidade.getText());
                 if (quantidade > 0) {
                     String produtoSelecionado = cbxNomeProduto.getSelectedItem().toString();
@@ -769,8 +808,8 @@ public class VendasF extends javax.swing.JFrame {
                         listaProdutos.add(produto);
                         JOptionPane.showMessageDialog(null, "Produto Agregado");
                         auxIdDetalhe++;
-                        txQuantidade.setText("");
-                        this.CalcularTotalPagar();
+                        txQuantidadeDisponivel.setText("");
+                        this.calcularTotalPagar();
                         
                         txIdProduto.setText("");
                         cbxNomeProduto.setSelectedItem("");
@@ -803,7 +842,7 @@ public class VendasF extends javax.swing.JFrame {
         cbxNomeCliente.setSelectedItem("");
         txIdProduto.setText("");
         cbxNomeProduto.setSelectedItem("");
-        txQuantidade.setText("");
+        txQuantidadeDisponivel.setText("");
         txSubTotal.setText("0.0");
         txDesconto.setText("0.0");
         txTotal.setText("0.0");
@@ -826,7 +865,7 @@ public class VendasF extends javax.swing.JFrame {
         switch (opcao) {
             case 0:
                 listaProdutos.remove(idArrayList -1);
-                this.CalcularTotalPagar();
+                this.calcularTotalPagar();
                 this.listaTabelaProdutos();
                 break;
             case 1:
@@ -839,6 +878,10 @@ public class VendasF extends javax.swing.JFrame {
         this.cancelarOperacao();
     }//GEN-LAST:event_btnSalvar1ActionPerformed
 
+    private void txQuantidadeDisponivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txQuantidadeDisponivelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txQuantidadeDisponivelActionPerformed
+
     private boolean validar(String valor) {
         try {
             int num = Integer.parseInt(valor);
@@ -848,7 +891,7 @@ public class VendasF extends javax.swing.JFrame {
         }
     }
 
-    private void CalcularTotalPagar(){
+    private void calcularTotalPagar(){
        BigDecimal subTotalGeneral = BigDecimal.ZERO;
        BigDecimal descontoGeneral = BigDecimal.ZERO;
        BigDecimal totalPagarGeneral = BigDecimal.ZERO;
@@ -887,7 +930,7 @@ public class VendasF extends javax.swing.JFrame {
             }
 
             // Atualiza os campos de totalizadores
-            CalcularTotalPagar();
+            calcularTotalPagar();
 
             // Atualiza a tabela para refletir os novos valores
             listaTabelaProdutos();
@@ -906,7 +949,7 @@ public class VendasF extends javax.swing.JFrame {
         }
 
         // Atualiza os campos de totalizadores
-        CalcularTotalPagar();
+        calcularTotalPagar();
 
         // Atualiza a tabela para refletir os novos valores
         listaTabelaProdutos();
@@ -922,14 +965,14 @@ public class VendasF extends javax.swing.JFrame {
         }
 
         // Atualiza os campos de totalizadores
-        CalcularTotalPagar();
+        calcularTotalPagar();
 
         // Atualiza a tabela para refletir os novos valores
         listaTabelaProdutos();
     }
 }
     
-    private void ObterIdCliente() throws SQLException {
+    private void obterIdCliente() throws SQLException {
     String clienteSelecionado = cbxNomeCliente.getSelectedItem().toString();
     String sql = "SELECT IdCliente FROM clientes WHERE NomeCliente = ?";
     
@@ -956,7 +999,7 @@ public class VendasF extends javax.swing.JFrame {
     }
 }
     
-    private void ObterIdProduto() throws SQLException {
+    private void obterIdProduto() throws SQLException {
     String produtoSelecionado = cbxNomeProduto.getSelectedItem().toString();
     String sql = "SELECT IdProduto FROM produtos WHERE NomeProduto = ?";
     
@@ -1001,7 +1044,7 @@ public class VendasF extends javax.swing.JFrame {
         // Se o texto não é um número válido, ignore a atualização
     }
     }
-    private void RestaurarStock(int idProduto , int quantidade){
+    private void restaurarStock(int idProduto , int quantidade){
         int quantidadeBanco = 0;
         try{
         String sql = "select IdProduto, QuantidadeDisponivel from produtos where IdProduto ='" + idProduto + "'";
@@ -1028,6 +1071,26 @@ public class VendasF extends javax.swing.JFrame {
             System.out.println("Erro ao alterar quantidade " + e);
         }
     }
+    
+    private double obterQuantidadeDisponivel(int idProduto) throws SQLException {
+    double quantidadeDisponivel = 0.0;
+    String sql = "SELECT QuantidadeDisponivel FROM produtos WHERE IdProduto = ?";
+    
+    try (PreparedStatement stmt = conexao.obterConexao().prepareStatement(sql)) {
+        stmt.setInt(1, idProduto);
+        try (ResultSet resultSet = stmt.executeQuery()) {
+            if (resultSet.next()) {
+                quantidadeDisponivel = resultSet.getDouble("QuantidadeDisponivel");
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        throw new SQLException("Erro ao obter quantidade disponível do produto: " + e.getMessage());
+    }
+    
+    return quantidadeDisponivel;
+}
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1083,6 +1146,7 @@ public class VendasF extends javax.swing.JFrame {
     private com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado cbxNomeCliente;
     private com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado cbxNomeProduto;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -1096,6 +1160,7 @@ public class VendasF extends javax.swing.JFrame {
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txIdCliente;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txIdProduto;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txQuantidade;
+    private com.mycompany.autostockcar.view.componentes.CampoDeTexto txQuantidadeDisponivel;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txSubTotal;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txTotal;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto txcodigocliente4;

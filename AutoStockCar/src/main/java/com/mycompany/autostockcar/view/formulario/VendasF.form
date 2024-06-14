@@ -116,7 +116,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="49" max="32767" attributes="0"/>
+                          <EmptySpace pref="11" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jPanel3" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -163,6 +163,11 @@
                                                       <Component id="cbxNomeProduto" min="-2" pref="279" max="-2" attributes="0"/>
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="txQuantidadeDisponivel" min="-2" pref="79" max="-2" attributes="0"/>
+                                                          <Component id="jLabel2" min="-2" pref="124" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
                                                           <Component id="jLabel1" min="-2" pref="37" max="-2" attributes="0"/>
                                                           <Group type="102" alignment="0" attributes="0">
                                                               <Component id="txQuantidade" min="-2" pref="79" max="-2" attributes="0"/>
@@ -172,7 +177,7 @@
                                                       </Group>
                                                   </Group>
                                               </Group>
-                                              <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -220,13 +225,15 @@
                                       <Component id="CodigoCliente1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="CodigoCliente5" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="txIdProduto" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                       <Component id="cbxNomeProduto" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="txQuantidade" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="txQuantidadeDisponivel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                       <Component id="btnAdicionar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="txQuantidade" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                                   <Component id="CodigoCliente4" min="-2" max="-2" attributes="0"/>
@@ -701,7 +708,7 @@
                     <Property name="text" type="java.lang.String" value="Qtd:"/>
                   </Properties>
                 </Component>
-                <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="txQuantidade">
+                <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="txQuantidadeDisponivel">
                   <Properties>
                     <Property name="actionCommand" type="java.lang.String" value=""/>
                     <Property name="cor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -715,6 +722,9 @@
                       <Dimension value="[143, 30]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txQuantidadeDisponivelActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado" name="cbxNomeCliente">
                   <Properties>
@@ -794,6 +804,32 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvar1ActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="txQuantidade">
+                  <Properties>
+                    <Property name="actionCommand" type="java.lang.String" value=""/>
+                    <Property name="cor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="cd" green="bf" red="83" type="rgb"/>
+                    </Property>
+                    <Property name="dicas" type="java.lang.String" value=""/>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[64, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[143, 30]"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel2">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="15" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="1e" green="1e" red="1e" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Qtd Disponivel:"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
