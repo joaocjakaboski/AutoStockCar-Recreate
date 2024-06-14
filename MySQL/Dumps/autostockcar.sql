@@ -27,7 +27,7 @@ CREATE TABLE `categorias` (
   `NomeCategoria` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `DescricaoCategoria` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`IdCategoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `categorias` (
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
-INSERT INTO `categorias` VALUES (1,'Limpadores','');
+INSERT INTO `categorias` VALUES (1,'Limpadores',''),(2,'Vidros',''),(3,'Vidros','');
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,7 +89,7 @@ CREATE TABLE `clientes` (
   UNIQUE KEY `CPFCliente` (`CPFCliente`),
   KEY `FK_IDCIDADE_CLIENTES` (`IdCidade`),
   CONSTRAINT `FK_IDCIDADE_CLIENTES` FOREIGN KEY (`IdCidade`) REFERENCES `cidades` (`IdCidade`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +98,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1,'Cliente Teste','(54) 97070-7070','','Rua Teste','Bairro Teste','12312312312','','2024-06-14 18:39:48',3897);
+INSERT INTO `clientes` VALUES (1,'Cliente Teste','(54) 97070-7070','','Rua Teste','Bairro Teste','12312312312','','2024-06-14 18:39:48',3897),(2,'Cliente Teste 2','(54) 99966-2048','','Rua de Teste','Bairro para Teste','02453941097','','2024-06-14 20:01:22',3777),(4,'Cliente dono do Fusca','(54) 97171-7171','','Rua do Cliente, 500','Bairro do Cliente','12312312320','','2024-06-14 20:15:12',3897);
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,7 +170,7 @@ CREATE TABLE `fabricantes` (
   UNIQUE KEY `CNPJFabricante` (`CNPJFabricante`),
   KEY `FK_IDCIDADE_FABRICANTES` (`IdCidade`),
   CONSTRAINT `FK_IDCIDADE_FABRICANTES` FOREIGN KEY (`IdCidade`) REFERENCES `cidades` (`IdCidade`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,7 +179,7 @@ CREATE TABLE `fabricantes` (
 
 LOCK TABLES `fabricantes` WRITE;
 /*!40000 ALTER TABLE `fabricantes` DISABLE KEYS */;
-INSERT INTO `fabricantes` VALUES (1,'Fabricante 1','fabricante@email.com.br','(54) 97171-7171','Rua do Fabricante, 280','12312312312311','',5179);
+INSERT INTO `fabricantes` VALUES (1,'Fabricante 1','fabricante@email.com.br','(54) 97171-7171','Rua do Fabricante, 280','12312312312311','',5179),(2,'Fabricante 2','fabricante2@email.com','(54) 97070-7070','Rua do Fabricante 2, 456','1321221231212','',3839);
 /*!40000 ALTER TABLE `fabricantes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -205,7 +205,7 @@ CREATE TABLE `itensvenda` (
   KEY `FK_IDPRODUTO_ITENSVENDA` (`IdProduto`),
   CONSTRAINT `FK_IDPRODUTO_ITENSVENDA` FOREIGN KEY (`IdProduto`) REFERENCES `produtos` (`IdProduto`),
   CONSTRAINT `FK_IDVENDA_ITENSVENDA` FOREIGN KEY (`IdVenda`) REFERENCES `vendas` (`IdVenda`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -214,6 +214,7 @@ CREATE TABLE `itensvenda` (
 
 LOCK TABLES `itensvenda` WRITE;
 /*!40000 ALTER TABLE `itensvenda` DISABLE KEYS */;
+INSERT INTO `itensvenda` VALUES (1,25,67.20,1680.00,20.00,1660.00,100.00,1,3),(2,10,67.20,672.00,50.00,622.00,100.00,2,3),(3,5,67.20,336.00,0.00,336.00,100.00,3,3),(4,5,67.20,336.00,0.00,336.00,100.00,4,3),(5,2,67.20,134.40,0.00,134.40,100.00,5,3),(6,2,52.50,105.00,0.00,105.00,100.00,6,4),(7,1,67.20,67.20,0.00,67.20,100.00,6,3),(8,1,52.50,52.50,2.14,50.36,100.00,7,4),(9,1,315.00,315.00,12.86,302.14,100.00,7,5),(10,5,52.50,262.50,20.00,242.50,100.00,8,4);
 /*!40000 ALTER TABLE `itensvenda` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -274,7 +275,7 @@ CREATE TABLE `produtos` (
   KEY `FK_IDCATEGORIA_PRODUTOS` (`IdCategoria`),
   CONSTRAINT `FK_IDCATEGORIA_PRODUTOS` FOREIGN KEY (`IdCategoria`) REFERENCES `categorias` (`IdCategoria`),
   CONSTRAINT `FK_IDFABRICANTE_PRODUTOS` FOREIGN KEY (`IdFabricante`) REFERENCES `fabricantes` (`IdFabricante`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -283,7 +284,7 @@ CREATE TABLE `produtos` (
 
 LOCK TABLES `produtos` WRITE;
 /*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
-INSERT INTO `produtos` VALUES (2,'Limpador Bosch','1234','',34.00,61.04,'2','a',12,1,1,NULL);
+INSERT INTO `produtos` VALUES (2,'Limpador Bosch','1234','',34.00,61.04,'2','a',12,1,1,NULL),(3,'Limpadores Stihl','1234','',42.00,67.20,'2','a',12,1,1,2),(4,'limpador Fusca','5025','',35.00,52.50,'1','a',5,1,1,68),(5,'Parabrisa Fusca','21354','',200.00,315.00,'1','b',5,2,2,4);
 /*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -300,7 +301,7 @@ CREATE TABLE `usuarios` (
   `SenhaUsuario` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `AdmCategoria` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT 'PADRAO',
   PRIMARY KEY (`IdUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -309,7 +310,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (2,'user','$2a$10$DLqHmXH/bjTuIX7k9LflkuIuIwqzsQNSQoyTaW84GKO2okyIaKYuy','ADMIN');
+INSERT INTO `usuarios` VALUES (2,'user','$2a$10$DLqHmXH/bjTuIX7k9LflkuIuIwqzsQNSQoyTaW84GKO2okyIaKYuy','ADMIN'),(3,'vendedor','$2a$10$8G78EW0.NCuyYUXN0LK43umTHU8EwulpHvv/lq0GqgOT6NEwA9QKe','PADRAO');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -328,7 +329,7 @@ CREATE TABLE `vendas` (
   PRIMARY KEY (`IdVenda`),
   KEY `FK_IDCLIENTE_VENDAS` (`IdCliente`),
   CONSTRAINT `FK_IDCLIENTE_VENDAS` FOREIGN KEY (`IdCliente`) REFERENCES `clientes` (`IdCliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -337,6 +338,7 @@ CREATE TABLE `vendas` (
 
 LOCK TABLES `vendas` WRITE;
 /*!40000 ALTER TABLE `vendas` DISABLE KEYS */;
+INSERT INTO `vendas` VALUES (1,1660.00,'2024-06-14',1),(2,622.00,'2024-06-14',1),(3,336.00,'2024-06-14',1),(4,336.00,'2024-06-14',1),(5,134.40,'2024-06-14',2),(6,172.20,'2024-06-14',2),(7,352.50,'2024-06-14',4),(8,242.50,'2024-06-14',4);
 /*!40000 ALTER TABLE `vendas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -349,4 +351,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-14 19:20:01
+-- Dump completed on 2024-06-14 20:36:56
