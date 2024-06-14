@@ -16,14 +16,14 @@ import javax.swing.SwingUtilities;
 
 public class Categoria extends javax.swing.JFrame {
     private CategoriaDao categoriaDao;
-   public Categoria() {
+
+    public Categoria() {
         initComponents();
         setLocationRelativeTo(null);
-        CbxNome.setEditable(true);
-        
+
         // Inicializar categoriaDao
         categoriaDao = new CategoriaDao();
-        
+
         BtNovo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -42,7 +42,7 @@ public class Categoria extends javax.swing.JFrame {
                 BotaoPesquisar();
             }
         });
-        CbxNome.getEditor().getEditorComponent().addFocusListener(new FocusAdapter() {
+      /*  CbxNome.getEditor().getEditorComponent().addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
                 CbxNome.setPopupVisible(true);
@@ -57,44 +57,51 @@ public class Categoria extends javax.swing.JFrame {
         CbxNome.getEditor().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                List<String> items = new ArrayList<>();
                 String currentText = (String) (CbxNome.getEditor().getItem());
                 try {
-                    ResultSet result = (ResultSet) categoriaDao.buscarCategoriaPeloNome(currentText);
+                    List<String> items = categoriaDao.buscarCategoriaPeloNome(currentText);
                     CbxNome.removeAllItems();
                     CbxNome.addItem("");
-                    while (result.next()) {
-                        items.add(result.getString("NomeCliente"));
-                    }
-                    Collections.sort(items);
                     for (String item : items) {
                         CbxNome.addItem(item);
                     }
-                } catch (SQLException error) {
+                } catch (Exception error) {
                     JOptionPane.showMessageDialog(null, "Erro ao carregar dados: " + error);
                 }
                 SwingUtilities.invokeLater(() -> CbxNome.setPopupVisible(true));
             }
         });
+        
+        CbxNome.getEditor().getEditorComponent().addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+                    String selectedCategory = (String) CbxNome.getEditor().getItem();
+                    Integer categoryId = categoriaDao.buscarCodigoPeloNome(selectedCategory);
+                    if (categoryId != null) {
+                        TxtCodigo.setText(categoryId.toString());
+                    } else {
+                        TxtCodigo.setText("");
+                        JOptionPane.showMessageDialog(null, "Categoria não encontrada.");
+                    }
+                }
+            }
+        });*/
     }
 
     public void LimparCampos() {
+        TxtNome.setText("");
         TxtDescricao.setText("");
         TxtCodigo.setText("");
     }
 
-    public void BotaoNovo() {
+     public void BotaoNovo() {
         try {
-            String nomeCategoria = (String) CbxNome.getSelectedItem();
-            // Adicionando mensagens de depuração
-            System.out.println("Nome da Categoria Selecionada: " + nomeCategoria);
-            if (nomeCategoria != null && !nomeCategoria.trim().isEmpty()) {
-                categoriaDao.setNomeCategoria(nomeCategoria);
+            CategoriaDao categoriaDao = new CategoriaDao();
+                categoriaDao.setNomeCategoria(TxtNome.getText());
                 categoriaDao.setDescricao(TxtDescricao.getText());
                 categoriaDao.salvar();
-            } else {
-                JOptionPane.showMessageDialog(null, "Por favor, insira um nome de categoria válido.");
-            }
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao salvar a categoria no banco de dados");
             e.printStackTrace();
@@ -104,6 +111,7 @@ public class Categoria extends javax.swing.JFrame {
     }
 
     public void BotaoExcluir() {
+        CategoriaDao categoriaDao = new CategoriaDao();
         try {
             int idCategoria = Integer.parseInt(TxtCodigo.getText());
             categoriaDao.excluir(idCategoria);
@@ -120,7 +128,7 @@ public class Categoria extends javax.swing.JFrame {
             Categorias categoriabusca = categoriaDao.buscarPorId(idCategoria);
 
             if (categoriabusca != null) {
-                CbxNome.addItem(categoriabusca.getNomeCategoria());
+                TxtNome.setText(categoriabusca.getNomeCategoria());
                 TxtDescricao.setText(categoriabusca.getDescricaoCategoria());
             } else {
                 JOptionPane.showMessageDialog(null, "Nenhuma categoria encontrada com o ID especificado.");
@@ -148,7 +156,7 @@ public class Categoria extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         TxtDescricao = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         BtNovo1 = new com.mycompany.autostockcar.view.componentes.Botao();
-        CbxNome = new com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado();
+        TxtNome = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -261,6 +269,12 @@ public class Categoria extends javax.swing.JFrame {
             }
         });
 
+        TxtNome.setForeground(new java.awt.Color(0, 0, 0));
+        TxtNome.setCor(new java.awt.Color(110, 202, 224));
+        TxtNome.setDicas("Nome Categotia");
+        TxtNome.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        TxtNome.setPreferredSize(new java.awt.Dimension(180, 30));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -288,7 +302,7 @@ public class Categoria extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(CbxNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(TxtNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -303,7 +317,7 @@ public class Categoria extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CbxNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -413,9 +427,9 @@ public class Categoria extends javax.swing.JFrame {
     private com.mycompany.autostockcar.view.componentes.Botao BtNovo;
     private com.mycompany.autostockcar.view.componentes.Botao BtNovo1;
     private com.mycompany.autostockcar.view.componentes.Botao BtPesquisar;
-    private com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado CbxNome;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto TxtCodigo;
     private com.mycompany.autostockcar.view.componentes.CampoDeTexto TxtDescricao;
+    private com.mycompany.autostockcar.view.componentes.CampoDeTexto TxtNome;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

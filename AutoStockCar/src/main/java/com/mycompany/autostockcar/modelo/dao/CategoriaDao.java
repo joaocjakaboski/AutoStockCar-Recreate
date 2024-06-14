@@ -20,6 +20,7 @@ public class CategoriaDao {
     public CategoriaDao() {
         this.conexao = new ConexaoMysql();
     }
+    
 
     public void salvar() {
         String sql = "INSERT INTO categorias(NomeCategoria, DescricaoCategoria) VALUES(?, ?)";
@@ -77,7 +78,7 @@ public class CategoriaDao {
         return null;
     }
 
-    public List<Categorias> buscarPeloNome() {
+   /* public List<Categorias> buscarPeloNome() {
         String sql = "SELECT * FROM categorias";
         List<Categorias> categorias = new ArrayList<>();
         try (Connection connection = conexao.obterConexao();
@@ -88,25 +89,48 @@ public class CategoriaDao {
                 categorias.add(getCategorias(result));
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao buscar categorias pelo nome");
+            JOptionPane.showMessageDialog(null, "Erro ao buscar pelo nome: " + e.getMessage());
             e.printStackTrace();
         }
         return categorias;
     }
 
-    public ResultSet buscarCategoriaPeloNome(String nomeCategoria) {
-        String sql = "SELECT * FROM categorias WHERE NomeCategoria = ?";
+    public List<String> buscarCategoriaPeloNome(String nomeCategoria) {
+        String sql = "SELECT NomeCategoria FROM categorias WHERE NomeCategoria LIKE ?";
+        List<String> categorias = new ArrayList<>();
+        try (Connection connection = conexao.obterConexao();
+             PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+            stmt.setString(1, "%" + nomeCategoria + "%");
+            try (ResultSet result = stmt.executeQuery()) {
+                while (result.next()) {
+                    categorias.add(result.getString("NomeCategoria"));
+                }
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar categoria pelo nome: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return categorias;
+    }
+    
+        public Integer buscarCodigoPeloNome(String nomeCategoria) {
+        String sql = "SELECT IdCategoria FROM categorias WHERE NomeCategoria = ?";
         try (Connection connection = conexao.obterConexao();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
 
             stmt.setString(1, nomeCategoria);
-            return stmt.executeQuery();
+            try (ResultSet result = stmt.executeQuery()) {
+                if (result.next()) {
+                    return result.getInt("IdCategoria");
+                }
+            }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao buscar categoria pelo nome");
+            JOptionPane.showMessageDialog(null, "Erro ao buscar código pelo nome: " + e.getMessage());
             e.printStackTrace();
         }
         return null;
-    }
+    }*/
 
     private Categorias getCategorias(ResultSet result) throws SQLException {
         Categorias categoria = new Categorias();

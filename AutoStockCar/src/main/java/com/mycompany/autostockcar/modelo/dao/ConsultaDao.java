@@ -3,6 +3,7 @@ package com.mycompany.autostockcar.modelo.dao;
 import com.mycompany.autostockcar.modelo.conexao.Conexao;
 import com.mycompany.autostockcar.modelo.conexao.ConexaoMysql;
 import com.mycompany.autostockcar.modelo.dominio.Categorias;
+import com.mycompany.autostockcar.modelo.dominio.Clientes;
 import com.mycompany.autostockcar.modelo.dominio.Estoques;
 import com.mycompany.autostockcar.modelo.dominio.Fabricantes;
 import com.mycompany.autostockcar.modelo.dominio.Produtos;
@@ -55,6 +56,56 @@ public class ConsultaDao {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao buscar produto por ID \n" + ex.getMessage());
             ex.printStackTrace();
+        }
+        return null;
+    }
+    
+        public Produtos buscarProdutoPeloNome(String consulta) {
+        
+        String sql = String.format("SELECT * FROM produtos WHERE NomeProduto = '%s'", consulta);
+        
+        try {
+            ResultSet result = conexao.obterConexao().prepareStatement(sql).executeQuery();
+            
+            if (result.next()) {
+                return getProdutos(result);
+            }
+        }catch (SQLException e) {
+            System.out.println(String.format("Error: ", e.getMessage()));
+        }
+        
+        return null;
+    }
+    
+    public ResultSet buscarProdutoNomePeloNome(String consulta) {
+        String sql = String.format("SELECT NomeProduto FROM produtos WHERE NomeProduto LIKE '%%%s%%'", consulta);
+
+        try {
+            Connection connection = conexao.obterConexao();
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt = conexao.obterConexao().prepareCall(sql);
+            return stmt.executeQuery();
+
+        }catch (SQLException e) {
+            System.out.println(String.format("Error: ", e.getMessage()));
+            return null;
+        } 
+    }
+    
+        public Integer buscarCodigoPeloNome(String nomeProduto) {
+        String sql = "SELECT IdProduto FROM produtos WHERE NomeProduto = ?";
+        try (Connection connection = conexao.obterConexao();
+             PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+            stmt.setString(1, nomeProduto);
+            try (ResultSet result = stmt.executeQuery()) {
+                if (result.next()) {
+                    return result.getInt("IdProduto");
+                }
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar código pelo nome: " + e.getMessage());
+            e.printStackTrace();
         }
         return null;
     }

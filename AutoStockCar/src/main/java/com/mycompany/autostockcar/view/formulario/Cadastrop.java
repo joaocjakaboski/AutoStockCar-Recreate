@@ -86,6 +86,7 @@ public class Cadastrop extends javax.swing.JFrame {
         txvalorvenda.setText("");
         txPrateleira.setText("");
         txgaveta.setText("");
+        txvalorvendasemimposto.setText("");
         txfabricante.setText("");
         txidestoque.setText("");
         txcategoria.setText("");
@@ -135,8 +136,6 @@ public class Cadastrop extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Por favor, insira um valor numérico válido para os campos numéricos.");
         e.printStackTrace(); // Imprime o rastreamento da pilha para ajudar na depuração
         }
-       
-       limparCampos();
     }
     
     public void BotaoExcluir(){
@@ -218,6 +217,7 @@ public class Cadastrop extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Erro inesperado: " + ex.getMessage());
         ex.printStackTrace();
     }
+     BotaoPesquisar();
 }
     
     
@@ -533,9 +533,7 @@ public class Cadastrop extends javax.swing.JFrame {
                                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txvalorcusto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(ValorCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addGap(0, 0, 0)
-                                                .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(100, 100, 100)))
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txnome, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
