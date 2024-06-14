@@ -1,13 +1,10 @@
 package com.mycompany.autostockcar.view.formulario;
 
 import com.mycompany.autostockcar.modelo.dao.ConsultaDao;
-<<<<<<< Updated upstream
 import com.mycompany.autostockcar.modelo.dominio.Cidades;
 import com.mycompany.autostockcar.modelo.dominio.Clientes;
 import com.mycompany.autostockcar.modelo.dominio.Estados;
-=======
 import com.mycompany.autostockcar.modelo.dominio.Perfil;
->>>>>>> Stashed changes
 import com.mycompany.autostockcar.modelo.dominio.Produtos;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
