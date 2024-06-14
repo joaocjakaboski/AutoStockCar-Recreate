@@ -5531,6 +5531,7 @@ CREATE TABLE Produtos (
     IdFabricante INT NOT NULL,
     IdEstoque INT NOT NULL,
     IdCategoria INT NOT NULL,
+    QuantidadeDisponivel INT NOT NULL,
     CONSTRAINT PRIMARY KEY (IdProduto),
     CONSTRAINT FK_IDFABRICANTE_PRODUTOS FOREIGN KEY (IdFabricante) REFERENCES Fabricantes(IdFabricante),
     CONSTRAINT FK_IDESTOQUE_PRODUTOS FOREIGN KEY (IdEstoque) REFERENCES Estoques(IdEstoque),
