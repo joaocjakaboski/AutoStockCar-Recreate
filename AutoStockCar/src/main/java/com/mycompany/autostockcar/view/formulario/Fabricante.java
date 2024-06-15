@@ -31,7 +31,7 @@ public class Fabricante extends javax.swing.JFrame {
     private Color corCampoAtivado = new Color (110, 202, 224);
     int id;
 
-    String caminho = System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\autostockcar\\view\\imagens\\";
+    String caminho = "/com/mycompany/autostockcar/view/imagens/";
     
     public Fabricante() {
         initComponents();
@@ -40,8 +40,8 @@ public class Fabricante extends javax.swing.JFrame {
         jPanel2.setLayout(null);
         cbxNome.setEditable(true);
         
-        btnConsultaPeloNome.setIcon(new ImageIcon(caminho + "pesquisar.png"));
-        btnAtualizar.setIcon(new ImageIcon(caminho + "atualizar.png"));
+        btnConsultaPeloNome.setIcon(new ImageIcon(getClass().getResource(caminho + "pesquisar.png")));
+        btnAtualizar.setIcon(new ImageIcon(getClass().getResource(caminho + "atualizar.png")));
         btnSalvar.setVisible(false);
         btnExcluir.setEnabled(false);
         btnExcluir.setBackground(corCampoDesativado);

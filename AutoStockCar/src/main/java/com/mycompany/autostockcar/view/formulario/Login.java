@@ -25,15 +25,15 @@ public class Login extends javax.swing.JFrame {
     private Carregar carregar;
     private MensagemUtil mensagemUtil;
     
-    String caminho = System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\autostockcar\\view\\imagens\\";
+    String caminho = "/com/mycompany/autostockcar/view/imagens/";
 
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
         setBackground(new Color(0,0,0,0));
-        btnLoginLogin.setIcon(new ImageIcon(caminho + "login_16.png"));
-        txLoginUsuario.setPrefixoIcon(new ImageIcon(caminho + "mail.png"));
-        txLoginSenha.setPrefixoIcon(new ImageIcon(caminho + "pass.png"));
+        btnLoginLogin.setIcon(new ImageIcon(getClass().getResource(caminho + "login_16.png")));
+        txLoginUsuario.setPrefixoIcon(new ImageIcon(getClass().getResource(caminho + "mail.png")));
+        txLoginSenha.setPrefixoIcon(new ImageIcon(getClass().getResource(caminho + "pass.png")));
         
         
         carregar = new Carregar();

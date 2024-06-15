@@ -24,7 +24,7 @@ public class Cadastrop extends javax.swing.JFrame {
     
     private MigLayout layout;
     
-    String caminho = System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\autostockcar\\view\\imagens\\";
+    String caminho = "/com/mycompany/autostockcar/view/imagens/";
    
 
     public Cadastrop(String nomeUsuario, Perfil perfil) {
@@ -33,7 +33,7 @@ public class Cadastrop extends javax.swing.JFrame {
         menu1.setPaiHerdado(this);
         menu1.setNomeUsuario(nomeUsuario);
         menu1.setPerfil(perfil);
-        btnovo.setIcon(new ImageIcon(caminho + "pesquisar.png"));
+        btnovo.setIcon(new ImageIcon(getClass().getResource(caminho + "pesquisar.png")));
         
         btsalvar.addActionListener(new ActionListener() {
             @Override

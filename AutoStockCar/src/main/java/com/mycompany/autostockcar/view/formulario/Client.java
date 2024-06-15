@@ -35,7 +35,7 @@ public class Client extends javax.swing.JFrame {
     private Color corCampoAtivado = new Color (110, 202, 224);
     int id;
     
-    String caminho = System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\autostockcar\\view\\imagens\\";
+    String caminho = "/com/mycompany/autostockcar/view/imagens/";
     
     public Client(String nomeUsuario, Perfil perfil) {
         initComponents();
@@ -46,9 +46,9 @@ public class Client extends javax.swing.JFrame {
         menu1.setPerfil(perfil);
         cbxNome.setEditable(true);
         
-        btnConsultaPeloCPF.setIcon(new ImageIcon(caminho + "pesquisar.png"));
-        btnConsultaPeloNome.setIcon(new ImageIcon(caminho + "pesquisar.png"));
-        btnAtualizar.setIcon(new ImageIcon(caminho + "atualizar.png"));
+        btnConsultaPeloCPF.setIcon(new ImageIcon(getClass().getResource(caminho + "pesquisar.png")));
+        btnConsultaPeloNome.setIcon(new ImageIcon(getClass().getResource(caminho + "pesquisar.png")));
+        btnAtualizar.setIcon(new ImageIcon(getClass().getResource(caminho + "atualizar.png")));
         btnSalvar.setVisible(false);
         btnExcluir.setEnabled(false);
         btnExcluir.setBackground(corCampoDesativado);

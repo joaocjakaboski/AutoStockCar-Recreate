@@ -28,12 +28,12 @@ public class Menu extends javax.swing.JPanel {
     private Perfil perfil;
     private JFrame paiHerdado;
     
-    String caminho = System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\autostockcar\\view\\imagens\\";
+    String caminho = "/com/mycompany/autostockcar/view/imagens/";
     
     public Menu() {
         initComponents();
         setOpaque(false);
-        labelUsuario.setIcon(new ImageIcon(caminho + "user.png"));
+        labelUsuario.setIcon(new ImageIcon(getClass().getResource(caminho + "user.png")));
          
         JPopupMenu popupMenu = new JPopupMenu();
 

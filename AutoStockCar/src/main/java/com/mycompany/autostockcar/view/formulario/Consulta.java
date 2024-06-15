@@ -25,7 +25,7 @@ import javax.swing.SwingUtilities;
 
 public class Consulta extends javax.swing.JFrame {
     ConsultaDao consulta = new ConsultaDao();
-    String caminho = System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\autostockcar\\view\\imagens\\";
+    String caminho = "/com/mycompany/autostockcar/view/imagens/";
     
     public Consulta(String nomeUsuario, Perfil perfil) {
         initComponents();
@@ -33,7 +33,7 @@ public class Consulta extends javax.swing.JFrame {
         menu1.setPaiHerdado(this);
         menu1.setNomeUsuario(nomeUsuario);
         menu1.setPerfil(perfil);
-        btpesquisar.setIcon(new ImageIcon(caminho + "pesquisar.png"));
+        btpesquisar.setIcon(new ImageIcon(getClass().getResource(caminho + "pesquisar.png")));
         btpesquisar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
