@@ -5589,3 +5589,6 @@ CREATE TABLE ItensVenda (
     CONSTRAINT FK_IDVENDA_ITENSVENDA FOREIGN KEY (IdVenda) REFERENCES Vendas(IdVenda),
     CONSTRAINT FK_IDPRODUTO_ITENSVENDA FOREIGN KEY (IdProduto) REFERENCES Produtos(IdProduto)
 );
+
+INSERT INTO Usuarios(NomeUsuario, SenhaUsuario, AdmCategoria)
+VALUES ('user', '$2a$10$DLqHmXH/bjTuIX7k9LflkuIuIwqzsQNSQoyTaW84GKO2okyIaKYuy', 'ADMIN');
