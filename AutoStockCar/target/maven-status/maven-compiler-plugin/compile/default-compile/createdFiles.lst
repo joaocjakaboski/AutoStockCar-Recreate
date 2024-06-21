@@ -21,7 +21,6 @@ com\mycompany\autostockcar\view\formulario\Categoria.class
 com\mycompany\autostockcar\view\formulario\Login.class
 com\mycompany\autostockcar\view\componentes\PanelBoard.class
 com\mycompany\autostockcar\view\formulario\Client$10.class
-com\mycompany\autostockcar\view\formulario\Consulta$9.class
 com\mycompany\autostockcar\view\formulario\Login$2.class
 com\mycompany\autostockcar\view\formulario\VendasF$3.class
 com\mycompany\autostockcar\view\formulario\Categoria$6.class
@@ -53,7 +52,6 @@ com\mycompany\autostockcar\view\formulario\Client$11.class
 com\mycompany\autostockcar\modelo\conexao\Conexao.class
 com\mycompany\autostockcar\view\formulario\Categoria$8.class
 com\mycompany\autostockcar\modelo\dominio\Usuarios.class
-com\mycompany\autostockcar\view\formulario\Consulta$8.class
 com\mycompany\autostockcar\view\modelo\ClientesDto.class
 com\mycompany\autostockcar\view\formulario\Client.class
 com\mycompany\autostockcar\view\componentes\Menu$2.class
@@ -89,7 +87,6 @@ com\mycompany\autostockcar\view\formulario\Client$2.class
 com\mycompany\autostockcar\view\formulario\Usuario$8.class
 com\mycompany\autostockcar\view\componentes\Menu$3.class
 com\mycompany\autostockcar\view\formulario\Cadastrop.class
-com\mycompany\autostockcar\view\formulario\Consulta$7.class
 com\mycompany\autostockcar\modelo\dominio\Perfil.class
 com\mycompany\autostockcar\view\formulario\Login$4.class
 com\mycompany\autostockcar\view\formulario\Client$4.class

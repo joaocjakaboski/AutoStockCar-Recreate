@@ -41,7 +41,7 @@ public class CampoDeTelefone extends JFormattedTextField {
         
         setBorder(BorderFactory.createEmptyBorder(2, 10, 2, 10));
         setBackground(new Color(0, 0, 0, 0));
-        setForeground(Color.decode("#1D1B86"));
+        setForeground(new Color(200, 200, 200));
         setFont(new Font("sanserif", 1, 15));
         this.cor = new Color(28, 181, 223, 80);
         
@@ -125,6 +125,7 @@ public class CampoDeTelefone extends JFormattedTextField {
 
     public void setPrefixoIcon(Icon prefixoIcon) {
         this.prefixoIcon = prefixoIcon;
+    inicializarBorda();
     }
 
     public Color getCor() {

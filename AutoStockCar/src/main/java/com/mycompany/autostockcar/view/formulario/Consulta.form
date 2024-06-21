@@ -332,9 +332,6 @@
                   <Color blue="df" green="b5" red="1c" type="rgb"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btpesquisarActionPerformed"/>
-              </Events>
             </Component>
             <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="txNomeProduto">
               <Properties>
@@ -501,9 +498,6 @@
                 </Property>
                 <Property name="dicas" type="java.lang.String" value="Observa&#xe7;&#xf5;es"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txObservacoesActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>
@@ -638,9 +632,6 @@
                   <Color blue="df" green="b5" red="1c" type="rgb"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultaPeloNomeActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>

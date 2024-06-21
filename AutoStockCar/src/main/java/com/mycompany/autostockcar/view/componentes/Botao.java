@@ -1,6 +1,7 @@
 package com.mycompany.autostockcar.view.componentes;
 
 import java.awt.AlphaComposite;
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;
@@ -78,6 +79,10 @@ public class Botao extends JButton {
         graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         graphics2d.setColor(getBackground());
         graphics2d.fillRoundRect(0, 0, comprimento, altura, altura, altura);
+        
+        graphics2d.setColor(Color.BLACK);
+        graphics2d.setStroke(new BasicStroke(1));
+        graphics2d.drawRoundRect(0, 0, comprimento - 1, altura - 1, altura, altura);
         
         if (ponto != null) {
             graphics2d.setColor(corDoEfeito);

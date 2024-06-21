@@ -234,11 +234,6 @@ public class Consulta extends javax.swing.JFrame {
 
         btpesquisar.setBackground(new java.awt.Color(131, 191, 205));
         btpesquisar.setForeground(new java.awt.Color(28, 181, 223));
-        btpesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btpesquisarActionPerformed(evt);
-            }
-        });
 
         txNomeProduto.setForeground(new java.awt.Color(0, 0, 0));
         txNomeProduto.setDicas("Nome do produto");
@@ -299,11 +294,6 @@ public class Consulta extends javax.swing.JFrame {
 
         txObservacoes.setForeground(new java.awt.Color(0, 0, 0));
         txObservacoes.setDicas("Observações");
-        txObservacoes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txObservacoesActionPerformed(evt);
-            }
-        });
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
@@ -354,11 +344,6 @@ public class Consulta extends javax.swing.JFrame {
 
         btnConsultaPeloNome.setBackground(new java.awt.Color(131, 191, 205));
         btnConsultaPeloNome.setForeground(new java.awt.Color(28, 181, 223));
-        btnConsultaPeloNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultaPeloNomeActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -555,18 +540,6 @@ public class Consulta extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btpesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btpesquisarActionPerformed
-        
-    }//GEN-LAST:event_btpesquisarActionPerformed
-
-    private void txObservacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txObservacoesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txObservacoesActionPerformed
-
-    private void btnConsultaPeloNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaPeloNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnConsultaPeloNomeActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
