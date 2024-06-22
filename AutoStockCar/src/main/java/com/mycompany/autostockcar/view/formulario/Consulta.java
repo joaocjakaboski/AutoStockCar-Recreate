@@ -1,20 +1,14 @@
 package com.mycompany.autostockcar.view.formulario;
 
 import com.mycompany.autostockcar.modelo.dao.ConsultaDao;
-import com.mycompany.autostockcar.modelo.dominio.Cidades;
-import com.mycompany.autostockcar.modelo.dominio.Clientes;
-import com.mycompany.autostockcar.modelo.dominio.Estados;
 import com.mycompany.autostockcar.modelo.dominio.Perfil;
 import com.mycompany.autostockcar.modelo.dominio.Produtos;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

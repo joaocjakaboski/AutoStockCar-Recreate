@@ -136,7 +136,7 @@
     <Component class="com.mycompany.autostockcar.view.componentes.Botao" name="btnMenuDashboard">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="e1" red="a3" type="rgb"/>
+          <Color blue="dc" green="dc" red="dc" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="1e" green="1e" red="1e" type="rgb"/>
@@ -154,7 +154,7 @@
     <Component class="com.mycompany.autostockcar.view.componentes.Botao" name="btnMenuVendas">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="e1" red="a3" type="rgb"/>
+          <Color blue="dc" green="dc" red="dc" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="1e" green="1e" red="1e" type="rgb"/>
@@ -172,7 +172,7 @@
     <Component class="com.mycompany.autostockcar.view.componentes.Botao" name="btnMenuProdutos">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="e1" red="a3" type="rgb"/>
+          <Color blue="dc" green="dc" red="dc" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="1e" green="1e" red="1e" type="rgb"/>
@@ -190,7 +190,7 @@
     <Component class="com.mycompany.autostockcar.view.componentes.Botao" name="btnMenuClientes">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="e1" red="a3" type="rgb"/>
+          <Color blue="dc" green="dc" red="dc" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="1e" green="1e" red="1e" type="rgb"/>
@@ -208,7 +208,7 @@
     <Component class="com.mycompany.autostockcar.view.componentes.Botao" name="btnMenuConsulta">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="e1" red="a3" type="rgb"/>
+          <Color blue="dc" green="dc" red="dc" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="1e" green="1e" red="1e" type="rgb"/>
@@ -226,7 +226,7 @@
     <Component class="com.mycompany.autostockcar.view.componentes.Botao" name="btnMenuGestao">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="e1" red="a3" type="rgb"/>
+          <Color blue="dc" green="dc" red="dc" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="1e" green="1e" red="1e" type="rgb"/>

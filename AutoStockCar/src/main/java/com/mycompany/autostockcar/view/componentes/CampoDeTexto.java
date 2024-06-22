@@ -21,6 +21,7 @@ public class CampoDeTexto extends JTextField{
     private String dicas;
     private Icon prefixoIcon;
     private Color cor;
+    private Color corTexto;
 
     public CampoDeTexto() {
         setBorder(BorderFactory.createEmptyBorder(2, 10, 2, 10));
@@ -29,6 +30,7 @@ public class CampoDeTexto extends JTextField{
         setFont(new Font("sanserif", 1, 15));
         setSelectionColor(new Color(75, 175, 152));
         this.cor = new Color(28, 181, 223, 80);
+        this.corTexto = new Color(0, 0, 0);
     }
     
     @Override
@@ -52,7 +54,7 @@ public class CampoDeTexto extends JTextField{
             ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
             Insets ins = getInsets();
             FontMetrics fm = g.getFontMetrics();
-            g.setColor(new Color(200, 200, 200));
+            g.setColor(corTexto);
             g.drawString(dicas, ins.left, altura / 2 + fm.getAscent() / 2 - 2);
         }
     }
@@ -79,6 +81,16 @@ public class CampoDeTexto extends JTextField{
         setBorder(BorderFactory.createEmptyBorder(10, esquerda, 10, 20));
     }
 
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        if (enabled) {
+            this.setCorTexto(new Color(209, 209, 209));
+        } else {
+            this.setCorTexto(new Color(255, 255, 255));
+        }
+    }
+
     public String getDicas() {
         return dicas;
     }
@@ -102,6 +114,15 @@ public class CampoDeTexto extends JTextField{
 
     public void setCor(Color cor) {
         this.cor = cor;
+    }
+
+    public Color getCorTexto() {
+        return corTexto;
+    }
+
+    public void setCorTexto(Color corTexto) {
+        this.corTexto = corTexto;
+        repaint();
     }
     
     

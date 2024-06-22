@@ -52,12 +52,12 @@ public class Client extends javax.swing.JFrame {
         btnConsultaPeloNome.setIcon(new ImageIcon(getClass().getResource(caminho + "pesquisar.png")));
         btnAtualizar.setIcon(new ImageIcon(getClass().getResource(caminho + "atualizar.png")));
         btnSalvar.setVisible(false);
-        btnExcluir.setEnabled(false);
-        btnExcluir.setBackground(corBotaoDesativado);
+        btnExcluir.setVisible(false);
         btnAlterar.setVisible(false);
         btnCancelar.setVisible(false);
         cbxNome.removeAllItems();
         cbxNome.addItem("");
+        txConsultaCpf.setForeground(new Color (200, 200, 200));
                 
         desativarCampos();
         
@@ -140,8 +140,7 @@ public class Client extends javax.swing.JFrame {
                 String nomeBusca = cbxNome.getSelectedItem().toString();
                 if (nomeBusca == "") {
                     limparCampos();
-                    btnExcluir.setEnabled(false);
-                    btnExcluir.setBackground(corBotaoDesativado);
+                    btnExcluir.setVisible(false);
                     btnAlterar.setVisible(false);
                 } else {
                     Clientes clienteBusca = cliente.buscarClientePeloNome(nomeBusca);
@@ -168,6 +167,7 @@ public class Client extends javax.swing.JFrame {
                     cbxUfEstado.setSelectedItem(ufEstado);
                     
                     btnAlterar.setVisible(true);
+                    btnExcluir.setVisible(true);
                     btnExcluir.setEnabled(true);
                     btnExcluir.setBackground(corBotaoAtivado);
                     txConsultaCpf.setText("");
@@ -183,8 +183,7 @@ public class Client extends javax.swing.JFrame {
                 String cpf = txConsultaCpf.getText();
                 if (cpf.equals("")) {
                     limparCampos();
-                    btnExcluir.setEnabled(false);
-                    btnExcluir.setBackground(corBotaoDesativado);
+                    btnExcluir.setVisible(false);
                     btnAlterar.setVisible(false);
                 } else {                    
                     Clientes clienteBusca = cliente.buscarClientePeloCpf(cpf);
@@ -211,6 +210,7 @@ public class Client extends javax.swing.JFrame {
                         cbxUfEstado.setSelectedItem(ufEstado);
                         
                         btnAlterar.setVisible(true);
+                        btnExcluir.setVisible(true);
                         btnExcluir.setEnabled(true);
                         btnExcluir.setBackground(corBotaoAtivado);
                         txConsultaCpf.setText("");
@@ -233,8 +233,7 @@ public class Client extends javax.swing.JFrame {
                     desativarCampos();
                     ativarCabecalho();
                     btnAlterar.setVisible(false);
-                    btnExcluir.setEnabled(false);
-                    btnExcluir.setBackground(corBotaoDesativado);
+                    btnExcluir.setVisible(false);
                 }
             }
         });
@@ -331,15 +330,13 @@ public class Client extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 int cancelar = JOptionPane.showConfirmDialog(null, "Deseja cancelar?", "Cancelar", JOptionPane.YES_NO_OPTION);
                 if (cancelar == JOptionPane.YES_OPTION) {
-                    btnExcluir.setVisible(true);
                     btnSalvar.setVisible(false);
                     btnNovo.setVisible(true);
                     btnCancelar.setVisible(false);
                     ativarCabecalho();
                     desativarCampos();
                     limparCampos();
-                    btnExcluir.setEnabled(false);
-                    btnExcluir.setBackground(corBotaoDesativado);
+                    btnExcluir.setVisible(false);
                 }
             }
         });
@@ -397,7 +394,7 @@ public class Client extends javax.swing.JFrame {
         txBairro.setCor(corCampoDesativado);
         txCelular.setEnabled(false);
         txCelular.setCor(corCampoDesativado);
-        txCelular.setDisabledTextColor(new Color(200, 200, 200));
+        txCelular.setDisabledTextColor(new Color(255, 255, 255));
         cbxNomeCidade.setEnabled(false);
         cbxNomeCidade.setBackground(corCampoDesativado);
         cbxNomeCidade.setCor(corCampoDesativado);
@@ -569,7 +566,7 @@ public class Client extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("CPF/CNPJ*");
 
-        txCpf.setForeground(new java.awt.Color(0, 0, 0));
+        txCpf.setForeground(new java.awt.Color(255, 255, 255));
         txCpf.setCor(new java.awt.Color(255, 255, 255));
         txCpf.setDicas("CPF/CNPJ");
         txCpf.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -684,7 +681,7 @@ public class Client extends javax.swing.JFrame {
         txCelular.setForeground(new java.awt.Color(0, 0, 0));
         txCelular.setCor(new java.awt.Color(255, 255, 255));
         txCelular.setDicas("");
-        txCelular.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txCelular.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txCelular.setOpaque(true);
 
         btnCancelar.setBackground(new java.awt.Color(220, 220, 220));

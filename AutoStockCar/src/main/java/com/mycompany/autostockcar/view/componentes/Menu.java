@@ -83,7 +83,7 @@ public class Menu extends javax.swing.JPanel {
         
         grafico.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         
-        GradientPaint pintura = new GradientPaint(0, 0, new Color(220,220,220), getWidth(), 0, new Color(147, 211, 225));
+        GradientPaint pintura = new GradientPaint(0, 0, new Color(220,220,220), getWidth(), 0, new Color(220, 220, 220));
         grafico.setPaint(pintura);
         
         grafico.fillRoundRect(0, 0, getWidth(), getHeight(), 25, 25);
@@ -147,7 +147,7 @@ public class Menu extends javax.swing.JPanel {
         jSeparator1.setForeground(new java.awt.Color(30, 30, 30));
         jSeparator1.setPreferredSize(new java.awt.Dimension(0, 5));
 
-        btnMenuDashboard.setBackground(new java.awt.Color(163, 225, 255));
+        btnMenuDashboard.setBackground(new java.awt.Color(220, 220, 220));
         btnMenuDashboard.setForeground(new java.awt.Color(30, 30, 30));
         btnMenuDashboard.setText("Dashboard");
         btnMenuDashboard.setActionCommand("btnMenuDashboard");
@@ -158,7 +158,7 @@ public class Menu extends javax.swing.JPanel {
             }
         });
 
-        btnMenuVendas.setBackground(new java.awt.Color(163, 225, 255));
+        btnMenuVendas.setBackground(new java.awt.Color(220, 220, 220));
         btnMenuVendas.setForeground(new java.awt.Color(30, 30, 30));
         btnMenuVendas.setText("Vendas");
         btnMenuVendas.setActionCommand("btnMenuVendas");
@@ -169,7 +169,7 @@ public class Menu extends javax.swing.JPanel {
             }
         });
 
-        btnMenuProdutos.setBackground(new java.awt.Color(163, 225, 255));
+        btnMenuProdutos.setBackground(new java.awt.Color(220, 220, 220));
         btnMenuProdutos.setForeground(new java.awt.Color(30, 30, 30));
         btnMenuProdutos.setText("Produtos");
         btnMenuProdutos.setActionCommand("btnMenuProdutos");
@@ -180,7 +180,7 @@ public class Menu extends javax.swing.JPanel {
             }
         });
 
-        btnMenuClientes.setBackground(new java.awt.Color(163, 225, 255));
+        btnMenuClientes.setBackground(new java.awt.Color(220, 220, 220));
         btnMenuClientes.setForeground(new java.awt.Color(30, 30, 30));
         btnMenuClientes.setText("Clientes");
         btnMenuClientes.setActionCommand("btnMenuClientes");
@@ -191,7 +191,7 @@ public class Menu extends javax.swing.JPanel {
             }
         });
 
-        btnMenuConsulta.setBackground(new java.awt.Color(163, 225, 255));
+        btnMenuConsulta.setBackground(new java.awt.Color(220, 220, 220));
         btnMenuConsulta.setForeground(new java.awt.Color(30, 30, 30));
         btnMenuConsulta.setText("Consulta");
         btnMenuConsulta.setActionCommand("btnMenuConsulta");
@@ -202,7 +202,7 @@ public class Menu extends javax.swing.JPanel {
             }
         });
 
-        btnMenuGestao.setBackground(new java.awt.Color(163, 225, 255));
+        btnMenuGestao.setBackground(new java.awt.Color(220, 220, 220));
         btnMenuGestao.setForeground(new java.awt.Color(30, 30, 30));
         btnMenuGestao.setText("Gestão ");
         btnMenuGestao.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
