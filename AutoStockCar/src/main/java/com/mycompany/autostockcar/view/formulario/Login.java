@@ -131,8 +131,8 @@ public class Login extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         background = new javax.swing.JLayeredPane();
 
-        panelBoard1.setColor1(new java.awt.Color(255, 255, 255));
-        panelBoard1.setColor2(new java.awt.Color(67, 137, 162));
+        panelBoard1.setColor1(new java.awt.Color(221, 221, 221));
+        panelBoard1.setColor2(new java.awt.Color(221, 221, 221));
 
         frameMovimento.setOpaque(false);
 
@@ -142,7 +142,7 @@ public class Login extends javax.swing.JFrame {
         labelFechar.setText("X");
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 25)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel2.setForeground(new java.awt.Color(30, 30, 30));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Auto StockCar");
 
@@ -166,14 +166,18 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel2))
         );
 
+        txLoginSenha.setForeground(new java.awt.Color(30, 30, 30));
         txLoginSenha.setCor(new java.awt.Color(255, 255, 255));
         txLoginSenha.setDicas("Senha");
+        txLoginSenha.setDisabledTextColor(new java.awt.Color(30, 30, 30));
 
         txLoginUsuario.setToolTipText("");
         txLoginUsuario.setCor(new java.awt.Color(255, 255, 255));
+        txLoginUsuario.setCorTexto(new java.awt.Color(200, 200, 200));
         txLoginUsuario.setDicas("Usuário");
 
-        btnLoginLogin.setBackground(new java.awt.Color(28, 181, 224));
+        btnLoginLogin.setBackground(new java.awt.Color(220, 220, 220));
+        btnLoginLogin.setForeground(new java.awt.Color(30, 30, 30));
         btnLoginLogin.setText("Login");
         btnLoginLogin.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
 
