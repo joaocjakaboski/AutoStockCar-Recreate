@@ -209,30 +209,33 @@ public class Consulta extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(131, 191, 205));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setMaximumSize(new java.awt.Dimension(1280, 720));
         jPanel1.setMinimumSize(new java.awt.Dimension(1280, 720));
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        jPanel2.setBackground(new java.awt.Color(147, 211, 225));
+        jPanel2.setBackground(new java.awt.Color(220, 220, 220));
         jPanel2.setMaximumSize(new java.awt.Dimension(1164, 550));
         jPanel2.setMinimumSize(new java.awt.Dimension(1164, 550));
         jPanel2.setPreferredSize(new java.awt.Dimension(1164, 550));
 
         txCodigoProduto.setForeground(new java.awt.Color(0, 0, 0));
+        txCodigoProduto.setCor(new java.awt.Color(255, 255, 255));
         txCodigoProduto.setDicas("Codigo");
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Codigo");
 
-        btpesquisar.setBackground(new java.awt.Color(131, 191, 205));
+        btpesquisar.setBackground(new java.awt.Color(220, 220, 220));
         btpesquisar.setForeground(new java.awt.Color(28, 181, 223));
 
         txNomeProduto.setForeground(new java.awt.Color(0, 0, 0));
+        txNomeProduto.setCor(new java.awt.Color(255, 255, 255));
         txNomeProduto.setDicas("Nome do produto");
 
         txUnidade.setForeground(new java.awt.Color(0, 0, 0));
+        txUnidade.setCor(new java.awt.Color(255, 255, 255));
         txUnidade.setDicas("Unidade");
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -256,6 +259,7 @@ public class Consulta extends javax.swing.JFrame {
         jLabel5.setText("Custo da Ultima Compra");
 
         txCustoCompra.setForeground(new java.awt.Color(0, 0, 0));
+        txCustoCompra.setCor(new java.awt.Color(255, 255, 255));
         txCustoCompra.setDicas("Custo do produto");
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -263,9 +267,11 @@ public class Consulta extends javax.swing.JFrame {
         jLabel6.setText("Valor de Venda");
 
         txValorVenda.setForeground(new java.awt.Color(0, 0, 0));
+        txValorVenda.setCor(new java.awt.Color(255, 255, 255));
         txValorVenda.setDicas("Valor Venda ");
 
         txCodigoFabricante.setForeground(new java.awt.Color(0, 0, 0));
+        txCodigoFabricante.setCor(new java.awt.Color(255, 255, 255));
         txCodigoFabricante.setDicas("Codigo Fabricante");
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -277,9 +283,11 @@ public class Consulta extends javax.swing.JFrame {
         jLabel8.setText("Codigo de Fabrica");
 
         txNomeFabricante.setForeground(new java.awt.Color(0, 0, 0));
+        txNomeFabricante.setCor(new java.awt.Color(255, 255, 255));
         txNomeFabricante.setDicas("Nome Fabricante");
 
         txCodigoFabrica.setForeground(new java.awt.Color(0, 0, 0));
+        txCodigoFabrica.setCor(new java.awt.Color(255, 255, 255));
         txCodigoFabrica.setDicas("Codigo de Fabrica");
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -287,6 +295,7 @@ public class Consulta extends javax.swing.JFrame {
         jLabel9.setText("Complemento");
 
         txObservacoes.setForeground(new java.awt.Color(0, 0, 0));
+        txObservacoes.setCor(new java.awt.Color(255, 255, 255));
         txObservacoes.setDicas("Observações");
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -298,6 +307,7 @@ public class Consulta extends javax.swing.JFrame {
         jLabel11.setText("Quantidade");
 
         txQuantEstoque.setForeground(new java.awt.Color(0, 0, 0));
+        txQuantEstoque.setCor(new java.awt.Color(255, 255, 255));
         txQuantEstoque.setDicas("Quantidade em Estoque ");
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -306,12 +316,15 @@ public class Consulta extends javax.swing.JFrame {
         jLabel14.setToolTipText("");
 
         txNomeCategoria.setForeground(new java.awt.Color(0, 0, 0));
+        txNomeCategoria.setCor(new java.awt.Color(255, 255, 255));
         txNomeCategoria.setDicas("Categoria");
 
         txGaveta.setForeground(new java.awt.Color(0, 0, 0));
+        txGaveta.setCor(new java.awt.Color(255, 255, 255));
         txGaveta.setDicas("Gaveta");
 
         txPrateleira.setForeground(new java.awt.Color(0, 0, 0));
+        txPrateleira.setCor(new java.awt.Color(255, 255, 255));
         txPrateleira.setDicas("Prateleira");
 
         jLabel13.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -323,6 +336,7 @@ public class Consulta extends javax.swing.JFrame {
         jLabel15.setText("Prateleira");
 
         txCodigoCategoria.setForeground(new java.awt.Color(0, 0, 0));
+        txCodigoCategoria.setCor(new java.awt.Color(255, 255, 255));
         txCodigoCategoria.setDicas("Codigo");
 
         jLabel16.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -335,8 +349,9 @@ public class Consulta extends javax.swing.JFrame {
         jLabel12.setText("Codigo");
 
         cbxNome.setEditable(true);
+        cbxNome.setCor(new java.awt.Color(255, 255, 255));
 
-        btnConsultaPeloNome.setBackground(new java.awt.Color(131, 191, 205));
+        btnConsultaPeloNome.setBackground(new java.awt.Color(220, 220, 220));
         btnConsultaPeloNome.setForeground(new java.awt.Color(28, 181, 223));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -458,7 +473,7 @@ public class Consulta extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 10, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txCustoCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txCodigoFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -490,7 +505,7 @@ public class Consulta extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
                             .addComponent(jLabel15))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txGaveta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txPrateleira, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))

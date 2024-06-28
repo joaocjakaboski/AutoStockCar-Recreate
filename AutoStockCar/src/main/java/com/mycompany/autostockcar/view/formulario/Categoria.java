@@ -160,11 +160,11 @@ public class Categoria extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(131, 191, 205));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        jPanel2.setBackground(new java.awt.Color(147, 211, 225));
+        jPanel2.setBackground(new java.awt.Color(220, 220, 220));
 
-        jPanel3.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel3.setBackground(new java.awt.Color(153, 153, 153));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -188,17 +188,18 @@ public class Categoria extends javax.swing.JFrame {
         );
 
         TxtCodigo.setForeground(new java.awt.Color(0, 0, 0));
-        TxtCodigo.setCor(new java.awt.Color(110, 202, 224));
+        TxtCodigo.setCor(new java.awt.Color(255, 255, 255));
         TxtCodigo.setDicas("Código");
         TxtCodigo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         TxtCodigo.setPreferredSize(new java.awt.Dimension(180, 30));
+        TxtCodigo.setSelectionColor(new java.awt.Color(255, 255, 255));
         TxtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtCodigoActionPerformed(evt);
             }
         });
 
-        BtPesquisar.setBackground(new java.awt.Color(131, 191, 205));
+        BtPesquisar.setBackground(new java.awt.Color(220, 220, 220));
         BtPesquisar.setForeground(new java.awt.Color(0, 0, 0));
         BtPesquisar.setText("Pesquisar");
         BtPesquisar.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -218,7 +219,7 @@ public class Categoria extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nome");
 
-        BtExcluir.setBackground(new java.awt.Color(131, 191, 205));
+        BtExcluir.setBackground(new java.awt.Color(220, 220, 220));
         BtExcluir.setForeground(new java.awt.Color(0, 0, 0));
         BtExcluir.setText("Excluir");
         BtExcluir.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -230,7 +231,7 @@ public class Categoria extends javax.swing.JFrame {
             }
         });
 
-        BtNovo.setBackground(new java.awt.Color(131, 191, 205));
+        BtNovo.setBackground(new java.awt.Color(220, 220, 220));
         BtNovo.setForeground(new java.awt.Color(0, 0, 0));
         BtNovo.setText("Novo");
         BtNovo.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -247,17 +248,18 @@ public class Categoria extends javax.swing.JFrame {
         jLabel5.setText("Descrição");
 
         TxtDescricao.setForeground(new java.awt.Color(0, 0, 0));
-        TxtDescricao.setCor(new java.awt.Color(110, 202, 224));
+        TxtDescricao.setCor(new java.awt.Color(255, 255, 255));
         TxtDescricao.setDicas(" ");
         TxtDescricao.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         TxtDescricao.setPreferredSize(new java.awt.Dimension(180, 30));
+        TxtDescricao.setSelectionColor(new java.awt.Color(255, 255, 255));
         TxtDescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtDescricaoActionPerformed(evt);
             }
         });
 
-        BtNovo1.setBackground(new java.awt.Color(131, 191, 205));
+        BtNovo1.setBackground(new java.awt.Color(220, 220, 220));
         BtNovo1.setForeground(new java.awt.Color(0, 0, 0));
         BtNovo1.setText("Limpar");
         BtNovo1.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -270,10 +272,11 @@ public class Categoria extends javax.swing.JFrame {
         });
 
         TxtNome.setForeground(new java.awt.Color(0, 0, 0));
-        TxtNome.setCor(new java.awt.Color(110, 202, 224));
+        TxtNome.setCor(new java.awt.Color(255, 255, 255));
         TxtNome.setDicas("Nome Categotia");
         TxtNome.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         TxtNome.setPreferredSize(new java.awt.Dimension(180, 30));
+        TxtNome.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

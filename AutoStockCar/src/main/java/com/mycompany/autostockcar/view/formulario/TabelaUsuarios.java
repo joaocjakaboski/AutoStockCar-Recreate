@@ -72,10 +72,10 @@ public class TabelaUsuarios extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(131, 191, 205));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setPreferredSize(new java.awt.Dimension(624, 322));
 
-        jPanel2.setBackground(new java.awt.Color(147, 211, 225));
+        jPanel2.setBackground(new java.awt.Color(220, 220, 220));
 
         jtUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -100,7 +100,7 @@ public class TabelaUsuarios extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jtUsuarios);
 
-        btnNovo.setBackground(new java.awt.Color(163, 225, 255));
+        btnNovo.setBackground(new java.awt.Color(220, 220, 220));
         btnNovo.setForeground(new java.awt.Color(30, 30, 30));
         btnNovo.setText("NOVO");
         btnNovo.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -111,7 +111,7 @@ public class TabelaUsuarios extends javax.swing.JFrame {
             }
         });
 
-        btnExcluir.setBackground(new java.awt.Color(163, 225, 255));
+        btnExcluir.setBackground(new java.awt.Color(220, 220, 220));
         btnExcluir.setForeground(new java.awt.Color(30, 30, 30));
         btnExcluir.setText("EXCLUIR");
         btnExcluir.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -121,7 +121,7 @@ public class TabelaUsuarios extends javax.swing.JFrame {
             }
         });
 
-        btnAlterar.setBackground(new java.awt.Color(163, 225, 255));
+        btnAlterar.setBackground(new java.awt.Color(220, 220, 220));
         btnAlterar.setForeground(new java.awt.Color(30, 30, 30));
         btnAlterar.setText("ALTERAR");
         btnAlterar.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N

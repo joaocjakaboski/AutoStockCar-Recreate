@@ -249,10 +249,10 @@ public class VendasF extends javax.swing.JFrame {
 
         jLayeredPane1.setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        jPanel1.setBackground(new java.awt.Color(131, 191, 205));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        jPanel2.setBackground(new java.awt.Color(147, 211, 225));
+        jPanel2.setBackground(new java.awt.Color(220, 220, 220));
         jPanel2.setPreferredSize(new java.awt.Dimension(1164, 550));
 
         jPanel3.setBackground(new java.awt.Color(220, 220, 220));
@@ -349,18 +349,18 @@ public class VendasF extends javax.swing.JFrame {
         NomeCliente.setForeground(new java.awt.Color(30, 30, 30));
         NomeCliente.setText("Nome:");
 
-        txIdCliente.setCor(new java.awt.Color(131, 191, 205));
+        txIdCliente.setCor(new java.awt.Color(255, 255, 255));
         txIdCliente.setDicas("Código");
         txIdCliente.setMinimumSize(new java.awt.Dimension(64, 30));
         txIdCliente.setPreferredSize(new java.awt.Dimension(143, 30));
 
-        txIdProduto.setCor(new java.awt.Color(131, 191, 205));
+        txIdProduto.setCor(new java.awt.Color(255, 255, 255));
         txIdProduto.setDicas("");
         txIdProduto.setMinimumSize(new java.awt.Dimension(64, 30));
         txIdProduto.setPreferredSize(new java.awt.Dimension(143, 30));
 
         txSubTotal.setActionCommand("");
-        txSubTotal.setCor(new java.awt.Color(131, 191, 205));
+        txSubTotal.setCor(new java.awt.Color(255, 255, 255));
         txSubTotal.setDicas("");
         txSubTotal.setMinimumSize(new java.awt.Dimension(64, 30));
         txSubTotal.setPreferredSize(new java.awt.Dimension(143, 30));
@@ -418,7 +418,7 @@ public class VendasF extends javax.swing.JFrame {
         CodigoCliente7.setText("Desconto:");
 
         txDesconto.setActionCommand("");
-        txDesconto.setCor(new java.awt.Color(131, 191, 205));
+        txDesconto.setCor(new java.awt.Color(255, 255, 255));
         txDesconto.setDicas("");
         txDesconto.setMinimumSize(new java.awt.Dimension(64, 30));
         txDesconto.setPreferredSize(new java.awt.Dimension(143, 30));
@@ -428,12 +428,12 @@ public class VendasF extends javax.swing.JFrame {
         CodigoCliente9.setText("Total:");
 
         txTotal.setActionCommand("");
-        txTotal.setCor(new java.awt.Color(131, 191, 205));
+        txTotal.setCor(new java.awt.Color(255, 255, 255));
         txTotal.setDicas("");
         txTotal.setMinimumSize(new java.awt.Dimension(64, 30));
         txTotal.setPreferredSize(new java.awt.Dimension(143, 30));
 
-        btnSalvar.setBackground(new java.awt.Color(163, 225, 255));
+        btnSalvar.setBackground(new java.awt.Color(220, 220, 220));
         btnSalvar.setForeground(new java.awt.Color(30, 30, 30));
         btnSalvar.setText("Salvar");
         btnSalvar.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -449,7 +449,7 @@ public class VendasF extends javax.swing.JFrame {
         jLabel1.setText("Qtd:");
 
         txQuantidadeDisponivel.setActionCommand("");
-        txQuantidadeDisponivel.setCor(new java.awt.Color(131, 191, 205));
+        txQuantidadeDisponivel.setCor(new java.awt.Color(255, 255, 255));
         txQuantidadeDisponivel.setDicas("");
         txQuantidadeDisponivel.setMinimumSize(new java.awt.Dimension(64, 30));
         txQuantidadeDisponivel.setPreferredSize(new java.awt.Dimension(143, 30));
@@ -461,8 +461,9 @@ public class VendasF extends javax.swing.JFrame {
 
         cbxNomeCliente.setForeground(new java.awt.Color(0, 0, 0));
         cbxNomeCliente.setToolTipText("");
+        cbxNomeCliente.setCor(new java.awt.Color(255, 255, 255));
 
-        btnAdicionar.setBackground(new java.awt.Color(163, 225, 255));
+        btnAdicionar.setBackground(new java.awt.Color(220, 220, 220));
         btnAdicionar.setForeground(new java.awt.Color(30, 30, 30));
         btnAdicionar.setText("Adicionar");
         btnAdicionar.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -474,8 +475,9 @@ public class VendasF extends javax.swing.JFrame {
 
         cbxNomeProduto.setForeground(new java.awt.Color(30, 30, 30));
         cbxNomeProduto.setToolTipText("");
+        cbxNomeProduto.setCor(new java.awt.Color(255, 255, 255));
 
-        btnAplicar.setBackground(new java.awt.Color(163, 225, 255));
+        btnAplicar.setBackground(new java.awt.Color(220, 220, 220));
         btnAplicar.setForeground(new java.awt.Color(30, 30, 30));
         btnAplicar.setText("Aplicar");
         btnAplicar.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -486,7 +488,7 @@ public class VendasF extends javax.swing.JFrame {
             }
         });
 
-        btnSalvar1.setBackground(new java.awt.Color(163, 225, 255));
+        btnSalvar1.setBackground(new java.awt.Color(220, 220, 220));
         btnSalvar1.setForeground(new java.awt.Color(30, 30, 30));
         btnSalvar1.setText("Cancelar");
         btnSalvar1.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -498,7 +500,7 @@ public class VendasF extends javax.swing.JFrame {
         });
 
         txQuantidade.setActionCommand("");
-        txQuantidade.setCor(new java.awt.Color(131, 191, 205));
+        txQuantidade.setCor(new java.awt.Color(255, 255, 255));
         txQuantidade.setDicas("");
         txQuantidade.setMinimumSize(new java.awt.Dimension(64, 30));
         txQuantidade.setPreferredSize(new java.awt.Dimension(143, 30));

@@ -57,7 +57,7 @@
         <Container class="javax.swing.JPanel" name="jPanel1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cd" green="bf" red="83" type="rgb"/>
+              <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Default Cursor"/>
@@ -89,7 +89,7 @@
             <Container class="javax.swing.JPanel" name="jPanel2">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="e1" green="d3" red="93" type="rgb"/>
+                  <Color blue="dc" green="dc" red="dc" type="rgb"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[566, 322]"/>
@@ -159,6 +159,9 @@
               <SubComponents>
                 <Component class="com.mycompany.autostockcar.view.componentes.CampoDeSenha" name="txSenha">
                   <Properties>
+                    <Property name="cor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="dicas" type="java.lang.String" value=""/>
                   </Properties>
                   <Events>
@@ -189,6 +192,9 @@
                 </Component>
                 <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="txUsuario">
                   <Properties>
+                    <Property name="cor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="dicas" type="java.lang.String" value="Login"/>
                   </Properties>
                   <Events>
@@ -209,7 +215,7 @@
                 <Component class="com.mycompany.autostockcar.view.componentes.Botao" name="btnSalvar">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="e1" red="a3" type="rgb"/>
+                      <Color blue="dc" green="dc" red="dc" type="rgb"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="1e" green="1e" red="1e" type="rgb"/>
@@ -229,7 +235,7 @@
                 <Component class="com.mycompany.autostockcar.view.componentes.Botao" name="btnAlterar">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="e1" red="a3" type="rgb"/>
+                      <Color blue="dc" green="dc" red="dc" type="rgb"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="1e" green="1e" red="1e" type="rgb"/>

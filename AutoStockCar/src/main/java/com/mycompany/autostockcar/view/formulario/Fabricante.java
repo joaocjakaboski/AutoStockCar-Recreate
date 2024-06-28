@@ -419,11 +419,11 @@ public class Fabricante extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Formulário de Fabricantes");
 
-        jPanel1.setBackground(new java.awt.Color(131, 191, 205));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        jPanel2.setBackground(new java.awt.Color(147, 211, 225));
+        jPanel2.setBackground(new java.awt.Color(220, 220, 220));
 
-        jPanel3.setBackground(new java.awt.Color(110, 202, 224));
+        jPanel3.setBackground(new java.awt.Color(153, 153, 153));
         jPanel3.setForeground(new java.awt.Color(0, 153, 153));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 28)); // NOI18N
@@ -436,8 +436,8 @@ public class Fabricante extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(230, 230, 230))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(195, 195, 195))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -454,12 +454,12 @@ public class Fabricante extends javax.swing.JFrame {
         txCodigo.setEditable(false);
         txCodigo.setForeground(new java.awt.Color(0, 0, 0));
         txCodigo.setText("0");
-        txCodigo.setCor(new java.awt.Color(110, 202, 224));
+        txCodigo.setCor(new java.awt.Color(255, 255, 255));
         txCodigo.setDicas("Código");
         txCodigo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txCodigo.setPreferredSize(new java.awt.Dimension(180, 30));
 
-        btnSalvar.setBackground(new java.awt.Color(131, 191, 205));
+        btnSalvar.setBackground(new java.awt.Color(220, 220, 220));
         btnSalvar.setForeground(new java.awt.Color(0, 0, 0));
         btnSalvar.setText("Salvar");
         btnSalvar.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -471,36 +471,38 @@ public class Fabricante extends javax.swing.JFrame {
         jLabel8.setText("Código");
 
         txNome.setForeground(new java.awt.Color(0, 0, 0));
-        txNome.setCor(new java.awt.Color(110, 202, 224));
+        txNome.setCor(new java.awt.Color(255, 255, 255));
         txNome.setDicas("Nome ");
         txNome.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txNome.setPreferredSize(new java.awt.Dimension(180, 30));
+        txNome.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("CNPJ");
 
         txEndereco.setForeground(new java.awt.Color(0, 0, 0));
-        txEndereco.setCor(new java.awt.Color(110, 202, 224));
+        txEndereco.setCor(new java.awt.Color(255, 255, 255));
         txEndereco.setDicas("Endereço");
         txEndereco.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txEndereco.setPreferredSize(new java.awt.Dimension(180, 30));
+        txEndereco.setSelectionColor(new java.awt.Color(255, 255, 255));
 
-        btnExcluir.setBackground(new java.awt.Color(131, 191, 205));
+        btnExcluir.setBackground(new java.awt.Color(220, 220, 220));
         btnExcluir.setForeground(new java.awt.Color(0, 0, 0));
         btnExcluir.setText("Excluir");
         btnExcluir.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btnExcluir.setMaximumSize(new java.awt.Dimension(65, 30));
         btnExcluir.setMinimumSize(new java.awt.Dimension(65, 30));
 
-        btnAlterar.setBackground(new java.awt.Color(131, 191, 205));
+        btnAlterar.setBackground(new java.awt.Color(220, 220, 220));
         btnAlterar.setForeground(new java.awt.Color(0, 0, 0));
         btnAlterar.setText("Alterar");
         btnAlterar.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btnAlterar.setMaximumSize(new java.awt.Dimension(65, 30));
         btnAlterar.setMinimumSize(new java.awt.Dimension(65, 30));
 
-        btnNovo.setBackground(new java.awt.Color(131, 191, 205));
+        btnNovo.setBackground(new java.awt.Color(220, 220, 220));
         btnNovo.setForeground(new java.awt.Color(0, 0, 0));
         btnNovo.setText("Novo");
         btnNovo.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -513,17 +515,19 @@ public class Fabricante extends javax.swing.JFrame {
 
         txCNPJ.setForeground(new java.awt.Color(0, 0, 0));
         txCNPJ.setToolTipText("");
-        txCNPJ.setCor(new java.awt.Color(110, 202, 224));
+        txCNPJ.setCor(new java.awt.Color(255, 255, 255));
         txCNPJ.setDicas("CNPJ");
         txCNPJ.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txCNPJ.setDragEnabled(true);
         txCNPJ.setPreferredSize(new java.awt.Dimension(180, 30));
+        txCNPJ.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         txEmail.setForeground(new java.awt.Color(0, 0, 0));
-        txEmail.setCor(new java.awt.Color(110, 202, 224));
+        txEmail.setCor(new java.awt.Color(255, 255, 255));
         txEmail.setDicas("E-Mail");
         txEmail.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txEmail.setPreferredSize(new java.awt.Dimension(180, 30));
+        txEmail.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
@@ -538,19 +542,22 @@ public class Fabricante extends javax.swing.JFrame {
         jLabel14.setText("Observações");
 
         txObservacoes.setForeground(new java.awt.Color(0, 0, 0));
-        txObservacoes.setCor(new java.awt.Color(110, 202, 224));
+        txObservacoes.setCor(new java.awt.Color(255, 255, 255));
         txObservacoes.setDicas("Observações");
         txObservacoes.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txObservacoes.setPreferredSize(new java.awt.Dimension(180, 30));
+        txObservacoes.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         cbxNome.setForeground(new java.awt.Color(0, 0, 0));
         cbxNome.setToolTipText("");
+        cbxNome.setCor(new java.awt.Color(255, 255, 255));
 
-        btnConsultaPeloNome.setBackground(new java.awt.Color(131, 191, 205));
+        btnConsultaPeloNome.setBackground(new java.awt.Color(220, 220, 220));
         btnConsultaPeloNome.setForeground(new java.awt.Color(28, 181, 223));
 
         cbxNomeCidade.setEditable(true);
         cbxNomeCidade.setForeground(new java.awt.Color(0, 0, 0));
+        cbxNomeCidade.setCor(new java.awt.Color(255, 255, 255));
 
         jLabel15.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
@@ -562,8 +569,9 @@ public class Fabricante extends javax.swing.JFrame {
 
         cbxUfEstado.setEditable(true);
         cbxUfEstado.setForeground(new java.awt.Color(0, 0, 0));
+        cbxUfEstado.setCor(new java.awt.Color(255, 255, 255));
 
-        btnAtualizar.setBackground(new java.awt.Color(131, 191, 205));
+        btnAtualizar.setBackground(new java.awt.Color(220, 220, 220));
         btnAtualizar.setForeground(new java.awt.Color(28, 181, 223));
 
         jSeparator6.setForeground(new java.awt.Color(30, 30, 30));
@@ -572,7 +580,7 @@ public class Fabricante extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Nome");
 
-        btnCancelar.setBackground(new java.awt.Color(131, 191, 205));
+        btnCancelar.setBackground(new java.awt.Color(220, 220, 220));
         btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setText("Cancelar");
         btnCancelar.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -580,6 +588,7 @@ public class Fabricante extends javax.swing.JFrame {
         btnCancelar.setMinimumSize(new java.awt.Dimension(65, 30));
 
         txCelular.setForeground(new java.awt.Color(0, 0, 0));
+        txCelular.setCor(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -655,13 +664,12 @@ public class Fabricante extends javax.swing.JFrame {
                                         .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(49, 49, 49)
-                                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(287, 287, 287)
-                        .addComponent(jLabel9)
-                        .addGap(100, 410, Short.MAX_VALUE))))
+                                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(287, 287, 287)
+                                .addComponent(jLabel9)))
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

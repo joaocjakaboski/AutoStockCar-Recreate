@@ -105,16 +105,17 @@ public class GestaoVendas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(131, 191, 205));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        jPanel2.setBackground(new java.awt.Color(147, 211, 225));
+        jPanel2.setBackground(new java.awt.Color(220, 220, 220));
         jPanel2.setPreferredSize(new java.awt.Dimension(1162, 550));
 
         cbxNomeCliente.setForeground(new java.awt.Color(0, 0, 0));
         cbxNomeCliente.setToolTipText("");
+        cbxNomeCliente.setCor(new java.awt.Color(255, 255, 255));
 
-        btnSalvar1.setBackground(new java.awt.Color(163, 225, 255));
+        btnSalvar1.setBackground(new java.awt.Color(220, 220, 220));
         btnSalvar1.setForeground(new java.awt.Color(30, 30, 30));
         btnSalvar1.setText("Atualizar");
         btnSalvar1.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -134,7 +135,7 @@ public class GestaoVendas extends javax.swing.JFrame {
         CodigoCliente5.setText("Cliente:");
 
         txData.setActionCommand("");
-        txData.setCor(new java.awt.Color(131, 191, 205));
+        txData.setCor(new java.awt.Color(255, 255, 255));
         txData.setDicas("");
         txData.setMinimumSize(new java.awt.Dimension(64, 30));
         txData.setPreferredSize(new java.awt.Dimension(143, 30));
@@ -157,7 +158,7 @@ public class GestaoVendas extends javax.swing.JFrame {
         CodigoCliente6.setText("Data da Venda:");
 
         txTotalPagar.setActionCommand("");
-        txTotalPagar.setCor(new java.awt.Color(131, 191, 205));
+        txTotalPagar.setCor(new java.awt.Color(255, 255, 255));
         txTotalPagar.setDicas("");
         txTotalPagar.setMinimumSize(new java.awt.Dimension(64, 30));
         txTotalPagar.setPreferredSize(new java.awt.Dimension(143, 30));
@@ -173,7 +174,7 @@ public class GestaoVendas extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(32, 32, 32)
                                 .addComponent(CodigoCliente4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                                 .addComponent(txTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -190,7 +191,7 @@ public class GestaoVendas extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 809, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(btnSalvar1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(234, Short.MAX_VALUE))
+                .addContainerGap(233, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -248,14 +248,14 @@ public class Cadastrop extends javax.swing.JFrame {
 
         background.setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        jPanel1.setBackground(new java.awt.Color(131, 191, 205));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        jPanel2.setBackground(new java.awt.Color(147, 211, 225));
+        jPanel2.setBackground(new java.awt.Color(220, 220, 220));
         jPanel2.setPreferredSize(new java.awt.Dimension(1164, 550));
 
         txidproduto.setForeground(new java.awt.Color(0, 0, 0));
-        txidproduto.setCor(new java.awt.Color(131, 191, 205));
+        txidproduto.setCor(new java.awt.Color(255, 255, 255));
         txidproduto.setDicas("ID");
         txidproduto.setMinimumSize(new java.awt.Dimension(64, 30));
         txidproduto.setPreferredSize(new java.awt.Dimension(143, 30));
@@ -284,7 +284,7 @@ public class Cadastrop extends javax.swing.JFrame {
         Complemento.setText("Complemento:");
 
         txvalorcusto.setForeground(new java.awt.Color(0, 0, 0));
-        txvalorcusto.setCor(new java.awt.Color(131, 191, 205));
+        txvalorcusto.setCor(new java.awt.Color(255, 255, 255));
         txvalorcusto.setDicas("Valor Custo");
         txvalorcusto.setMinimumSize(new java.awt.Dimension(64, 30));
         txvalorcusto.setPreferredSize(new java.awt.Dimension(143, 30));
@@ -296,7 +296,7 @@ public class Cadastrop extends javax.swing.JFrame {
 
         txnome.setForeground(new java.awt.Color(0, 0, 0));
         txnome.setCaretColor(new java.awt.Color(0, 0, 0));
-        txnome.setCor(new java.awt.Color(131, 191, 205));
+        txnome.setCor(new java.awt.Color(255, 255, 255));
         txnome.setDicas("Nome");
         txnome.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txnome.setMinimumSize(new java.awt.Dimension(64, 30));
@@ -309,7 +309,7 @@ public class Cadastrop extends javax.swing.JFrame {
         });
 
         txcodigofab.setForeground(new java.awt.Color(0, 0, 0));
-        txcodigofab.setCor(new java.awt.Color(131, 191, 205));
+        txcodigofab.setCor(new java.awt.Color(255, 255, 255));
         txcodigofab.setDicas("Cód Fábrica");
         txcodigofab.setMinimumSize(new java.awt.Dimension(64, 30));
         txcodigofab.setPreferredSize(new java.awt.Dimension(143, 30));
@@ -322,7 +322,7 @@ public class Cadastrop extends javax.swing.JFrame {
 
         txvalorvenda.setEditable(false);
         txvalorvenda.setForeground(new java.awt.Color(0, 0, 0));
-        txvalorvenda.setCor(new java.awt.Color(131, 191, 205));
+        txvalorvenda.setCor(new java.awt.Color(255, 255, 255));
         txvalorvenda.setDicas("Valor Venda");
         txvalorvenda.setMinimumSize(new java.awt.Dimension(64, 30));
         txvalorvenda.setPreferredSize(new java.awt.Dimension(143, 30));
@@ -333,7 +333,7 @@ public class Cadastrop extends javax.swing.JFrame {
             }
         });
 
-        btsalvar.setBackground(new java.awt.Color(131, 191, 205));
+        btsalvar.setBackground(new java.awt.Color(220, 220, 220));
         btsalvar.setForeground(new java.awt.Color(30, 30, 30));
         btsalvar.setText("Salvar");
         btsalvar.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -343,24 +343,24 @@ public class Cadastrop extends javax.swing.JFrame {
             }
         });
 
-        btalterar.setBackground(new java.awt.Color(131, 191, 205));
+        btalterar.setBackground(new java.awt.Color(220, 220, 220));
         btalterar.setForeground(new java.awt.Color(30, 30, 30));
         btalterar.setText("Alterar");
         btalterar.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
 
-        btexcluir.setBackground(new java.awt.Color(131, 191, 205));
+        btexcluir.setBackground(new java.awt.Color(220, 220, 220));
         btexcluir.setForeground(new java.awt.Color(30, 30, 30));
         btexcluir.setText("Excluir");
         btexcluir.setToolTipText("");
         btexcluir.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
 
-        btnovo.setBackground(new java.awt.Color(131, 191, 205));
+        btnovo.setBackground(new java.awt.Color(220, 220, 220));
         btnovo.setForeground(new java.awt.Color(30, 30, 30));
         btnovo.setText("Pesquisar");
         btnovo.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
 
         txcomplemento.setForeground(new java.awt.Color(0, 0, 0));
-        txcomplemento.setCor(new java.awt.Color(131, 191, 205));
+        txcomplemento.setCor(new java.awt.Color(255, 255, 255));
         txcomplemento.setDicas(" ");
         txcomplemento.setMinimumSize(new java.awt.Dimension(456, 79));
         txcomplemento.setPreferredSize(new java.awt.Dimension(143, 30));
@@ -371,7 +371,7 @@ public class Cadastrop extends javax.swing.JFrame {
         jLabel4.setToolTipText("");
 
         txPrateleira.setForeground(new java.awt.Color(0, 0, 0));
-        txPrateleira.setCor(new java.awt.Color(131, 191, 205));
+        txPrateleira.setCor(new java.awt.Color(255, 255, 255));
         txPrateleira.setDicas("Prateleira");
         txPrateleira.setMinimumSize(new java.awt.Dimension(64, 30));
         txPrateleira.setPreferredSize(new java.awt.Dimension(143, 30));
@@ -383,7 +383,7 @@ public class Cadastrop extends javax.swing.JFrame {
         jLabel5.setToolTipText("");
 
         txfabricante.setForeground(new java.awt.Color(0, 0, 0));
-        txfabricante.setCor(new java.awt.Color(131, 191, 205));
+        txfabricante.setCor(new java.awt.Color(255, 255, 255));
         txfabricante.setDicas("Fabricante");
         txfabricante.setMinimumSize(new java.awt.Dimension(64, 30));
         txfabricante.setPreferredSize(new java.awt.Dimension(143, 30));
@@ -398,7 +398,7 @@ public class Cadastrop extends javax.swing.JFrame {
         jLabel7.setText("Prateleira:");
 
         txgaveta.setForeground(new java.awt.Color(0, 0, 0));
-        txgaveta.setCor(new java.awt.Color(131, 191, 205));
+        txgaveta.setCor(new java.awt.Color(255, 255, 255));
         txgaveta.setDicas("Gaveta");
         txgaveta.setMinimumSize(new java.awt.Dimension(64, 30));
         txgaveta.setPreferredSize(new java.awt.Dimension(143, 30));
@@ -410,12 +410,12 @@ public class Cadastrop extends javax.swing.JFrame {
         });
 
         txcategoria.setForeground(new java.awt.Color(0, 0, 0));
-        txcategoria.setCor(new java.awt.Color(131, 191, 205));
+        txcategoria.setCor(new java.awt.Color(255, 255, 255));
         txcategoria.setDicas("Categoria");
         txcategoria.setMinimumSize(new java.awt.Dimension(64, 30));
         txcategoria.setPreferredSize(new java.awt.Dimension(143, 30));
 
-        btlimpar.setBackground(new java.awt.Color(131, 191, 205));
+        btlimpar.setBackground(new java.awt.Color(220, 220, 220));
         btlimpar.setForeground(new java.awt.Color(30, 30, 30));
         btlimpar.setText("Limpar");
         btlimpar.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -426,7 +426,7 @@ public class Cadastrop extends javax.swing.JFrame {
         });
 
         txImpostoProduto.setForeground(new java.awt.Color(0, 0, 0));
-        txImpostoProduto.setCor(new java.awt.Color(131, 191, 205));
+        txImpostoProduto.setCor(new java.awt.Color(255, 255, 255));
         txImpostoProduto.setDicas("Imposto do Produto");
         txImpostoProduto.setMinimumSize(new java.awt.Dimension(64, 30));
         txImpostoProduto.setPreferredSize(new java.awt.Dimension(143, 30));
@@ -437,7 +437,7 @@ public class Cadastrop extends javax.swing.JFrame {
         ValorCusto1.setText("Imposto do Produto:");
 
         txvalorvendasemimposto.setForeground(new java.awt.Color(0, 0, 0));
-        txvalorvendasemimposto.setCor(new java.awt.Color(131, 191, 205));
+        txvalorvendasemimposto.setCor(new java.awt.Color(255, 255, 255));
         txvalorvendasemimposto.setDicas("Valor venda sem Imposto");
         txvalorvendasemimposto.setMinimumSize(new java.awt.Dimension(64, 30));
         txvalorvendasemimposto.setPreferredSize(new java.awt.Dimension(143, 30));
@@ -447,7 +447,7 @@ public class Cadastrop extends javax.swing.JFrame {
         ValorCusto2.setForeground(new java.awt.Color(30, 30, 30));
         ValorCusto2.setText("Valor sem Imposto");
 
-        btcalcular.setBackground(new java.awt.Color(131, 191, 205));
+        btcalcular.setBackground(new java.awt.Color(220, 220, 220));
         btcalcular.setForeground(new java.awt.Color(30, 30, 30));
         btcalcular.setText("Soma");
         btcalcular.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -457,7 +457,7 @@ public class Cadastrop extends javax.swing.JFrame {
             }
         });
 
-        btfabricante.setBackground(new java.awt.Color(131, 191, 205));
+        btfabricante.setBackground(new java.awt.Color(220, 220, 220));
         btfabricante.setForeground(new java.awt.Color(30, 30, 30));
         btfabricante.setText("+");
         btfabricante.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -467,7 +467,7 @@ public class Cadastrop extends javax.swing.JFrame {
             }
         });
 
-        btcategoria.setBackground(new java.awt.Color(131, 191, 205));
+        btcategoria.setBackground(new java.awt.Color(220, 220, 220));
         btcategoria.setForeground(new java.awt.Color(30, 30, 30));
         btcategoria.setText("+");
         btcategoria.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -478,7 +478,7 @@ public class Cadastrop extends javax.swing.JFrame {
         });
 
         txQuantidadeEstoque.setForeground(new java.awt.Color(0, 0, 0));
-        txQuantidadeEstoque.setCor(new java.awt.Color(131, 191, 205));
+        txQuantidadeEstoque.setCor(new java.awt.Color(255, 255, 255));
         txQuantidadeEstoque.setDicas("Quantidade");
 
         ValorCusto3.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N

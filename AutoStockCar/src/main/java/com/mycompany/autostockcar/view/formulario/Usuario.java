@@ -169,13 +169,14 @@ private void alterarUsuario(int id) {
 
         background.setPreferredSize(new java.awt.Dimension(624, 375));
 
-        jPanel1.setBackground(new java.awt.Color(131, 191, 205));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.setName(""); // NOI18N
 
-        jPanel2.setBackground(new java.awt.Color(147, 211, 225));
+        jPanel2.setBackground(new java.awt.Color(220, 220, 220));
         jPanel2.setPreferredSize(new java.awt.Dimension(566, 322));
 
+        txSenha.setCor(new java.awt.Color(255, 255, 255));
         txSenha.setDicas("");
         txSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,6 +192,7 @@ private void alterarUsuario(int id) {
         jLabel2.setForeground(new java.awt.Color(30, 30, 30));
         jLabel2.setText("Login:");
 
+        txUsuario.setCor(new java.awt.Color(255, 255, 255));
         txUsuario.setDicas("Login");
         txUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,7 +204,7 @@ private void alterarUsuario(int id) {
         jLabel3.setForeground(new java.awt.Color(30, 30, 30));
         jLabel3.setText("Senha:");
 
-        btnSalvar.setBackground(new java.awt.Color(163, 225, 255));
+        btnSalvar.setBackground(new java.awt.Color(220, 220, 220));
         btnSalvar.setForeground(new java.awt.Color(30, 30, 30));
         btnSalvar.setText("SALVAR");
         btnSalvar.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -213,7 +215,7 @@ private void alterarUsuario(int id) {
             }
         });
 
-        btnAlterar.setBackground(new java.awt.Color(163, 225, 255));
+        btnAlterar.setBackground(new java.awt.Color(220, 220, 220));
         btnAlterar.setForeground(new java.awt.Color(30, 30, 30));
         btnAlterar.setText("ALTERAR");
         btnAlterar.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
