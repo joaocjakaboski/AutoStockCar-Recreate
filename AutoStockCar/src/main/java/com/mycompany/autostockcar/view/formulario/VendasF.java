@@ -917,10 +917,10 @@ public class VendasF extends javax.swing.JFrame {
        txTotal.setText(String.valueOf(totalPagarGeneral));
     }
     
-    private void aplicarDesconto() {
+   private void aplicarDesconto() {
     try {
-        String descontoText = txDesconto.getText();
-        BigDecimal descontoValor = new BigDecimal(descontoText);
+        String descontoText = txDesconto.getText().replace(",", ".");
+        BigDecimal descontoValor = new BigDecimal(descontoText).setScale(2, RoundingMode.HALF_UP);
 
         // Calcula o total atual da venda
         BigDecimal totalVenda = BigDecimal.ZERO;
@@ -931,56 +931,51 @@ public class VendasF extends javax.swing.JFrame {
         // Verifica se o desconto é maior ou igual ao total da venda
         if (descontoValor.compareTo(totalVenda) >= 0) {
             JOptionPane.showMessageDialog(null, "O valor do desconto não pode ser maior ou igual ao total da venda.");
-            txDesconto.setText("0.0"); // Reseta o campo de desconto
+            txDesconto.setText("0.00");
 
-            // Reseta os descontos dos produtos e atualiza os valores
             for (ItensVenda produto : listaProdutos) {
                 produto.setDesconto(BigDecimal.ZERO);
                 produto.setTotalAPagar(produto.getValorParcial());
             }
 
-            // Atualiza os campos de totalizadores
             calcularTotalPagar();
-
-            // Atualiza a tabela para refletir os novos valores
             listaTabelaProdutos();
-            return; // Sai do método sem aplicar o desconto
+            return;
         }
 
-        // Aplica o desconto a cada produto
+        // Aplica o desconto em dinheiro uma vez
         for (ItensVenda produto : listaProdutos) {
             BigDecimal valorParcial = produto.getValorParcial();
-            BigDecimal descontoProduto = valorParcial.multiply(descontoValor).divide(totalVenda, RoundingMode.HALF_UP);
+            BigDecimal proporcaoDesconto = valorParcial.divide(totalVenda, 10, RoundingMode.HALF_UP);
+            BigDecimal descontoProduto = descontoValor.multiply(proporcaoDesconto).setScale(2, RoundingMode.HALF_UP);
             produto.setDesconto(descontoProduto);
 
-            // Atualiza o valor total a pagar do produto
-            BigDecimal totalComDesconto = valorParcial.subtract(descontoProduto);
+            BigDecimal totalComDesconto = valorParcial.subtract(descontoProduto).setScale(2, RoundingMode.HALF_UP);
             produto.setTotalAPagar(totalComDesconto);
         }
 
-        // Atualiza os campos de totalizadores
         calcularTotalPagar();
-
-        // Atualiza a tabela para refletir os novos valores
         listaTabelaProdutos();
+
+        // Formata o valor do desconto para exibir com duas casas decimais
+        txDesconto.setText(descontoValor.setScale(2, RoundingMode.HALF_UP).toString());
 
     } catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(null, "Digite um valor válido para o desconto.");
-        txDesconto.setText("0.0"); // Reseta o campo de desconto
+        txDesconto.setText("0.00");
 
-        // Reseta os descontos dos produtos e atualiza os valores
         for (ItensVenda produto : listaProdutos) {
             produto.setDesconto(BigDecimal.ZERO);
             produto.setTotalAPagar(produto.getValorParcial());
         }
 
-        // Atualiza os campos de totalizadores
         calcularTotalPagar();
-
-        // Atualiza a tabela para refletir os novos valores
         listaTabelaProdutos();
     }
 }
+
+
+
     
     private void obterIdCliente() throws SQLException {
     String clienteSelecionado = cbxNomeCliente.getSelectedItem().toString();
