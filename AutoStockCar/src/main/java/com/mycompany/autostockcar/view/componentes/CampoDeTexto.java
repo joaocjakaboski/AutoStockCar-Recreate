@@ -87,6 +87,7 @@ public class CampoDeTexto extends JTextField{
         if (enabled) {
             this.setCorTexto(new Color(158, 158, 158));
             this.setCor(new Color (255, 255, 255));
+            this.setForeground(new Color(0, 0, 0));
         } else {
             this.setCorTexto(new Color(255, 255, 255));
             this.setForeground(new Color(255, 255, 255));

@@ -419,7 +419,7 @@ public class Client extends javax.swing.JFrame {
         btnAtualizar.setBackground(corBotaoDesativado);
     }
     
-        private void ativarCampos() {
+    private void ativarCampos() {
         txBairro.setEnabled(true);
         txBairro.setCor(corCampoAtivado);
         txCelular.setEnabled(true);
@@ -543,11 +543,11 @@ public class Client extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(220, 220, 220));
         jPanel2.setPreferredSize(new java.awt.Dimension(1162, 550));
 
-        txConsultaCpf.setForeground(new java.awt.Color(0, 0, 0));
+        txConsultaCpf.setBackground(new java.awt.Color(255, 255, 255));
         txConsultaCpf.setCorTexto(new java.awt.Color(158, 158, 158));
         txConsultaCpf.setDicas("CPF/CNPJ");
+        txConsultaCpf.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
-        txEmail.setForeground(new java.awt.Color(0, 0, 0));
         txEmail.setCorTexto(new java.awt.Color(158, 158, 158));
         txEmail.setDicas("E-mail ");
         txEmail.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -570,7 +570,6 @@ public class Client extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("CPF/CNPJ*");
 
-        txCpf.setForeground(new java.awt.Color(0, 0, 0));
         txCpf.setCorTexto(new java.awt.Color(158, 158, 158));
         txCpf.setDicas("CPF/CNPJ");
         txCpf.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -579,7 +578,6 @@ public class Client extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Nome*");
 
-        txNome.setForeground(new java.awt.Color(0, 0, 0));
         txNome.setCorTexto(new java.awt.Color(158, 158, 158));
         txNome.setDicas("Nome ");
         txNome.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -598,7 +596,6 @@ public class Client extends javax.swing.JFrame {
 
         jSeparator3.setForeground(new java.awt.Color(30, 30, 30));
 
-        txDataCadastro.setForeground(new java.awt.Color(0, 0, 0));
         txDataCadastro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txDataCadastro.setCorTexto(new java.awt.Color(158, 158, 158));
         txDataCadastro.setDicas("Data ");
@@ -625,13 +622,11 @@ public class Client extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Rua*");
 
-        txRua.setForeground(new java.awt.Color(0, 0, 0));
         txRua.setCorTexto(new java.awt.Color(158, 158, 158));
         txRua.setDicas("Rua");
         txRua.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txRua.setPreferredSize(new java.awt.Dimension(180, 30));
 
-        txBairro.setForeground(new java.awt.Color(0, 0, 0));
         txBairro.setCorTexto(new java.awt.Color(158, 158, 158));
         txBairro.setDicas("Bairro ");
         txBairro.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -670,7 +665,6 @@ public class Client extends javax.swing.JFrame {
         jLabel17.setText("Observações - Dados Adicionais");
         jLabel17.setToolTipText("");
 
-        txObsCliente.setForeground(new java.awt.Color(0, 0, 0));
         txObsCliente.setCorTexto(new java.awt.Color(158, 158, 158));
         txObsCliente.setDicas("Observações");
         txObsCliente.setDisabledTextColor(new java.awt.Color(0, 0, 0));
