@@ -454,7 +454,7 @@ public class Fabricante extends javax.swing.JFrame {
         txCodigo.setEditable(false);
         txCodigo.setForeground(new java.awt.Color(0, 0, 0));
         txCodigo.setText("0");
-        txCodigo.setCor(new java.awt.Color(255, 255, 255));
+        txCodigo.setCorTexto(new java.awt.Color(158, 158, 158));
         txCodigo.setDicas("Código");
         txCodigo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txCodigo.setPreferredSize(new java.awt.Dimension(180, 30));
@@ -471,7 +471,7 @@ public class Fabricante extends javax.swing.JFrame {
         jLabel8.setText("Código");
 
         txNome.setForeground(new java.awt.Color(0, 0, 0));
-        txNome.setCor(new java.awt.Color(255, 255, 255));
+        txNome.setCorTexto(new java.awt.Color(158, 158, 158));
         txNome.setDicas("Nome ");
         txNome.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txNome.setPreferredSize(new java.awt.Dimension(180, 30));
@@ -482,7 +482,7 @@ public class Fabricante extends javax.swing.JFrame {
         jLabel9.setText("CNPJ");
 
         txEndereco.setForeground(new java.awt.Color(0, 0, 0));
-        txEndereco.setCor(new java.awt.Color(255, 255, 255));
+        txEndereco.setCorTexto(new java.awt.Color(158, 158, 158));
         txEndereco.setDicas("Endereço");
         txEndereco.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txEndereco.setPreferredSize(new java.awt.Dimension(180, 30));
@@ -515,7 +515,7 @@ public class Fabricante extends javax.swing.JFrame {
 
         txCNPJ.setForeground(new java.awt.Color(0, 0, 0));
         txCNPJ.setToolTipText("");
-        txCNPJ.setCor(new java.awt.Color(255, 255, 255));
+        txCNPJ.setCorTexto(new java.awt.Color(158, 158, 158));
         txCNPJ.setDicas("CNPJ");
         txCNPJ.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txCNPJ.setDragEnabled(true);
@@ -523,7 +523,7 @@ public class Fabricante extends javax.swing.JFrame {
         txCNPJ.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         txEmail.setForeground(new java.awt.Color(0, 0, 0));
-        txEmail.setCor(new java.awt.Color(255, 255, 255));
+        txEmail.setCorTexto(new java.awt.Color(158, 158, 158));
         txEmail.setDicas("E-Mail");
         txEmail.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txEmail.setPreferredSize(new java.awt.Dimension(180, 30));
@@ -542,7 +542,7 @@ public class Fabricante extends javax.swing.JFrame {
         jLabel14.setText("Observações");
 
         txObservacoes.setForeground(new java.awt.Color(0, 0, 0));
-        txObservacoes.setCor(new java.awt.Color(255, 255, 255));
+        txObservacoes.setCorTexto(new java.awt.Color(158, 158, 158));
         txObservacoes.setDicas("Observações");
         txObservacoes.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txObservacoes.setPreferredSize(new java.awt.Dimension(180, 30));

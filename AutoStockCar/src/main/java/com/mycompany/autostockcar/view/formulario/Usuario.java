@@ -176,6 +176,7 @@ private void alterarUsuario(int id) {
         jPanel2.setBackground(new java.awt.Color(220, 220, 220));
         jPanel2.setPreferredSize(new java.awt.Dimension(566, 322));
 
+        txSenha.setForeground(new java.awt.Color(0, 0, 0));
         txSenha.setCor(new java.awt.Color(255, 255, 255));
         txSenha.setDicas("");
         txSenha.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +193,8 @@ private void alterarUsuario(int id) {
         jLabel2.setForeground(new java.awt.Color(30, 30, 30));
         jLabel2.setText("Login:");
 
-        txUsuario.setCor(new java.awt.Color(255, 255, 255));
+        txUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        txUsuario.setCorTexto(new java.awt.Color(158, 158, 158));
         txUsuario.setDicas("Login");
         txUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

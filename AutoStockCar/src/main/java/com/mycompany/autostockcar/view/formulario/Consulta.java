@@ -27,7 +27,9 @@ public class Consulta extends javax.swing.JFrame {
         menu1.setPaiHerdado(this);
         menu1.setNomeUsuario(nomeUsuario);
         menu1.setPerfil(perfil);
+        
         btpesquisar.setIcon(new ImageIcon(getClass().getResource(caminho + "pesquisar.png")));
+        btnConsultaPeloNome.setIcon(new ImageIcon(getClass().getResource(caminho + "pesquisar.png")));
         btpesquisar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -220,7 +222,7 @@ public class Consulta extends javax.swing.JFrame {
         jPanel2.setPreferredSize(new java.awt.Dimension(1164, 550));
 
         txCodigoProduto.setForeground(new java.awt.Color(0, 0, 0));
-        txCodigoProduto.setCor(new java.awt.Color(255, 255, 255));
+        txCodigoProduto.setCorTexto(new java.awt.Color(158, 158, 158));
         txCodigoProduto.setDicas("Codigo");
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -231,11 +233,11 @@ public class Consulta extends javax.swing.JFrame {
         btpesquisar.setForeground(new java.awt.Color(28, 181, 223));
 
         txNomeProduto.setForeground(new java.awt.Color(0, 0, 0));
-        txNomeProduto.setCor(new java.awt.Color(255, 255, 255));
+        txNomeProduto.setCorTexto(new java.awt.Color(158, 158, 158));
         txNomeProduto.setDicas("Nome do produto");
 
         txUnidade.setForeground(new java.awt.Color(0, 0, 0));
-        txUnidade.setCor(new java.awt.Color(255, 255, 255));
+        txUnidade.setCorTexto(new java.awt.Color(158, 158, 158));
         txUnidade.setDicas("Unidade");
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -259,7 +261,7 @@ public class Consulta extends javax.swing.JFrame {
         jLabel5.setText("Custo da Ultima Compra");
 
         txCustoCompra.setForeground(new java.awt.Color(0, 0, 0));
-        txCustoCompra.setCor(new java.awt.Color(255, 255, 255));
+        txCustoCompra.setCorTexto(new java.awt.Color(158, 158, 158));
         txCustoCompra.setDicas("Custo do produto");
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -267,11 +269,11 @@ public class Consulta extends javax.swing.JFrame {
         jLabel6.setText("Valor de Venda");
 
         txValorVenda.setForeground(new java.awt.Color(0, 0, 0));
-        txValorVenda.setCor(new java.awt.Color(255, 255, 255));
+        txValorVenda.setCorTexto(new java.awt.Color(158, 158, 158));
         txValorVenda.setDicas("Valor Venda ");
 
         txCodigoFabricante.setForeground(new java.awt.Color(0, 0, 0));
-        txCodigoFabricante.setCor(new java.awt.Color(255, 255, 255));
+        txCodigoFabricante.setCorTexto(new java.awt.Color(158, 158, 158));
         txCodigoFabricante.setDicas("Codigo Fabricante");
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -283,11 +285,11 @@ public class Consulta extends javax.swing.JFrame {
         jLabel8.setText("Codigo de Fabrica");
 
         txNomeFabricante.setForeground(new java.awt.Color(0, 0, 0));
-        txNomeFabricante.setCor(new java.awt.Color(255, 255, 255));
+        txNomeFabricante.setCorTexto(new java.awt.Color(158, 158, 158));
         txNomeFabricante.setDicas("Nome Fabricante");
 
         txCodigoFabrica.setForeground(new java.awt.Color(0, 0, 0));
-        txCodigoFabrica.setCor(new java.awt.Color(255, 255, 255));
+        txCodigoFabrica.setCorTexto(new java.awt.Color(158, 158, 158));
         txCodigoFabrica.setDicas("Codigo de Fabrica");
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -295,7 +297,7 @@ public class Consulta extends javax.swing.JFrame {
         jLabel9.setText("Complemento");
 
         txObservacoes.setForeground(new java.awt.Color(0, 0, 0));
-        txObservacoes.setCor(new java.awt.Color(255, 255, 255));
+        txObservacoes.setCorTexto(new java.awt.Color(158, 158, 158));
         txObservacoes.setDicas("Observações");
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -307,7 +309,7 @@ public class Consulta extends javax.swing.JFrame {
         jLabel11.setText("Quantidade");
 
         txQuantEstoque.setForeground(new java.awt.Color(0, 0, 0));
-        txQuantEstoque.setCor(new java.awt.Color(255, 255, 255));
+        txQuantEstoque.setCorTexto(new java.awt.Color(158, 158, 158));
         txQuantEstoque.setDicas("Quantidade em Estoque ");
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -316,15 +318,16 @@ public class Consulta extends javax.swing.JFrame {
         jLabel14.setToolTipText("");
 
         txNomeCategoria.setForeground(new java.awt.Color(0, 0, 0));
-        txNomeCategoria.setCor(new java.awt.Color(255, 255, 255));
+        txNomeCategoria.setCorTexto(new java.awt.Color(158, 158, 158));
         txNomeCategoria.setDicas("Categoria");
 
         txGaveta.setForeground(new java.awt.Color(0, 0, 0));
-        txGaveta.setCor(new java.awt.Color(255, 255, 255));
+        txGaveta.setCorTexto(new java.awt.Color(158, 158, 158));
         txGaveta.setDicas("Gaveta");
 
+        txPrateleira.setBackground(new java.awt.Color(255, 255, 255));
         txPrateleira.setForeground(new java.awt.Color(0, 0, 0));
-        txPrateleira.setCor(new java.awt.Color(255, 255, 255));
+        txPrateleira.setCorTexto(new java.awt.Color(158, 158, 158));
         txPrateleira.setDicas("Prateleira");
 
         jLabel13.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
@@ -336,7 +339,7 @@ public class Consulta extends javax.swing.JFrame {
         jLabel15.setText("Prateleira");
 
         txCodigoCategoria.setForeground(new java.awt.Color(0, 0, 0));
-        txCodigoCategoria.setCor(new java.awt.Color(255, 255, 255));
+        txCodigoCategoria.setCorTexto(new java.awt.Color(158, 158, 158));
         txCodigoCategoria.setDicas("Codigo");
 
         jLabel16.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N

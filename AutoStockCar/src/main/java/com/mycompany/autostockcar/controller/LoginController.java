@@ -15,8 +15,7 @@ import javax.swing.JOptionPane;
 public class LoginController implements ActionListener{
     
     private final Login login;
-    private AutenticacaoDao autenticacaoDao;
-    
+    private AutenticacaoDao autenticacaoDao;    
     
     public LoginController(Login login) {
         this.login = login;

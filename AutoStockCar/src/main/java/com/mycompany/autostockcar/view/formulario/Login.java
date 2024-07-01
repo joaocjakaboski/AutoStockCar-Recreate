@@ -167,14 +167,20 @@ public class Login extends javax.swing.JFrame {
         );
 
         txLoginSenha.setForeground(new java.awt.Color(30, 30, 30));
+        txLoginSenha.setActionCommand("login");
         txLoginSenha.setCor(new java.awt.Color(255, 255, 255));
         txLoginSenha.setDicas("Senha");
         txLoginSenha.setDisabledTextColor(new java.awt.Color(30, 30, 30));
 
+        txLoginUsuario.setForeground(new java.awt.Color(30, 30, 30));
         txLoginUsuario.setToolTipText("");
-        txLoginUsuario.setCor(new java.awt.Color(255, 255, 255));
         txLoginUsuario.setCorTexto(new java.awt.Color(200, 200, 200));
         txLoginUsuario.setDicas("Usuário");
+        txLoginUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txLoginUsuarioActionPerformed(evt);
+            }
+        });
 
         btnLoginLogin.setBackground(new java.awt.Color(220, 220, 220));
         btnLoginLogin.setForeground(new java.awt.Color(30, 30, 30));
@@ -244,6 +250,10 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txLoginUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txLoginUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txLoginUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

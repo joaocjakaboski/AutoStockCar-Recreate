@@ -459,8 +459,8 @@
                 </Component>
                 <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="txIdCliente">
                   <Properties>
-                    <Property name="cor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    <Property name="corTexto" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="9e" green="9e" red="9e" type="rgb"/>
                     </Property>
                     <Property name="dicas" type="java.lang.String" value="C&#xf3;digo"/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -473,8 +473,8 @@
                 </Component>
                 <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="txIdProduto">
                   <Properties>
-                    <Property name="cor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    <Property name="corTexto" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="9e" green="9e" red="9e" type="rgb"/>
                     </Property>
                     <Property name="dicas" type="java.lang.String" value=""/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -488,8 +488,8 @@
                 <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="txSubTotal">
                   <Properties>
                     <Property name="actionCommand" type="java.lang.String" value=""/>
-                    <Property name="cor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    <Property name="corTexto" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="9e" green="9e" red="9e" type="rgb"/>
                     </Property>
                     <Property name="dicas" type="java.lang.String" value=""/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -639,8 +639,8 @@
                 <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="txDesconto">
                   <Properties>
                     <Property name="actionCommand" type="java.lang.String" value=""/>
-                    <Property name="cor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    <Property name="corTexto" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="9e" green="9e" red="9e" type="rgb"/>
                     </Property>
                     <Property name="dicas" type="java.lang.String" value=""/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -665,8 +665,8 @@
                 <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="txTotal">
                   <Properties>
                     <Property name="actionCommand" type="java.lang.String" value=""/>
-                    <Property name="cor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    <Property name="corTexto" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="9e" green="9e" red="9e" type="rgb"/>
                     </Property>
                     <Property name="dicas" type="java.lang.String" value=""/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -711,8 +711,8 @@
                 <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="txQuantidadeDisponivel">
                   <Properties>
                     <Property name="actionCommand" type="java.lang.String" value=""/>
-                    <Property name="cor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    <Property name="corTexto" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="9e" green="9e" red="9e" type="rgb"/>
                     </Property>
                     <Property name="dicas" type="java.lang.String" value=""/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -760,7 +760,7 @@
                 <Component class="com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado" name="cbxNomeProduto">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="1e" green="1e" red="1e" type="rgb"/>
+                      <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="0"/>
@@ -814,8 +814,8 @@
                 <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="txQuantidade">
                   <Properties>
                     <Property name="actionCommand" type="java.lang.String" value=""/>
-                    <Property name="cor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    <Property name="corTexto" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="9e" green="9e" red="9e" type="rgb"/>
                     </Property>
                     <Property name="dicas" type="java.lang.String" value=""/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">

@@ -180,6 +180,7 @@ public class VendasF extends javax.swing.JFrame {
         modeloDadosProdutos.addColumn("Valor Total");
 
         this.jtProdutos.setModel(modeloDadosProdutos);
+        this.jtProdutos.removeEditor();
     }
     
     public void listaTabelaProdutos(){
@@ -349,18 +350,21 @@ public class VendasF extends javax.swing.JFrame {
         NomeCliente.setForeground(new java.awt.Color(30, 30, 30));
         NomeCliente.setText("Nome:");
 
-        txIdCliente.setCor(new java.awt.Color(255, 255, 255));
+        txIdCliente.setForeground(java.awt.Color.black);
+        txIdCliente.setCorTexto(new java.awt.Color(158, 158, 158));
         txIdCliente.setDicas("Código");
         txIdCliente.setMinimumSize(new java.awt.Dimension(64, 30));
         txIdCliente.setPreferredSize(new java.awt.Dimension(143, 30));
 
-        txIdProduto.setCor(new java.awt.Color(255, 255, 255));
+        txIdProduto.setForeground(java.awt.Color.black);
+        txIdProduto.setCorTexto(new java.awt.Color(158, 158, 158));
         txIdProduto.setDicas("");
         txIdProduto.setMinimumSize(new java.awt.Dimension(64, 30));
         txIdProduto.setPreferredSize(new java.awt.Dimension(143, 30));
 
+        txSubTotal.setForeground(java.awt.Color.black);
         txSubTotal.setActionCommand("");
-        txSubTotal.setCor(new java.awt.Color(255, 255, 255));
+        txSubTotal.setCorTexto(new java.awt.Color(158, 158, 158));
         txSubTotal.setDicas("");
         txSubTotal.setMinimumSize(new java.awt.Dimension(64, 30));
         txSubTotal.setPreferredSize(new java.awt.Dimension(143, 30));
@@ -417,8 +421,9 @@ public class VendasF extends javax.swing.JFrame {
         CodigoCliente7.setForeground(new java.awt.Color(30, 30, 30));
         CodigoCliente7.setText("Desconto:");
 
+        txDesconto.setForeground(java.awt.Color.black);
         txDesconto.setActionCommand("");
-        txDesconto.setCor(new java.awt.Color(255, 255, 255));
+        txDesconto.setCorTexto(new java.awt.Color(158, 158, 158));
         txDesconto.setDicas("");
         txDesconto.setMinimumSize(new java.awt.Dimension(64, 30));
         txDesconto.setPreferredSize(new java.awt.Dimension(143, 30));
@@ -427,8 +432,9 @@ public class VendasF extends javax.swing.JFrame {
         CodigoCliente9.setForeground(new java.awt.Color(30, 30, 30));
         CodigoCliente9.setText("Total:");
 
+        txTotal.setForeground(java.awt.Color.black);
         txTotal.setActionCommand("");
-        txTotal.setCor(new java.awt.Color(255, 255, 255));
+        txTotal.setCorTexto(new java.awt.Color(158, 158, 158));
         txTotal.setDicas("");
         txTotal.setMinimumSize(new java.awt.Dimension(64, 30));
         txTotal.setPreferredSize(new java.awt.Dimension(143, 30));
@@ -448,8 +454,9 @@ public class VendasF extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(30, 30, 30));
         jLabel1.setText("Qtd:");
 
+        txQuantidadeDisponivel.setForeground(java.awt.Color.black);
         txQuantidadeDisponivel.setActionCommand("");
-        txQuantidadeDisponivel.setCor(new java.awt.Color(255, 255, 255));
+        txQuantidadeDisponivel.setCorTexto(new java.awt.Color(158, 158, 158));
         txQuantidadeDisponivel.setDicas("");
         txQuantidadeDisponivel.setMinimumSize(new java.awt.Dimension(64, 30));
         txQuantidadeDisponivel.setPreferredSize(new java.awt.Dimension(143, 30));
@@ -473,7 +480,7 @@ public class VendasF extends javax.swing.JFrame {
             }
         });
 
-        cbxNomeProduto.setForeground(new java.awt.Color(30, 30, 30));
+        cbxNomeProduto.setForeground(java.awt.Color.black);
         cbxNomeProduto.setToolTipText("");
         cbxNomeProduto.setCor(new java.awt.Color(255, 255, 255));
 
@@ -499,8 +506,9 @@ public class VendasF extends javax.swing.JFrame {
             }
         });
 
+        txQuantidade.setForeground(java.awt.Color.black);
         txQuantidade.setActionCommand("");
-        txQuantidade.setCor(new java.awt.Color(255, 255, 255));
+        txQuantidade.setCorTexto(new java.awt.Color(158, 158, 158));
         txQuantidade.setDicas("");
         txQuantidade.setMinimumSize(new java.awt.Dimension(64, 30));
         txQuantidade.setPreferredSize(new java.awt.Dimension(143, 30));

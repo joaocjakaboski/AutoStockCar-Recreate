@@ -87,7 +87,7 @@ public void BotaoPesquisar() {
         jPanel2.setBackground(new java.awt.Color(220, 220, 220));
         jPanel2.setPreferredSize(new java.awt.Dimension(566, 322));
 
-        txId.setCor(new java.awt.Color(255, 255, 255));
+        txId.setCorTexto(new java.awt.Color(158, 158, 158));
         txId.setDicas("ID");
         txId.setFont(new java.awt.Font("sanserif", 1, 12)); // NOI18N
         txId.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +104,7 @@ public void BotaoPesquisar() {
         jLabel2.setForeground(new java.awt.Color(30, 30, 30));
         jLabel2.setText("Nome Produto:");
 
-        txMotivodaMovimentacao.setCor(new java.awt.Color(255, 255, 255));
+        txMotivodaMovimentacao.setCorTexto(new java.awt.Color(158, 158, 158));
         txMotivodaMovimentacao.setDicas("");
         txMotivodaMovimentacao.setFont(new java.awt.Font("sanserif", 1, 12)); // NOI18N
         txMotivodaMovimentacao.addActionListener(new java.awt.event.ActionListener() {
@@ -117,7 +117,7 @@ public void BotaoPesquisar() {
         jLabel3.setForeground(new java.awt.Color(30, 30, 30));
         jLabel3.setText("Motivo da Movimentação:");
 
-        txNomeProduto.setCor(new java.awt.Color(255, 255, 255));
+        txNomeProduto.setCorTexto(new java.awt.Color(158, 158, 158));
         txNomeProduto.setDicas("");
         txNomeProduto.setFont(new java.awt.Font("sanserif", 1, 12)); // NOI18N
         txNomeProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +130,7 @@ public void BotaoPesquisar() {
         jLabel4.setForeground(new java.awt.Color(30, 30, 30));
         jLabel4.setText("Estoque Atual:");
 
-        txEstoqueAtual.setCor(new java.awt.Color(255, 255, 255));
+        txEstoqueAtual.setCorTexto(new java.awt.Color(158, 158, 158));
         txEstoqueAtual.setDicas("");
         txEstoqueAtual.setFont(new java.awt.Font("sanserif", 1, 12)); // NOI18N
         txEstoqueAtual.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +143,7 @@ public void BotaoPesquisar() {
         jLabel5.setForeground(new java.awt.Color(30, 30, 30));
         jLabel5.setText("Ajuste de Estoque:");
 
-        txAjustedeEstoque.setCor(new java.awt.Color(255, 255, 255));
+        txAjustedeEstoque.setCorTexto(new java.awt.Color(158, 158, 158));
         txAjustedeEstoque.setDicas("");
         txAjustedeEstoque.setFont(new java.awt.Font("sanserif", 1, 12)); // NOI18N
         txAjustedeEstoque.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +168,7 @@ public void BotaoPesquisar() {
 
         btPesquisa.setBackground(new java.awt.Color(220, 220, 220));
 
-        txIdFabricante.setCor(new java.awt.Color(255, 255, 255));
+        txIdFabricante.setCorTexto(new java.awt.Color(158, 158, 158));
         txIdFabricante.setDicas("");
         txIdFabricante.setFont(new java.awt.Font("sanserif", 1, 12)); // NOI18N
         txIdFabricante.addActionListener(new java.awt.event.ActionListener() {

@@ -387,6 +387,7 @@ public class GestaoVendas extends javax.swing.JFrame {
                     rs.getString("clientes"),
                     rs.getDouble("total"),
                     rs.getDate("data")
+                    
                 });
             }
             jTVendas.setModel(model);

@@ -188,7 +188,7 @@ public class Categoria extends javax.swing.JFrame {
         );
 
         TxtCodigo.setForeground(new java.awt.Color(0, 0, 0));
-        TxtCodigo.setCor(new java.awt.Color(255, 255, 255));
+        TxtCodigo.setCorTexto(new java.awt.Color(158, 158, 158));
         TxtCodigo.setDicas("Código");
         TxtCodigo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         TxtCodigo.setPreferredSize(new java.awt.Dimension(180, 30));
@@ -248,7 +248,7 @@ public class Categoria extends javax.swing.JFrame {
         jLabel5.setText("Descrição");
 
         TxtDescricao.setForeground(new java.awt.Color(0, 0, 0));
-        TxtDescricao.setCor(new java.awt.Color(255, 255, 255));
+        TxtDescricao.setCorTexto(new java.awt.Color(158, 158, 158));
         TxtDescricao.setDicas(" ");
         TxtDescricao.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         TxtDescricao.setPreferredSize(new java.awt.Dimension(180, 30));
@@ -272,7 +272,7 @@ public class Categoria extends javax.swing.JFrame {
         });
 
         TxtNome.setForeground(new java.awt.Color(0, 0, 0));
-        TxtNome.setCor(new java.awt.Color(255, 255, 255));
+        TxtNome.setCorTexto(new java.awt.Color(158, 158, 158));
         TxtNome.setDicas("Nome Categotia");
         TxtNome.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         TxtNome.setPreferredSize(new java.awt.Dimension(180, 30));

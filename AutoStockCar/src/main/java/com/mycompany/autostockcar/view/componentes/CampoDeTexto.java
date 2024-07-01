@@ -25,11 +25,11 @@ public class CampoDeTexto extends JTextField{
 
     public CampoDeTexto() {
         setBorder(BorderFactory.createEmptyBorder(2, 10, 2, 10));
-        setBackground(new Color(0, 0, 0, 0));
-        setForeground(Color.decode("#1D1B86"));
+        setBackground(new Color(255, 0, 0, 0));
+        setForeground(Color.decode("#000000"));
         setFont(new Font("sanserif", 1, 15));
         setSelectionColor(new Color(75, 175, 152));
-        this.cor = new Color(28, 181, 223, 80);
+        this.cor = new Color (255, 255, 255);
         this.corTexto = new Color(0, 0, 0);
     }
     
@@ -85,9 +85,12 @@ public class CampoDeTexto extends JTextField{
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
         if (enabled) {
-            this.setCorTexto(new Color(209, 209, 209));
+            this.setCorTexto(new Color(158, 158, 158));
+            this.setCor(new Color (255, 255, 255));
         } else {
             this.setCorTexto(new Color(255, 255, 255));
+            this.setForeground(new Color(255, 255, 255));
+            this.setCor(new Color (169, 169, 169));
         }
     }
 
@@ -114,6 +117,7 @@ public class CampoDeTexto extends JTextField{
 
     public void setCor(Color cor) {
         this.cor = cor;
+        repaint();
     }
 
     public Color getCorTexto() {
