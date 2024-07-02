@@ -40,8 +40,8 @@ public class GestaoVendas extends javax.swing.JFrame {
         menu1.setPaiHerdado(this);
         menu1.setNomeUsuario(nomeUsuario);
         menu1.setPerfil(perfil);
-        txData.setEditable(false);
-        txTotalPagar.setEditable(false);
+        //txData.setEditable(false);
+        //txTotalPagar.setEditable(false);
         
         DefaultTableModel model = new DefaultTableModel() {
         @Override
@@ -56,11 +56,11 @@ public class GestaoVendas extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println("Erro ao carregar tabela de vendas: " + e.getMessage());
         }
-        cbxNomeCliente.setEditable(true);
-        cbxNomeCliente.removeAllItems();
-        cbxNomeCliente.addItem("");
+        //cbxNomeCliente.setEditable(true);
+        //cbxNomeCliente.removeAllItems();
+        //cbxNomeCliente.addItem("");
 
-        cbxNomeCliente.getEditor().addActionListener(new ActionListener() {
+        /*cbxNomeCliente.getEditor().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 List<String> items = new ArrayList<>();
@@ -81,7 +81,7 @@ public class GestaoVendas extends javax.swing.JFrame {
                 }
                 SwingUtilities.invokeLater(() -> cbxNomeCliente.setPopupVisible(true));
             }
-        });
+        });*/
  
     }
     
@@ -100,15 +100,8 @@ public class GestaoVendas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         menu1 = new com.mycompany.autostockcar.view.componentes.Menu();
         jPanel2 = new javax.swing.JPanel();
-        cbxNomeCliente = new com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado();
-        btnSalvar1 = new com.mycompany.autostockcar.view.componentes.Botao();
-        CodigoCliente4 = new javax.swing.JLabel();
-        CodigoCliente5 = new javax.swing.JLabel();
-        txData = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTVendas = new javax.swing.JTable();
-        CodigoCliente6 = new javax.swing.JLabel();
-        txTotalPagar = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,35 +110,6 @@ public class GestaoVendas extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(220, 220, 220));
         jPanel2.setPreferredSize(new java.awt.Dimension(1162, 550));
-
-        cbxNomeCliente.setForeground(new java.awt.Color(0, 0, 0));
-        cbxNomeCliente.setToolTipText("");
-        cbxNomeCliente.setCor(new java.awt.Color(255, 255, 255));
-
-        btnSalvar1.setBackground(new java.awt.Color(220, 220, 220));
-        btnSalvar1.setForeground(new java.awt.Color(30, 30, 30));
-        btnSalvar1.setText("Atualizar");
-        btnSalvar1.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        btnSalvar1.setPreferredSize(new java.awt.Dimension(62, 30));
-        btnSalvar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvar1ActionPerformed(evt);
-            }
-        });
-
-        CodigoCliente4.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        CodigoCliente4.setForeground(new java.awt.Color(30, 30, 30));
-        CodigoCliente4.setText("Total da Compra:");
-
-        CodigoCliente5.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        CodigoCliente5.setForeground(new java.awt.Color(30, 30, 30));
-        CodigoCliente5.setText("Cliente:");
-
-        txData.setActionCommand("");
-        txData.setCor(new java.awt.Color(255, 255, 255));
-        txData.setDicas("");
-        txData.setMinimumSize(new java.awt.Dimension(64, 30));
-        txData.setPreferredSize(new java.awt.Dimension(143, 30));
 
         jTVendas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -168,67 +132,21 @@ public class GestaoVendas extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTVendas);
 
-        CodigoCliente6.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        CodigoCliente6.setForeground(new java.awt.Color(30, 30, 30));
-        CodigoCliente6.setText("Data da Venda:");
-
-        txTotalPagar.setActionCommand("");
-        txTotalPagar.setCor(new java.awt.Color(255, 255, 255));
-        txTotalPagar.setDicas("");
-        txTotalPagar.setMinimumSize(new java.awt.Dimension(64, 30));
-        txTotalPagar.setPreferredSize(new java.awt.Dimension(143, 30));
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(CodigoCliente4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                                .addComponent(txTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(CodigoCliente6)
-                                .addGap(18, 18, 18)
-                                .addComponent(txData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(161, 161, 161)
-                        .addComponent(CodigoCliente5)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbxNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 809, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
-                .addComponent(btnSalvar1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(45, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1076, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CodigoCliente5)
-                    .addComponent(CodigoCliente4)
-                    .addComponent(txTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CodigoCliente6)
-                            .addComponent(txData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(70, 70, 70))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnSalvar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -283,48 +201,6 @@ public class GestaoVendas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar1ActionPerformed
-        Vendas venda = new Vendas();
-        RegistrarVendaController controleRegistroVenda = new RegistrarVendaController();
-        String cliente;
-        cliente = cbxNomeCliente.getSelectedItem().toString().trim();
-        
-        //obter id
-        try{
-            conn = conexao.obterConexao();
-            PreparedStatement stmt = conn.prepareStatement("select IdCliente "
-            +"from clientes where NomeCliente = ?");
-            stmt.setString(1, cliente);
-            ResultSet rs = stmt.executeQuery();
-            if(rs.next()){
-                idCliente= rs.getInt("IdCliente");
-        }
-        }catch(SQLException e){
-            System.out.println("Erro ao carregar id cliente: " + e);
-        }
-        
-        //atualizar dados
-        
-        if (idCliente != 0) {
-        venda.setCliente(idCliente);
-
-            try {
-                // Atualizar dados da venda
-                if (controleRegistroVenda.atualizar(venda, idVenda)) {
-                    JOptionPane.showMessageDialog(null, "Registro atualizado!");
-                    this.CarregarTabelaVenda();
-                    this.Limpar();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Erro ao atualizar!");
-                }   } catch (SQLException ex) {
-                Logger.getLogger(GestaoVendas.class.getName()).log(Level.SEVERE, null, ex);
-            }
-    } else {
-        JOptionPane.showMessageDialog(null, "Selecione um cliente válido para atualizar dados.");
-    }
-
-    }//GEN-LAST:event_btnSalvar1ActionPerformed
-
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -358,25 +234,18 @@ public class GestaoVendas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel CodigoCliente4;
-    private javax.swing.JLabel CodigoCliente5;
-    private javax.swing.JLabel CodigoCliente6;
-    private com.mycompany.autostockcar.view.componentes.Botao btnSalvar1;
-    private com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado cbxNomeCliente;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTVendas;
     private com.mycompany.autostockcar.view.componentes.Menu menu1;
-    private com.mycompany.autostockcar.view.componentes.CampoDeTexto txData;
-    private com.mycompany.autostockcar.view.componentes.CampoDeTexto txTotalPagar;
     // End of variables declaration//GEN-END:variables
 
     private void Limpar() {
-        this.txTotalPagar.setText("");
-        this.txData.setText("");
-        this.cbxNomeCliente.setSelectedItem("Selecione cliente:");
+       // this.txTotalPagar.setText("");
+        //this.txData.setText("");
+       // this.cbxNomeCliente.setSelectedItem("Selecione cliente:");
         idCliente = 0;
     }
 
@@ -442,9 +311,9 @@ public class GestaoVendas extends javax.swing.JFrame {
             stmt.setInt(1, idVenda);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                cbxNomeCliente.setSelectedItem(rs.getString("cliente"));
-                txTotalPagar.setText(rs.getString("valorPagar"));
-                txData.setText(rs.getString("dataVenda"));
+               // cbxNomeCliente.setSelectedItem(rs.getString("cliente"));
+               // txTotalPagar.setText(rs.getString("valorPagar"));
+               // txData.setText(rs.getString("dataVenda"));
             }
             rs.close();
             stmt.close();
