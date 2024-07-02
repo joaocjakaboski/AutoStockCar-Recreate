@@ -82,6 +82,7 @@ public class VendasF extends javax.swing.JFrame {
         txIdProduto.setEditable(false);
         txSubTotal.setEditable(false);
         txTotal.setEditable(false);
+        txQuantidadeDisponivel.setEditable(false);
     
         this.conexao = new ConexaoMysql();
 
@@ -177,7 +178,7 @@ public class VendasF extends javax.swing.JFrame {
         modeloDadosProdutos.addColumn("Valor Parcial");
         modeloDadosProdutos.addColumn("Desconto");
         modeloDadosProdutos.addColumn("SubTotal");
-        modeloDadosProdutos.addColumn("Valor Total");
+       // modeloDadosProdutos.addColumn("Valor Total");
 
         this.jtProdutos.setModel(modeloDadosProdutos);
         this.jtProdutos.removeEditor();
@@ -350,19 +351,19 @@ public class VendasF extends javax.swing.JFrame {
         NomeCliente.setForeground(new java.awt.Color(30, 30, 30));
         NomeCliente.setText("Nome:");
 
-        txIdCliente.setForeground(java.awt.Color.black);
+        txIdCliente.setBackground(new java.awt.Color(169, 169, 169));
+        txIdCliente.setCaretColor(new java.awt.Color(169, 169, 169));
         txIdCliente.setCorTexto(new java.awt.Color(158, 158, 158));
-        txIdCliente.setDicas("Código");
+        txIdCliente.setDicas("");
         txIdCliente.setMinimumSize(new java.awt.Dimension(64, 30));
         txIdCliente.setPreferredSize(new java.awt.Dimension(143, 30));
 
-        txIdProduto.setForeground(java.awt.Color.black);
+        txIdProduto.setBackground(new java.awt.Color(169, 169, 169));
         txIdProduto.setCorTexto(new java.awt.Color(158, 158, 158));
         txIdProduto.setDicas("");
         txIdProduto.setMinimumSize(new java.awt.Dimension(64, 30));
         txIdProduto.setPreferredSize(new java.awt.Dimension(143, 30));
 
-        txSubTotal.setForeground(java.awt.Color.black);
         txSubTotal.setActionCommand("");
         txSubTotal.setCorTexto(new java.awt.Color(158, 158, 158));
         txSubTotal.setDicas("");
@@ -421,18 +422,21 @@ public class VendasF extends javax.swing.JFrame {
         CodigoCliente7.setForeground(new java.awt.Color(30, 30, 30));
         CodigoCliente7.setText("Desconto:");
 
-        txDesconto.setForeground(java.awt.Color.black);
         txDesconto.setActionCommand("");
         txDesconto.setCorTexto(new java.awt.Color(158, 158, 158));
         txDesconto.setDicas("");
         txDesconto.setMinimumSize(new java.awt.Dimension(64, 30));
         txDesconto.setPreferredSize(new java.awt.Dimension(143, 30));
+        txDesconto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txDescontoKeyTyped(evt);
+            }
+        });
 
         CodigoCliente9.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         CodigoCliente9.setForeground(new java.awt.Color(30, 30, 30));
         CodigoCliente9.setText("Total:");
 
-        txTotal.setForeground(java.awt.Color.black);
         txTotal.setActionCommand("");
         txTotal.setCorTexto(new java.awt.Color(158, 158, 158));
         txTotal.setDicas("");
@@ -454,17 +458,12 @@ public class VendasF extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(30, 30, 30));
         jLabel1.setText("Qtd:");
 
-        txQuantidadeDisponivel.setForeground(java.awt.Color.black);
+        txQuantidadeDisponivel.setBackground(new java.awt.Color(169, 169, 169));
         txQuantidadeDisponivel.setActionCommand("");
         txQuantidadeDisponivel.setCorTexto(new java.awt.Color(158, 158, 158));
         txQuantidadeDisponivel.setDicas("");
         txQuantidadeDisponivel.setMinimumSize(new java.awt.Dimension(64, 30));
         txQuantidadeDisponivel.setPreferredSize(new java.awt.Dimension(143, 30));
-        txQuantidadeDisponivel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txQuantidadeDisponivelActionPerformed(evt);
-            }
-        });
 
         cbxNomeCliente.setForeground(new java.awt.Color(0, 0, 0));
         cbxNomeCliente.setToolTipText("");
@@ -506,12 +505,16 @@ public class VendasF extends javax.swing.JFrame {
             }
         });
 
-        txQuantidade.setForeground(java.awt.Color.black);
         txQuantidade.setActionCommand("");
         txQuantidade.setCorTexto(new java.awt.Color(158, 158, 158));
         txQuantidade.setDicas("");
         txQuantidade.setMinimumSize(new java.awt.Dimension(64, 30));
         txQuantidade.setPreferredSize(new java.awt.Dimension(143, 30));
+        txQuantidade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txQuantidadeKeyTyped(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(30, 30, 30));
@@ -819,6 +822,7 @@ public class VendasF extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Produto Agregado");
                         auxIdDetalhe++;
                         txQuantidadeDisponivel.setText("");
+                        txQuantidade.setText("");
                         this.calcularTotalPagar();
                         
                         txIdProduto.setText("");
@@ -888,9 +892,19 @@ public class VendasF extends javax.swing.JFrame {
         this.cancelarOperacao();
     }//GEN-LAST:event_btnSalvar1ActionPerformed
 
-    private void txQuantidadeDisponivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txQuantidadeDisponivelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txQuantidadeDisponivelActionPerformed
+    private void txQuantidadeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txQuantidadeKeyTyped
+        String caracteres = "0123456789";
+        if(!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txQuantidadeKeyTyped
+
+    private void txDescontoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txDescontoKeyTyped
+        String caracteres = "0123456789";
+        if(!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txDescontoKeyTyped
 
     private boolean validar(String valor) {
         try {

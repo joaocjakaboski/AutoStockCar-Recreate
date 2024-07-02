@@ -459,10 +459,16 @@
                 </Component>
                 <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="txIdCliente">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="a9" green="a9" red="a9" type="rgb"/>
+                    </Property>
+                    <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="a9" green="a9" red="a9" type="rgb"/>
+                    </Property>
                     <Property name="corTexto" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="9e" green="9e" red="9e" type="rgb"/>
                     </Property>
-                    <Property name="dicas" type="java.lang.String" value="C&#xf3;digo"/>
+                    <Property name="dicas" type="java.lang.String" value=""/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[64, 30]"/>
                     </Property>
@@ -473,6 +479,9 @@
                 </Component>
                 <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="txIdProduto">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="a9" green="a9" red="a9" type="rgb"/>
+                    </Property>
                     <Property name="corTexto" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="9e" green="9e" red="9e" type="rgb"/>
                     </Property>
@@ -650,6 +659,9 @@
                       <Dimension value="[143, 30]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txDescontoKeyTyped"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="CodigoCliente9">
                   <Properties>
@@ -710,6 +722,9 @@
                 </Component>
                 <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="txQuantidadeDisponivel">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="a9" green="a9" red="a9" type="rgb"/>
+                    </Property>
                     <Property name="actionCommand" type="java.lang.String" value=""/>
                     <Property name="corTexto" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="9e" green="9e" red="9e" type="rgb"/>
@@ -722,9 +737,6 @@
                       <Dimension value="[143, 30]"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txQuantidadeDisponivelActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado" name="cbxNomeCliente">
                   <Properties>
@@ -825,6 +837,9 @@
                       <Dimension value="[143, 30]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txQuantidadeKeyTyped"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel2">
                   <Properties>
