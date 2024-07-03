@@ -402,7 +402,7 @@ public class Client extends javax.swing.JFrame {
         txCpf.setEnabled(false);
         txCpf.setCor(corCampoDesativado);
         txDataCadastro.setEnabled(false);
-        txDataCadastro.setCor(corCampoDesativado);
+        //txDataCadastro.setCor(corCampoDesativado);
         txEmail.setEnabled(false);
         txEmail.setCor(corCampoDesativado);
         txNome.setEnabled(false);
@@ -430,8 +430,8 @@ public class Client extends javax.swing.JFrame {
         cbxNomeCidade.setEditable(true);
         txCpf.setEnabled(true);
         txCpf.setCor(corCampoAtivado);
-        txDataCadastro.setEnabled(true);
-        txDataCadastro.setCor(corCampoAtivado);
+        txDataCadastro.setEnabled(false);
+        //txDataCadastro.setCor(corCampoAtivado);
         txEmail.setEnabled(true);
         txEmail.setCor(corCampoAtivado);
         txNome.setEnabled(true);
@@ -450,7 +450,7 @@ public class Client extends javax.swing.JFrame {
     
     private void desativarCabecalho() {
         txConsultaCpf.setEnabled(false);
-        txConsultaCpf.setCor(corCampoDesativado);
+        //txConsultaCpf.setCor(corCampoDesativado);
         cbxNome.setEnabled(false);
         cbxNome.setBackground(corCampoDesativado);
         cbxNome.setCor(corCampoDesativado);
@@ -573,6 +573,11 @@ public class Client extends javax.swing.JFrame {
         txCpf.setCorTexto(new java.awt.Color(158, 158, 158));
         txCpf.setDicas("CPF/CNPJ");
         txCpf.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txCpf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txCpfKeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -900,6 +905,13 @@ public class Client extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txCpfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txCpfKeyTyped
+        String caracteres = "0123456789";
+        if(!caracteres.contains(evt.getKeyChar() + "")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txCpfKeyTyped
     
         
         

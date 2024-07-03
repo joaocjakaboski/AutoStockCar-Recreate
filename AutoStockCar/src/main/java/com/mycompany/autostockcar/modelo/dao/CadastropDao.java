@@ -138,8 +138,8 @@ public class CadastropDao {
         stmt.setString(6, produto.getPrateleira());
         stmt.setString(7, produto.getGaveta());
         stmt.setInt(8, produto.getImpostoDoProduto());
-        stmt.setInt(9, produto.getIdProduto());
-        stmt.setInt(10, produto.getQuantidadeDisponivel());
+        stmt.setInt(9, produto.getQuantidadeDisponivel());
+        stmt.setInt(10, produto.getIdProduto());
 
         int rowsAffected = stmt.executeUpdate();
 
@@ -169,6 +169,7 @@ public class CadastropDao {
         produto.setPrateleira(result.getString("Prateleira"));
         produto.setGaveta(result.getString("Gaveta"));
         produto.setImpostoDoProduto(result.getInt("ImpostoDoProduto"));
+        produto.setQuantidadeDisponivel(result.getInt("QuantidadeDisponivel"));
         
         Fabricantes fabricante = new Fabricantes();
         fabricante.setIdFabricante(result.getInt("IdFabricante"));

@@ -122,6 +122,7 @@ public class Consulta extends javax.swing.JFrame {
                     txNomeFabricante.setText(String.valueOf(produtobusca.getNomeFabricantes().getNomeFabricante()));
                     txCodigoCategoria.setText(String.valueOf(produtobusca.getIdcategoria().getIdCategoria()));
                     txNomeCategoria.setText(String.valueOf(produtobusca.getNomeCategorias().getNomeCategoria()));
+                    txQuantEstoque.setText(String.valueOf(produtobusca.getQuantidadeDisponivel()));
                     
                     cbxNome.removeAllItems();
                     cbxNome.addItem("");

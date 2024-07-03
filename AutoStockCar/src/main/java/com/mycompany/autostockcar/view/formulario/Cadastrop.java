@@ -151,6 +151,7 @@ public class Cadastrop extends javax.swing.JFrame {
                 txvalorvenda.setText(String.valueOf(produtobusca.getValorFinal()));
                 txPrateleira.setText(produtobusca.getPrateleira());
                 txgaveta.setText(produtobusca.getGaveta());
+                txQuantidadeEstoque.setText(String.valueOf(produtobusca.getQuantidadeDisponivel()));
                 txImpostoProduto.setText(String.valueOf(produtobusca.getImpostoDoProduto()));
                 
                 txfabricante.setText(String.valueOf(produtobusca.getIdfabricante().getIdFabricante()));
@@ -176,6 +177,7 @@ public class Cadastrop extends javax.swing.JFrame {
         produto.setPrateleira(txPrateleira.getText());
         produto.setGaveta(txgaveta.getText());
         produto.setImpostoDoProduto(Integer.parseInt(txImpostoProduto.getText()));
+        produto.setQuantidadeDisponivel(Integer.parseInt(txQuantidadeEstoque.getText()));
         
         Fabricantes fabricante = new Fabricantes();
         fabricante.setIdFabricante(Integer.parseInt(txfabricante.getText()));

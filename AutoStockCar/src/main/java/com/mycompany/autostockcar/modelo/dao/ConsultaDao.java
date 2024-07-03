@@ -119,6 +119,7 @@ public class ConsultaDao {
     produto.setValorFinal(result.getBigDecimal("ValorFinal"));
     produto.setPrateleira(result.getString("Prateleira"));
     produto.setGaveta(result.getString("Gaveta"));
+    produto.setQuantidadeDisponivel(result.getInt("QuantidadeDisponivel"));
 
     Fabricantes fabricante = new Fabricantes();
     fabricante.setIdFabricante(result.getInt("IdFabricante"));

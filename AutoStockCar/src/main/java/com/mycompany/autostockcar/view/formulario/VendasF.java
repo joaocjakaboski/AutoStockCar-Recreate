@@ -706,7 +706,6 @@ public class VendasF extends javax.swing.JFrame {
         Vendas venda = new Vendas(); 
         ItensVenda itenVenda = new ItensVenda();
         RegistrarVendaController controleVenda = new RegistrarVendaController();
-        
         Date date = new Date();
         String fechaAtual = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
         
