@@ -28,7 +28,7 @@ import javax.swing.SwingUtilities;
 
 public class Fabricante extends javax.swing.JFrame {
     private Color corCampoDesativado = new Color (131, 135, 141);
-    private Color corCampoAtivado = new Color (110, 202, 224);
+    private Color corCampoAtivado = new Color (255,255,255);
     int id;
 
     String caminho = "/com/mycompany/autostockcar/view/imagens/";
@@ -452,7 +452,6 @@ public class Fabricante extends javax.swing.JFrame {
         jLabel6.setText("Nome");
 
         txCodigo.setEditable(false);
-        txCodigo.setForeground(new java.awt.Color(0, 0, 0));
         txCodigo.setText("0");
         txCodigo.setCorTexto(new java.awt.Color(158, 158, 158));
         txCodigo.setDicas("Código");
@@ -470,7 +469,6 @@ public class Fabricante extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Código");
 
-        txNome.setForeground(new java.awt.Color(0, 0, 0));
         txNome.setCorTexto(new java.awt.Color(158, 158, 158));
         txNome.setDicas("Nome ");
         txNome.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -481,7 +479,6 @@ public class Fabricante extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("CNPJ");
 
-        txEndereco.setForeground(new java.awt.Color(0, 0, 0));
         txEndereco.setCorTexto(new java.awt.Color(158, 158, 158));
         txEndereco.setDicas("Endereço");
         txEndereco.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -513,7 +510,6 @@ public class Fabricante extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Endereço");
 
-        txCNPJ.setForeground(new java.awt.Color(0, 0, 0));
         txCNPJ.setToolTipText("");
         txCNPJ.setCorTexto(new java.awt.Color(158, 158, 158));
         txCNPJ.setDicas("CNPJ");
@@ -521,8 +517,12 @@ public class Fabricante extends javax.swing.JFrame {
         txCNPJ.setDragEnabled(true);
         txCNPJ.setPreferredSize(new java.awt.Dimension(180, 30));
         txCNPJ.setSelectionColor(new java.awt.Color(255, 255, 255));
+        txCNPJ.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txCNPJKeyTyped(evt);
+            }
+        });
 
-        txEmail.setForeground(new java.awt.Color(0, 0, 0));
         txEmail.setCorTexto(new java.awt.Color(158, 158, 158));
         txEmail.setDicas("E-Mail");
         txEmail.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -541,7 +541,6 @@ public class Fabricante extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Observações");
 
-        txObservacoes.setForeground(new java.awt.Color(0, 0, 0));
         txObservacoes.setCorTexto(new java.awt.Color(158, 158, 158));
         txObservacoes.setDicas("Observações");
         txObservacoes.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -769,6 +768,14 @@ public class Fabricante extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txCNPJKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txCNPJKeyTyped
+        String caracteres = "0123456789";
+        if(!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+         
+    }//GEN-LAST:event_txCNPJKeyTyped
     private void limparCampos() {
         txCodigo.setText("");
         txNome.setText("");

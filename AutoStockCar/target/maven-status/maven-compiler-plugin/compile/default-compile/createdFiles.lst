@@ -56,6 +56,7 @@ com\mycompany\autostockcar\modelo\dominio\Usuarios.class
 com\mycompany\autostockcar\view\modelo\ClientesDto.class
 com\mycompany\autostockcar\view\formulario\Client.class
 com\mycompany\autostockcar\view\componentes\Menu$2.class
+com\mycompany\autostockcar\view\formulario\Fabricante$11.class
 com\mycompany\autostockcar\view\formulario\Client$3.class
 com\mycompany\autostockcar\view\formulario\Usuario$6.class
 com\mycompany\autostockcar\view\formulario\GestaoVendas$3.class
