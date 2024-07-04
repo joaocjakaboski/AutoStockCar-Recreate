@@ -336,7 +336,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="1e" green="1e" red="1e" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Nome:"/>
+                    <Property name="text" type="java.lang.String" value="Nome*"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[850, 30]"/>
                     </Property>
@@ -356,7 +356,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="1e" green="1e" red="1e" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Valor de Custo:"/>
+                    <Property name="text" type="java.lang.String" value="Valor de Custo*"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="ValorVenda">
@@ -397,6 +397,10 @@
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txvalorcustoActionPerformed"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txvalorcustoKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -409,7 +413,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="1e" green="1e" red="1e" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="C&#xf3;digo Fabrica:"/>
+                    <Property name="text" type="java.lang.String" value="C&#xf3;digo Fabrica*"/>
                   </Properties>
                 </Component>
                 <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="txnome">
@@ -483,6 +487,7 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txvalorvendaActionPerformed"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txvalorvendaKeyTyped"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -573,7 +578,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="1e" green="1e" red="1e" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Fabricante:"/>
+                    <Property name="text" type="java.lang.String" value="Fabricante*"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                 </Component>
@@ -605,7 +610,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="1e" green="1e" red="1e" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Categoria:"/>
+                    <Property name="text" type="java.lang.String" value="Categoria*"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                 </Component>
@@ -637,7 +642,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="1e" green="1e" red="1e" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Gaveta:"/>
+                    <Property name="text" type="java.lang.String" value="Gaveta*"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel7">
@@ -648,7 +653,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="1e" green="1e" red="1e" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Prateleira:"/>
+                    <Property name="text" type="java.lang.String" value="Prateleira*"/>
                   </Properties>
                 </Component>
                 <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="txgaveta">
@@ -724,6 +729,9 @@
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txImpostoProdutoKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -736,7 +744,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="1e" green="1e" red="1e" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Imposto do Produto:"/>
+                    <Property name="text" type="java.lang.String" value="Imposto do Produto*"/>
                   </Properties>
                 </Component>
                 <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="txvalorvendasemimposto">
@@ -755,6 +763,9 @@
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txvalorvendasemimpostoKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -767,7 +778,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="1e" green="1e" red="1e" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Valor sem Imposto"/>
+                    <Property name="text" type="java.lang.String" value="Valor sem Imposto*"/>
                   </Properties>
                 </Component>
                 <Component class="com.mycompany.autostockcar.view.componentes.Botao" name="btcalcular">
@@ -828,6 +839,9 @@
                     </Property>
                     <Property name="dicas" type="java.lang.String" value="Quantidade"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txQuantidadeEstoqueKeyTyped"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="ValorCusto3">
                   <Properties>
@@ -837,7 +851,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="1e" green="1e" red="1e" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Quantidade Estoque:"/>
+                    <Property name="text" type="java.lang.String" value="Quantidade Estoque*"/>
                   </Properties>
                 </Component>
               </SubComponents>

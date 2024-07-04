@@ -180,9 +180,6 @@
             </Container>
             <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="TxtCodigo">
               <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
                 <Property name="corTexto" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="9e" green="9e" red="9e" type="rgb"/>
                 </Property>
@@ -305,9 +302,6 @@
             </Component>
             <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="TxtDescricao">
               <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
                 <Property name="corTexto" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="9e" green="9e" red="9e" type="rgb"/>
                 </Property>
@@ -351,9 +345,6 @@
             </Component>
             <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="TxtNome">
               <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
                 <Property name="corTexto" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="9e" green="9e" red="9e" type="rgb"/>
                 </Property>

@@ -95,20 +95,30 @@ public class Categoria extends javax.swing.JFrame {
         TxtCodigo.setText("");
     }
 
-     public void BotaoNovo() {
-        try {
-            CategoriaDao categoriaDao = new CategoriaDao();
-                categoriaDao.setNomeCategoria(TxtNome.getText());
-                categoriaDao.setDescricao(TxtDescricao.getText());
-                categoriaDao.salvar();
+public void BotaoNovo() {
+    try {
+        String nomeCategoria = TxtNome.getText().trim();
+       // String descricao = TxtDescricao.getText().trim();
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao salvar a categoria no banco de dados");
-            e.printStackTrace();
-        } finally {
-            LimparCampos();
+        // Verificar se os campos estão vazios
+        if (nomeCategoria.isEmpty() /*|| descricao.isEmpty()*/) {
+            JOptionPane.showMessageDialog(null, "O campos Nome não pode estar vazio.");
+            return; // Interrompe a execução se os campos estiverem vazios
         }
+
+        CategoriaDao categoriaDao = new CategoriaDao();
+        categoriaDao.setNomeCategoria(nomeCategoria);
+        //categoriaDao.setDescricao(descricao);
+        categoriaDao.salvar();
+
+        JOptionPane.showMessageDialog(null, "Categoria salva com sucesso!");
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Erro ao salvar a categoria no banco de dados");
+        e.printStackTrace();
+    } finally {
+        LimparCampos();
     }
+}
 
     public void BotaoExcluir() {
         CategoriaDao categoriaDao = new CategoriaDao();
