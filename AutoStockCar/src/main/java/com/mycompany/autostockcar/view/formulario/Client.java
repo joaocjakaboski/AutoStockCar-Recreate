@@ -398,7 +398,7 @@ public class Client extends javax.swing.JFrame {
         cbxNomeCidade.setEnabled(false);
         cbxNomeCidade.setBackground(corCampoDesativado);
         cbxNomeCidade.setCor(corCampoDesativado);
-        cbxNomeCidade.setEditable(false);
+        //cbxNomeCidade.setEditable(false);
         txCpf.setEnabled(false);
         txCpf.setCor(corCampoDesativado);
         txDataCadastro.setEnabled(false);
@@ -414,7 +414,7 @@ public class Client extends javax.swing.JFrame {
         cbxUfEstado.setEnabled(false);
         cbxUfEstado.setBackground(corCampoDesativado);
         cbxUfEstado.setCor(corCampoDesativado);
-        cbxUfEstado.setEditable(false);
+        //cbxUfEstado.setEditable(false);
         btnAtualizar.setEnabled(false);
         btnAtualizar.setBackground(corBotaoDesativado);
     }

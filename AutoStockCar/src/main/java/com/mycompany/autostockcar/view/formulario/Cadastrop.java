@@ -77,6 +77,7 @@ public class Cadastrop extends javax.swing.JFrame {
         txcategoria.setText("");
         txidproduto.setText("");
         txImpostoProduto.setText("");
+        txQuantidadeEstoque.setText("");
     }
     @Override
     public void paintComponents(Graphics g) {
