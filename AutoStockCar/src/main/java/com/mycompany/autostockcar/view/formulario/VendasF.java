@@ -152,9 +152,20 @@ public class VendasF extends javax.swing.JFrame {
                     obterIdProduto();
                     txIdProduto.setText(String.valueOf(idProduto)); // txIdCliente é o campo onde o ID será exibido
                     double quantidadeDisponivelDouble = obterQuantidadeDisponivel(idProduto);
-                int quantidadeDisponivel = (int) Math.round(quantidadeDisponivelDouble);
-                // Atualiza o JTextField com a quantidade convertida
-                txQuantidadeDisponivel.setText(String.valueOf(quantidadeDisponivel)); 
+                    int quantidadeDisponivel = (int) Math.round(quantidadeDisponivelDouble);
+                    boolean alterado = false;
+                    // Atualiza o JTextField com a quantidade convertida
+                    if (!listaProdutos.isEmpty()) {
+                        for (ItensVenda auxProduto : listaProdutos) {
+                            if (idProduto == auxProduto.getIdProduto()) {
+                                txQuantidadeDisponivel.setText(String.valueOf(quantidadeDisponivel - auxProduto.getQuantidadeItensVenda()));
+                                alterado = true;
+                            }
+                        }
+                    }
+                    if (!alterado) {
+                        txQuantidadeDisponivel.setText(String.valueOf(quantidadeDisponivel)); 
+                    }
                 } catch (SQLException error) {
                     JOptionPane.showMessageDialog(null, "Erro ao obter ID do cliente: " + error);
                 }
@@ -789,57 +800,99 @@ public class VendasF extends javax.swing.JFrame {
     
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         String combo = this.cbxNomeProduto.getSelectedItem().toString();
-    if (combo.equalsIgnoreCase("Selecione produto:")) {
-        JOptionPane.showMessageDialog(null, "Selecione um produto");
-    } else {
-        if (!txQuantidadeDisponivel.getText().isEmpty()) {
-            if (validar(txQuantidadeDisponivel.getText())) {
-                int quantidade = Integer.parseInt(txQuantidade.getText());
-                if (quantidade > 0) {
-                    String produtoSelecionado = cbxNomeProduto.getSelectedItem().toString();
-                    Produtos produtoRecebido = vendas.obterDadosProduto(produtoSelecionado);
-                    double quantidadeProduto = produtoRecebido.getQuantidadeDisponivel();
-                    if (quantidade <= quantidadeProduto) {
-                        BigDecimal qtd = new BigDecimal(quantidade);
-                        BigDecimal precoUnitario = produtoRecebido.getValorFinal();
-                        BigDecimal subtotal = qtd.multiply(precoUnitario);
-                        BigDecimal desconto = BigDecimal.ZERO;
-                        BigDecimal totalPagar = subtotal.subtract(desconto);
+        if (combo.equalsIgnoreCase("Selecione produto:")) {
+            JOptionPane.showMessageDialog(null, "Selecione um produto");
+        } else {
+            if (!txQuantidadeDisponivel.getText().isEmpty()) {
+                if (validar(txQuantidadeDisponivel.getText())) {
+                    int quantidade = Integer.parseInt(txQuantidade.getText());
+                    if (quantidade > 0) {
+                        boolean alterado = false;
+                        String produtoSelecionado = cbxNomeProduto.getSelectedItem().toString();
+                        Produtos produtoRecebido = vendas.obterDadosProduto(produtoSelecionado);
+                        double quantidadeProduto = produtoRecebido.getQuantidadeDisponivel();
+                        if (!listaProdutos.isEmpty()) {
+                            for (ItensVenda auxProduto : listaProdutos) {
+                                if (auxProduto.getIdProduto() == produtoRecebido.getIdProduto()) {
+                                    quantidade += auxProduto.getQuantidadeItensVenda();
+                                    if (quantidade <= quantidadeProduto) {
+                                        BigDecimal qtd = new BigDecimal(quantidade);
+                                        BigDecimal precoUnitario = produtoRecebido.getValorFinal();
+                                        BigDecimal subtotal = qtd.multiply(precoUnitario);
+                                        BigDecimal desconto = BigDecimal.ZERO;
+                                        BigDecimal totalPagar = subtotal.subtract(desconto);
 
-                        ItensVenda produto = new ItensVenda(
-                            auxIdDetalhe, 
-                            1, 
-                            produtoRecebido.getIdProduto(),
-                            subtotal, // valorParcial é o subtotal original
-                            quantidade, 
-                            produtoRecebido, 
-                            precoUnitario, 
-                            desconto, 
-                            imposto, 
-                            totalPagar);
-                        listaProdutos.add(produto);
-                        JOptionPane.showMessageDialog(null, "Produto Agregado");
-                        auxIdDetalhe++;
-                        txQuantidadeDisponivel.setText("");
-                        txQuantidade.setText("");
-                        this.calcularTotalPagar();
-                        
-                        txIdProduto.setText("");
-                        cbxNomeProduto.setSelectedItem("");
+                                        ItensVenda produto = new ItensVenda(
+                                            auxIdDetalhe, 
+                                            1, 
+                                            produtoRecebido.getIdProduto(),
+                                            subtotal, // valorParcial é o subtotal original
+                                            quantidade, 
+                                            produtoRecebido, 
+                                            precoUnitario, 
+                                            desconto, 
+                                            imposto, 
+                                            totalPagar
+                                        );
+                                        listaProdutos.remove(auxProduto);
+                                        listaProdutos.add(produto);
+                                        JOptionPane.showMessageDialog(null, "Produto Agregado");
+                                        auxIdDetalhe++;
+                                        txQuantidadeDisponivel.setText("");
+                                        txQuantidade.setText("");
+                                        this.calcularTotalPagar();
+
+                                        txIdProduto.setText("");
+                                        cbxNomeProduto.setSelectedItem("");
+                                        alterado = true;
+                                    }
+                                }
+                            }
+                        }
+                        if (!alterado) {
+                            if (quantidade <= quantidadeProduto) {
+                                BigDecimal qtd = new BigDecimal(quantidade);
+                                BigDecimal precoUnitario = produtoRecebido.getValorFinal();
+                                BigDecimal subtotal = qtd.multiply(precoUnitario);
+                                BigDecimal desconto = BigDecimal.ZERO;
+                                BigDecimal totalPagar = subtotal.subtract(desconto);
+
+                                ItensVenda produto = new ItensVenda(
+                                    auxIdDetalhe, 
+                                    1, 
+                                    produtoRecebido.getIdProduto(),
+                                    subtotal, // valorParcial é o subtotal original
+                                    quantidade, 
+                                    produtoRecebido, 
+                                    precoUnitario, 
+                                    desconto, 
+                                    imposto, 
+                                    totalPagar
+                                );
+                                listaProdutos.add(produto);
+                                JOptionPane.showMessageDialog(null, "Produto Agregado");
+                                auxIdDetalhe++;
+                                txQuantidadeDisponivel.setText("");
+                                txQuantidade.setText("");
+                                this.calcularTotalPagar();
+
+                                txIdProduto.setText("");
+                                cbxNomeProduto.setSelectedItem("");
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Quantidade acima do estoque disponível");
+                            }
+                        }
                     } else {
-                        JOptionPane.showMessageDialog(null, "Quantidade acima do estoque disponível");
+                        JOptionPane.showMessageDialog(null, "Quantidade deve ser maior que zero");
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Quantidade deve ser maior que zero");
+                    JOptionPane.showMessageDialog(null, "Na quantidade tem algum caracter não numérico");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Na quantidade tem algum caracter não numérico");
+                JOptionPane.showMessageDialog(null, "Digite a quantidade de produtos");
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Digite a quantidade de produtos");
         }
-    }
-    this.listaTabelaProdutos();
+        this.listaTabelaProdutos();
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplicarActionPerformed
