@@ -78,7 +78,7 @@ public class UsuarioDao {
     }
     
     public List<Usuarios> buscarTodosUsuarios() {
-        String sql = "SELECT * FROM Usuarios";
+        String sql = "{CALL buscarTodosUsuarios()}";
         List<Usuarios> usuarios = new ArrayList<>();
         try {
             ResultSet result = conexao.obterConexao().prepareStatement(sql).executeQuery();
@@ -94,7 +94,7 @@ public class UsuarioDao {
     }
     
     public Usuarios buscarUsuarioPeloId(int id) {
-        String sql = String.format("SELECT * FROM Usuarios WHERE IdUsuario = %d", id);
+        String sql = String.format("{CALL buscarUsuarioPeloId(%d)}", id);
         try {
             ResultSet result = conexao.obterConexao().prepareStatement(sql).executeQuery();
             

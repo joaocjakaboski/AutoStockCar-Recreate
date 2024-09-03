@@ -184,7 +184,7 @@ public class CadastropDao {
 
     public List<Produtos> buscarProdutosPeloNome(String nomeProduto) {
         List<Produtos> produtos = new ArrayList<>();
-        String sql = "SELECT * FROM produtos WHERE NomeProduto LIKE ?";
+        String sql = "{CALL buscarProdutosPeloNome (?)}";
     
         try {
             Connection connection = conexao.obterConexao();
