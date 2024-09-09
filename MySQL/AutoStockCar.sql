@@ -5592,3 +5592,31 @@ CREATE TABLE ItensVenda (
 
 INSERT INTO Usuarios(NomeUsuario, SenhaUsuario, AdmCategoria)
 VALUES ('user', '$2a$10$DLqHmXH/bjTuIX7k9LflkuIuIwqzsQNSQoyTaW84GKO2okyIaKYuy', 'ADMIN');
+
+DELIMITER //
+CREATE PROCEDURE buscarTodosUsuarios()
+BEGIN
+    SELECT * FROM Usuarios;
+END //
+DELIMITER ;
+
+CALL buscarTodosUsuarios();
+
+
+DELIMITER //
+CREATE PROCEDURE buscarUsuarioPeloId(IN IdUser INT)
+BEGIN
+    SELECT * FROM Usuarios WHERE IdUsuario = IdUser;
+END //
+DELIMITER ;
+
+CALL buscarUsuarioPeloId(2);
+
+DELIMITER //
+CREATE PROCEDURE buscarProdutosPeloNome(IN NomeProd NVARCHAR(100))
+BEGIN
+    SELECT * FROM produtos WHERE NomeProduto LIKE NomeProd;
+END //
+DELIMITER ;
+
+CALL buscarProdutosPeloNome('%si%');
