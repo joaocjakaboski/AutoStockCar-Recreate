@@ -108,7 +108,7 @@ public class Consulta extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nomeBusca = cbxNome.getSelectedItem().toString();
-                Produtos produtobusca = consulta.buscarProdutoPeloNome(nomeBusca);
+                Produtos produtobusca = consulta.buscarProdutosPeloNome(nomeBusca);
                 
                 if (produtobusca != null) {
                     txNomeProduto.setText(produtobusca.getNomeProduto());

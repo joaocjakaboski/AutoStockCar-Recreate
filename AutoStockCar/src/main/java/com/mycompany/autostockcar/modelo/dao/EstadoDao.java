@@ -19,7 +19,7 @@ public class EstadoDao {
     }
     
     public ResultSet buscarUfEstados() {
-        String sql = "SELECT UfEstado FROM Estados";
+        String sql = "{CALL buscarUfEstados}";
         
         try {
             pstm = conexao.obterConexao().prepareCall(sql);
@@ -32,7 +32,7 @@ public class EstadoDao {
     }
     
     public ResultSet buscarIdEstadoPeloUf(String uf) {
-        String sql = String.format("SELECT IdEstado FROM Estados WHERE UfEstado = '%s'", uf);
+        String sql = String.format("{CALL buscarIdEstadoPeloUf ('%s')}", uf);
         try {
             pstm = conexao.obterConexao().prepareCall(sql);
             return pstm.executeQuery();
@@ -44,7 +44,7 @@ public class EstadoDao {
     }
     
     public Estados buscarEstadoPeloId(int idEstado) {
-        String sql = String.format("SELECT * FROM Estados WHERE IdEstado = %d", idEstado);
+        String sql = String.format("{CALL buscarEstadoPeloId (%d)}", idEstado);
         try {
             ResultSet result = conexao.obterConexao().prepareStatement(sql).executeQuery();
             

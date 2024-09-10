@@ -109,7 +109,7 @@ public class UsuarioDao {
     }
     
     public Usuarios buscarUsuarioPeloNome(String usuario) {
-        String sql = String.format("SELECT * FROM Usuarios WHERE NomeUsuario = '%s'", usuario);
+        String sql = String.format("{CALL buscarUsuarioPeloNome ('%s')}", usuario);
         try {
             ResultSet result = conexao.obterConexao().prepareStatement(sql).executeQuery();
             

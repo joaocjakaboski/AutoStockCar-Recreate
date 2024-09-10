@@ -45,8 +45,8 @@ public class MovimentacaoProdDao {
         }
     }
 
-public MovimentacaoDeEstoque buscarPorId(int idMovimentacao) {
-    String sql = "SELECT * FROM MovimentacaoDeEstoque WHERE IdMovimentacao = ?";
+public MovimentacaoDeEstoque buscarMovimentacaoPorId(int idMovimentacao) {
+    String sql = "{CALL buscarMovimentacaoPorId (?)}";
     
     try {
         Connection connection = conexao.obterConexao();

@@ -20,7 +20,7 @@ public class CidadeDao {
     }
     
     public ResultSet buscarCidadeNomePeloNome(String cidade) {
-        String sql = String.format("SELECT NomeCidade FROM Cidade WHERE NomeCidade  '%%%s%%'", cidade);
+        String sql = String.format("{CALL buscarCidadeNomePeloNome ('%%%s%%')}", cidade);
         
         try {
             pstm = conexao.obterConexao().prepareCall(sql);
@@ -33,7 +33,7 @@ public class CidadeDao {
     }
     
     public ResultSet buscarCidades(int idEstado) throws SQLException {
-        String sql = String.format("SELECT NomeCidade FROM Cidades WHERE IdEstado = %d", idEstado);
+        String sql = String.format("{CALL buscarCidades (%d)}", idEstado);
         
         try {
             pstm = conexao.obterConexao().prepareCall(sql);
@@ -46,7 +46,7 @@ public class CidadeDao {
     }
     
     public ResultSet buscarCidadeIdPeloNome(String cidade) {
-        String sql = String.format("SELECT IdCidade FROM Cidades WHERE NomeCidade = '%s'", cidade);
+        String sql = String.format("{CALL buscarCidadeIdPeloNome ('%s')}", cidade);
         
         try {
             pstm = conexao.obterConexao().prepareCall(sql);
@@ -59,7 +59,7 @@ public class CidadeDao {
     }
     
     public Cidades buscarCidadePeloId(int idCidade) {
-        String sql = String.format("SELECT * FROM Cidades WHERE IdCidade = %d", idCidade);
+        String sql = String.format("{CALL buscarCidadePeloId (?)}", idCidade);
         try {
             ResultSet result = conexao.obterConexao().prepareStatement(sql).executeQuery();
             

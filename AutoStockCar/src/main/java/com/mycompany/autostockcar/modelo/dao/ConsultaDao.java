@@ -33,7 +33,7 @@ public class ConsultaDao {
     }
     
     public Produtos buscarPorId(int idProduto) {
-        String sql = String.format("SELECT * FROM Produtos WHERE IdProduto = ?");
+        String sql = String.format("{CALL buscarProdutoPeloId (?)}");
 
         try {
             Connection connection = conexao.obterConexao();
@@ -58,9 +58,9 @@ public class ConsultaDao {
         return null;
     }
     
-        public Produtos buscarProdutoPeloNome(String consulta) {
+        public Produtos buscarProdutosPeloNome(String consulta) {
         
-        String sql = String.format("SELECT * FROM produtos WHERE NomeProduto = '%s'", consulta);
+        String sql = String.format("{CALL buscarProdutosPeloNome (?)}", consulta);
         
         try {
             ResultSet result = conexao.obterConexao().prepareStatement(sql).executeQuery();
@@ -76,7 +76,7 @@ public class ConsultaDao {
     }
     
     public ResultSet buscarProdutoNomePeloNome(String consulta) {
-        String sql = String.format("SELECT NomeProduto FROM produtos WHERE NomeProduto LIKE '%%%s%%'", consulta);
+        String sql = String.format("{CALL buscarProdutoNomePeloNome ('%%%s%%')}", consulta);
 
         try {
             Connection connection = conexao.obterConexao();
@@ -91,7 +91,7 @@ public class ConsultaDao {
     }
     
         public Integer buscarCodigoPeloNome(String nomeProduto) {
-        String sql = "SELECT IdProduto FROM produtos WHERE NomeProduto = ?";
+        String sql = "{CALL buscarCodigoPeloNome (?)}";
         try (Connection connection = conexao.obterConexao();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
 

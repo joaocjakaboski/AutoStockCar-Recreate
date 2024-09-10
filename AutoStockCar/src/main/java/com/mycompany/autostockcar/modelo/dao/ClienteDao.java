@@ -76,7 +76,7 @@ public class ClienteDao {
     }
     
     public List<Clientes> buscarTodosclientes() {
-        String sql = "SELECT * FROM clientes";
+        String sql = "{CALL buscarTodosclientes}";
         List<Clientes> clientes = new ArrayList<>();
         try {
             ResultSet result = conexao.obterConexao().prepareStatement(sql).executeQuery();
@@ -92,7 +92,7 @@ public class ClienteDao {
     }
     
     public Clientes buscarClientePeloCpf(String cpf) {
-        String sql = String.format("SELECT * FROM Clientes WHERE CPFCliente = %s", cpf);
+        String sql = String.format("{CALL buscarClientePeloCpf (%s)}", cpf);
         try {
             ResultSet result = conexao.obterConexao().prepareStatement(sql).executeQuery();
             
@@ -108,7 +108,7 @@ public class ClienteDao {
     
     public Clientes buscarClientePeloNome(String cliente) {
         
-        String sql = String.format("SELECT * FROM clientes WHERE Nomecliente = '%s'", cliente);
+        String sql = String.format("{CALL buscarClientePeloNome ('%s')}", cliente);
         
         try {
             ResultSet result = conexao.obterConexao().prepareStatement(sql).executeQuery();
@@ -124,7 +124,7 @@ public class ClienteDao {
     }
     
     public ResultSet buscarClienteNomePeloNome(String cliente) {
-        String sql = String.format("SELECT NomeCliente FROM Clientes WHERE NomeCliente LIKE '%%%s%%'", cliente);
+        String sql = String.format("{CALL buscarClienteNomePeloNome ('%%%s%%')}", cliente);
         
         try {
             pstm = conexao.obterConexao().prepareCall(sql);

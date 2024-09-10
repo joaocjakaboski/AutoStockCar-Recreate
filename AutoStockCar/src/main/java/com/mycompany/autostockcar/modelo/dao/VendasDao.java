@@ -20,7 +20,7 @@ public class VendasDao {
     }
 
     public Produtos obterDadosProduto(String nomeProduto) {
-        String sql = "SELECT * FROM produtos WHERE NomeProduto LIKE ?";
+        String sql = "{CALL buscarProdutosPeloNome (?)}";
         Produtos produto = null;
 
         try (Connection conn = conectar();

@@ -31,7 +31,7 @@ public void BotaoPesquisar() {
     
     try {
         int idMovimentacao = Integer.parseInt(txId.getText());
-        MovimentacaoDeEstoque movimentacao = movimentacaoDao.buscarPorId(idMovimentacao);
+        MovimentacaoDeEstoque movimentacao = movimentacaoDao.buscarMovimentacaoPorId(idMovimentacao);
 
         if (movimentacao != null) {
             txNomeProduto.setText(movimentacao.getProduto().getNomeProduto()); // Obtém o nome do produto

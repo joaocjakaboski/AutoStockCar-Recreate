@@ -78,7 +78,7 @@ public FabricanteDao() {
         }
     }
     public List<Fabricantes> buscarTodosclientes() {
-        String sql = "SELECT * FROM clientes";
+        String sql = "{CALL buscarTodosclientes}";
         List<Fabricantes> fabricantes = new ArrayList<>();
         try {
             ResultSet result = conexao.obterConexao().prepareStatement(sql).executeQuery();
@@ -95,7 +95,7 @@ public FabricanteDao() {
     
     public Fabricantes buscarFabricantePeloNome(String fabricante) {
         
-        String sql = String.format("SELECT * FROM fabricantes WHERE NomeFabricante = '%s'", fabricante);
+        String sql = String.format("{CALL buscarFabricantePeloNome ('%s')}", fabricante);
         
         try {
             ResultSet result = conexao.obterConexao().prepareStatement(sql).executeQuery();
@@ -111,7 +111,7 @@ public FabricanteDao() {
     }
     
     public ResultSet buscarFabricanteNomePeloNome(String fabricante) {
-        String sql = String.format("SELECT NomeFabricante FROM Fabricantes WHERE NomeFabricante LIKE '%%%s%%'", fabricante);
+        String sql = String.format("{CALL buscarFabricantePeloNome ('%%%s%%')}", fabricante);
         
         try {
             pstm = conexao.obterConexao().prepareCall(sql);

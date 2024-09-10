@@ -59,7 +59,7 @@ public class CategoriaDao {
     }
 
     public Categorias buscarPorId(int idCategoria) {
-        String sql = "SELECT * FROM categorias WHERE IdCategoria = ?";
+        String sql = "{CALL buscarCategoriaPeloId (?) }";
         try (Connection connection = conexao.obterConexao();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
 

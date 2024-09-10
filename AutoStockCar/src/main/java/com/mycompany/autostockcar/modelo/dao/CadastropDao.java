@@ -98,7 +98,7 @@ public class CadastropDao {
     }
     
     public Produtos buscarPorId(int idProduto) {
-            String sql = String.format ("SELECT * FROM Produtos WHERE IdProduto = ?");
+            String sql = String.format ("{CALL buscarProdutoPeloId (?)}");
 
  
     try {
@@ -203,7 +203,7 @@ public class CadastropDao {
     }
     
     public Produtos buscarDadosDoProduto(String produto) {
-        String sql = String.format("SELECT * FROM Produtos WHERE NomeProduto = '%s'", produto);
+        String sql = String.format("{CALL buscarProdutosPeloNome (?)}", produto);
         try {
             ResultSet result = conexao.obterConexao().prepareStatement(sql).executeQuery();
             
