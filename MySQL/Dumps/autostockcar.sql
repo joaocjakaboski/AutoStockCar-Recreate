@@ -229,7 +229,7 @@ CREATE TABLE `movimentacaodeestoque` (
   `IdMovimentacao` int(11) NOT NULL AUTO_INCREMENT,
   `EntradaSaida` tinyint(4) NOT NULL,
   `QuantidadeMovimentacao` int(11) NOT NULL,
-  `DataMovimentacao` date DEFAULT current_timestamp(),
+  `DataMovimentacao` datetime DEFAULT current_timestamp(),
   `MotivoMovimentacao` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `IdProduto` int(11) NOT NULL,
   `IdFabricante` int(11) NOT NULL,
@@ -324,7 +324,7 @@ DROP TABLE IF EXISTS `vendas`;
 CREATE TABLE `vendas` (
   `IdVenda` int(11) NOT NULL AUTO_INCREMENT,
   `ValorTotalVenda` decimal(10,2) NOT NULL,
-  `DataCompra` date DEFAULT current_timestamp(),
+  `DataCompra` datetime DEFAULT current_timestamp(),
   `IdCliente` int(11) NOT NULL,
   PRIMARY KEY (`IdVenda`),
   KEY `FK_IDCLIENTE_VENDAS` (`IdCliente`),
