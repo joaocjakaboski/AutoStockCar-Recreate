@@ -3,16 +3,16 @@ USE AUTOSTOCKCAR;
 
 CREATE TABLE Usuarios (
 	IdUsuario INT AUTO_INCREMENT,
-	NomeUsuario NVARCHAR(45) NOT NULL,
-	SenhaUsuario NVARCHAR(100) NOT NULL,
-	AdmCategoria NVARCHAR(10) DEFAULT 'PADRAO',
+	NomeUsuario CHAR(45) NOT NULL,
+	SenhaUsuario CHAR(100) NOT NULL,
+	AdmCategoria CHAR(10) DEFAULT 'PADRAO',
 	CONSTRAINT PRIMARY KEY (IdUsuario)
 );
 
 CREATE TABLE Estados (
 	IdEstado INT AUTO_INCREMENT,
-    NomeEstado NVARCHAR(75) DEFAULT NULL,
-    UfEstado NVARCHAR(5) DEFAULT NULL,
+    NomeEstado CHAR(75) DEFAULT NULL,
+    UfEstado CHAR(5) DEFAULT NULL,
     CONSTRAINT PRIMARY KEY (IdEstado)
 );
 
@@ -47,7 +47,7 @@ INSERT INTO Estados (IdEstado, NomeEstado, UfEstado) VALUES
 
 CREATE TABLE Cidades (
 	IdCidade INT AUTO_INCREMENT,
-    NomeCidade NVARCHAR(45) NOT NULL,
+    NomeCidade CHAR(45) NOT NULL,
     IdEstado INT NOT NULL,
     CONSTRAINT PRIMARY KEY (IdCidade),
     CONSTRAINT FK_IDESTADO_CIDADES FOREIGN KEY (IdEstado) REFERENCES Estados(IdEstado)
@@ -5494,12 +5494,12 @@ INSERT INTO Cidades (IdCidade, NomeCidade, IdEstado) VALUES
 
 CREATE TABLE Fabricantes (
 	IdFabricante INT AUTO_INCREMENT,
-    NomeFabricante NVARCHAR(45) NOT NULL,
-    EmailFabricante NVARCHAR(45) NOT NULL,
-    TelefoneFabricante NVARCHAR(15) NOT NULL,
-    EnderecoFabricante NVARCHAR(50) NOT NULL,
-    CNPJFabricante NVARCHAR(14) NOT NULL UNIQUE,
-    ObsFabricante NVARCHAR(100),
+    NomeFabricante CHAR(45) NOT NULL,
+    EmailFabricante CHAR(45) NOT NULL,
+    TelefoneFabricante CHAR(15) NOT NULL,
+    EnderecoFabricante CHAR(50) NOT NULL,
+    CNPJFabricante CHAR(14) NOT NULL UNIQUE,
+    ObsFabricante CHAR(100),
     IdCidade INT NOT NULL,
     CONSTRAINT PRIMARY KEY (IdFabricante),
     CONSTRAINT FK_IDCIDADE_FABRICANTES FOREIGN KEY (IdCidade) REFERENCES Cidades(IdCidade)
@@ -5513,20 +5513,20 @@ CREATE TABLE Estoques (
 
 CREATE TABLE Categorias (
 	IdCategoria INT AUTO_INCREMENT,
-    NomeCategoria NVARCHAR(20) NOT NULL,
-    DescricaoCategoria NVARCHAR(100),
+    NomeCategoria CHAR(20) NOT NULL,
+    DescricaoCategoria CHAR(100),
     CONSTRAINT PRIMARY KEY (IdCategoria)
 );
 
 CREATE TABLE Produtos (
 	IdProduto INT AUTO_INCREMENT,
-    NomeProduto NVARCHAR(45) NOT NULL,
-    CodigoFabricante NVARCHAR(20) NOT NULL,
-    ObsProduto NVARCHAR(100),
+    NomeProduto CHAR(45) NOT NULL,
+    CodigoFabricante CHAR(20) NOT NULL,
+    ObsProduto CHAR(100),
     ValorCustoProduto DECIMAL(10,2) NOT NULL,
     ValorFinal DECIMAL(10,2) NOT NULL,
-    Prateleira NVARCHAR(3) NOT NULL,
-    Gaveta NVARCHAR(8) NOT NULL,
+    Prateleira CHAR(3) NOT NULL,
+    Gaveta CHAR(8) NOT NULL,
     ImpostoDoProduto INT NOT NULL,
     IdFabricante INT NOT NULL,
     IdEstoque INT,
@@ -5543,7 +5543,7 @@ CREATE TABLE MovimentacaoDeEstoque (
     EntradaSaida TINYINT NOT NULL,
     QuantidadeMovimentacao INT NOT NULL,
     DataMovimentacao DATETIME DEFAULT CURRENT_TIMESTAMP,
-    MotivoMovimentacao NVARCHAR(20) NOT NULL,
+    MotivoMovimentacao CHAR(20) NOT NULL,
     IdProduto INT NOT NULL,
     IdFabricante INT NOT NULL,
     CONSTRAINT PRIMARY KEY (IdMovimentacao),
@@ -5553,13 +5553,13 @@ CREATE TABLE MovimentacaoDeEstoque (
 
 CREATE TABLE Clientes (
 	IdCliente INT AUTO_INCREMENT,
-    NomeCliente NVARCHAR(45) NOT NULL,
-    TelefoneCliente NVARCHAR(15) NOT NULL,
-    EmailCliente NVARCHAR(45),
-    EnderecoCliente NVARCHAR(45) NOT NULL,
-    BairroCliente NVARCHAR(45) NOT NULL,
-    CPFCliente NVARCHAR(14) NOT NULL UNIQUE,
-    ObsCliente NVARCHAR(100),
+    NomeCliente CHAR(45) NOT NULL,
+    TelefoneCliente CHAR(15) NOT NULL,
+    EmailCliente CHAR(45),
+    EnderecoCliente CHAR(45) NOT NULL,
+    BairroCliente CHAR(45) NOT NULL,
+    CPFCliente CHAR(14) NOT NULL UNIQUE,
+    ObsCliente CHAR(100),
     DataCadastroCliente DATETIME DEFAULT CURRENT_TIMESTAMP,
     IdCidade INT NOT NULL,
     CONSTRAINT PRIMARY KEY (IdCliente),
@@ -5613,7 +5613,7 @@ DELIMITER ;
 CALL buscarUsuarioPeloId(2);
 
 DELIMITER //
-CREATE PROCEDURE buscarUsuarioPeloNome(IN NomeUsu NVARCHAR(100))
+CREATE PROCEDURE buscarUsuarioPeloNome(IN NomeUsu CHAR(100))
 BEGIN
     SELECT * FROM Usuarios WHERE NomeUsuario = NomeUsu;
 END //
@@ -5622,7 +5622,7 @@ DELIMITER ;
 CALL buscarUsuarioPeloNome('user');
 
 DELIMITER //
-CREATE PROCEDURE buscarProdutosPeloNome(IN NomeProd NVARCHAR(100))
+CREATE PROCEDURE buscarProdutosPeloNome(IN NomeProd CHAR(100))
 BEGIN
     SELECT * FROM produtos WHERE NomeProduto LIKE NomeProd;
 END //
@@ -5658,7 +5658,7 @@ DELIMITER ;
 CALL buscarCidadePeloId(1);
 
 DELIMITER //
-CREATE PROCEDURE buscarCidadeNomePeloNome(IN NomeCid NVARCHAR(100))
+CREATE PROCEDURE buscarCidadeNomePeloNome(IN NomeCid CHAR(100))
 BEGIN
     SELECT * FROM cidades WHERE NomeCidade LIKE NomeCid;
 END //
@@ -5676,7 +5676,7 @@ DELIMITER ;
 CALL buscarCidades(1);
 
 DELIMITER //
-CREATE PROCEDURE buscarCidadeIdPeloNome(IN NomeCid NVARCHAR(100))
+CREATE PROCEDURE buscarCidadeIdPeloNome(IN NomeCid CHAR(100))
 BEGIN
     SELECT IdCidade FROM Cidades WHERE NomeCidade = NomeCid;
 END //
@@ -5694,7 +5694,7 @@ DELIMITER ;
 CALL buscarTodosclientes();
 
 DELIMITER //
-CREATE PROCEDURE buscarClientePeloCpf(IN CPFCli NVARCHAR(14))
+CREATE PROCEDURE buscarClientePeloCpf(IN CPFCli CHAR(14))
 BEGIN
     SELECT * FROM Clientes WHERE CPFCliente = CPFCli;
 END //
@@ -5703,7 +5703,7 @@ DELIMITER ;
 CALL buscarClientePeloCpf('12312312312');
 
 DELIMITER //
-CREATE PROCEDURE buscarClientePeloNome(IN NomeCli NVARCHAR(100))
+CREATE PROCEDURE buscarClientePeloNome(IN NomeCli CHAR(100))
 BEGIN
     SELECT * FROM clientes WHERE Nomecliente = NomeCli;
 END //
@@ -5712,7 +5712,7 @@ DELIMITER ;
 CALL buscarClientePeloNome('Cliente dono do fusca');
 
 DELIMITER //
-CREATE PROCEDURE buscarClienteNomePeloNome(IN NomeCLI NVARCHAR(100))
+CREATE PROCEDURE buscarClienteNomePeloNome(IN NomeCLI CHAR(100))
 BEGIN
     SELECT NomeCliente FROM Clientes WHERE NomeCliente LIKE NomeCLI;
 END //
@@ -5721,7 +5721,7 @@ DELIMITER ;
 CALL buscarClienteNomePeloNome('%Fusca%');
 
 DELIMITER //
-CREATE PROCEDURE buscarProdutoNomePeloNome(IN NomeProd NVARCHAR(100))
+CREATE PROCEDURE buscarProdutoNomePeloNome(IN NomeProd CHAR(100))
 BEGIN
     SELECT NomeProduto FROM produtos WHERE NomeProduto LIKE NomeProd;
 END //
@@ -5730,7 +5730,7 @@ DELIMITER ;
 CALL buscarProdutoNomePeloNome('%ne%');
 
 DELIMITER //
-CREATE PROCEDURE buscarCodigoPeloNome(IN NomeProd NVARCHAR(100))
+CREATE PROCEDURE buscarCodigoPeloNome(IN NomeProd CHAR(100))
 BEGIN
     SELECT IdProduto FROM produtos WHERE NomeProduto = NomeProd;
 END //
@@ -5748,7 +5748,7 @@ DELIMITER ;
 CALL buscarUfEstados();
 
 DELIMITER //
-CREATE PROCEDURE buscarIdEstadoPeloUf(IN UFEst NVARCHAR(2))
+CREATE PROCEDURE buscarIdEstadoPeloUf(IN UFEst CHAR(2))
 BEGIN
     SELECT IdEstado FROM Estados WHERE UfEstado = UFEst;
 END //
@@ -5766,7 +5766,7 @@ DELIMITER ;
 CALL buscarEstadoPeloId(1);
 
 DELIMITER //
-CREATE PROCEDURE buscarFabricantePeloNome(IN NomeFab NVARCHAR(100))
+CREATE PROCEDURE buscarFabricantePeloNome(IN NomeFab CHAR(100))
 BEGIN
     SELECT * FROM fabricantes WHERE NomeFabricante = NomeFab;
 END //
@@ -5775,7 +5775,7 @@ DELIMITER ;
 CALL buscarFabricantePeloNome('Fabricante 1');
 
 DELIMITER //
-CREATE PROCEDURE buscarFabricanteNomePeloNome(IN NomeFab NVARCHAR(100))
+CREATE PROCEDURE buscarFabricanteNomePeloNome(IN NomeFab CHAR(100))
 BEGIN
     SELECT NomeFabricante FROM Fabricantes WHERE NomeFabricante LIKE NomeFab;
 END //

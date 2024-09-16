@@ -24,8 +24,8 @@ DROP TABLE IF EXISTS `categorias`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `categorias` (
   `IdCategoria` int NOT NULL AUTO_INCREMENT,
-  `NomeCategoria` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `DescricaoCategoria` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `NomeCategoria` char(20) NOT NULL,
+  `DescricaoCategoria` char(100) DEFAULT NULL,
   PRIMARY KEY (`IdCategoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -48,7 +48,7 @@ DROP TABLE IF EXISTS `cidades`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cidades` (
   `IdCidade` int NOT NULL AUTO_INCREMENT,
-  `NomeCidade` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `NomeCidade` char(45) NOT NULL,
   `IdEstado` int NOT NULL,
   PRIMARY KEY (`IdCidade`),
   KEY `FK_IDESTADO_CIDADES` (`IdEstado`),
@@ -75,13 +75,13 @@ DROP TABLE IF EXISTS `clientes`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `clientes` (
   `IdCliente` int NOT NULL AUTO_INCREMENT,
-  `NomeCliente` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `TelefoneCliente` varchar(15) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `EmailCliente` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
-  `EnderecoCliente` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `BairroCliente` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `CPFCliente` varchar(14) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `ObsCliente` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `NomeCliente` char(45) NOT NULL,
+  `TelefoneCliente` char(15) NOT NULL,
+  `EmailCliente` char(45) DEFAULT NULL,
+  `EnderecoCliente` char(45) NOT NULL,
+  `BairroCliente` char(45) NOT NULL,
+  `CPFCliente` char(14) NOT NULL,
+  `ObsCliente` char(100) DEFAULT NULL,
   `DataCadastroCliente` datetime DEFAULT CURRENT_TIMESTAMP,
   `IdCidade` int NOT NULL,
   PRIMARY KEY (`IdCliente`),
@@ -109,8 +109,8 @@ DROP TABLE IF EXISTS `estados`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `estados` (
   `IdEstado` int NOT NULL AUTO_INCREMENT,
-  `NomeEstado` varchar(75) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
-  `UfEstado` varchar(5) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `NomeEstado` char(75) DEFAULT NULL,
+  `UfEstado` char(5) DEFAULT NULL,
   PRIMARY KEY (`IdEstado`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -157,12 +157,12 @@ DROP TABLE IF EXISTS `fabricantes`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `fabricantes` (
   `IdFabricante` int NOT NULL AUTO_INCREMENT,
-  `NomeFabricante` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `EmailFabricante` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `TelefoneFabricante` varchar(15) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `EnderecoFabricante` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `CNPJFabricante` varchar(14) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `ObsFabricante` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `NomeFabricante` char(45) NOT NULL,
+  `EmailFabricante` char(45) NOT NULL,
+  `TelefoneFabricante` char(15) NOT NULL,
+  `EnderecoFabricante` char(50) NOT NULL,
+  `CNPJFabricante` char(14) NOT NULL,
+  `ObsFabricante` char(100) DEFAULT NULL,
   `IdCidade` int NOT NULL,
   PRIMARY KEY (`IdFabricante`),
   UNIQUE KEY `CNPJFabricante` (`CNPJFabricante`),
@@ -226,7 +226,7 @@ CREATE TABLE `movimentacaodeestoque` (
   `EntradaSaida` tinyint NOT NULL,
   `QuantidadeMovimentacao` int NOT NULL,
   `DataMovimentacao` datetime DEFAULT CURRENT_TIMESTAMP,
-  `MotivoMovimentacao` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `MotivoMovimentacao` char(20) NOT NULL,
   `IdProduto` int NOT NULL,
   `IdFabricante` int NOT NULL,
   PRIMARY KEY (`IdMovimentacao`),
@@ -255,13 +255,13 @@ DROP TABLE IF EXISTS `produtos`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `produtos` (
   `IdProduto` int NOT NULL AUTO_INCREMENT,
-  `NomeProduto` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `CodigoFabricante` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `ObsProduto` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `NomeProduto` char(45) NOT NULL,
+  `CodigoFabricante` char(20) NOT NULL,
+  `ObsProduto` char(100) DEFAULT NULL,
   `ValorCustoProduto` decimal(10,2) NOT NULL,
   `ValorFinal` decimal(10,2) NOT NULL,
-  `Prateleira` varchar(3) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `Gaveta` varchar(8) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `Prateleira` char(3) NOT NULL,
+  `Gaveta` char(8) NOT NULL,
   `ImpostoDoProduto` int NOT NULL,
   `IdFabricante` int NOT NULL,
   `IdEstoque` int DEFAULT NULL,
@@ -295,9 +295,9 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuarios` (
   `IdUsuario` int NOT NULL AUTO_INCREMENT,
-  `NomeUsuario` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `SenhaUsuario` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `AdmCategoria` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT 'PADRAO',
+  `NomeUsuario` char(45) NOT NULL,
+  `SenhaUsuario` char(100) NOT NULL,
+  `AdmCategoria` char(10) DEFAULT 'PADRAO',
   PRIMARY KEY (`IdUsuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -348,4 +348,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-16 20:12:33
+-- Dump completed on 2024-09-16 20:20:33
