@@ -5542,7 +5542,7 @@ CREATE TABLE MovimentacaoDeEstoque (
 	IdMovimentacao INT AUTO_INCREMENT,
     EntradaSaida TINYINT NOT NULL,
     QuantidadeMovimentacao INT NOT NULL,
-    DataMovimentacao DATE DEFAULT CURRENT_TIMESTAMP,
+    DataMovimentacao DATETIME DEFAULT CURRENT_TIMESTAMP,
     MotivoMovimentacao NVARCHAR(20) NOT NULL,
     IdProduto INT NOT NULL,
     IdFabricante INT NOT NULL,
@@ -5569,7 +5569,7 @@ CREATE TABLE Clientes (
 CREATE TABLE Vendas (
 	IdVenda INT AUTO_INCREMENT,
     ValorTotalVenda DECIMAL(10,2) NOT NULL,
-    DataCompra DATE DEFAULT CURRENT_TIMESTAMP,
+    DataCompra DATETIME DEFAULT CURRENT_TIMESTAMP,
     IdCliente INT NOT NULL,
     CONSTRAINT PRIMARY KEY (IdVenda),
     CONSTRAINT FK_IDCLIENTE_VENDAS FOREIGN KEY (IdCliente) REFERENCES Clientes(IdCliente)
