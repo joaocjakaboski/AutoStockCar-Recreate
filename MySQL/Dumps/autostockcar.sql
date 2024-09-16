@@ -27,7 +27,7 @@ CREATE TABLE `categorias` (
   `NomeCategoria` char(20) NOT NULL,
   `DescricaoCategoria` char(100) DEFAULT NULL,
   PRIMARY KEY (`IdCategoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,7 +53,7 @@ CREATE TABLE `cidades` (
   PRIMARY KEY (`IdCidade`),
   KEY `FK_IDESTADO_CIDADES` (`IdEstado`),
   CONSTRAINT `FK_IDESTADO_CIDADES` FOREIGN KEY (`IdEstado`) REFERENCES `estados` (`IdEstado`)
-) ENGINE=InnoDB AUTO_INCREMENT=5388 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5388 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -88,7 +88,7 @@ CREATE TABLE `clientes` (
   UNIQUE KEY `CPFCliente` (`CPFCliente`),
   KEY `FK_IDCIDADE_CLIENTES` (`IdCidade`),
   CONSTRAINT `FK_IDCIDADE_CLIENTES` FOREIGN KEY (`IdCidade`) REFERENCES `cidades` (`IdCidade`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -112,7 +112,7 @@ CREATE TABLE `estados` (
   `NomeEstado` char(75) DEFAULT NULL,
   `UfEstado` char(5) DEFAULT NULL,
   PRIMARY KEY (`IdEstado`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -136,7 +136,7 @@ CREATE TABLE `estoques` (
   `IdEstoque` int NOT NULL AUTO_INCREMENT,
   `QuantidadeEstoque` int NOT NULL,
   PRIMARY KEY (`IdEstoque`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -168,7 +168,7 @@ CREATE TABLE `fabricantes` (
   UNIQUE KEY `CNPJFabricante` (`CNPJFabricante`),
   KEY `FK_IDCIDADE_FABRICANTES` (`IdCidade`),
   CONSTRAINT `FK_IDCIDADE_FABRICANTES` FOREIGN KEY (`IdCidade`) REFERENCES `cidades` (`IdCidade`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -202,7 +202,7 @@ CREATE TABLE `itensvenda` (
   KEY `FK_IDPRODUTO_ITENSVENDA` (`IdProduto`),
   CONSTRAINT `FK_IDPRODUTO_ITENSVENDA` FOREIGN KEY (`IdProduto`) REFERENCES `produtos` (`IdProduto`),
   CONSTRAINT `FK_IDVENDA_ITENSVENDA` FOREIGN KEY (`IdVenda`) REFERENCES `vendas` (`IdVenda`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -234,7 +234,7 @@ CREATE TABLE `movimentacaodeestoque` (
   KEY `FK_IDFABRICANTE_MOVIMENTACAODEESTOQUE` (`IdFabricante`),
   CONSTRAINT `FK_IDFABRICANTE_MOVIMENTACAODEESTOQUE` FOREIGN KEY (`IdFabricante`) REFERENCES `fabricantes` (`IdFabricante`),
   CONSTRAINT `FK_IDPRODUTO_MOVIMENTACAODEESTOQUE` FOREIGN KEY (`IdProduto`) REFERENCES `produtos` (`IdProduto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -274,7 +274,7 @@ CREATE TABLE `produtos` (
   CONSTRAINT `FK_IDCATEGORIA_PRODUTOS` FOREIGN KEY (`IdCategoria`) REFERENCES `categorias` (`IdCategoria`),
   CONSTRAINT `FK_IDESTOQUE_PRODUTOS` FOREIGN KEY (`IdEstoque`) REFERENCES `estoques` (`IdEstoque`),
   CONSTRAINT `FK_IDFABRICANTE_PRODUTOS` FOREIGN KEY (`IdFabricante`) REFERENCES `fabricantes` (`IdFabricante`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -299,7 +299,7 @@ CREATE TABLE `usuarios` (
   `SenhaUsuario` char(100) NOT NULL,
   `AdmCategoria` char(10) DEFAULT 'PADRAO',
   PRIMARY KEY (`IdUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -327,7 +327,7 @@ CREATE TABLE `vendas` (
   PRIMARY KEY (`IdVenda`),
   KEY `FK_IDCLIENTE_VENDAS` (`IdCliente`),
   CONSTRAINT `FK_IDCLIENTE_VENDAS` FOREIGN KEY (`IdCliente`) REFERENCES `clientes` (`IdCliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -348,4 +348,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-16 20:20:33
+-- Dump completed on 2024-09-16 20:28:06
