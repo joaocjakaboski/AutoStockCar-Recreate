@@ -5600,17 +5600,12 @@ BEGIN
 END //
 DELIMITER ;
 
-CALL buscarTodosUsuarios();
-
-
 DELIMITER //
 CREATE PROCEDURE buscarUsuarioPeloId(IN IdUser INT)
 BEGIN
     SELECT * FROM Usuarios WHERE IdUsuario = IdUser;
 END //
 DELIMITER ;
-
-CALL buscarUsuarioPeloId(2);
 
 DELIMITER //
 CREATE PROCEDURE buscarUsuarioPeloNome(IN NomeUsu CHAR(100))
@@ -5619,16 +5614,12 @@ BEGIN
 END //
 DELIMITER ;
 
-CALL buscarUsuarioPeloNome('user');
-
 DELIMITER //
 CREATE PROCEDURE buscarProdutosPeloNome(IN NomeProd CHAR(100))
 BEGIN
     SELECT * FROM produtos WHERE NomeProduto LIKE NomeProd;
 END //
 DELIMITER ;
-
-CALL buscarProdutosPeloNome('%si%');
 
 DELIMITER //
 CREATE PROCEDURE buscarProdutoPeloId(IN IdProd INT)
@@ -5637,16 +5628,12 @@ BEGIN
 END //
 DELIMITER ;
 
-CALL buscarProdutoPeloId(2);
-
 DELIMITER //
 CREATE PROCEDURE buscarCategoriaPeloId(IN IdCat INT)
 BEGIN
     SELECT * FROM categorias WHERE IdCategoria = IdCat;
 END //
 DELIMITER ;
-
-CALL buscarCategoriaPeloId(1);
 
 DELIMITER //
 CREATE PROCEDURE buscarCidadePeloId(IN IdCid INT)
@@ -5655,16 +5642,12 @@ BEGIN
 END //
 DELIMITER ;
 
-CALL buscarCidadePeloId(1);
-
 DELIMITER //
 CREATE PROCEDURE buscarCidadeNomePeloNome(IN NomeCid CHAR(100))
 BEGIN
     SELECT * FROM cidades WHERE NomeCidade LIKE NomeCid;
 END //
 DELIMITER ;
-
-CALL buscarCidadeNomePeloNome('%erec%');
 
 DELIMITER //
 CREATE PROCEDURE buscarCidades(IN IdEs INT)
@@ -5673,16 +5656,12 @@ BEGIN
 END //
 DELIMITER ;
 
-CALL buscarCidades(1);
-
 DELIMITER //
 CREATE PROCEDURE buscarCidadeIdPeloNome(IN NomeCid CHAR(100))
 BEGIN
     SELECT IdCidade FROM Cidades WHERE NomeCidade = NomeCid;
 END //
 DELIMITER ;
-
-CALL buscarCidadeIdPeloNome('Erechim');
 
 DELIMITER //
 CREATE PROCEDURE buscarTodosclientes()
@@ -5691,16 +5670,12 @@ BEGIN
 END //
 DELIMITER ;
 
-CALL buscarTodosclientes();
-
 DELIMITER //
 CREATE PROCEDURE buscarClientePeloCpf(IN CPFCli CHAR(14))
 BEGIN
     SELECT * FROM Clientes WHERE CPFCliente = CPFCli;
 END //
 DELIMITER ;
-
-CALL buscarClientePeloCpf('12312312312');
 
 DELIMITER //
 CREATE PROCEDURE buscarClientePeloNome(IN NomeCli CHAR(100))
@@ -5709,16 +5684,12 @@ BEGIN
 END //
 DELIMITER ;
 
-CALL buscarClientePeloNome('Cliente dono do fusca');
-
 DELIMITER //
 CREATE PROCEDURE buscarClienteNomePeloNome(IN NomeCLI CHAR(100))
 BEGIN
     SELECT NomeCliente FROM Clientes WHERE NomeCliente LIKE NomeCLI;
 END //
 DELIMITER ;
-
-CALL buscarClienteNomePeloNome('%Fusca%');
 
 DELIMITER //
 CREATE PROCEDURE buscarProdutoNomePeloNome(IN NomeProd CHAR(100))
@@ -5727,16 +5698,12 @@ BEGIN
 END //
 DELIMITER ;
 
-CALL buscarProdutoNomePeloNome('%ne%');
-
 DELIMITER //
 CREATE PROCEDURE buscarCodigoPeloNome(IN NomeProd CHAR(100))
 BEGIN
     SELECT IdProduto FROM produtos WHERE NomeProduto = NomeProd;
 END //
 DELIMITER ;
-
-CALL buscarCodigoPeloNome('pneu siena');
 
 DELIMITER //
 CREATE PROCEDURE buscarUfEstados()
@@ -5745,16 +5712,12 @@ BEGIN
 END //
 DELIMITER ;
 
-CALL buscarUfEstados();
-
 DELIMITER //
 CREATE PROCEDURE buscarIdEstadoPeloUf(IN UFEst CHAR(2))
 BEGIN
     SELECT IdEstado FROM Estados WHERE UfEstado = UFEst;
 END //
 DELIMITER ;
-
-CALL buscarIdEstadoPeloUf('RS');
 
 DELIMITER //
 CREATE PROCEDURE buscarEstadoPeloId(IN IdEst INT)
@@ -5763,16 +5726,12 @@ BEGIN
 END //
 DELIMITER ;
 
-CALL buscarEstadoPeloId(1);
-
 DELIMITER //
 CREATE PROCEDURE buscarFabricantePeloNome(IN NomeFab CHAR(100))
 BEGIN
     SELECT * FROM fabricantes WHERE NomeFabricante = NomeFab;
 END //
 DELIMITER ;
-
-CALL buscarFabricantePeloNome('Fabricante 1');
 
 DELIMITER //
 CREATE PROCEDURE buscarFabricanteNomePeloNome(IN NomeFab CHAR(100))
@@ -5781,16 +5740,9 @@ BEGIN
 END //
 DELIMITER ;
 
-CALL buscarFabricanteNomePeloNome('%1%');
-
 DELIMITER //
 CREATE PROCEDURE buscarMovimentacaoPorId(IN IdMov INT)
 BEGIN
     SELECT * FROM MovimentacaoDeEstoque WHERE IdMovimentacao = IdMov;
 END //
 DELIMITER ;
-
-CALL buscarMovimentacaoPorId(1);
-
-
-
