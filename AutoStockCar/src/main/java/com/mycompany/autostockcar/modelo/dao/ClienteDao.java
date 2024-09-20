@@ -23,8 +23,8 @@ public class ClienteDao {
     }
 
     private String adicionar(Clientes cliente) throws SQLException{
-        String sql = "INSERT INTO Clientes(NomeCliente, TelefoneCliente, EmailCliente, EnderecoCliente, BairroCliente, CPFCliente, ObsCliente, IdCidade) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        
+        String sql = "{CALL adicionar_cliente(?, ?, ?, ?, ?, ?, ?, ?)}";
+
         Clientes clienteTemp = buscarClientePeloNome(cliente.getNomeCliente());
         
         if (clienteTemp != null) {
@@ -45,7 +45,8 @@ public class ClienteDao {
     }
 
     private String editar(Clientes cliente) throws SQLException{
-        String sql = "UPDATE Clientes SET NomeCliente = ?, TelefoneCliente = ?, EmailCliente = ?, EnderecoCliente = ?, BairroCliente = ?, CPFCliente = ?, ObsCliente = ?, IdCidade = ? WHERE IdCliente = ?";
+        String sql = "{CALL editar_cliente(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+
         try {
             PreparedStatement preparedStatement = conexao.obterConexao().prepareStatement(sql);
             

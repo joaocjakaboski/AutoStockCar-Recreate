@@ -23,7 +23,7 @@ public class CategoriaDao {
     
 
     public void salvar() {
-        String sql = "INSERT INTO categorias(NomeCategoria, DescricaoCategoria) VALUES(?, ?)";
+        String sql = "{CALL salvar_categoria(?, ?)}";
         try (Connection connection = conexao.obterConexao();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
 
@@ -39,8 +39,9 @@ public class CategoriaDao {
         }
     }
 
+
     public void excluir(int idCategoria) {
-        String sql = "DELETE FROM categorias WHERE IdCategoria = ?";
+        String sql = "{CALL excluir_categoria(?)}";
         try (Connection connection = conexao.obterConexao();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
 
@@ -57,6 +58,7 @@ public class CategoriaDao {
             ex.printStackTrace();
         }
     }
+
 
     public Categorias buscarPorId(int idCategoria) {
         String sql = "{CALL buscarCategoriaPeloId (?) }";

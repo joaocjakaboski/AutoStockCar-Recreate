@@ -38,11 +38,11 @@ public class CadastropDao {
     
     public void salvar() {
         try {
-            
-            String sql = "INSERT INTO Produtos(NomeProduto, CodigoFabricante, ObsProduto, ValorCustoProduto, ValorFinal, Prateleira, Gaveta, ImpostoDoProduto, IdFabricante, IdCategoria, QuantidadeDisponivel) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            
+            // Chamada ao procedimento armazenado
+            String sql = "{CALL inserir_produto(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+
             PreparedStatement stmt = conexao.obterConexao().prepareStatement(sql);
-            
+
             stmt.setString(1, nomeProduto);
             stmt.setString(2, codigoFabricante);
             stmt.setString(3, obsProduto);
@@ -50,112 +50,118 @@ public class CadastropDao {
             stmt.setFloat(5, valorFinal);
             stmt.setString(6, prateleira);
             stmt.setString(7, gaveta);
-            stmt.setInt(8, impostoDoProduto );
+            stmt.setInt(8, impostoDoProduto);
             stmt.setInt(9, idFabricante);
             stmt.setInt(10, idCategoria);
             stmt.setInt(11, quantidadeEstoque);
 
-            // Execute a inserção
+            // Executa a chamada ao procedimento
             stmt.executeUpdate();
 
             // Feche o PreparedStatement e a conexão
             //stmt.close();
             //conexao.obterConexao().close();
+
             // Caso dê tudo certo
             JOptionPane.showMessageDialog(null, "Produto Cadastrado com Sucesso");
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro de conexão com o banco de dados de Inclusão\n" + ex.getMessage());
             ex.printStackTrace();
         }
     }
+
     
     public void excluir(int idProduto) {
-        try{
-            
-            String sql = "DELETE FROM produtos WHERE IdProduto = ?";
-            
+        try {
+            // Chamada ao procedimento armazenado
+            String sql = "{CALL excluir_produto(?)}";
+
             PreparedStatement stmt = conexao.obterConexao().prepareStatement(sql);
             stmt.setInt(1, idProduto);
-            
+
             int rowsAffected = stmt.executeUpdate();
-            
-            if (rowsAffected > 0) {     
+
+            if (rowsAffected > 0) {
                 JOptionPane.showMessageDialog(null, "Produto excluído com sucesso.");
             } else {
                 JOptionPane.showMessageDialog(null, "Nenhum produto encontrado com o ID especificado.");
             }
-            
+
+            // Feche o PreparedStatement e a conexão se necessário
             //stmt.close();
-            
             //conexao.obterConexao().close();
-            
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Erro de conexão com o banco de dados de exclusão");
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro de conexão com o banco de dados de exclusão\n" + ex.getMessage());
             ex.printStackTrace();
         }
-        
     }
+
     
     public Produtos buscarPorId(int idProduto) {
-            String sql = String.format ("{CALL buscarProdutoPeloId (?)}");
+        String sql = String.format ("{CALL buscarProdutoPeloId (?)}");
 
- 
-    try {
-        Connection connection = conexao.obterConexao();
-        PreparedStatement stmt = connection.prepareStatement(sql);
-        stmt.setInt(1, idProduto);
-        ResultSet result = stmt.executeQuery();
 
-        if (result.next()) {
-            return getProdutos(result);
-        } else {
-            JOptionPane.showMessageDialog(null, "Nenhum produto encontrado com o ID especificado.");
+        try {
+            Connection connection = conexao.obterConexao();
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, idProduto);
+            ResultSet result = stmt.executeQuery();
+
+            if (result.next()) {
+                return getProdutos(result);
+            } else {
+                JOptionPane.showMessageDialog(null, "Nenhum produto encontrado com o ID especificado.");
+            }
+
+            //result.close();
+            //stmt.close();
+            //connection.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar produto por ID");
+            ex.printStackTrace();
         }
-        
-        //result.close();
-        //stmt.close();
-        //connection.close();
-        
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Erro ao buscar produto por ID");
-        ex.printStackTrace();
-    }
-    return null;
+        return null;
     }   
     
     public void alterar(Produtos produto) {
-    try {
-        String sql = "UPDATE Produtos SET NomeProduto = ?, CodigoFabricante = ?, ObsProduto = ?, ValorCustoProduto = ?, ValorFinal = ?, Prateleira = ?, Gaveta = ?, ImpostoDoProduto = ?, QuantidadeDisponivel = ? WHERE IdProduto = ?";
-        Connection connection = conexao.obterConexao();
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        try {
+            // Chamada ao procedimento armazenado
+            String sql = "{CALL alterar_produto(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
 
-        stmt.setString(1, produto.getNomeProduto());
-        stmt.setString(2, produto.getCodigoFabricante());
-        stmt.setString(3, produto.getObsProduto());
-        stmt.setBigDecimal(4, produto.getValorCustoProduto());
-        stmt.setBigDecimal(5, produto.getValorFinal());
-        stmt.setString(6, produto.getPrateleira());
-        stmt.setString(7, produto.getGaveta());
-        stmt.setInt(8, produto.getImpostoDoProduto());
-        stmt.setInt(9, produto.getQuantidadeDisponivel());
-        stmt.setInt(10, produto.getIdProduto());
+            Connection connection = conexao.obterConexao();
+            PreparedStatement stmt = connection.prepareStatement(sql);
 
-        int rowsAffected = stmt.executeUpdate();
+            stmt.setString(1, produto.getNomeProduto());
+            stmt.setString(2, produto.getCodigoFabricante());
+            stmt.setString(3, produto.getObsProduto());
+            stmt.setBigDecimal(4, produto.getValorCustoProduto());
+            stmt.setBigDecimal(5, produto.getValorFinal());
+            stmt.setString(6, produto.getPrateleira());
+            stmt.setString(7, produto.getGaveta());
+            stmt.setInt(8, produto.getImpostoDoProduto());
+            stmt.setInt(9, produto.getQuantidadeDisponivel());
+            stmt.setInt(10, produto.getIdProduto());
 
-        if (rowsAffected > 0) {
-            JOptionPane.showMessageDialog(null, "Produto alterado com sucesso");
-        } else {
-            JOptionPane.showMessageDialog(null, "Nenhum produto foi alterado");
-        }
+            int rowsAffected = stmt.executeUpdate();
 
-        //stmt.close();
-        //connection.close();
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(null, "Produto alterado com sucesso");
+            } else {
+                JOptionPane.showMessageDialog(null, "Nenhum produto foi alterado");
+            }
+
+            //stmt.close();
+            //connection.close();
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro de conexão com o banco de dados para alteração\n" + ex.getMessage());
             ex.printStackTrace();
         }
     }
+
 
     private Produtos getProdutos(ResultSet result) throws SQLException {
         Produtos produto = new Produtos();

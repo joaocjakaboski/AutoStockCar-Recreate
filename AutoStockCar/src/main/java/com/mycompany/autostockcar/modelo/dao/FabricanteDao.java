@@ -25,8 +25,8 @@ public FabricanteDao() {
     }
     
     private String adicionar(Fabricantes fabricante) throws SQLException{
-        String sql = "INSERT INTO Fabricantes(NomeFabricante, EmailFabricante, TelefoneFabricante, EnderecoFabricante, CNPJFabricante, ObsFabricante, IdCidade) VALUES (?, ?, ?, ?, ?, ?,?)";
-        
+        String sql = "{CALL adicionar_fabricante(?, ?, ?, ?, ?, ?, ?)}";
+
         Fabricantes fabricanteTemp = buscarFabricantePeloNome(fabricante.getNomeFabricante());
         
         if (fabricanteTemp != null) {
@@ -47,7 +47,7 @@ public FabricanteDao() {
     }
 
     private String editar(Fabricantes fabricante) throws SQLException{
-        String sql = "UPDATE Fabricantes SET NomeFabricante = ?, EmailFabricante = ?, TelefoneFabricante = ?,  EnderecoFabricante = ?, CNPJFabricante = ?, ObsFabricante = ?, IdCidade = ? WHERE Idfabricante = ?";
+        String sql = "{CALL editar_fabricante(?, ?, ?, ?, ?, ?, ?, ?)}";
         try {
             PreparedStatement preparedStatement = conexao.obterConexao().prepareStatement(sql);
             
@@ -95,7 +95,7 @@ public FabricanteDao() {
     
     public Fabricantes buscarFabricantePeloNome(String fabricante) {
         
-        String sql = String.format("{CALL buscarFabricantePeloNome ('%s')}", fabricante);
+        String sql = String.format("{CALL buscarFabricantePeloNome ('%%%s%%')}", fabricante);
         
         try {
             ResultSet result = conexao.obterConexao().prepareStatement(sql).executeQuery();
@@ -139,7 +139,7 @@ public FabricanteDao() {
     }
         
     public String excluirFabricante(int id) {
-        String sql = String.format("DELETE FROM Fabricantes WHERE IdFabricante = %s", id);
+        String sql = String.format("{CALL excluir_fabricante(%s)}", id);
         try {
             pstm = conexao.obterConexao().prepareCall(sql);
             int resultado = pstm.executeUpdate();

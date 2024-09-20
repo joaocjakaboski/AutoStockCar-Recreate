@@ -59,7 +59,7 @@ public class CidadeDao {
     }
     
     public Cidades buscarCidadePeloId(int idCidade) {
-        String sql = String.format("{CALL buscarCidadePeloId (?)}", idCidade);
+        String sql = String.format("{CALL buscarCidadePeloId (%d)}", idCidade);
         try {
             ResultSet result = conexao.obterConexao().prepareStatement(sql).executeQuery();
             

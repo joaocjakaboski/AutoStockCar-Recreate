@@ -5729,7 +5729,7 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE buscarFabricantePeloNome(IN NomeFab CHAR(100))
 BEGIN
-    SELECT * FROM fabricantes WHERE NomeFabricante = NomeFab;
+    SELECT * FROM fabricantes WHERE NomeFabricante LIKE NomeFab;
 END //
 DELIMITER ;
 
@@ -5744,5 +5744,174 @@ DELIMITER //
 CREATE PROCEDURE buscarMovimentacaoPorId(IN IdMov INT)
 BEGIN
     SELECT * FROM MovimentacaoDeEstoque WHERE IdMovimentacao = IdMov;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE inserir_produto(
+    IN p_nomeProduto CHAR(45),
+    IN p_codigoFabricante CHAR(20),
+    IN p_obsProduto CHAR(100),
+    IN p_valorCustoProduto DECIMAL(10, 2),
+    IN p_valorFinal DECIMAL(10, 2),
+    IN p_prateleira CHAR(3),
+    IN p_gaveta CHAR(8),
+    IN p_impostoDoProduto INT,
+    IN p_idFabricante INT,
+    IN p_idCategoria INT,
+    IN p_quantidadeEstoque INT
+)
+BEGIN
+    INSERT INTO Produtos(NomeProduto, CodigoFabricante, ObsProduto, ValorCustoProduto, ValorFinal, Prateleira, Gaveta, ImpostoDoProduto, IdFabricante, IdCategoria, QuantidadeDisponivel)
+    VALUES (p_nomeProduto, p_codigoFabricante, p_obsProduto, p_valorCustoProduto, p_valorFinal, p_prateleira, p_gaveta, p_impostoDoProduto, p_idFabricante, p_idCategoria, p_quantidadeEstoque);
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE excluir_produto(
+    IN p_idProduto INT
+)
+BEGIN
+    DELETE FROM Produtos WHERE IdProduto = p_idProduto;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE alterar_produto(
+    IN p_nomeProduto CHAR(45),
+    IN p_codigoFabricante CHAR(20),
+    IN p_obsProduto CHAR(100),
+    IN p_valorCustoProduto DECIMAL(10, 2),
+    IN p_valorFinal DECIMAL(10, 2),
+    IN p_prateleira CHAR(3),
+    IN p_gaveta CHAR(8),
+    IN p_impostoDoProduto INT,
+    IN p_quantidadeEstoque INT,
+    IN p_idProduto INT
+)
+BEGIN
+    UPDATE Produtos 
+    SET NomeProduto = p_nomeProduto, 
+        CodigoFabricante = p_codigoFabricante, 
+        ObsProduto = p_obsProduto, 
+        ValorCustoProduto = p_valorCustoProduto, 
+        ValorFinal = p_valorFinal, 
+        Prateleira = p_prateleira, 
+        Gaveta = p_gaveta, 
+        ImpostoDoProduto = p_impostoDoProduto, 
+        QuantidadeDisponivel = p_quantidadeEstoque
+    WHERE IdProduto = p_idProduto;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE salvar_categoria(
+    IN p_nomeCategoria CHAR(20),
+    IN p_descricaoCategoria CHAR(100)
+)
+BEGIN
+    INSERT INTO categorias (NomeCategoria, DescricaoCategoria) 
+    VALUES (p_nomeCategoria, p_descricaoCategoria);
+END //categorias
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE excluir_categoria(
+    IN p_idCategoria INT
+)
+BEGIN
+    DELETE FROM categorias WHERE IdCategoria = p_idCategoria;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE adicionar_cliente(
+    IN p_nomeCliente CHAR(45),
+    IN p_telefoneCliente CHAR(15),
+    IN p_emailCliente CHAR(45),
+    IN p_enderecoCliente CHAR(45),
+    IN p_bairroCliente CHAR(45),
+    IN p_cpfCliente CHAR(14),
+    IN p_obsCliente CHAR(100),
+    IN p_idCidade INT
+)
+BEGIN
+    INSERT INTO Clientes (NomeCliente, TelefoneCliente, EmailCliente, EnderecoCliente, BairroCliente, CPFCliente, ObsCliente, IdCidade) 
+    VALUES (p_nomeCliente, p_telefoneCliente, p_emailCliente, p_enderecoCliente, p_bairroCliente, p_cpfCliente, p_obsCliente, p_idCidade);
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE editar_cliente(
+    IN p_nomeCliente CHAR(45),
+    IN p_telefoneCliente CHAR(15),
+    IN p_emailCliente CHAR(45),
+    IN p_enderecoCliente CHAR(45),
+    IN p_bairroCliente CHAR(45),
+    IN p_cpfCliente CHAR(14),
+    IN p_obsCliente CHAR(100),
+    IN p_idCidade INT,
+    IN p_idCliente INT
+)
+BEGIN
+    UPDATE Clientes 
+    SET NomeCliente = p_nomeCliente,
+        TelefoneCliente = p_telefoneCliente,
+        EmailCliente = p_emailCliente,
+        EnderecoCliente = p_enderecoCliente,
+        BairroCliente = p_bairroCliente,
+        CPFCliente = p_cpfCliente,
+        ObsCliente = p_obsCliente,
+        IdCidade = p_idCidade
+    WHERE IdCliente = p_idCliente;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE adicionar_fabricante(
+    IN p_nomeFabricante CHAR(45),
+    IN p_emailFabricante CHAR(45),
+    IN p_telefoneFabricante CHAR(15),
+    IN p_enderecoFabricante CHAR(50),
+    IN p_cnpjFabricante CHAR(14),
+    IN p_obsFabricante CHAR(100),
+    IN p_idCidade INT
+)
+BEGIN
+    INSERT INTO Fabricantes (NomeFabricante, EmailFabricante, TelefoneFabricante, EnderecoFabricante, CNPJFabricante, ObsFabricante, IdCidade) 
+    VALUES (p_nomeFabricante, p_emailFabricante, p_telefoneFabricante, p_enderecoFabricante, p_cnpjFabricante, p_obsFabricante, p_idCidade);
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE editar_fabricante(
+    IN p_nomeFabricante CHAR(45),
+    IN p_emailFabricante CHAR(45),
+    IN p_telefoneFabricante CHAR(15),
+    IN p_enderecoFabricante CHAR(50),
+    IN p_cnpjFabricante CHAR(14),
+    IN p_obsFabricante CHAR(100),
+    IN p_idCidade INT,
+    IN p_idFabricante INT
+)
+BEGIN
+    UPDATE Fabricantes
+    SET NomeFabricante = p_nomeFabricante, 
+		EmailFabricante = p_emailFabricante, 
+		TelefoneFabricante = p_telefoneFabricante, 
+        EnderecoFabricante = p_enderecoFabricante, 
+        CNPJFabricante = p_cnpjFabricante, 
+        ObsFabricante = p_obsFabricante, 
+        IdCidade = p_idCidade
+	WHERE IdFabricante = p_idFabricante;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE excluir_fabricante(
+	IN p_idFabricante INT
+)
+BEGIN
+	DELETE FROM Fabricantes WHERE IdFabricante = p_idFabricante;
 END //
 DELIMITER ;
