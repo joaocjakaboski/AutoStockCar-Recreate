@@ -27,8 +27,8 @@ public class UsuarioDao {
     }
 
     private String adicionar(Usuarios usuario) {
-        String sql = "INSERT INTO Usuarios(NomeUsuario, SenhaUsuario, AdmCategoria) VALUES (?, ?, ?)";
-        
+        String sql = "{CALL adicionar_usuario(?, ?, ?)}";
+
         Usuarios usuarioTemp = buscarUsuarioPeloNome(usuario.getNomeUsuario());
         
         if (usuarioTemp != null) {
@@ -49,7 +49,7 @@ public class UsuarioDao {
     }
 
     private String editar(Usuarios usuario) {
-        String sql = "UPDATE Usuarios SET NomeUsuario = ?, SenhaUsuario = ?, AdmCategoria = ? WHERE IdUsuario = ?";
+        String sql = "{CALL editar_usuario(?, ?, ?, ?)}";
         try {
             PreparedStatement preparedStatement = conexao.obterConexao().prepareStatement(sql);
             
@@ -135,7 +135,7 @@ public class UsuarioDao {
     }
 
     public String excluirUsuario(int id) {
-        String sql = String.format("DELETE FROM Usuarios WHERE IdUsuario = ?", id);
+        String sql = String.format("{CALL excluir_usuario(?)}", id);
         try {
             PreparedStatement preparedStatement = conexao.obterConexao().prepareStatement(sql);
             preparedStatement.setInt(1, id);

@@ -222,7 +222,6 @@ public class Consulta extends javax.swing.JFrame {
         jPanel2.setMinimumSize(new java.awt.Dimension(1164, 550));
         jPanel2.setPreferredSize(new java.awt.Dimension(1164, 550));
 
-        txCodigoProduto.setForeground(new java.awt.Color(0, 0, 0));
         txCodigoProduto.setCorTexto(new java.awt.Color(158, 158, 158));
         txCodigoProduto.setDicas("Codigo");
 
@@ -233,11 +232,9 @@ public class Consulta extends javax.swing.JFrame {
         btpesquisar.setBackground(new java.awt.Color(220, 220, 220));
         btpesquisar.setForeground(new java.awt.Color(28, 181, 223));
 
-        txNomeProduto.setForeground(new java.awt.Color(0, 0, 0));
         txNomeProduto.setCorTexto(new java.awt.Color(158, 158, 158));
         txNomeProduto.setDicas("Nome do produto");
 
-        txUnidade.setForeground(new java.awt.Color(0, 0, 0));
         txUnidade.setCorTexto(new java.awt.Color(158, 158, 158));
         txUnidade.setDicas("Unidade");
 
@@ -261,7 +258,6 @@ public class Consulta extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Custo da Ultima Compra");
 
-        txCustoCompra.setForeground(new java.awt.Color(0, 0, 0));
         txCustoCompra.setCorTexto(new java.awt.Color(158, 158, 158));
         txCustoCompra.setDicas("Custo do produto");
 
@@ -269,11 +265,9 @@ public class Consulta extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Valor de Venda");
 
-        txValorVenda.setForeground(new java.awt.Color(0, 0, 0));
         txValorVenda.setCorTexto(new java.awt.Color(158, 158, 158));
         txValorVenda.setDicas("Valor Venda ");
 
-        txCodigoFabricante.setForeground(new java.awt.Color(0, 0, 0));
         txCodigoFabricante.setCorTexto(new java.awt.Color(158, 158, 158));
         txCodigoFabricante.setDicas("Codigo Fabricante");
 
@@ -285,11 +279,9 @@ public class Consulta extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Codigo de Fabrica");
 
-        txNomeFabricante.setForeground(new java.awt.Color(0, 0, 0));
         txNomeFabricante.setCorTexto(new java.awt.Color(158, 158, 158));
         txNomeFabricante.setDicas("Nome Fabricante");
 
-        txCodigoFabrica.setForeground(new java.awt.Color(0, 0, 0));
         txCodigoFabrica.setCorTexto(new java.awt.Color(158, 158, 158));
         txCodigoFabrica.setDicas("Codigo de Fabrica");
 
@@ -297,7 +289,6 @@ public class Consulta extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Complemento");
 
-        txObservacoes.setForeground(new java.awt.Color(0, 0, 0));
         txObservacoes.setCorTexto(new java.awt.Color(158, 158, 158));
         txObservacoes.setDicas("Observações");
 
@@ -309,7 +300,6 @@ public class Consulta extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Quantidade");
 
-        txQuantEstoque.setForeground(new java.awt.Color(0, 0, 0));
         txQuantEstoque.setCorTexto(new java.awt.Color(158, 158, 158));
         txQuantEstoque.setDicas("Quantidade em Estoque ");
 
@@ -318,16 +308,13 @@ public class Consulta extends javax.swing.JFrame {
         jLabel14.setText("Categoria");
         jLabel14.setToolTipText("");
 
-        txNomeCategoria.setForeground(new java.awt.Color(0, 0, 0));
         txNomeCategoria.setCorTexto(new java.awt.Color(158, 158, 158));
         txNomeCategoria.setDicas("Categoria");
 
-        txGaveta.setForeground(new java.awt.Color(0, 0, 0));
         txGaveta.setCorTexto(new java.awt.Color(158, 158, 158));
         txGaveta.setDicas("Gaveta");
 
         txPrateleira.setBackground(new java.awt.Color(255, 255, 255));
-        txPrateleira.setForeground(new java.awt.Color(0, 0, 0));
         txPrateleira.setCorTexto(new java.awt.Color(158, 158, 158));
         txPrateleira.setDicas("Prateleira");
 
@@ -339,7 +326,6 @@ public class Consulta extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Prateleira");
 
-        txCodigoCategoria.setForeground(new java.awt.Color(0, 0, 0));
         txCodigoCategoria.setCorTexto(new java.awt.Color(158, 158, 158));
         txCodigoCategoria.setDicas("Codigo");
 
@@ -409,11 +395,23 @@ public class Consulta extends javax.swing.JFrame {
                                             .addComponent(jLabel15))
                                         .addGap(53, 53, 53)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel13)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txCodigoFabrica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(txGaveta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addGroup(jPanel2Layout.createSequentialGroup()
+                                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                            .addComponent(txCodigoCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                                .addGap(21, 21, 21)
+                                                                .addComponent(jLabel14))
+                                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(txNomeCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                    .addComponent(txCodigoFabrica, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(txGaveta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addComponent(jLabel8)
                                                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -429,18 +427,7 @@ public class Consulta extends javax.swing.JFrame {
                                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel9)
                                                     .addComponent(txObservacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(3, 3, 3))
-                                            .addComponent(jLabel13)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(txCodigoCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                                                .addGap(21, 21, 21)
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel14)
-                                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                                        .addComponent(txNomeCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addGap(549, 549, 549)))))))
+                                                .addGap(3, 3, 3)))))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );

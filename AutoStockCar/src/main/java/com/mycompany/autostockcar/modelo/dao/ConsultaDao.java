@@ -60,7 +60,7 @@ public class ConsultaDao {
     
         public Produtos buscarProdutosPeloNome(String consulta) {
         
-        String sql = String.format("{CALL buscarProdutosPeloNome (?)}", consulta);
+        String sql = String.format("{CALL buscarProdutosPeloNome ('%%%s%%')}", consulta);
         
         try {
             ResultSet result = conexao.obterConexao().prepareStatement(sql).executeQuery();

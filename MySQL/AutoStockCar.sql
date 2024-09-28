@@ -5617,7 +5617,7 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE buscarProdutosPeloNome(IN NomeProd CHAR(100))
 BEGIN
-    SELECT * FROM produtos WHERE NomeProduto LIKE NomeProd;
+    SELECT * FROM produtos WHERE NomeProduto = NomeProd;
 END //
 DELIMITER ;
 
@@ -5914,4 +5914,65 @@ CREATE PROCEDURE excluir_fabricante(
 BEGIN
 	DELETE FROM Fabricantes WHERE IdFabricante = p_idFabricante;
 END //
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE alterar_movimentacao(
+    IN p_entradaSaida TINYINT,
+    IN p_quantidadeMovimentacao INT,
+    IN p_motivoMovimentacao CHAR(20),
+    IN p_idMovimentacao INT
+)
+BEGIN
+    UPDATE movimentacaodeestoque 
+    SET EntradaSaida = p_entradaSaida, 
+        QuantidadeMovimentacao = p_quantidadeMovimentacao, 
+        MotivoMovimentacao = p_motivoMovimentacao
+    WHERE IdMovimentacao = p_idMovimentacao;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE adicionar_usuario(
+    IN p_nomeUsuario CHAR(45),
+    IN p_senhaUsuario CHAR(100),
+    IN p_admCategoria CHAR(10)
+)
+BEGIN
+    INSERT INTO Usuarios (NomeUsuario, SenhaUsuario, AdmCategoria)
+    VALUES (p_nomeUsuario, p_senhaUsuario, p_admCategoria);
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE editar_usuario(
+    IN p_nomeUsuario CHAR(45),
+    IN p_senhaUsuario CHAR(100),
+    IN p_admCategoria CHAR(10),
+    IN p_idUsuario INT
+)
+BEGIN
+    UPDATE Usuarios 
+    SET NomeUsuario = p_nomeUsuario, 
+        SenhaUsuario = p_senhaUsuario, 
+        AdmCategoria = p_admCategoria
+    WHERE IdUsuario = p_idUsuario;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE excluir_usuario(
+    IN p_idUsuario INT
+)
+BEGIN
+    DELETE FROM Usuarios WHERE IdUsuario = p_idUsuario;
+END //
+
 DELIMITER ;

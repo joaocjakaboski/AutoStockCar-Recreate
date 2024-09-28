@@ -26,7 +26,7 @@ public class MovimentacaoProdDao {
     }
  
     public void alterar(MovimentacaoDeEstoque movimentacao) {
-        String sql = "UPDATE movimentacaodeestoque SET EntradaSaida = ?, QuantidadeMovimentacao = ?, MotivoMovimentacao = ? WHERE IdMovimentacao = ?";
+        String sql = "{CALL alterar_movimentacao(?, ?, ?, ?)}";
         try (Connection connection = conexao.obterConexao(); PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, movimentacao.getEntradaSaida());
             stmt.setInt(2, movimentacao.getQuantidadeMovimentacao());
