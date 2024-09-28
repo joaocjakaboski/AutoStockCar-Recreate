@@ -5917,7 +5917,6 @@ END //
 DELIMITER ;
 
 DELIMITER //
-
 CREATE PROCEDURE alterar_movimentacao(
     IN p_entradaSaida TINYINT,
     IN p_quantidadeMovimentacao INT,
@@ -5931,11 +5930,9 @@ BEGIN
         MotivoMovimentacao = p_motivoMovimentacao
     WHERE IdMovimentacao = p_idMovimentacao;
 END //
-
 DELIMITER ;
 
 DELIMITER //
-
 CREATE PROCEDURE adicionar_usuario(
     IN p_nomeUsuario CHAR(45),
     IN p_senhaUsuario CHAR(100),
@@ -5945,11 +5942,9 @@ BEGIN
     INSERT INTO Usuarios (NomeUsuario, SenhaUsuario, AdmCategoria)
     VALUES (p_nomeUsuario, p_senhaUsuario, p_admCategoria);
 END //
-
 DELIMITER ;
 
 DELIMITER //
-
 CREATE PROCEDURE editar_usuario(
     IN p_nomeUsuario CHAR(45),
     IN p_senhaUsuario CHAR(100),
@@ -5963,16 +5958,13 @@ BEGIN
         AdmCategoria = p_admCategoria
     WHERE IdUsuario = p_idUsuario;
 END //
-
 DELIMITER ;
 
 DELIMITER //
-
 CREATE PROCEDURE excluir_usuario(
     IN p_idUsuario INT
 )
 BEGIN
     DELETE FROM Usuarios WHERE IdUsuario = p_idUsuario;
 END //
-
 DELIMITER ;
