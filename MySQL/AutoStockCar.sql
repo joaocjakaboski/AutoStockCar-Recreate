@@ -6037,15 +6037,21 @@ BEGIN
 END //
 DELIMITER ;
 
+CREATE VIEW v_vendas_cliente AS
+SELECT 
+	cv.IdVenda AS id, 
+	c.NomeCliente AS clientes, 
+	cv.ValorTotalVenda AS total, 
+	cv.DataCompra AS data 
+FROM 
+	vendas AS cv
+JOIN 
+	clientes AS c ON cv.IdCliente = c.IdCliente;
+
 DELIMITER //
 CREATE PROCEDURE ObterVendasDetalhadas()
 BEGIN
-    SELECT cv.IdVenda AS id, 
-           c.NomeCliente AS clientes, 
-           cv.ValorTotalVenda AS total, 
-           cv.DataCompra AS data 
-    FROM vendas AS cv
-    JOIN clientes AS c ON cv.IdCliente = c.IdCliente;
+    SELECT * FROM v_vendas_cliente;
 END //
 DELIMITER ;
 
@@ -6058,5 +6064,19 @@ BEGIN
     FROM vendas AS cv
     JOIN clientes AS c ON cv.IdCliente = c.IdCliente
     WHERE cv.IdVenda = idVenda;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE ObterVendasPorCliente(IN cliente CHAR(45))
+BEGIN
+	SELECT * FROM v_vendas_cliente WHERE clientes=cliente;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE ObterVendasPorData(IN dataIn DATE)
+BEGIN
+	SELECT * FROM v_vendas_cliente WHERE data LIKE CONCAT(dataIn, '%');
 END //
 DELIMITER ;
