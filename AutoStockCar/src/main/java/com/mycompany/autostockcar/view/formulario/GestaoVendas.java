@@ -103,6 +103,13 @@ public class GestaoVendas extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTVendas = new javax.swing.JTable();
         cbxNomeCliente = new com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado();
+        btnFiltrarNome = new com.mycompany.autostockcar.view.componentes.Botao();
+        txIdCliente = new com.mycompany.autostockcar.view.componentes.CampoDeTexto();
+        btnFiltrarData = new com.mycompany.autostockcar.view.componentes.Botao();
+        CodigoCliente = new javax.swing.JLabel();
+        NomeCliente = new javax.swing.JLabel();
+        NomeCliente1 = new javax.swing.JLabel();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -137,27 +144,100 @@ public class GestaoVendas extends javax.swing.JFrame {
         cbxNomeCliente.setToolTipText("");
         cbxNomeCliente.setCor(new java.awt.Color(255, 255, 255));
 
+        btnFiltrarNome.setBackground(new java.awt.Color(220, 220, 220));
+        btnFiltrarNome.setForeground(new java.awt.Color(30, 30, 30));
+        btnFiltrarNome.setText("Filtrar");
+        btnFiltrarNome.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        btnFiltrarNome.setPreferredSize(new java.awt.Dimension(62, 30));
+        btnFiltrarNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarNomeActionPerformed(evt);
+            }
+        });
+
+        txIdCliente.setBackground(new java.awt.Color(169, 169, 169));
+        txIdCliente.setCaretColor(new java.awt.Color(169, 169, 169));
+        txIdCliente.setCorTexto(new java.awt.Color(158, 158, 158));
+        txIdCliente.setDicas("");
+        txIdCliente.setMinimumSize(new java.awt.Dimension(64, 30));
+        txIdCliente.setPreferredSize(new java.awt.Dimension(143, 30));
+
+        btnFiltrarData.setBackground(new java.awt.Color(220, 220, 220));
+        btnFiltrarData.setForeground(new java.awt.Color(30, 30, 30));
+        btnFiltrarData.setText("Filtrar");
+        btnFiltrarData.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        btnFiltrarData.setPreferredSize(new java.awt.Dimension(62, 30));
+        btnFiltrarData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarDataActionPerformed(evt);
+            }
+        });
+
+        CodigoCliente.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        CodigoCliente.setForeground(new java.awt.Color(30, 30, 30));
+        CodigoCliente.setText("Id Cliente:");
+
+        NomeCliente.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        NomeCliente.setForeground(new java.awt.Color(30, 30, 30));
+        NomeCliente.setText("Nome:");
+
+        NomeCliente1.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        NomeCliente1.setForeground(new java.awt.Color(30, 30, 30));
+        NomeCliente1.setText("Data:");
+
+        try {
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####/##/##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextField1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jScrollPane1)
-                .addGap(41, 41, 41))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(cbxNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1026, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CodigoCliente))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(cbxNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnFiltrarNome, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(NomeCliente))
+                        .addGap(346, 346, 346)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnFiltrarData, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(NomeCliente1))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(cbxNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(128, 128, 128)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(57, 57, 57)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CodigoCliente)
+                    .addComponent(NomeCliente)
+                    .addComponent(NomeCliente1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbxNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFiltrarNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFiltrarData, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -212,6 +292,14 @@ public class GestaoVendas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnFiltrarNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarNomeActionPerformed
+
+    }//GEN-LAST:event_btnFiltrarNomeActionPerformed
+
+    private void btnFiltrarDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFiltrarDataActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -245,13 +333,20 @@ public class GestaoVendas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CodigoCliente;
+    private javax.swing.JLabel NomeCliente;
+    private javax.swing.JLabel NomeCliente1;
+    private com.mycompany.autostockcar.view.componentes.Botao btnFiltrarData;
+    private com.mycompany.autostockcar.view.componentes.Botao btnFiltrarNome;
     private com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado cbxNomeCliente;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTVendas;
     private com.mycompany.autostockcar.view.componentes.Menu menu1;
+    private com.mycompany.autostockcar.view.componentes.CampoDeTexto txIdCliente;
     // End of variables declaration//GEN-END:variables
 
     private void Limpar() {
