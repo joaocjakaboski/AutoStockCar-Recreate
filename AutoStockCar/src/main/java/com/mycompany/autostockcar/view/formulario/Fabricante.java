@@ -159,7 +159,7 @@ public class Fabricante extends javax.swing.JFrame {
                     
                     btnAlterar.setVisible(true);
                     btnExcluir.setEnabled(true);
-                    btnExcluir.setBackground(new Color (131, 191, 205));
+                    btnExcluir.setBackground(new Color(220, 220, 220));
                     cbxNome.removeAllItems();
                     cbxNome.addItem("");
                 }
@@ -176,6 +176,8 @@ public class Fabricante extends javax.swing.JFrame {
                     desativarCampos();
                     ativarCabecalho();
                     btnAlterar.setVisible(false);
+                    btnExcluir.setEnabled(false);
+                    btnExcluir.setBackground(corCampoDesativado);
                 }
             }
         });

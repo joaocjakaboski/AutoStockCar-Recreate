@@ -93,8 +93,8 @@ public class CadastropDao {
             //conexao.obterConexao().close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro de conexão com o banco de dados de exclusão\n" + ex.getMessage());
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "" + ex.getMessage());
+            //ex.printStackTrace();
         }
     }
 

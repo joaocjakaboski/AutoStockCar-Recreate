@@ -128,7 +128,12 @@ public class Cadastrop extends javax.swing.JFrame {
         
         try{
             int idProduto = Integer.parseInt(txidproduto.getText());
-            cadastropDao.excluir(idProduto);
+            try {
+                cadastropDao.excluir(idProduto);
+            } catch (Error ex) {
+            JOptionPane.showMessageDialog(null, "" + ex.getMessage());
+            ex.printStackTrace();
+        }
           
         }catch(NumberFormatException e){
         JOptionPane.showMessageDialog(null, "Por favor, insira um Codigo válido.");
