@@ -5607,8 +5607,7 @@ INSERT INTO produtos(NomeProduto, CodigoFabricante, ObsProduto, ValorCustoProdut
 VALUES('Motosserra MS361', 1, 'Sabre 40CM', '2150.00', '3250.00', '11', 'C', '5', 1, 1, 1 , 15);
 
 INSERT INTO clientes( NomeCliente, TelefoneCliente, EmailCliente, EnderecoCliente, BairroCliente, CPFCliente, ObsCliente, DataCadastroCliente, IdCidade)
-VALUES ('João Carlos Jakaboski','(54) 99966-2048','103127@aluno.uricer.edu.br','Rua João Lôra, 364','Atlântico','02453941097','','',3897);
-
+VALUES ('João Carlos Jakaboski','(54) 99966-2048','103127@aluno.uricer.edu.br','Rua João Lôra, 364','Atlântico','02453941097','',DEFAULT,3897);
 
 DELIMITER //
 CREATE PROCEDURE buscarTodosUsuarios()
@@ -5939,19 +5938,27 @@ CREATE FUNCTION calcularDesconto(
     totalVenda DECIMAL(10, 2),
     descontoValor DECIMAL(10, 2)
 ) RETURNS DECIMAL(10, 2)
+DETERMINISTIC
 BEGIN
     DECLARE descontoAplicado DECIMAL(10, 2) DEFAULT 0.00;
     DECLARE proporcao DECIMAL(10, 2);
 
+    -- Verifica se o desconto é maior ou igual ao valor total da venda
     IF descontoValor >= totalVenda THEN
-        RETURN 0.00; -- Desconto inválido, retornar 0
+        RETURN 0.00;
     END IF;
 
+    -- Calcula a proporção do desconto
     SET proporcao = descontoValor / totalVenda;
 
-    RETURN descontoValor; -- Retornar o valor do desconto aplicado
+    -- Aplica o desconto proporcional
+    SET descontoAplicado = totalVenda * proporcao;
+
+    RETURN descontoAplicado;
 END //
 DELIMITER ;
+
+
 
 DELIMITER //
 CREATE PROCEDURE obter_id_cliente(
@@ -5995,6 +6002,7 @@ DELIMITER ;
 DELIMITER //
 CREATE FUNCTION calcularTotais()
 RETURNS JSON
+DETERMINISTIC
 BEGIN
     DECLARE subTotal DECIMAL(10, 2);
     DECLARE desconto DECIMAL(10, 2);
@@ -6013,6 +6021,7 @@ BEGIN
     RETURN JSON_OBJECT('subTotal', subTotal, 'desconto', desconto, 'total', total);
 END //
 DELIMITER ;
+
 
 DELIMITER //
 CREATE PROCEDURE obterQuantidadeDisponivel(IN IdProd INT)
@@ -6051,4 +6060,3 @@ BEGIN
     WHERE cv.IdVenda = idVenda;
 END //
 DELIMITER ;
-

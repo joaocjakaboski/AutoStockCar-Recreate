@@ -5,6 +5,7 @@ import com.mycompany.autostockcar.controller.LoginController;
 import com.mycompany.autostockcar.view.componentes.Carregar;
 import com.mycompany.autostockcar.view.util.MensagemUtil;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
@@ -109,7 +110,8 @@ public class Login extends javax.swing.JFrame {
     
     
    private void eventos() {
-        btnLoginLogin.addActionListener(loginController);
+       txLoginSenha.addActionListener(loginController);
+       btnLoginLogin.addActionListener(loginController);
     }
 
     /**
@@ -252,7 +254,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txLoginUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txLoginUsuarioActionPerformed
-        // TODO add your handling code here:
+        txLoginSenha.requestFocusInWindow();
     }//GEN-LAST:event_txLoginUsuarioActionPerformed
 
     /**
