@@ -56,11 +56,11 @@ public class GestaoVendas extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println("Erro ao carregar tabela de vendas: " + e.getMessage());
         }
-        //cbxNomeCliente.setEditable(true);
-        //cbxNomeCliente.removeAllItems();
-        //cbxNomeCliente.addItem("");
+        cbxNomeCliente.setEditable(true);
+        cbxNomeCliente.removeAllItems();
+        cbxNomeCliente.addItem("");
 
-        /*cbxNomeCliente.getEditor().addActionListener(new ActionListener() {
+        cbxNomeCliente.getEditor().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 List<String> items = new ArrayList<>();
@@ -81,7 +81,7 @@ public class GestaoVendas extends javax.swing.JFrame {
                 }
                 SwingUtilities.invokeLater(() -> cbxNomeCliente.setPopupVisible(true));
             }
-        });*/
+        });
  
     }
     
@@ -102,6 +102,7 @@ public class GestaoVendas extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTVendas = new javax.swing.JTable();
+        cbxNomeCliente = new com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -132,6 +133,10 @@ public class GestaoVendas extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTVendas);
 
+        cbxNomeCliente.setForeground(new java.awt.Color(0, 0, 0));
+        cbxNomeCliente.setToolTipText("");
+        cbxNomeCliente.setCor(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -140,13 +145,19 @@ public class GestaoVendas extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane1)
                 .addGap(41, 41, 41))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addComponent(cbxNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
-                .addGap(33, 33, 33))
+                .addGap(79, 79, 79)
+                .addComponent(cbxNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(128, 128, 128)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -166,7 +177,7 @@ public class GestaoVendas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(menu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
                 .addGap(33, 33, 33))
         );
 
@@ -183,7 +194,7 @@ public class GestaoVendas extends javax.swing.JFrame {
         jLayeredPane2Layout.setVerticalGroup(
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane2Layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 723, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -234,6 +245,7 @@ public class GestaoVendas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado cbxNomeCliente;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
