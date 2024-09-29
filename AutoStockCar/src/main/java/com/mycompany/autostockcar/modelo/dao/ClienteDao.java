@@ -93,7 +93,7 @@ public class ClienteDao {
     }
     
     public Clientes buscarClientePeloCpf(String cpf) {
-        String sql = String.format("{CALL buscarClientePeloCpf (%s)}", cpf);
+        String sql = String.format("{CALL buscarClientePeloCpf ('%s')}", cpf);
         try {
             ResultSet result = conexao.obterConexao().prepareStatement(sql).executeQuery();
             

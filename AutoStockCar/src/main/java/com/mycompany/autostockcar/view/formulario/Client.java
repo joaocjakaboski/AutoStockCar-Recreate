@@ -7,12 +7,15 @@ import com.mycompany.autostockcar.modelo.dominio.Cidades;
 import com.mycompany.autostockcar.modelo.dominio.Clientes;
 import com.mycompany.autostockcar.modelo.dominio.Estados;
 import com.mycompany.autostockcar.modelo.dominio.Perfil;
+import com.sun.java.accessibility.util.AWTEventMonitor;
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.KeyEvent;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,6 +27,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 /**
@@ -65,6 +69,12 @@ public class Client extends javax.swing.JFrame {
         EstadoDao estado = new EstadoDao();
         CidadeDao cidade = new CidadeDao();
         
+        txConsultaCpf.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnConsultaPeloCPF.doClick();
+            }
+        });
         
         cbxNome.getEditor().getEditorComponent().addFocusListener(new FocusAdapter() {
             @Override
@@ -547,6 +557,11 @@ public class Client extends javax.swing.JFrame {
         txConsultaCpf.setCorTexto(new java.awt.Color(158, 158, 158));
         txConsultaCpf.setDicas("CPF/CNPJ");
         txConsultaCpf.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txConsultaCpf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txConsultaCpfKeyTyped(evt);
+            }
+        });
 
         txEmail.setCorTexto(new java.awt.Color(158, 158, 158));
         txEmail.setDicas("E-mail ");
@@ -907,12 +922,62 @@ public class Client extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txCpfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txCpfKeyTyped
-        String caracteres = "0123456789";
-        if(!caracteres.contains(evt.getKeyChar() + "")){
-            evt.consume();
-        }
+        formatar(evt);
     }//GEN-LAST:event_txCpfKeyTyped
+
+    private void txConsultaCpfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txConsultaCpfKeyTyped
+        formatar(evt);
+    }//GEN-LAST:event_txConsultaCpfKeyTyped
     
+    private void formatar(java.awt.event.KeyEvent evt) {
+        String caracteres = "0123456789";
+        if (!caracteres.contains(evt.getKeyChar() + "") && evt.getKeyChar() != '\b') {
+            evt.consume();
+            return;
+        }
+
+        JTextField textField = (JTextField) evt.getSource();
+        String text = textField.getText().replaceAll("[^0-9]", "");
+        int tamTexto = text.length();
+
+        if (evt.getKeyChar() == '\b') {
+            tamTexto -= 1;
+        }
+
+        if (tamTexto >= 14) {
+            evt.consume();
+            return;
+        }
+
+        if (tamTexto < 11) {
+            if (tamTexto > 2) {
+                text = text.substring(0, 3) + "." + text.substring(3);
+            }
+            if (tamTexto > 5) {
+                text = text.substring(0, 7) + "." + text.substring(7);
+            }
+            if (tamTexto > 8) {
+                text = text.substring(0, 11) + "-" + text.substring(11);
+            }
+        } else {
+            if (tamTexto > 1) {
+                text = text.substring(0, 2) + "." + text.substring(2);
+            }
+            if (tamTexto > 4) {
+                text = text.substring(0, 6) + "." + text.substring(6);
+            }
+            if (tamTexto > 7) {
+                text = text.substring(0, 10) + "/" + text.substring(10);
+            }
+            if (tamTexto > 11) {
+                text = text.substring(0, 15) + "-" + text.substring(15);
+            }
+        }
+
+        textField.setText(text);
+        textField.setCaretPosition(textField.getText().length());
+    }   
+
         
         
     public static void main(String args[]) {

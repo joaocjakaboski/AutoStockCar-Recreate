@@ -5558,7 +5558,7 @@ CREATE TABLE Clientes (
     EmailCliente CHAR(45),
     EnderecoCliente CHAR(45) NOT NULL,
     BairroCliente CHAR(45) NOT NULL,
-    CPFCliente CHAR(14) NOT NULL UNIQUE,
+    CPFCliente CHAR(18) NOT NULL UNIQUE,
     ObsCliente CHAR(100),
     DataCadastroCliente DATETIME DEFAULT CURRENT_TIMESTAMP,
     IdCidade INT NOT NULL,
@@ -5607,7 +5607,7 @@ INSERT INTO produtos(NomeProduto, CodigoFabricante, ObsProduto, ValorCustoProdut
 VALUES('Motosserra MS361', 1, 'Sabre 40CM', '2150.00', '3250.00', '11', 'C', '5', 1, 1, 1 , 15);
 
 INSERT INTO clientes( NomeCliente, TelefoneCliente, EmailCliente, EnderecoCliente, BairroCliente, CPFCliente, ObsCliente, DataCadastroCliente, IdCidade)
-VALUES ('João Carlos Jakaboski','(54) 99966-2048','103127@aluno.uricer.edu.br','Rua João Lôra, 364','Atlântico','02453941097','',DEFAULT,3897);
+VALUES ('João Carlos Jakaboski','(54) 99966-2048','103127@aluno.uricer.edu.br','Rua João Lôra, 364','Atlântico','024.539.410-97','',DEFAULT,3897);
 
 DELIMITER //
 CREATE PROCEDURE buscarTodosUsuarios()
@@ -5687,7 +5687,7 @@ END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE buscarClientePeloCpf(IN CPFCli CHAR(14))
+CREATE PROCEDURE buscarClientePeloCpf(IN CPFCli CHAR(18))
 BEGIN
     SELECT * FROM Clientes WHERE CPFCliente = CPFCli;
 END //
@@ -5847,7 +5847,7 @@ CREATE PROCEDURE adicionar_cliente(
     IN p_emailCliente CHAR(45),
     IN p_enderecoCliente CHAR(45),
     IN p_bairroCliente CHAR(45),
-    IN p_cpfCliente CHAR(14),
+    IN p_cpfCliente CHAR(18),
     IN p_obsCliente CHAR(100),
     IN p_idCidade INT
 )
@@ -5864,7 +5864,7 @@ CREATE PROCEDURE editar_cliente(
     IN p_emailCliente CHAR(45),
     IN p_enderecoCliente CHAR(45),
     IN p_bairroCliente CHAR(45),
-    IN p_cpfCliente CHAR(14),
+    IN p_cpfCliente CHAR(18),
     IN p_obsCliente CHAR(100),
     IN p_idCidade INT,
     IN p_idCliente INT
@@ -5889,7 +5889,7 @@ CREATE PROCEDURE adicionar_fabricante(
     IN p_emailFabricante CHAR(45),
     IN p_telefoneFabricante CHAR(15),
     IN p_enderecoFabricante CHAR(50),
-    IN p_cnpjFabricante CHAR(14),
+    IN p_cnpjFabricante CHAR(18),
     IN p_obsFabricante CHAR(100),
     IN p_idCidade INT
 )
@@ -5905,7 +5905,7 @@ CREATE PROCEDURE editar_fabricante(
     IN p_emailFabricante CHAR(45),
     IN p_telefoneFabricante CHAR(15),
     IN p_enderecoFabricante CHAR(50),
-    IN p_cnpjFabricante CHAR(14),
+    IN p_cnpjFabricante CHAR(18),
     IN p_obsFabricante CHAR(100),
     IN p_idCidade INT,
     IN p_idFabricante INT

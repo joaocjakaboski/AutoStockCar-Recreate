@@ -294,6 +294,9 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txConsultaCpfKeyTyped"/>
+              </Events>
             </Component>
             <Component class="com.mycompany.autostockcar.view.componentes.CampoDeTexto" name="txEmail">
               <Properties>

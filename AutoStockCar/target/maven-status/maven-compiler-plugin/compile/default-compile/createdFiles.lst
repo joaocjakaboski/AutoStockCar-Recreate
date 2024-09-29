@@ -51,6 +51,7 @@ com\mycompany\autostockcar\view\formulario\Dashboard.class
 com\mycompany\autostockcar\modelo\dao\CategoriaDao.class
 com\mycompany\autostockcar\view\formulario\VendasF$2.class
 com\mycompany\autostockcar\view\formulario\Client$11.class
+com\mycompany\autostockcar\view\formulario\Client$14.class
 com\mycompany\autostockcar\modelo\conexao\Conexao.class
 com\mycompany\autostockcar\view\formulario\Categoria$8.class
 com\mycompany\autostockcar\modelo\dominio\Usuarios.class
@@ -99,6 +100,7 @@ com\mycompany\autostockcar\view\formulario\Cadastrop$1.class
 com\mycompany\autostockcar\view\componentes\Menu$9.class
 com\mycompany\autostockcar\view\util\MensagemUtil$1.class
 com\mycompany\autostockcar\view\formulario\Categoria$9.class
+com\mycompany\autostockcar\view\formulario\Client$13.class
 com\mycompany\autostockcar\view\formulario\MovimentacaoProd$8.class
 com\mycompany\autostockcar\view\formulario\Cadastrop$7.class
 com\mycompany\autostockcar\view\formulario\Consulta$1.class
