@@ -5498,7 +5498,7 @@ CREATE TABLE Fabricantes (
     EmailFabricante CHAR(45) NOT NULL,
     TelefoneFabricante CHAR(15) NOT NULL,
     EnderecoFabricante CHAR(50) NOT NULL,
-    CNPJFabricante CHAR(14) NOT NULL UNIQUE,
+    CNPJFabricante CHAR(18) NOT NULL UNIQUE,
     ObsFabricante CHAR(100),
     IdCidade INT NOT NULL,
     CONSTRAINT PRIMARY KEY (IdFabricante),
@@ -5593,6 +5593,23 @@ CREATE TABLE ItensVenda (
 INSERT INTO Usuarios(NomeUsuario, SenhaUsuario, AdmCategoria)
 VALUES ('user', '$2a$10$DLqHmXH/bjTuIX7k9LflkuIuIwqzsQNSQoyTaW84GKO2okyIaKYuy', 'ADMIN');
 
+INSERT INTO Fabricantes(NomeFabricante, EmailFabricante, TelefoneFabricante, EnderecoFabricante, CNPJFabricante, ObsFabricante, IdCidade)
+VALUES ('STIHL', 'stihlrs@stihl.com.br','(54) 99999-9999', 'Rua da STIHL, N°300', '11.222.333/0001-99', '', 3897);
+
+INSERT INTO categorias(NomeCategoria, DescricaoCategoria)
+VALUES ('Motosserras', 'Ferramentas de corte'),
+	   ('Pneus', 'Borrachas em geral');
+       
+INSERT INTO estoques(QuantidadeEstoque)
+VALUES (100);
+
+INSERT INTO produtos(NomeProduto, CodigoFabricante, ObsProduto, ValorCustoProduto, ValorFinal, Prateleira, Gaveta, ImpostoDoProduto, IdFabricante, IdEstoque, IdCategoria, QuantidadeDisponivel)
+VALUES('Motosserra MS361', 1, 'Sabre 40CM', '2150.00', '3250.00', '11', 'C', '5', 1, 1, 1 , 15);
+
+INSERT INTO clientes( NomeCliente, TelefoneCliente, EmailCliente, EnderecoCliente, BairroCliente, CPFCliente, ObsCliente, DataCadastroCliente, IdCidade)
+VALUES ('João Carlos Jakaboski','(54) 99966-2048','103127@aluno.uricer.edu.br','Rua João Lôra, 364','Atlântico','02453941097','','',3897);
+
+
 DELIMITER //
 CREATE PROCEDURE buscarTodosUsuarios()
 BEGIN
@@ -5617,7 +5634,7 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE buscarProdutosPeloNome(IN NomeProd CHAR(100))
 BEGIN
-    SELECT * FROM produtos WHERE NomeProduto = NomeProd;
+    SELECT * FROM produtos WHERE NomeProduto LIKE NomeProd;
 END //
 DELIMITER ;
 
@@ -5916,55 +5933,83 @@ BEGIN
 END //
 DELIMITER ;
 
+
 DELIMITER //
-CREATE PROCEDURE alterar_movimentacao(
-    IN p_entradaSaida TINYINT,
-    IN p_quantidadeMovimentacao INT,
-    IN p_motivoMovimentacao CHAR(20),
-    IN p_idMovimentacao INT
-)
+CREATE FUNCTION calcularDesconto(
+    totalVenda DECIMAL(10, 2),
+    descontoValor DECIMAL(10, 2)
+) RETURNS DECIMAL(10, 2)
 BEGIN
-    UPDATE movimentacaodeestoque 
-    SET EntradaSaida = p_entradaSaida, 
-        QuantidadeMovimentacao = p_quantidadeMovimentacao, 
-        MotivoMovimentacao = p_motivoMovimentacao
-    WHERE IdMovimentacao = p_idMovimentacao;
+    DECLARE descontoAplicado DECIMAL(10, 2) DEFAULT 0.00;
+    DECLARE proporcao DECIMAL(10, 2);
+
+    IF descontoValor >= totalVenda THEN
+        RETURN 0.00; -- Desconto inválido, retornar 0
+    END IF;
+
+    SET proporcao = descontoValor / totalVenda;
+
+    RETURN descontoValor; -- Retornar o valor do desconto aplicado
 END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE adicionar_usuario(
-    IN p_nomeUsuario CHAR(45),
-    IN p_senhaUsuario CHAR(100),
-    IN p_admCategoria CHAR(10)
+CREATE PROCEDURE obter_id_cliente(
+    IN p_nomeCliente CHAR(45)
 )
 BEGIN
-    INSERT INTO Usuarios (NomeUsuario, SenhaUsuario, AdmCategoria)
-    VALUES (p_nomeUsuario, p_senhaUsuario, p_admCategoria);
+    SELECT IdCliente FROM clientes WHERE NomeCliente = p_nomeCliente;
 END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE editar_usuario(
-    IN p_nomeUsuario CHAR(45),
-    IN p_senhaUsuario CHAR(100),
-    IN p_admCategoria CHAR(10),
-    IN p_idUsuario INT
-)
+CREATE TRIGGER before_fabricante_delete
+BEFORE DELETE ON fabricantes
+FOR EACH ROW
 BEGIN
-    UPDATE Usuarios 
-    SET NomeUsuario = p_nomeUsuario, 
-        SenhaUsuario = p_senhaUsuario, 
-        AdmCategoria = p_admCategoria
-    WHERE IdUsuario = p_idUsuario;
+    DECLARE produtoCount INT;
+    
+    SELECT COUNT(*) INTO produtoCount
+    FROM Produtos
+    WHERE IdFabricante = OLD.IdFabricante;
+    
+    IF produtoCount > 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Não é possível excluir o fabricante, pois existem produtos associados.';
+    END IF;
 END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE excluir_usuario(
-    IN p_idUsuario INT
-)
+CREATE TRIGGER before_produto_delete
+BEFORE DELETE ON Produtos
+FOR EACH ROW
 BEGIN
-    DELETE FROM Usuarios WHERE IdUsuario = p_idUsuario;
+    IF OLD.QuantidadeDisponivel > 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Não é possível excluir um produto que ainda possui estoque.';
+    END IF;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE FUNCTION calcularTotais()
+RETURNS JSON
+BEGIN
+    DECLARE subTotal DECIMAL(10, 2);
+    DECLARE desconto DECIMAL(10, 2);
+    DECLARE total DECIMAL(10, 2);
+
+	SELECT 
+        SUM(SubTotal), 
+        SUM(Desconto), 
+        SUM(TotalAPagar) 
+    INTO 
+        subTotal, 
+        desconto, 
+        total
+    FROM ItensVenda;
+
+    RETURN JSON_OBJECT('subTotal', subTotal, 'desconto', desconto, 'total', total);
 END //
 DELIMITER ;
