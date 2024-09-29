@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
@@ -1009,6 +1011,20 @@ public class VendasF extends javax.swing.JFrame {
             return;
         }
 
+        // Chama a função no MySQL
+        BigDecimal descontoAplicado = BigDecimal.ZERO;
+        try (PreparedStatement stmt = conexao.obterConexao().prepareStatement("SELECT calcularDesconto(?, ?)")) {
+             
+            stmt.setBigDecimal(1, totalVenda);
+            stmt.setBigDecimal(2, descontoValor);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                descontoAplicado = rs.getBigDecimal(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(VendasF.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         // Aplica o desconto em dinheiro uma vez
         for (ItensVenda produto : listaProdutos) {
             BigDecimal valorParcial = produto.getValorParcial();
@@ -1045,7 +1061,7 @@ public class VendasF extends javax.swing.JFrame {
     
     private void obterIdCliente() throws SQLException {
     String clienteSelecionado = cbxNomeCliente.getSelectedItem().toString();
-    String sql = "SELECT IdCliente FROM clientes WHERE NomeCliente = ?";
+    String sql = "{CALL obter_id_cliente(?)}";
     
     System.out.println("Cliente selecionado: " + clienteSelecionado); // Log de depuração
     
