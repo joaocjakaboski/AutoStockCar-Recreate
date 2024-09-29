@@ -29,9 +29,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import org.json.JSONObject;
 
 public class VendasF extends javax.swing.JFrame {
 
@@ -954,7 +953,7 @@ public class VendasF extends javax.swing.JFrame {
     }//GEN-LAST:event_txQuantidadeKeyTyped
 
     private void txDescontoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txDescontoKeyTyped
-        String caracteres = "0123456789";
+        String caracteres = "0123456789.";
         if(!caracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
@@ -969,21 +968,37 @@ public class VendasF extends javax.swing.JFrame {
         }
     }
 
-    private void calcularTotalPagar(){
-       BigDecimal subTotalGeneral = BigDecimal.ZERO;
-       BigDecimal descontoGeneral = BigDecimal.ZERO;
-       BigDecimal totalPagarGeneral = BigDecimal.ZERO;
-       
-       for (ItensVenda produtos : listaProdutos){
+   private void calcularTotalPagar() {
+    BigDecimal subTotalGeneral = BigDecimal.ZERO;
+    BigDecimal descontoGeneral = BigDecimal.ZERO;
+    BigDecimal totalPagarGeneral = BigDecimal.ZERO;
+
+    // Calcular totais a partir da lista de produtos
+    for (ItensVenda produtos : listaProdutos) {
         subTotalGeneral = subTotalGeneral.add(produtos.getValorParcial());
         descontoGeneral = descontoGeneral.add(produtos.getDesconto());
         totalPagarGeneral = totalPagarGeneral.add(produtos.getTotalAPagar());
-       }
-       
-       txSubTotal.setText(String.valueOf(subTotalGeneral));
-       txDesconto.setText(String.valueOf(descontoGeneral));
-       txTotal.setText(String.valueOf(totalPagarGeneral));
     }
+
+    // Chamar a função MySQL calcularTotais
+    /*try (PreparedStatement stmt = conexao.obterConexao().prepareStatement("SELECT calcularTotais() AS totais")) {
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            String totaisJson = rs.getString("totais");
+            JSONObject json = new JSONObject(totaisJson);
+            subTotalGeneral = json.getBigDecimal("subTotal");
+            descontoGeneral = json.getBigDecimal("desconto");
+            totalPagarGeneral = json.getBigDecimal("total");
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(VendasF.class.getName()).log(Level.SEVERE, null, ex);
+    }*/
+
+    // Atualizar os campos de texto com os totais
+    txSubTotal.setText(String.valueOf(subTotalGeneral));
+    txDesconto.setText(String.valueOf(descontoGeneral));
+    txTotal.setText(String.valueOf(totalPagarGeneral));
+}
     
    private void aplicarDesconto() {
     try {

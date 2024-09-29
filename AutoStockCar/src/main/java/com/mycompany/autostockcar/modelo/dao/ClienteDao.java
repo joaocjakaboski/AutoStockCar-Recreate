@@ -155,7 +155,7 @@ public class ClienteDao {
     }
     
     public String excluirUsuario(String cpf) {
-        String sql = String.format("DELETE FROM Clientes WHERE CPFCliente = %s", cpf);
+        String sql = String.format("{CALL excluirUsuario(?)}", cpf);
         try {
             pstm = conexao.obterConexao().prepareCall(sql);
             int resultado = pstm.executeUpdate();

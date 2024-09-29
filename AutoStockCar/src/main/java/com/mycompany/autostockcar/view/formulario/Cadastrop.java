@@ -1,5 +1,7 @@
 package com.mycompany.autostockcar.view.formulario;
 
+import com.mycompany.autostockcar.modelo.conexao.Conexao;
+import com.mycompany.autostockcar.modelo.conexao.ConexaoMysql;
 import com.mycompany.autostockcar.modelo.dao.CadastropDao;
 import com.mycompany.autostockcar.modelo.dominio.Categorias;
 import com.mycompany.autostockcar.modelo.dominio.Fabricantes;
@@ -12,7 +14,11 @@ import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
-import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -21,6 +27,10 @@ import net.miginfocom.swing.MigLayout;
 
 public class Cadastrop extends javax.swing.JFrame {
     private Color corCampoDesativado = new Color (131, 135, 141);
+    
+    private Conexao conexao;
+            
+    private PreparedStatement pstm;
     
     private MigLayout layout;
     
@@ -34,6 +44,7 @@ public class Cadastrop extends javax.swing.JFrame {
         menu1.setNomeUsuario(nomeUsuario);
         menu1.setPerfil(perfil);
         btnovo.setIcon(new ImageIcon(getClass().getResource(caminho + "pesquisar.png")));
+        conexao = new ConexaoMysql();
         
         btsalvar.addActionListener(new ActionListener() {
             @Override
@@ -59,6 +70,8 @@ public class Cadastrop extends javax.swing.JFrame {
                 BotaoAlterar();
             }   
         });
+        
+        
     }
 
     private Cadastrop() {
@@ -745,9 +758,22 @@ public class Cadastrop extends javax.swing.JFrame {
     private void btcalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcalcularActionPerformed
         double v1 = Double.parseDouble(txvalorvendasemimposto.getText());
         double v2 = Double.parseDouble(txImpostoProduto.getText());
-        double result = (v1*(v2/100)) + v1;
-        txvalorvenda.setText("" + result);
-        
+        double result = 0.0;
+
+        try  {
+            PreparedStatement stmt = conexao.obterConexao().prepareStatement("SELECT calcularValorVendaComImposto(?, ?) AS totalVenda");
+            stmt.setBigDecimal(1, BigDecimal.valueOf(v1));
+            stmt.setBigDecimal(2, BigDecimal.valueOf(v2));
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                result = rs.getBigDecimal("totalVenda").doubleValue();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(VendasF.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        txvalorvenda.setText(String.valueOf(result));
     }//GEN-LAST:event_btcalcularActionPerformed
 
     private void btfabricanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btfabricanteActionPerformed
@@ -874,7 +900,7 @@ public class Cadastrop extends javax.swing.JFrame {
     public com.mycompany.autostockcar.view.componentes.CampoDeTexto txvalorvendasemimposto;
     // End of variables declaration//GEN-END:variables
 
-    private Connection ConexaoMysql() {
+    /*private Connection ConexaoMysql() {
         throw new UnsupportedOperationException("Not supported yet.");
-    }
+    }*/
 }
