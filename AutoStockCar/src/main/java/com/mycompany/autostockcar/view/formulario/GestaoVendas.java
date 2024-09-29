@@ -251,10 +251,7 @@ public class GestaoVendas extends javax.swing.JFrame {
 
     private void CarregarTabelaVenda() throws SQLException {
         DefaultTableModel model = new DefaultTableModel();
-        String sql = "SELECT cv.IdVenda AS id, c.NomeCliente AS clientes, " 
-                   + "cv.ValorTotalVenda AS total, cv.DataCompra AS data "
-                   + "FROM vendas AS cv, clientes AS c "
-                   + "WHERE cv.IdCliente = c.IdCliente";
+        String sql = "{CALL ObterVendasDetalhadas()}";
 
         try {
             conn = conexao.obterConexao();
@@ -303,10 +300,7 @@ public class GestaoVendas extends javax.swing.JFrame {
             if (conn == null || conn.isClosed()) {
                 conn = conexao.obterConexao();
             }
-            String sql = "SELECT cv.ValorTotalVenda AS valorPagar, c.NomeCliente AS cliente, "
-                       + "cv.DataCompra AS dataVenda "
-                       + "FROM vendas AS cv, clientes AS c "
-                       + "WHERE cv.IdVenda = ? AND cv.IdCliente = c.IdCliente";
+            String sql = "CALL ObterDetalhesVenda(?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idVenda);
             ResultSet rs = stmt.executeQuery();

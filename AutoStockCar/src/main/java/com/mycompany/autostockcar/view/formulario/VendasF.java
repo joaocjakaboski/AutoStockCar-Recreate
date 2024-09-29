@@ -1088,7 +1088,7 @@ public class VendasF extends javax.swing.JFrame {
     
     private void obterIdProduto() throws SQLException {
     String produtoSelecionado = cbxNomeProduto.getSelectedItem().toString();
-    String sql = "SELECT IdProduto FROM produtos WHERE NomeProduto = ?";
+    String sql = "{CALL obterIdProduto(?)}";
     
     System.out.println("Cliente selecionado: " + produtoSelecionado); // Log de depuração
     
@@ -1161,7 +1161,7 @@ public class VendasF extends javax.swing.JFrame {
     
     private double obterQuantidadeDisponivel(int idProduto) throws SQLException {
     double quantidadeDisponivel = 0.0;
-    String sql = "SELECT QuantidadeDisponivel FROM produtos WHERE IdProduto = ?";
+    String sql = "{CALL obterQuantidadeDisponivel(?)}";
     
     try (PreparedStatement stmt = conexao.obterConexao().prepareStatement(sql)) {
         stmt.setInt(1, idProduto);

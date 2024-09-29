@@ -6013,3 +6013,42 @@ BEGIN
     RETURN JSON_OBJECT('subTotal', subTotal, 'desconto', desconto, 'total', total);
 END //
 DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE obterQuantidadeDisponivel(IN IdProd INT)
+BEGIN
+	SELECT QuantidadeDisponivel FROM produtos WHERE IdProduto = IdProd;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE obterIdProduto(IN NomeProd CHAR(100))
+BEGIN
+	SELECT IdProduto FROM produtos WHERE NomeProduto = NomeProd;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE ObterVendasDetalhadas()
+BEGIN
+    SELECT cv.IdVenda AS id, 
+           c.NomeCliente AS clientes, 
+           cv.ValorTotalVenda AS total, 
+           cv.DataCompra AS data 
+    FROM vendas AS cv
+    JOIN clientes AS c ON cv.IdCliente = c.IdCliente;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE ObterDetalhesVenda(IN idVenda INT)
+BEGIN
+    SELECT cv.ValorTotalVenda AS valorPagar, 
+           c.NomeCliente AS cliente, 
+           cv.DataCompra AS dataVenda 
+    FROM vendas AS cv
+    JOIN clientes AS c ON cv.IdCliente = c.IdCliente
+    WHERE cv.IdVenda = idVenda;
+END //
+DELIMITER ;
+
