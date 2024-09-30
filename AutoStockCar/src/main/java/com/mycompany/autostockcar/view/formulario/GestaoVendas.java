@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -109,7 +110,7 @@ public class GestaoVendas extends javax.swing.JFrame {
         CodigoCliente = new javax.swing.JLabel();
         NomeCliente = new javax.swing.JLabel();
         NomeCliente1 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jFDate = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -186,11 +187,11 @@ public class GestaoVendas extends javax.swing.JFrame {
         NomeCliente1.setText("Data:");
 
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####/##/##")));
+            jFDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####/##/##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextField1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jFDate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -214,7 +215,7 @@ public class GestaoVendas extends javax.swing.JFrame {
                         .addGap(346, 346, 346)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jFDate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnFiltrarData, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(NomeCliente1))))
@@ -234,7 +235,7 @@ public class GestaoVendas extends javax.swing.JFrame {
                     .addComponent(btnFiltrarNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnFiltrarData, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
@@ -293,11 +294,11 @@ public class GestaoVendas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFiltrarNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarNomeActionPerformed
-
+        filtrarClientesNome();
     }//GEN-LAST:event_btnFiltrarNomeActionPerformed
 
     private void btnFiltrarDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarDataActionPerformed
-        // TODO add your handling code here:
+        filtrarClientesData();
     }//GEN-LAST:event_btnFiltrarDataActionPerformed
 
     public static void main(String args[]) {
@@ -339,7 +340,7 @@ public class GestaoVendas extends javax.swing.JFrame {
     private com.mycompany.autostockcar.view.componentes.Botao btnFiltrarData;
     private com.mycompany.autostockcar.view.componentes.Botao btnFiltrarNome;
     private com.mycompany.autostockcar.view.componentes.ComboBoxPersonalizado cbxNomeCliente;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JFormattedTextField jFDate;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -423,7 +424,65 @@ public class GestaoVendas extends javax.swing.JFrame {
         }
 }
     
+    public void filtrarClientesNome() {
+    DefaultTableModel model = new DefaultTableModel();
+    model.addColumn("N");
+    model.addColumn("Cliente");
+    model.addColumn("Total Pagar");
+    model.addColumn("Data Venda");
+
+    String nomeCliente = (String) cbxNomeCliente.getSelectedItem();
+    model.setRowCount(0);
+    String sql = "{CALL ObterVendasPorCliente(?)}";
+
+    try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+        
+        stmt.setString(1, nomeCliente);
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            model.addRow(new Object[]{
+                rs.getInt("id"),
+                rs.getString("clientes"),
+                rs.getDouble("total"),
+                rs.getDate("data")
+            });
+        }
+        jTVendas.setModel(model);
+    } catch (SQLException ex) {
+        Logger.getLogger(VendasF.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
+    public void filtrarClientesData() {
+    DefaultTableModel model = new DefaultTableModel();
+    model.addColumn("N");
+    model.addColumn("Cliente");
+    model.addColumn("Total Pagar");
+    model.addColumn("Data Venda");
+
+    String data = (String) jFDate.getText();
+    model.setRowCount(0);
+    String sql = "{CALL ObterVendasPorData(?)}";
+
+    try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+        
+        stmt.setString(1, data);
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            model.addRow(new Object[]{
+                rs.getInt("id"),
+                rs.getString("clientes"),
+                rs.getDouble("total"),
+                rs.getDate("data")
+            });
+        }
+        jTVendas.setModel(model);
+    } catch (SQLException ex) {
+        Logger.getLogger(VendasF.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
  
     

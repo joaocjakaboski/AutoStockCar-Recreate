@@ -1149,7 +1149,7 @@ public class VendasF extends javax.swing.JFrame {
     private void restaurarStock(int idProduto , int quantidade){
         int quantidadeBanco = 0;
         try{
-        String sql = "select IdProduto, QuantidadeDisponivel from produtos where IdProduto ='" + idProduto + "'";
+        String sql = String.format("{CALL IdProdQuant(%d)}",idProduto);
         PreparedStatement stmt = conexao.obterConexao().prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
@@ -1162,9 +1162,10 @@ public class VendasF extends javax.swing.JFrame {
         
         try{
             Connection cn = conexao.obterConexao();
-            PreparedStatement consulta = cn.prepareStatement("update produtos set QuantidadeDisponivel=? where IdProduto= '" + idProduto+"'");
+            PreparedStatement consulta = cn.prepareStatement("{CALL UpdIdProdQuant(?,?)}");
             int quantidadeNova = quantidadeBanco - quantidade;
-            consulta.setInt(1, quantidadeNova);
+            consulta.setInt(1, idProduto);
+            consulta.setInt(2, quantidadeNova);
             if(consulta.executeUpdate() > 0){
                 System.out.println("Tudo certo");
             }

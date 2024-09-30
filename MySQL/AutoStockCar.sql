@@ -6080,3 +6080,32 @@ BEGIN
 	SELECT * FROM v_vendas_cliente WHERE data LIKE CONCAT(dataIn, '%');
 END //
 DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE IdProdQuant(IN idProd INT)
+BEGIN
+	SELECT IdProduto, QuantidadeDisponivel FROM produtos WHERE IdProduto = idProd;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE UpdIdProdQuant(IN idProd INT, IN QuantDis INT)
+BEGIN
+	UPDATE produtos SET QuantidadeDisponivel = QuantDis WHERE IdProduto = idProd;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE FUNCTION calcularValorVendaComImposto(
+    valorVenda DECIMAL(10, 2),
+    percentualImposto DECIMAL(5, 2)
+) RETURNS DECIMAL(10, 2)
+DETERMINISTIC
+BEGIN
+    DECLARE valorComImposto DECIMAL(10, 2);
+    SET valorComImposto = (valorVenda * (percentualImposto / 100)) + valorVenda;
+    RETURN valorComImposto;
+END //
+DELIMITER ;
+
+
