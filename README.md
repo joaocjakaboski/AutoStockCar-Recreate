@@ -7,7 +7,7 @@ Este é um sistema de gerenciamento de estoque com funcionalidade de vendas, des
 - **Linguagem:** Java
 - **IDE recomendada:** Eclipse, IntelliJ IDEA ou NetBeans
 - **Interface Gráfica:** Java Swing (AWT/Swing puro)
-- **Banco de Dados:** Nenhum banco externo (armazenamento pode ser feito em memória ou via arquivos)
+- **Banco de Dados:** MySQL Server
 
 ## 🎯 Funcionalidades
 
