@@ -33,22 +33,6 @@ Este é um sistema de gerenciamento de estoque com funcionalidade de vendas, des
 - Menus e botões para fácil navegação
 - Caixas de diálogo para feedback ao usuário
 
-## 📂 Estrutura do Projeto
-
-/estoque-gerenciador
-├── /src
-│ ├── main
-│ │ ├── App.java
-│ │ ├── model/
-│ │ ├── controller/
-│ │ └── view/
-├── /docs
-├── README.md
-└── 
-- `model/`: contém classes como `Produto`, `Venda`, `Estoque`
-- `controller/`: lógica de negócio (controle de estoque e vendas)
-- `view/`: telas gráficas com Swing (JFrames, JPanels, etc)
-
 ## 📌 Observações
 - Projeto desenvolvido como parte de disciplina acadêmica.
 - Nenhum framework externo foi utilizado.
